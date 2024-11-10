@@ -147,31 +147,31 @@ python hello_server.py
 #### python이 설치되어 있지 않음
 python 프로그램을 실행시키기 위해서는 pytho이 설치되어 있어야 한다. google에서 python을 검색한 후 python을 다운받아 설치한다.
 
-#### python 명령이 실행되지 않는다
+#### 7-1. python 명령이 실행되지 않는다
 python 패키지 설치 시 실패하는 경우가 있다. python을 글로벌로 실행 시키기 위해서는 python이 설치된 경로가 환경변수에 등록되어 있어야 한다. 파이썬이 설치된 경로를 확인하여 아래 두 경로를 환경변수 Path에 등록한다.
 ```
 C:\Users\user\AppData\Local\Programs\Python\Python312
 C:\Users\user\AppData\Local\Programs\Python\Python312\Scripts
 ```
-#### 파워쉘 명령이 실패한다
+#### 7-2. 파워쉘 명령이 실패한다
 * IDE를 관리자 권한으로 실행 해본다.
 * 파워쉘을 관리자권한으로 실행시켜서 파워쉘 명령을 수행 해본다.
 * 명령프롬프트를 관리자권한으로 실행시켜서 명려을 수행 해본다.
 
-#### 프로토 파일이 컴파일 되지 않음
+#### 7-3. 프로토 파일이 컴파일 되지 않음
 프로토 파일을 컴파일 하는 과정에서 파로토 파일의 위치 지정을 잘못해서 그런 경우가 많다. hello.proto 파일의 경로를 확인해서 적절한 위치로 설정 한다.
 ``` powershell
 #powershell
 # Python 파일로 컴파일
 python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. hello.proto
 ```
-#### 서버 실행 시 파이썬 코드에 에러가 발생 한다
+#### 7-4. 서버 실행 시 파이썬 코드에 에러가 발생 한다
 서버 프로그램이 잘못되어 있는 경우가 있으므로 소스코드를 확인해서 코드를 수정하거나 처음부터 차근 차근 다시 진행해보면 대부분 해결 된다.
 
-#### 기타 시행 착오는 구글과 함께
+#### 7-5. 기타 시행 착오는 구글과 함께
 나머지 사항은 구글을 통해 해결방법을 검색하거나 멘토에게 문의 한다.
 
-#### 8. 소스코드
+### 8. 소스코드
 github에 업로드된 소스코드를 참고하세요. [ [github](https://github.com/jade-na/anu24SteelMES/tree/0fb941a1adaa21d59ea78701cd0a8e70d5ededa5/src/prototypes/pyGrpcServer) ]
 
 
@@ -202,29 +202,48 @@ Google.Protobuf.Tools
 ![C#gRPC Client 01](images/csharp-004.png)
 ![C#gRPC Client 01](images/csharp-004-1.png)
 ### 5. 프로토 파일 복사
-프로젝트 폴다 아래에 protos 폴더를 생성하고 서버 프로그램을 작성 할 때 사용 했던 hello.proto 파일을 넣어 둡니다. 서버와 동일한 프로토 파일을 사용 하겠습니다.
+프로젝트 폴더 아래에 protos 폴더를 생성하고 서버 프로그램을 작성 할 때 사용 했던 hello.proto 파일을 넣어 둡니다. 서버와 동일한 프로토 파일을 사용 하겠습니다.
 ![C#gRPC Client 01](images/csharp-004-2.png)
 
 ### 5. 프로토 파일 컴파일
-C#에서는 .proto 파일을 포함하면 자동으로 컴파일하여 코드가 생성됩니다. 프로젝트를 더블클릭하여 다음과 같이 <ItemGroup>으로 <Protobuf>를 추가 해줍니다.
+C#에서는 .proto 파일을 포함하면 자동으로 컴파일하여 코드가 생성됩니다. 프로젝트를 더블클릭하여 다음과 같이 ItemGroup으로 Protobuf를 추가 해줍니다.
 ![C#gRPC Client 01](images/csharp-005.png)
 
 ### 6. 솔루션 빌드 수행
-지금까지의 과정에 문제가 없는지 확인을 위해 빌드를 한번 해줍니다. 빌드에 문제가 없다면 다음 단계로 넘어 갑니다.
+지금까지 과정에 문제가 없는지 확인하기 위해 빌드를 한번 해줍니다. 빌드에 문제가 없다면 다음 단계로 넘어 갑니다.
 ![C#gRPC Client 01](images/csharp-006.png)
 
 ### 7. RPC 호출 구문 구현
 gRPC 서버와 접속을 위해 channel을 생성해서 client service를 생성된 channel과 연결하여 생성합니다. 그 이후 SayHello 및 ReqRemoteCommand RPC를 호출 해봅니다.
-![C#gRPC Client 01](images/csharp-007.png)
+``` CSharp
+// See https://aka.ms/new-console-template for more information
+using Grpc.Core;
+using Hello;
+
+Channel channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+var client = new Greeter.GreeterClient(channel);
+string user = "C# Client";
+
+var reply = client.SayHello(new HelloRequest { Name = user });
+Console.WriteLine("SayHello Reply " + reply.Message);
+
+var reply2 = client.ReqRemoteCommand(new RcmdRequest{ Command = "컨베이어야 돌아라", Param = "빨리"});
+Console.WriteLine("Rcmd Ack is " + reply2.Ack);
+
+
+channel.ShutdownAsync().Wait();
+Console.WriteLine("Press any key to exit...");
+Console.ReadKey();
+```
 
 ### 8. 클라이언트 프로그램 실행
 python으로 작성된 서버를 실행 시킨 후 클라이언트 프로그램을 실행 시킵니다. 클라이언트 프로그램이 실행될 때마다 서버의 RPC가 호출되는 것을 확인 할 수 있습니다.
 ![C#gRPC Client 01](images/csharp-008.png)
 
 ### 7. 시행 착오
-#### 프로토 파일 빌드 되지 않음
+#### 7-1. 프로토 파일 빌드 되지 않음
 7단계(RPC 호출 구문) 구현 전에 빌드를 했을 때 빌드가 되지 않는 경우가 있습니다. 프로토 파일 지정을 잘못 해주었거나 패키지 설치를 잘못 했을 경우 빌드가 안될 수 있습니다. <ItemGroup>을 패키지 위쪽에 넣어 주세요.
-``` xml
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -250,7 +269,7 @@ python으로 작성된 서버를 실행 시킨 후 클라이언트 프로그램�
 
 </Project>
 ```
-#### 기타 시행 착오
+#### 7-2. 기타 시행 착오
 그 밖의 시행착오는 구글을 통해 해결 방법을 찾거나 멘토에게 문의 해주세요.
 
 ### 8. 소스 코드
