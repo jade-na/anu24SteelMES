@@ -6,6 +6,7 @@ import hello_pb2_grpc
 
 class GreeterServicer(hello_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
+        print(f"received SayHello from {request.name}")
         message = f"Hello, {request.name}!"
         return hello_pb2.HelloReply(message=message)
     def ReqRemoteCommand(self, request, context):

@@ -2,7 +2,7 @@
 using Grpc.Core;
 using Hello;
 
-Channel channel = new Channel("192.168.0.85:50051", ChannelCredentials.Insecure);
+Channel channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 string user = "C# Client";
 
