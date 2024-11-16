@@ -106,9 +106,7 @@
     <Compile Include="Lost.Designer.cs">
       <DependentUpon>Lost.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lost2.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Lost2.cs" />
     <Compile Include="Lost2.Designer.cs">
       <DependentUpon>Lost2.cs</DependentUpon>
     </Compile>
