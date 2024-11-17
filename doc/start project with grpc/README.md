@@ -234,6 +234,13 @@ RPC는 이러한 함수가 원격에 있고 이런 원격에 있는 함수들을
 
 ```
 
+---
+### gRPC로 바꿔 보자
+다음으로는 MES Server 프로그램을 만들고 MES Client에서 MES Server에 구현되어 있는 RPC를 호출해서 생산 이력을 얻어오는 데모 프로그램을 만들어 보도록 하겠습니다.
+
+#### mes_server.proto 파일 만들기
+먼저 gRPC를 위해서 proto 파일을 만들어 줍니다. 함수를 정의 해주고 함수에서 사용하는 메시지를 정의 해줍니다. proto 파일에서 컨테이너 형태로 데이터를 형을 만들 때 repeated라는 예약어를 사용 합니다. 저희는 불량 이력 요청 후 응답을 받을 때 prodHistoryInfo를 여러개 전달 받기를 원하므로 아래와 같이 proto 파일을 정의 하였습니다.
+
 ``` proto
 syntax = "proto3";
 
@@ -244,13 +251,13 @@ service DB_Service {
     rpc reqProdHistory (prodHistoryInfoRequest) returns (prodHistoryInfoReply) {}
 }
 
-// 요청 메시지 (제품 생산 이력)
+// 제품 불량 이력 요청 메시지
 message prodHistoryInfoRequest {
     string fromTime = 1;
     string toTime = 2;
 }
 
-// 제품 생산 정보
+// 제품 불량 이력 정보
 message prodHistoryInfo {
     string prodName = 1;
     string serialNum = 2;
@@ -259,14 +266,277 @@ message prodHistoryInfo {
     string produceDay = 5;    
 }
 
-// 응답 메시지 (제품 생산 이력)
+// 제품 불량 이력 응답 메시지
 message prodHistoryInfoReply {
     int32 errorCode = 1;
     repeated prodHistoryInfo infos = 2;
 }
 ```
 
----
-### gRPC로 바꿔 보자
-다음으로는 MES Server 프로그램을 만들고 MES Client에서 MES Server에 구현되어 있는 RPC를 호출해서 생산 이력을 얻어오는 데모 프로그램을 만들어 보도록 하겠습니다.
+### MES Server 프로그램에 gRPC 기능 넣기
+proto 파일이 만들어 졌으니 이제 서버 프로그램을 구성해 보도록 하겠습니다. gRPC를 연결하는 것은 지난 시간에 진행 했던 사항과 동일하니 간략히 설명하도록 하겠습니다.
 
+#### 프로젝트 생성 및 gRPC 셋팅
+
+1. winform 프로젝트를 생성해줍니다.
+  -. 저는 프로젝트 이름을 grpcDummyMesServer라고 하였습니다.
+2. gRPC관련 페키지들을 설치 해줍니다. 아래 4개
+  -. grpc.core, grpc.tools, protobuf, protobuf.tools
+3. protos 폴더를 만들고 앞에서 만든 mes_server.proto 파일을 넣어둡니다.
+4. 프로젝트 파일에 프로토파일을 지정 해줍니다.
+```xml
+  <ItemGroup>
+    <Protobuf Include="protos\mes_server.proto" />
+  </ItemGroup>
+```
+5. 빌드를 한번 해줍니다.
+
+현재까지의 과정은 지난 시간에 진행 했던 내용과 유사하므로 큰 문제가 없다면 다음 경로에서 grpc가 생성한 소스코드를 볼 수 있을 것입니다.
+".\obj\Debug\net8.0-windows\protos\" 폴더
+
+![alt text](image-1.png)
+
+#### 간단한 UI 구성
+
+gRPC 서비스를 시작 또는 멈출 수 있도록 버튼을 만들고 포트를 변경 할 수 있도록 간단한 UI를 구성 해줍니다.
+![alt text](image-2.png)
+
+
+#### DBServiceServer 클래스 만들기
+gRPC 클라이언트에서 함수 호출이 되었을 때 함수의 역할을 수행하는 루틴을 만듭니다. proto 파일을 컴파일 해서 자동으로 생성된 코드에 포함되어 있는 클래스들을 활용하기 위해서 Grpc.Core 네입스페이스와 SteelMES 네입스페이스를 추가 합니다. 서버 클래스는 DB_Service.DB_ServiceBase 클래스를 상속 받아 만듭니다.
+
+``` csharp
+using System;
+using System.Threading.Tasks;
+// 아래 2가지 네임스페이스를 추가 해줍니다. SteelMES는 저희가 proto 파일 정의 시 package 명으로 입력한 것입니다.
+using Grpc.Core;
+using SteelMES;
+
+namespace grpcDummyMesServer
+{
+    public class DBServiceServer : DB_Service.DB_ServiceBase
+    {
+       
+    }
+}
+```
+
+다음으로 클라이언트에서 함수를 호출하면 해당 함수를 처리하는 루틴을 추가 해줍니다. 원래는 prodHistoryInfoRequest를 통해서 전달되는 fromTime, toTime을 이용하여 DB에서 정보를 취득 후 정보를 전달 해줘야 하는데 해당 과정을 생략하고 더미 데이터로 대체 하였습니다. 이렇게 하면 함수 처리 루틴을 완성 되었습니다.
+
+``` csharp
+using System;
+using System.Threading.Tasks;
+// 아래 2가지 네임스페이스를 추가 해줍니다. SteelMES는 저희가 proto 파일 정의 시 package 명으로 입력한 것입니다.
+using Grpc.Core;
+using SteelMES;
+
+namespace grpcDummyMesServer
+{
+    public class DBServiceServer : DB_Service.DB_ServiceBase
+    {
+        public override Task<prodHistoryInfoReply> reqProdHistory(prodHistoryInfoRequest request, ServerCallContext context)
+        {
+            // request.FromTime;
+            // request.ToTime;
+            var result = new prodHistoryInfoReply();
+
+            result.ErrorCode = 0;
+
+            var info1 = new prodHistoryInfo();
+            info1.ProdName = "A";
+            info1.SerialNum = "0001";
+            info1.LotId = "LOT A";
+            info1.DefactCode = "DEFACT A";
+            info1.ProduceDay = "2024-11-17 00:00:00";
+            result.Infos.Add(info1);
+
+            var info2 = new prodHistoryInfo();
+            info2.ProdName = "B";
+            info2.SerialNum = "0002";
+            info2.LotId = "LOT A";
+            info2.DefactCode = "DEFACT B";
+            info2.ProduceDay = "2024-11-17 00:00:10";
+            result.Infos.Add(info2);
+
+            return Task.FromResult(result);
+        }
+    }
+}
+```
+
+#### 서비스 시작 및 종료 부분 처리
+클라이언트로 부터 들어오는 접속 요청을 수신하기 위해서 Server 객체를 멤버로 하나 만들어 줍니다.
+
+``` csharp
+namespace grpcDummyMesServer
+{
+    public partial class Form1 : Form
+    {
+        Server grpcServer = null;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+```
+
+다음으로 start 버튼을 눌렀을 때 Server 객체를 생성해주고 앞에서 만든 DBServiceServer 객체를 바인딩해주고 UI로 부터 가져온 포트 번호를 할당해 줍니다. Server 객체가 생성된 이후에는 Start() 함수를 호출하여 서버를 시작 시켜 줍니다.
+
+``` csharp
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (grpcServer != null)
+            {
+                MessageBox.Show("gRPC Server is already running.");
+                return;
+            }
+
+            //cancellationTokenSource = new CancellationTokenSource();
+            
+            int port = int.Parse(textBox1.Text);            
+            
+            grpcServer = new Server
+            {
+                Services = { DB_Service.BindService(new DBServiceServer()) },
+                Ports = { new ServerPort("localhost", port, ServerCredentials.Insecure) }
+            };
+
+            grpcServer.Start();
+            MessageBox.Show($"gRPC Server started at localhost:{port}");
+        }
+```
+
+다음으로 stop 버튼을 눌렀을 때 서버를 중지하는 코드를 아래와 같이 만들어 줍니다.
+
+``` csharp
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (grpcServer == null)
+            {
+                MessageBox.Show("gRPC Server is not running.");
+                return;
+            }
+
+            await grpcServer.ShutdownAsync();
+            grpcServer = null;
+            MessageBox.Show("gRPC Server stopped.");
+        }
+```
+
+서버가 모두 완성 되었습니다. 전체 코드는 다음과 같습니다.
+``` csharp
+using Grpc.Core;
+using SteelMES;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace grpcDummyMesServer
+{
+    public partial class Form1 : Form
+    {
+        Server grpcServer = null;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (grpcServer != null)
+            {
+                MessageBox.Show("gRPC Server is already running.");
+                return;
+            }
+            
+            int port = int.Parse(textBox1.Text);            
+            
+            grpcServer = new Server
+            {
+                Services = { DB_Service.BindService(new DBServiceServer()) },
+                Ports = { new ServerPort("localhost", port, ServerCredentials.Insecure) }
+            };
+
+            grpcServer.Start();
+            MessageBox.Show($"gRPC Server started at localhost:{port}");
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (grpcServer == null)
+            {
+                MessageBox.Show("gRPC Server is not running.");
+                return;
+            }
+
+            await grpcServer.ShutdownAsync();
+            grpcServer = null;
+            MessageBox.Show("gRPC Server stopped.");
+        }
+    }
+}
+
+```
+
+---
+### MES Client 프로그램에 gRPC 넣기
+서버 프로그램과 동일하게 gRPC 셋팅을 해줍니다. 패키지들을 설치하고 mes_server.proto 파일을 넣은 후 컴파일을 진행 합니다.
+
+자동 생성된 grpc 코드를 사용하기 위해서 네임스페이스를 추가 해줍니다.
+
+``` csharp
+using Grpc.Core;
+using SteelMES;
+```
+
+다음으로 조회 버튼을 눌렀을 때 함수를 호출하고 응답을 받아서 정보를 DataGrid에 표시 해주는 부분을 추가 합니다.
+``` csharp
+        // 조회
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+
+            // gRPC 클라이언트 생성
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // RPC 호출
+                var request = new prodHistoryInfoRequest();
+                var response = client.reqProdHistory(request);
+
+                // 결과 출력
+                // 제품명, S/N, LOTID, 불량명, 시간
+                if (response.ErrorCode == 0)
+                {
+                    foreach (var i in response.Infos)
+                    {
+                        dataGridView1.Rows.Add(i.ProdName, i.SerialNum, i.LotId, i.DefactCode, i.ProduceDay);
+                    }
+                }
+                else
+                {
+                    // error message
+                    MessageBox.Show($"gRPC 호출 실패: ErrorCode = {response.ErrorCode}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Message}");
+            }
+        }
+```
+
+서버 프로그래모가 클라이언트 프로그램을 각각 실행 시킵니다. 서버 프로그램에서 서비스를 시작 시킨 후 불량 이력 조회 버튼을 누르면 서버로 부터 전달된 더미 정보가 취득되어 DataGrid에 표시되는 것을 확인 할 수 있습니다.
+
+![alt text](image-3.png)
+
+지금까지 gRPC를 SteelMES 프로젝트에 어떻게 적용 시키는지 간략히 살펴보았습니다. 정리된 내용을 따라하면서 진행 해보시고 안되거나 궁금한 사항이 있다면 연락 주시길 바랍니다. 소스코드는 git에 업로드 되어 있으니 참고 하시길 바랍니다.
+
+소스링크
+[[grpcDummyMesServer](https://github.com/jade-na/anu24SteelMES/tree/483f2d067b7c02f373b868e7f60a32deb6e13aee/src/prototypes/grpcDummyMesServer)]
+[[SteelMES Client](https://github.com/jade-na/anu24SteelMES/tree/483f2d067b7c02f373b868e7f60a32deb6e13aee/src/steelMES/client/Project_SteelMES)]
