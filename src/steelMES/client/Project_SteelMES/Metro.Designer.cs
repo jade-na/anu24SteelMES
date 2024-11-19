@@ -88,7 +88,7 @@ namespace Project_SteelMES
             this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.hopePictureBox2.Enabled = false;
             this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
-            this.hopePictureBox2.Location = new System.Drawing.Point(43, 85);
+            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
             this.hopePictureBox2.Name = "hopePictureBox2";
             this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
@@ -138,10 +138,10 @@ namespace Project_SteelMES
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.SkyBlue;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.ForeColor = System.Drawing.Color.SkyBlue;
             this.button4.Location = new System.Drawing.Point(-11, 332);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(179, 70);
@@ -151,15 +151,16 @@ namespace Project_SteelMES
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.SkyBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button3.ForeColor = System.Drawing.Color.SkyBlue;
+            this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Location = new System.Drawing.Point(-11, 262);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(179, 70);
             this.button3.TabIndex = 5;
             this.button3.Text = "불량 정의";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
