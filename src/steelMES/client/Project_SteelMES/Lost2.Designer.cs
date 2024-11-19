@@ -1,4 +1,5 @@
 ﻿using Project_SteelMES.Properties;
+using System.Windows.Forms;
 
 namespace Project_SteelMES
 {
@@ -30,6 +31,11 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -42,17 +48,17 @@ namespace Project_SteelMES
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.제품명 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.S_N = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.불량 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.시간 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
             this.button6 = new System.Windows.Forms.Button();
+            this.DefectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DefectType = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DefectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).BeginInit();
@@ -81,22 +87,23 @@ namespace Project_SteelMES
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.SkyBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 209);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(-8, 192);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 60);
+            this.button2.Size = new System.Drawing.Size(179, 70);
             this.button2.TabIndex = 2;
             this.button2.Text = "불량 이력";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button5.Location = new System.Drawing.Point(0, 407);
+            this.button5.Location = new System.Drawing.Point(-8, 402);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(155, 60);
+            this.button5.Size = new System.Drawing.Size(179, 70);
             this.button5.TabIndex = 2;
             this.button5.Text = "종료";
             this.button5.UseVisualStyleBackColor = true;
@@ -105,9 +112,9 @@ namespace Project_SteelMES
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button4.Location = new System.Drawing.Point(0, 341);
+            this.button4.Location = new System.Drawing.Point(-8, 332);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 60);
+            this.button4.Size = new System.Drawing.Size(179, 70);
             this.button4.TabIndex = 2;
             this.button4.Text = "생산정보";
             this.button4.UseVisualStyleBackColor = true;
@@ -116,9 +123,9 @@ namespace Project_SteelMES
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button3.Location = new System.Drawing.Point(0, 275);
+            this.button3.Location = new System.Drawing.Point(-8, 262);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 60);
+            this.button3.Size = new System.Drawing.Size(179, 70);
             this.button3.TabIndex = 2;
             this.button3.Text = "불량 정의";
             this.button3.UseVisualStyleBackColor = true;
@@ -127,18 +134,18 @@ namespace Project_SteelMES
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button1.Location = new System.Drawing.Point(0, 143);
+            this.button1.Location = new System.Drawing.Point(-11, 122);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 60);
+            this.button1.Size = new System.Drawing.Size(179, 70);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Dashboard";
+            this.button1.Text = "Monitoring";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // hopePictureBox1
             // 
             this.hopePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
             this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
-            this.hopePictureBox1.Location = new System.Drawing.Point(32, 106);
+            this.hopePictureBox1.Location = new System.Drawing.Point(33, 85);
             this.hopePictureBox1.Name = "hopePictureBox1";
             this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox1.Size = new System.Drawing.Size(26, 25);
@@ -154,7 +161,7 @@ namespace Project_SteelMES
             this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.hopePictureBox2.Enabled = false;
             this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
-            this.hopePictureBox2.Location = new System.Drawing.Point(64, 106);
+            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
             this.hopePictureBox2.Name = "hopePictureBox2";
             this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
@@ -168,7 +175,7 @@ namespace Project_SteelMES
             // 
             this.hopePictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
             this.hopePictureBox3.Image = global::Project_SteelMES.Properties.Resources.icon3;
-            this.hopePictureBox3.Location = new System.Drawing.Point(97, 106);
+            this.hopePictureBox3.Location = new System.Drawing.Point(98, 85);
             this.hopePictureBox3.Name = "hopePictureBox3";
             this.hopePictureBox3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox3.Size = new System.Drawing.Size(24, 25);
@@ -180,7 +187,7 @@ namespace Project_SteelMES
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.dungeonLabel1);
@@ -201,7 +208,7 @@ namespace Project_SteelMES
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(308, 102);
+            this.label1.Location = new System.Drawing.Point(296, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 28);
             this.label1.TabIndex = 16;
@@ -209,44 +216,23 @@ namespace Project_SteelMES
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.제품명,
-            this.S_N,
-            this.LOT_ID,
-            this.불량,
-            this.시간});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 156);
+            this.DefectID,
+            this.ProductID,
+            this.MaterialID,
+            this.DefectType,
+            this.DefectionDate});
+            this.dataGridView1.Location = new System.Drawing.Point(59, 154);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 366);
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(577, 366);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // 제품명
-            // 
-            this.제품명.HeaderText = "제품명";
-            this.제품명.Name = "제품명";
-            // 
-            // S_N
-            // 
-            this.S_N.HeaderText = "S_N";
-            this.S_N.Name = "S_N";
-            // 
-            // LOT_ID
-            // 
-            this.LOT_ID.HeaderText = "LOT_ID";
-            this.LOT_ID.Name = "LOT_ID";
-            // 
-            // 불량
-            // 
-            this.불량.HeaderText = "불량명";
-            this.불량.Name = "불량";
-            // 
-            // 시간
-            // 
-            this.시간.HeaderText = "시간";
-            this.시간.Name = "시간";
             // 
             // dungeonLabel1
             // 
@@ -261,7 +247,8 @@ namespace Project_SteelMES
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(333, 101);
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker2.Location = new System.Drawing.Point(321, 101);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 29);
             this.dateTimePicker2.TabIndex = 13;
@@ -271,7 +258,7 @@ namespace Project_SteelMES
             this.dungeonLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(101, 79);
+            this.dungeonLabel2.Location = new System.Drawing.Point(89, 79);
             this.dungeonLabel2.Name = "dungeonLabel2";
             this.dungeonLabel2.Size = new System.Drawing.Size(54, 19);
             this.dungeonLabel2.TabIndex = 10;
@@ -279,8 +266,9 @@ namespace Project_SteelMES
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 101);
+            this.dateTimePicker1.Location = new System.Drawing.Point(91, 101);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(202, 29);
             this.dateTimePicker1.TabIndex = 12;
@@ -290,7 +278,7 @@ namespace Project_SteelMES
             this.dungeonLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel3.Location = new System.Drawing.Point(331, 79);
+            this.dungeonLabel3.Location = new System.Drawing.Point(319, 79);
             this.dungeonLabel3.Name = "dungeonLabel3";
             this.dungeonLabel3.Size = new System.Drawing.Size(51, 19);
             this.dungeonLabel3.TabIndex = 11;
@@ -298,15 +286,61 @@ namespace Project_SteelMES
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.Gold;
+            this.button6.BackColor = System.Drawing.Color.Yellow;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(588, 129);
+            this.button6.Location = new System.Drawing.Point(544, 101);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(70, 32);
+            this.button6.Size = new System.Drawing.Size(58, 34);
             this.button6.TabIndex = 15;
             this.button6.Text = "조회";
             this.button6.UseVisualStyleBackColor = false;
+            // 
+            // DefectID
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefectID.DefaultCellStyle = dataGridViewCellStyle1;
+            this.DefectID.HeaderText = "DefectID";
+            this.DefectID.Name = "DefectID";
+            // 
+            // ProductID
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.ProductID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductID.HeaderText = "ProductID";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // MaterialID
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.MaterialID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.MaterialID.HeaderText = "MaterialID";
+            this.MaterialID.Name = "MaterialID";
+            // 
+            // DefectType
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.DefectType.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DefectType.HeaderText = "DefectType";
+            this.DefectType.Name = "DefectType";
+            this.DefectType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DefectType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // DefectionDate
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.DefectionDate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DefectionDate.HeaderText = "DefectionDate";
+            this.DefectionDate.Name = "DefectionDate";
             // 
             // Lost2
             // 
@@ -316,7 +350,7 @@ namespace Project_SteelMES
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Lost2";
-            this.Text = "강철 Guild3";
+            this.Text = "강철주야";
             this.Load += new System.EventHandler(this.Lost2_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).EndInit();
@@ -345,14 +379,14 @@ namespace Project_SteelMES
         private System.Windows.Forms.DateTimePicker dateTimePicker1; //시작일
         private System.Windows.Forms.DateTimePicker dateTimePicker2; //종료일
         private System.Windows.Forms.DataGridView dataGridView1; //표
-        private System.Windows.Forms.DataGridViewTextBoxColumn 제품명;
-        private System.Windows.Forms.DataGridViewTextBoxColumn S_N;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LOT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 불량;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 시간;
         private System.Windows.Forms.Label label1;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox3;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
+        private DataGridViewTextBoxColumn DefectID;
+        private DataGridViewTextBoxColumn ProductID;
+        private DataGridViewTextBoxColumn MaterialID;
+        private DataGridViewButtonColumn DefectType;
+        private DataGridViewTextBoxColumn DefectionDate;
     }
 }

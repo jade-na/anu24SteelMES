@@ -77,7 +77,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 30);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Dashboard";
+            this.button1.Text = "Monitoring";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button4

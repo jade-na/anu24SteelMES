@@ -34,16 +34,17 @@ namespace Project_SteelMES
             this.parrotFormEllipse1 = new ReaLTaiizor.Controls.ParrotFormEllipse();
             this.parrotFormHandle1 = new ReaLTaiizor.Controls.ParrotFormHandle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.parrotFormHandle2 = new ReaLTaiizor.Controls.ParrotFormHandle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialButton2 = new ReaLTaiizor.Controls.MaterialButton();
-            this.materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
-            this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
-            this.dungeonLinkLabel1 = new ReaLTaiizor.Controls.DungeonLinkLabel();
-            this.materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             this.hopeSwitch1 = new ReaLTaiizor.Controls.HopeSwitch();
             this.hopeTextBox2 = new ReaLTaiizor.Controls.HopeTextBox();
+            this.materialButton2 = new ReaLTaiizor.Controls.MaterialButton();
+            this.hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
+            this.materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
+            this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
+            this.parrotFormHandle2 = new ReaLTaiizor.Controls.ParrotFormHandle();
+            this.dungeonLinkLabel1 = new ReaLTaiizor.Controls.DungeonLinkLabel();
+            this.materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,33 +61,76 @@ namespace Project_SteelMES
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackColor = System.Drawing.Color.Azure;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(280, 0);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(-5, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(499, 539);
+            this.panel1.Size = new System.Drawing.Size(784, 539);
             this.panel1.TabIndex = 0;
-            // 
-            // parrotFormHandle2
-            // 
-            this.parrotFormHandle2.DockAtTop = true;
-            this.parrotFormHandle2.HandleControl = this.panel2;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.hopeSwitch1);
+            this.panel2.Controls.Add(this.hopeTextBox2);
             this.panel2.Controls.Add(this.materialButton2);
+            this.panel2.Controls.Add(this.hopeTextBox1);
             this.panel2.Controls.Add(this.materialButton1);
             this.panel2.Controls.Add(this.hopePictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(59, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 539);
+            this.panel2.Size = new System.Drawing.Size(320, 479);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // hopeSwitch1
+            // 
+            this.hopeSwitch1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.hopeSwitch1.AutoSize = true;
+            this.hopeSwitch1.BaseColor = System.Drawing.Color.DarkCyan;
+            this.hopeSwitch1.BaseOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hopeSwitch1.BaseOnColor = System.Drawing.Color.White;
+            this.hopeSwitch1.Checked = true;
+            this.hopeSwitch1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hopeSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hopeSwitch1.Location = new System.Drawing.Point(33, 297);
+            this.hopeSwitch1.Name = "hopeSwitch1";
+            this.hopeSwitch1.Size = new System.Drawing.Size(40, 20);
+            this.hopeSwitch1.TabIndex = 10;
+            this.hopeSwitch1.Text = "hopeSwitch1";
+            this.hopeSwitch1.UseVisualStyleBackColor = true;
+            this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
+            // 
+            // hopeTextBox2
+            // 
+            this.hopeTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.hopeTextBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.hopeTextBox2.BaseColor = System.Drawing.Color.Transparent;
+            this.hopeTextBox2.BorderColorA = System.Drawing.Color.DodgerBlue;
+            this.hopeTextBox2.BorderColorB = System.Drawing.Color.DarkGreen;
+            this.hopeTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hopeTextBox2.ForeColor = System.Drawing.Color.Black;
+            this.hopeTextBox2.Hint = "";
+            this.hopeTextBox2.Location = new System.Drawing.Point(33, 239);
+            this.hopeTextBox2.MaxLength = 128;
+            this.hopeTextBox2.Multiline = false;
+            this.hopeTextBox2.Name = "hopeTextBox2";
+            this.hopeTextBox2.PasswordChar = '\0';
+            this.hopeTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.hopeTextBox2.SelectedText = "";
+            this.hopeTextBox2.SelectionLength = 0;
+            this.hopeTextBox2.SelectionStart = 0;
+            this.hopeTextBox2.Size = new System.Drawing.Size(253, 38);
+            this.hopeTextBox2.TabIndex = 8;
+            this.hopeTextBox2.TabStop = false;
+            this.hopeTextBox2.Text = "Password";
+            this.hopeTextBox2.UseSystemPasswordChar = false;
+            this.hopeTextBox2.Click += new System.EventHandler(this.hopeTextBox2_Click);
             // 
             // materialButton2
             // 
@@ -100,7 +144,7 @@ namespace Project_SteelMES
             this.materialButton2.HighEmphasis = true;
             this.materialButton2.Icon = null;
             this.materialButton2.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.materialButton2.Location = new System.Drawing.Point(147, 474);
+            this.materialButton2.Location = new System.Drawing.Point(169, 414);
             this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.materialButton2.Name = "materialButton2";
@@ -111,6 +155,32 @@ namespace Project_SteelMES
             this.materialButton2.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton2.UseAccentColor = false;
             this.materialButton2.UseVisualStyleBackColor = true;
+            // 
+            // hopeTextBox1
+            // 
+            this.hopeTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.hopeTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.hopeTextBox1.BaseColor = System.Drawing.Color.Transparent;
+            this.hopeTextBox1.BorderColorA = System.Drawing.Color.DodgerBlue;
+            this.hopeTextBox1.BorderColorB = System.Drawing.Color.DarkGreen;
+            this.hopeTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.hopeTextBox1.ForeColor = System.Drawing.Color.Black;
+            this.hopeTextBox1.Hint = "";
+            this.hopeTextBox1.Location = new System.Drawing.Point(33, 195);
+            this.hopeTextBox1.MaxLength = 128;
+            this.hopeTextBox1.Multiline = false;
+            this.hopeTextBox1.Name = "hopeTextBox1";
+            this.hopeTextBox1.PasswordChar = '\0';
+            this.hopeTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.hopeTextBox1.SelectedText = "";
+            this.hopeTextBox1.SelectionLength = 0;
+            this.hopeTextBox1.SelectionStart = 0;
+            this.hopeTextBox1.Size = new System.Drawing.Size(253, 38);
+            this.hopeTextBox1.TabIndex = 7;
+            this.hopeTextBox1.TabStop = false;
+            this.hopeTextBox1.Text = "ID";
+            this.hopeTextBox1.UseSystemPasswordChar = false;
+            this.hopeTextBox1.Click += new System.EventHandler(this.hopeTextBox1_Click);
             // 
             // materialButton1
             // 
@@ -125,7 +195,7 @@ namespace Project_SteelMES
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
             this.materialButton1.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.materialButton1.Location = new System.Drawing.Point(22, 474);
+            this.materialButton1.Location = new System.Drawing.Point(33, 414);
             this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
@@ -141,45 +211,24 @@ namespace Project_SteelMES
             // hopePictureBox1
             // 
             this.hopePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.hopePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.hopePictureBox1.BackColor = System.Drawing.Color.White;
             this.hopePictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hopePictureBox1.Enabled = false;
             this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.Logo;
-            this.hopePictureBox1.Location = new System.Drawing.Point(92, 53);
+            this.hopePictureBox1.Location = new System.Drawing.Point(130, 74);
             this.hopePictureBox1.Name = "hopePictureBox1";
             this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox1.Size = new System.Drawing.Size(91, 88);
+            this.hopePictureBox1.Size = new System.Drawing.Size(65, 62);
             this.hopePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hopePictureBox1.TabIndex = 0;
             this.hopePictureBox1.TabStop = false;
             this.hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // hopeTextBox1
+            // parrotFormHandle2
             // 
-            this.hopeTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hopeTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
-            this.hopeTextBox1.BaseColor = System.Drawing.Color.Transparent;
-            this.hopeTextBox1.BorderColorA = System.Drawing.Color.DodgerBlue;
-            this.hopeTextBox1.BorderColorB = System.Drawing.Color.DarkGray;
-            this.hopeTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeTextBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.hopeTextBox1.Hint = "";
-            this.hopeTextBox1.Location = new System.Drawing.Point(10, 215);
-            this.hopeTextBox1.MaxLength = 128;
-            this.hopeTextBox1.Multiline = false;
-            this.hopeTextBox1.Name = "hopeTextBox1";
-            this.hopeTextBox1.PasswordChar = '\0';
-            this.hopeTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.hopeTextBox1.SelectedText = "";
-            this.hopeTextBox1.SelectionLength = 0;
-            this.hopeTextBox1.SelectionStart = 0;
-            this.hopeTextBox1.Size = new System.Drawing.Size(260, 38);
-            this.hopeTextBox1.TabIndex = 7;
-            this.hopeTextBox1.TabStop = false;
-            this.hopeTextBox1.Text = "ID";
-            this.hopeTextBox1.UseSystemPasswordChar = false;
-            this.hopeTextBox1.Click += new System.EventHandler(this.hopeTextBox1_Click);
+            this.parrotFormHandle2.DockAtTop = true;
+            this.parrotFormHandle2.HandleControl = this.panel2;
             // 
             // dungeonLinkLabel1
             // 
@@ -215,66 +264,20 @@ namespace Project_SteelMES
             this.materialLabel1.Text = "Remember me";
             this.materialLabel1.UseAccent = true;
             // 
-            // hopeSwitch1
-            // 
-            this.hopeSwitch1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.hopeSwitch1.AutoSize = true;
-            this.hopeSwitch1.BaseColor = System.Drawing.Color.DimGray;
-            this.hopeSwitch1.BaseOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.hopeSwitch1.BaseOnColor = System.Drawing.Color.LightGray;
-            this.hopeSwitch1.Checked = true;
-            this.hopeSwitch1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.hopeSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.hopeSwitch1.Location = new System.Drawing.Point(12, 328);
-            this.hopeSwitch1.Name = "hopeSwitch1";
-            this.hopeSwitch1.Size = new System.Drawing.Size(40, 20);
-            this.hopeSwitch1.TabIndex = 10;
-            this.hopeSwitch1.Text = "hopeSwitch1";
-            this.hopeSwitch1.UseVisualStyleBackColor = true;
-            this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
-            // 
-            // hopeTextBox2
-            // 
-            this.hopeTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hopeTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
-            this.hopeTextBox2.BaseColor = System.Drawing.Color.Transparent;
-            this.hopeTextBox2.BorderColorA = System.Drawing.Color.DodgerBlue;
-            this.hopeTextBox2.BorderColorB = System.Drawing.Color.DarkGray;
-            this.hopeTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeTextBox2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.hopeTextBox2.Hint = "";
-            this.hopeTextBox2.Location = new System.Drawing.Point(10, 269);
-            this.hopeTextBox2.MaxLength = 128;
-            this.hopeTextBox2.Multiline = false;
-            this.hopeTextBox2.Name = "hopeTextBox2";
-            this.hopeTextBox2.PasswordChar = '\0';
-            this.hopeTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.hopeTextBox2.SelectedText = "";
-            this.hopeTextBox2.SelectionLength = 0;
-            this.hopeTextBox2.SelectionStart = 0;
-            this.hopeTextBox2.Size = new System.Drawing.Size(260, 38);
-            this.hopeTextBox2.TabIndex = 8;
-            this.hopeTextBox2.TabStop = false;
-            this.hopeTextBox2.Text = "Password";
-            this.hopeTextBox2.UseSystemPasswordChar = false;
-            this.hopeTextBox2.Click += new System.EventHandler(this.hopeTextBox2_Click);
-            // 
             // Crown
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 539);
-            this.Controls.Add(this.hopeTextBox2);
-            this.Controls.Add(this.hopeTextBox1);
-            this.Controls.Add(this.hopeSwitch1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.dungeonLinkLabel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Crown";
             this.Text = "Crown";
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -287,8 +290,6 @@ namespace Project_SteelMES
         private ReaLTaiizor.Controls.ParrotFormEllipse parrotFormEllipse1;
         private ReaLTaiizor.Controls.ParrotFormHandle parrotFormHandle1;
         private ReaLTaiizor.Controls.ParrotFormHandle parrotFormHandle2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
         private ReaLTaiizor.Controls.HopeSwitch hopeSwitch1;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.DungeonLinkLabel dungeonLinkLabel1;
@@ -296,6 +297,8 @@ namespace Project_SteelMES
         private ReaLTaiizor.Controls.MaterialButton materialButton2;
         private ReaLTaiizor.Controls.MaterialButton materialButton1;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
+        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
+        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
     }
 }
 

@@ -3,56 +3,92 @@
   "WorkspaceRootPath": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|c:\\git\\steel mes\\src\\steelmes\\client\\project_steelmes\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|c:\\git\\steel mes\\src\\steelmes\\client\\project_steelmes\\metro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:metro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\crown.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\material.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:material.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\metro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:metro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\crown.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\material.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:material.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\metro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:metro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:lost2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,11 +98,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 16,
               "Title": "Crown.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Crown.cs",
               "RelativeDocumentMoniker": "Crown.cs",
@@ -74,89 +110,87 @@
               "RelativeToolTip": "Crown.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:34:21.59Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 21,
               "Title": "Crown.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Crown.cs",
               "RelativeDocumentMoniker": "Crown.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Crown.cs",
               "RelativeToolTip": "Crown.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAIA2wB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAIA8wCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:37:28.01Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "Crown.Designer.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Crown.Designer.cs",
               "RelativeDocumentMoniker": "Crown.Designer.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Crown.Designer.cs",
               "RelativeToolTip": "Crown.Designer.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAmwEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:39:10.645Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "Lost.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.cs",
               "RelativeDocumentMoniker": "Lost.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Project_SteelMES\\Lost.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Users\\Admin\\source\\repos\\Project_SteelMES\\Lost.cs [\uB514\uC790\uC778]",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Lost.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:38:56.557Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Lost.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.cs",
               "RelativeDocumentMoniker": "Lost.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.cs",
               "RelativeToolTip": "Lost.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAMwCwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:39:15.601Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 15,
               "Title": "Lost.Designer.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.Designer.cs",
               "RelativeDocumentMoniker": "Lost.Designer.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost.Designer.cs",
               "RelativeToolTip": "Lost.Designer.cs",
-              "ViewState": "AgIAAHUBAAAAAAAAAAAIwIcBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHoBAAAAAAAAAAAAAJcBAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:39:42.242Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Lost2.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost2.cs",
               "RelativeDocumentMoniker": "Lost2.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Project_SteelMES\\Lost2.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Users\\Admin\\source\\repos\\Project_SteelMES\\Lost2.cs [\uB514\uC790\uC778]",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost2.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Lost2.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:40:04.218Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "Lost2.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost2.cs",
               "RelativeDocumentMoniker": "Lost2.cs",
@@ -169,32 +203,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Lost2.Designer.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost2.Designer.cs",
               "RelativeDocumentMoniker": "Lost2.Designer.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost2.Designer.cs",
               "RelativeToolTip": "Lost2.Designer.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAIwJIAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAAAGABAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:40:47.075Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Material.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Material.cs",
               "RelativeDocumentMoniker": "Material.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Project_SteelMES\\Material.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Users\\Admin\\source\\repos\\Project_SteelMES\\Material.cs [\uB514\uC790\uC778]",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Material.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Material.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:41:41.766Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "Material.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Material.cs",
               "RelativeDocumentMoniker": "Material.cs",
@@ -207,15 +241,133 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Material.Designer.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Material.Designer.cs",
               "RelativeDocumentMoniker": "Material.Designer.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Material.Designer.cs",
               "RelativeToolTip": "Material.Designer.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAUwJIAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:42:14.471Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Metro.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.cs",
+              "RelativeDocumentMoniker": "Metro.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Metro.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:58:44.344Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Metro.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.cs",
+              "RelativeDocumentMoniker": "Metro.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.cs",
+              "RelativeToolTip": "Metro.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAnwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T00:58:59.103Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Metro.Designer.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.Designer.cs",
+              "RelativeDocumentMoniker": "Metro.Designer.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Metro.Designer.cs",
+              "RelativeToolTip": "Metro.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T09:16:11.254Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Lost3.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.cs",
+              "RelativeDocumentMoniker": "Lost3.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Lost3.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T16:42:13.669Z",
+              "IsPinned": true,
+              "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Lost3.Designer.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.Designer.cs",
+              "RelativeDocumentMoniker": "Lost3.Designer.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.Designer.cs",
+              "RelativeToolTip": "Lost3.Designer.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGsAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T16:54:13.226Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Lost3.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.cs",
+              "RelativeDocumentMoniker": "Lost3.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost3.cs",
+              "RelativeToolTip": "Lost3.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T18:08:30.602Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Lost4.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.cs",
+              "RelativeDocumentMoniker": "Lost4.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Lost4.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T16:41:54.444Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Lost4.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.cs",
+              "RelativeDocumentMoniker": "Lost4.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.cs",
+              "RelativeToolTip": "Lost4.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAWwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T16:42:03.863Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Lost4.Designer.cs",
+              "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.Designer.cs",
+              "RelativeDocumentMoniker": "Lost4.Designer.cs",
+              "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Lost4.Designer.cs",
+              "RelativeToolTip": "Lost4.Designer.cs",
+              "ViewState": "AgIAAFMBAAAAAAAAAAAmwGkBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T16:45:34.058Z",
               "IsPinned": true
             },
             {
@@ -232,13 +384,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\git\\steel mes\\src\\steelMES\\client\\Project_SteelMES\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAnwBIAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T16:35:58.237Z"
             }

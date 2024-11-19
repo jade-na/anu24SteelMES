@@ -1,0 +1,2 @@
+obj\Debug\protos/Factory.cs \
+obj\Debug\protos/FactoryGrpc.cs: protos/factory.proto

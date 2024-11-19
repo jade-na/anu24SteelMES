@@ -29,5 +29,20 @@ namespace Project_SteelMES
             lost2.Show();
             this.Hide();
         }
+
+        private void dungeonLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
