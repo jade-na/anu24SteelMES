@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using Project_SteelMES.Properties;
+using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -32,7 +34,6 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lost));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
@@ -51,10 +52,6 @@ namespace Project_SteelMES
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 15D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 9D);
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, "0,0,0,0");
             this.panel1 = new System.Windows.Forms.Panel();
             this.hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
             this.hopePictureBox2 = new ReaLTaiizor.Controls.HopePictureBox();
@@ -72,7 +69,6 @@ namespace Project_SteelMES
             this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dungeonLabel4 = new ReaLTaiizor.Controls.DungeonLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
@@ -83,7 +79,6 @@ namespace Project_SteelMES
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -123,7 +118,7 @@ namespace Project_SteelMES
             this.hopePictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.hopePictureBox2.Enabled = false;
-            this.hopePictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("hopePictureBox2.Image")));
+            this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
             this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
             this.hopePictureBox2.Name = "hopePictureBox2";
             this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
@@ -170,7 +165,6 @@ namespace Project_SteelMES
             this.button5.TabIndex = 6;
             this.button5.Text = "종료";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -205,19 +199,17 @@ namespace Project_SteelMES
             this.button1.TabIndex = 2;
             this.button1.Text = "Monitoring";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(172, 41);
+            this.dungeonLabel1.Location = new System.Drawing.Point(172, 39);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(200, 35);
             this.dungeonLabel1.TabIndex = 7;
             this.dungeonLabel1.Text = "Monitoring";
-            this.dungeonLabel1.Click += new System.EventHandler(this.dungeonLabel1_Click);
             // 
             // panel2
             // 
@@ -243,9 +235,8 @@ namespace Project_SteelMES
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(55, 41);
             this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(245)))), ((int)(((byte)(205)))));
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(225)))), ((int)(((byte)(245)))));
             series1.IsValueShownAsLabel = true;
             series1.LabelForeColor = System.Drawing.Color.White;
             series1.Legend = "Legend1";
@@ -282,7 +273,7 @@ namespace Project_SteelMES
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
             this.panel3.Controls.Add(this.dungeonLabel3);
             this.panel3.Controls.Add(this.chart2);
             this.panel3.Location = new System.Drawing.Point(177, 347);
@@ -303,7 +294,7 @@ namespace Project_SteelMES
             // 
             // chart2
             // 
-            this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
             chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
@@ -322,23 +313,23 @@ namespace Project_SteelMES
             series2.Name = "Defects";
             dataPoint8.AxisLabel = "";
             dataPoint8.BorderColor = System.Drawing.Color.ForestGreen;
-            dataPoint8.Color = System.Drawing.Color.Magenta;
+            dataPoint8.Color = System.Drawing.Color.Yellow;
             dataPoint8.Label = "";
             dataPoint8.LabelForeColor = System.Drawing.Color.Black;
             dataPoint8.LegendText = "Crazing";
-            dataPoint9.Color = System.Drawing.Color.Turquoise;
+            dataPoint9.Color = System.Drawing.Color.Lime;
             dataPoint9.Label = "";
             dataPoint9.LegendText = "Inclusions";
-            dataPoint10.Color = System.Drawing.Color.OrangeRed;
+            dataPoint10.Color = System.Drawing.Color.Cyan;
             dataPoint10.Label = "";
             dataPoint10.LegendText = "Patches";
-            dataPoint11.Color = System.Drawing.Color.Lime;
+            dataPoint11.Color = System.Drawing.Color.Magenta;
             dataPoint11.Label = "";
             dataPoint11.LegendText = "Pitted Surface";
-            dataPoint12.Color = System.Drawing.Color.DeepSkyBlue;
+            dataPoint12.Color = System.Drawing.Color.DarkViolet;
             dataPoint12.Label = "";
             dataPoint12.LegendText = "Roll-in Scale";
-            dataPoint13.Color = System.Drawing.Color.Yellow;
+            dataPoint13.Color = System.Drawing.Color.OrangeRed;
             dataPoint13.LegendText = "Scratches";
             series2.Points.Add(dataPoint8);
             series2.Points.Add(dataPoint9);
@@ -353,34 +344,11 @@ namespace Project_SteelMES
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            this.panel4.Controls.Add(this.chart3);
             this.panel4.Controls.Add(this.dungeonLabel4);
             this.panel4.Location = new System.Drawing.Point(540, 347);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(290, 228);
             this.panel4.TabIndex = 1;
-            // 
-            // chart3
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
-            legend2.Name = "Legend1";
-            this.chart3.Legends.Add(legend2);
-            this.chart3.Location = new System.Drawing.Point(48, 44);
-            this.chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            dataPoint14.BorderWidth = 5;
-            dataPoint14.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataPoint14.LabelBorderWidth = 5;
-            series3.Points.Add(dataPoint14);
-            series3.YValuesPerPoint = 4;
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(202, 165);
-            this.chart3.TabIndex = 11;
-            this.chart3.Text = "chart3";
             // 
             // dungeonLabel4
             // 
@@ -416,7 +384,6 @@ namespace Project_SteelMES
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,6 +408,5 @@ namespace Project_SteelMES
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2; //아이콘3
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1; //코일 생산량 차트
         private Chart chart2;
-        private Chart chart3;
     }
 }

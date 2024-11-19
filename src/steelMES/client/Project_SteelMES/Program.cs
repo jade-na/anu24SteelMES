@@ -16,7 +16,7 @@ namespace Project_SteelMES
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Lost3());
+            Application.Run(new Crown());
         }
     }
 }

@@ -23,27 +23,7 @@ namespace Project_SteelMES
 
         }
 
-        private void panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-
-        }
-
-        private void hopePictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hopePictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hopePictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

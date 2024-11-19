@@ -1,4 +1,7 @@
-﻿namespace Project_SteelMES
+﻿using Project_SteelMES.Properties;
+using System.Windows.Forms;
+
+namespace Project_SteelMES
 {
     partial class Metro
     {
@@ -85,7 +88,7 @@
             this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.hopePictureBox2.Enabled = false;
             this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
-            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
+            this.hopePictureBox2.Location = new System.Drawing.Point(43, 85);
             this.hopePictureBox2.Name = "hopePictureBox2";
             this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
@@ -116,8 +119,8 @@
             this.button2.ForeColor = System.Drawing.Color.SkyBlue;
             this.button2.Location = new System.Drawing.Point(-11, 192);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 70);
-            this.button2.TabIndex = 2;
+            this.button2.Size = new System.Drawing.Size(179, 70);
+            this.button2.TabIndex = 3;
             this.button2.Text = "불량 이력";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -128,35 +131,35 @@
             this.button5.ForeColor = System.Drawing.Color.SkyBlue;
             this.button5.Location = new System.Drawing.Point(-11, 402);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(184, 70);
-            this.button5.TabIndex = 2;
+            this.button5.Size = new System.Drawing.Size(179, 70);
+            this.button5.TabIndex = 7;
             this.button5.Text = "종료";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.SkyBlue;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button4.ForeColor = System.Drawing.Color.SkyBlue;
+            this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.Location = new System.Drawing.Point(-11, 332);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(184, 70);
-            this.button4.TabIndex = 2;
+            this.button4.Size = new System.Drawing.Size(179, 70);
+            this.button4.TabIndex = 6;
             this.button4.Text = "생산 정보";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.SkyBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ForeColor = System.Drawing.Color.SkyBlue;
             this.button3.Location = new System.Drawing.Point(-11, 262);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(184, 70);
-            this.button3.TabIndex = 2;
+            this.button3.Size = new System.Drawing.Size(179, 70);
+            this.button3.TabIndex = 5;
             this.button3.Text = "불량 정의";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -165,8 +168,8 @@
             this.button1.ForeColor = System.Drawing.Color.SkyBlue;
             this.button1.Location = new System.Drawing.Point(-11, 122);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 70);
-            this.button1.TabIndex = 2;
+            this.button1.Size = new System.Drawing.Size(179, 70);
+            this.button1.TabIndex = 1;
             this.button1.Text = "Monitoring";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -174,14 +177,14 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("프리젠테이션 3 Light", 11.95F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(48, 26);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(575, 431);
-            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Size = new System.Drawing.Size(658, 477);
+            this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // panel2
@@ -219,16 +222,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1; //버튼 컨테이너
-        private System.Windows.Forms.Button button5; //종료 버튼
-        private System.Windows.Forms.Button button4; //생산 정보 버튼
-        private System.Windows.Forms.Button button3; //불량 정의 버튼
-        private System.Windows.Forms.Button button2; //불량 이력 버튼
-        private System.Windows.Forms.Button button1; //모니터링 버튼
-        private System.Windows.Forms.RichTextBox richTextBox1; //텍스트 작성
-        private System.Windows.Forms.Panel panel2; //텍스트 컨테이너
+
+        private System.Windows.Forms.Panel panel1;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

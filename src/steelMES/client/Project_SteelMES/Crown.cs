@@ -25,7 +25,6 @@ namespace Project_SteelMES
 
         private void materialButton1_Click(object sender, EventArgs e) //Sign in
         {
-            //here
             Lost lost = new Lost();
             lost.Show(); 
             this.Hide();

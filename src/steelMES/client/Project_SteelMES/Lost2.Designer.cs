@@ -1,5 +1,4 @@
 ﻿using Project_SteelMES.Properties;
-using System.Windows.Forms;
 
 namespace Project_SteelMES
 {
@@ -31,11 +30,7 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -48,17 +43,17 @@ namespace Project_SteelMES
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DefectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DefectType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DefectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
             this.button6 = new System.Windows.Forms.Button();
-            this.DefectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaterialID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DefectType = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DefectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).BeginInit();
@@ -187,7 +182,7 @@ namespace Project_SteelMES
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(34)))));
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.dungeonLabel1);
@@ -208,7 +203,7 @@ namespace Project_SteelMES
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(296, 102);
+            this.label1.Location = new System.Drawing.Point(308, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 28);
             this.label1.TabIndex = 16;
@@ -218,7 +213,7 @@ namespace Project_SteelMES
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DefectID,
@@ -226,13 +221,41 @@ namespace Project_SteelMES
             this.MaterialID,
             this.DefectType,
             this.DefectionDate});
-            this.dataGridView1.Location = new System.Drawing.Point(59, 154);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 156);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(577, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(638, 366);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // DefectID
+            // 
+            this.DefectID.HeaderText = "DefectID";
+            this.DefectID.Name = "DefectID";
+            // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "ProductID";
+            this.ProductID.Name = "ProductID";
+            // 
+            // MaterialID
+            // 
+            this.MaterialID.HeaderText = "MaterialID";
+            this.MaterialID.Name = "MaterialID";
+            // 
+            // DefectType
+            // 
+            this.DefectType.HeaderText = "DefectType";
+            this.DefectType.Name = "DefectType";
+            // 
+            // DefectionDate
+            // 
+            this.DefectionDate.HeaderText = "DefectionDate";
+            this.DefectionDate.Name = "DefectionDate";
             // 
             // dungeonLabel1
             // 
@@ -247,8 +270,7 @@ namespace Project_SteelMES
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold);
-            this.dateTimePicker2.Location = new System.Drawing.Point(321, 101);
+            this.dateTimePicker2.Location = new System.Drawing.Point(333, 101);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 29);
             this.dateTimePicker2.TabIndex = 13;
@@ -258,7 +280,7 @@ namespace Project_SteelMES
             this.dungeonLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(89, 79);
+            this.dungeonLabel2.Location = new System.Drawing.Point(101, 79);
             this.dungeonLabel2.Name = "dungeonLabel2";
             this.dungeonLabel2.Size = new System.Drawing.Size(54, 19);
             this.dungeonLabel2.TabIndex = 10;
@@ -266,9 +288,8 @@ namespace Project_SteelMES
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
-            this.dateTimePicker1.Location = new System.Drawing.Point(91, 101);
+            this.dateTimePicker1.Location = new System.Drawing.Point(103, 101);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(202, 29);
             this.dateTimePicker1.TabIndex = 12;
@@ -278,7 +299,7 @@ namespace Project_SteelMES
             this.dungeonLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel3.Location = new System.Drawing.Point(319, 79);
+            this.dungeonLabel3.Location = new System.Drawing.Point(331, 79);
             this.dungeonLabel3.Name = "dungeonLabel3";
             this.dungeonLabel3.Size = new System.Drawing.Size(51, 19);
             this.dungeonLabel3.TabIndex = 11;
@@ -287,61 +308,15 @@ namespace Project_SteelMES
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Yellow;
-            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(544, 101);
+            this.button6.Location = new System.Drawing.Point(588, 118);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(58, 34);
+            this.button6.Size = new System.Drawing.Size(70, 42);
             this.button6.TabIndex = 15;
             this.button6.Text = "조회";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // DefectID
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DefectID.DefaultCellStyle = dataGridViewCellStyle1;
-            this.DefectID.HeaderText = "DefectID";
-            this.DefectID.Name = "DefectID";
-            // 
-            // ProductID
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.ProductID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductID.HeaderText = "ProductID";
-            this.ProductID.Name = "ProductID";
-            this.ProductID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // MaterialID
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.MaterialID.DefaultCellStyle = dataGridViewCellStyle3;
-            this.MaterialID.HeaderText = "MaterialID";
-            this.MaterialID.Name = "MaterialID";
-            // 
-            // DefectType
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.DefectType.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DefectType.HeaderText = "DefectType";
-            this.DefectType.Name = "DefectType";
-            this.DefectType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DefectType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // DefectionDate
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.DefectionDate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DefectionDate.HeaderText = "DefectionDate";
-            this.DefectionDate.Name = "DefectionDate";
             // 
             // Lost2
             // 
@@ -384,10 +359,10 @@ namespace Project_SteelMES
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox3;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
-        private DataGridViewTextBoxColumn DefectID;
-        private DataGridViewTextBoxColumn ProductID;
-        private DataGridViewTextBoxColumn MaterialID;
-        private DataGridViewButtonColumn DefectType;
-        private DataGridViewTextBoxColumn DefectionDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DefectID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DefectType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DefectionDate;
     }
 }
