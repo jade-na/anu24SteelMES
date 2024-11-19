@@ -297,6 +297,7 @@ namespace Project_SteelMES
             this.button6.TabIndex = 15;
             this.button6.Text = "조회";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // DefectID
             // 
