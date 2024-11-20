@@ -406,7 +406,7 @@ namespace Project_SteelMES
         private System.Windows.Forms.DataGridView dataGridView2;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1;
         private System.Windows.Forms.DataGridViewButtonColumn FacID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn Location;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn LineID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LineName;

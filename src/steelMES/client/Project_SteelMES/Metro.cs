@@ -22,5 +22,24 @@ namespace Project_SteelMES
         {
 
         }
-    }
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+            Lost lost = new Lost();
+            lost.Show();
+            this.Hide();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+            Lost2 lost2 = new Lost2();
+            lost2.Show();
+            this.Hide();
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+            Dispose();
+		}
+	}
 }

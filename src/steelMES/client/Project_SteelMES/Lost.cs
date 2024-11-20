@@ -34,5 +34,17 @@ namespace Project_SteelMES
         {
             // heiio
         }
-    }
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+            Metro metro = new Metro();
+            metro.Show();
+            this.Hide();
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+            Dispose();
+		}
+	}
 }

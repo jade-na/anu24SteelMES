@@ -2,27 +2,28 @@ syntax = "proto3";
 
 package SteelMES;
 
-// ¼­ºñ½º Á¤ÀÇ
+// ì„œë¹„ìŠ¤ ì •ì˜
 service DB_Service {
     rpc reqProdHistory (prodHistoryInfoRequest) returns (prodHistoryInfoReply) {}
 }
 
-// ¿äÃ» ¸Ş½ÃÁö (Á¦Ç° »ı»ê ÀÌ·Â)
+// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ìš”ì²­ ë©”ì‹œì§€
 message prodHistoryInfoRequest {
     string fromTime = 1;
     string toTime = 2;
 }
 
-// Á¦Ç° »ı»ê Á¤º¸
+// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ì •ë³´
 message prodHistoryInfo {
-    string prodName = 1;
-    string serialNum = 2;
-    string lotId = 3;
-    string defactCode = 4;
-    string produceDay = 5;    
+    int32 defectID = 1;
+    int32 productID = 2;
+    int32 materialID = 3;
+    string defectType = 4;
+    string defectionDate = 5;
+    string location = 6;
 }
 
-// ÀÀ´ä ¸Ş½ÃÁö (Á¦Ç° »ı»ê ÀÌ·Â)
+// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ì‘ë‹µ ë©”ì‹œì§€
 message prodHistoryInfoReply {
     int32 errorCode = 1;
     repeated prodHistoryInfo infos = 2;
