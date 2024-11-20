@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package SteelMES;
+
+// 서비스 정의
+service DB_Service {
+    rpc reqProdHistory (prodHistoryInfoRequest) returns (prodHistoryInfoReply) {}
+}
+
+// 제품 불량 이력 요청 메시지
+message prodHistoryInfoRequest {
+    string fromTime = 1;
+    string toTime = 2;
+}
+
+// 제품 불량 이력 정보
+message prodHistoryInfo {
+    int32 defectID = 1;
+    int32 productID = 2;
+    int32 materialID = 3;
+    string defectType = 4;
+    string defectionDate = 5;
+    string location = 6;
+}
+
+// 제품 불량 이력 응답 메시지
+message prodHistoryInfoReply {
+    int32 errorCode = 1;
+    repeated prodHistoryInfo infos = 2;
+}
