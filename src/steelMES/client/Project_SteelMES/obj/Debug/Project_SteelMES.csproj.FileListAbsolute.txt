@@ -121,3 +121,10 @@ C:\Users\Admin\Desktop\Project_SteelMES\obj\Debug\Project_SteelMES.csproj.CoreCo
 C:\Users\Admin\Desktop\Project_SteelMES\obj\Debug\Project_.5ED945F7.Up2Date
 C:\Users\Admin\Desktop\Project_SteelMES\obj\Debug\Project_SteelMES.exe
 C:\Users\Admin\Desktop\Project_SteelMES\obj\Debug\Project_SteelMES.pdb
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Formats.Asn1.dll
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Text.Json.dll
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Formats.Asn1.xml
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Admin\Desktop\Project_SteelMES\bin\Debug\System.Text.Json.xml

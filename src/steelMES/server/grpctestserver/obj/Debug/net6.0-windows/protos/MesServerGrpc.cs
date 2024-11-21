@@ -8,9 +8,6 @@
 using grpc = global::Grpc.Core;
 
 namespace SteelMES {
-  /// <summary>
-  /// 서비스 정의
-  /// </summary>
   public static partial class DB_Service
   {
     static readonly string __ServiceName = "SteelMES.DB_Service";
@@ -52,6 +49,24 @@ namespace SteelMES {
     static readonly grpc::Marshaller<global::SteelMES.prodHistoryInfoRequest> __Marshaller_SteelMES_prodHistoryInfoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.prodHistoryInfoRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::SteelMES.prodHistoryInfoReply> __Marshaller_SteelMES_prodHistoryInfoReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.prodHistoryInfoReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.Empty> __Marshaller_SteelMES_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.Empty.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.DefectByProductIDRequest> __Marshaller_SteelMES_DefectByProductIDRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.DefectByProductIDRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.FactoryReply> __Marshaller_SteelMES_FactoryReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.FactoryReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductionLineRequest> __Marshaller_SteelMES_ProductionLineRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductionLineRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductionLineReply> __Marshaller_SteelMES_ProductionLineReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductionLineReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.MaterialReply> __Marshaller_SteelMES_MaterialReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.MaterialReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.SupplierReply> __Marshaller_SteelMES_SupplierReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.SupplierReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.UpdateMaterialQuantityRequest> __Marshaller_SteelMES_UpdateMaterialQuantityRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateMaterialQuantityRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.UpdateMaterialQuantityReply> __Marshaller_SteelMES_UpdateMaterialQuantityReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateMaterialQuantityReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::SteelMES.prodHistoryInfoRequest, global::SteelMES.prodHistoryInfoReply> __Method_reqProdHistory = new grpc::Method<global::SteelMES.prodHistoryInfoRequest, global::SteelMES.prodHistoryInfoReply>(
@@ -60,6 +75,62 @@ namespace SteelMES {
         "reqProdHistory",
         __Marshaller_SteelMES_prodHistoryInfoRequest,
         __Marshaller_SteelMES_prodHistoryInfoReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.prodHistoryInfoReply> __Method_GetAllDefects = new grpc::Method<global::SteelMES.Empty, global::SteelMES.prodHistoryInfoReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllDefects",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_prodHistoryInfoReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.DefectByProductIDRequest, global::SteelMES.prodHistoryInfoReply> __Method_GetDefectsByProductID = new grpc::Method<global::SteelMES.DefectByProductIDRequest, global::SteelMES.prodHistoryInfoReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDefectsByProductID",
+        __Marshaller_SteelMES_DefectByProductIDRequest,
+        __Marshaller_SteelMES_prodHistoryInfoReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.FactoryReply> __Method_GetFactoryData = new grpc::Method<global::SteelMES.Empty, global::SteelMES.FactoryReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetFactoryData",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_FactoryReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.ProductionLineRequest, global::SteelMES.ProductionLineReply> __Method_GetProductionLineData = new grpc::Method<global::SteelMES.ProductionLineRequest, global::SteelMES.ProductionLineReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetProductionLineData",
+        __Marshaller_SteelMES_ProductionLineRequest,
+        __Marshaller_SteelMES_ProductionLineReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.MaterialReply> __Method_GetMaterialData = new grpc::Method<global::SteelMES.Empty, global::SteelMES.MaterialReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetMaterialData",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_MaterialReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.SupplierReply> __Method_GetSupplierData = new grpc::Method<global::SteelMES.Empty, global::SteelMES.SupplierReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetSupplierData",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_SupplierReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.UpdateMaterialQuantityRequest, global::SteelMES.UpdateMaterialQuantityReply> __Method_UpdateMaterialQuantity = new grpc::Method<global::SteelMES.UpdateMaterialQuantityRequest, global::SteelMES.UpdateMaterialQuantityReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateMaterialQuantity",
+        __Marshaller_SteelMES_UpdateMaterialQuantityRequest,
+        __Marshaller_SteelMES_UpdateMaterialQuantityReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -73,6 +144,48 @@ namespace SteelMES {
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::SteelMES.prodHistoryInfoReply> reqProdHistory(global::SteelMES.prodHistoryInfoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.prodHistoryInfoReply> GetAllDefects(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.prodHistoryInfoReply> GetDefectsByProductID(global::SteelMES.DefectByProductIDRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.FactoryReply> GetFactoryData(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.ProductionLineReply> GetProductionLineData(global::SteelMES.ProductionLineRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.MaterialReply> GetMaterialData(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.SupplierReply> GetSupplierData(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.UpdateMaterialQuantityReply> UpdateMaterialQuantity(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -126,6 +239,146 @@ namespace SteelMES {
       {
         return CallInvoker.AsyncUnaryCall(__Method_reqProdHistory, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.prodHistoryInfoReply GetAllDefects(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllDefects(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.prodHistoryInfoReply GetAllDefects(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllDefects, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.prodHistoryInfoReply> GetAllDefectsAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllDefectsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.prodHistoryInfoReply> GetAllDefectsAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllDefects, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.prodHistoryInfoReply GetDefectsByProductID(global::SteelMES.DefectByProductIDRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetDefectsByProductID(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.prodHistoryInfoReply GetDefectsByProductID(global::SteelMES.DefectByProductIDRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetDefectsByProductID, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.prodHistoryInfoReply> GetDefectsByProductIDAsync(global::SteelMES.DefectByProductIDRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetDefectsByProductIDAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.prodHistoryInfoReply> GetDefectsByProductIDAsync(global::SteelMES.DefectByProductIDRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetDefectsByProductID, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.FactoryReply GetFactoryData(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFactoryData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.FactoryReply GetFactoryData(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetFactoryData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.FactoryReply> GetFactoryDataAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFactoryDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.FactoryReply> GetFactoryDataAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetFactoryData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductionLineReply GetProductionLineData(global::SteelMES.ProductionLineRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetProductionLineData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductionLineReply GetProductionLineData(global::SteelMES.ProductionLineRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetProductionLineData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductionLineReply> GetProductionLineDataAsync(global::SteelMES.ProductionLineRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetProductionLineDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductionLineReply> GetProductionLineDataAsync(global::SteelMES.ProductionLineRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetProductionLineData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.MaterialReply GetMaterialData(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMaterialData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.MaterialReply GetMaterialData(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetMaterialData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.MaterialReply> GetMaterialDataAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMaterialDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.MaterialReply> GetMaterialDataAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetMaterialData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.SupplierReply GetSupplierData(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetSupplierData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.SupplierReply GetSupplierData(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetSupplierData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.SupplierReply> GetSupplierDataAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetSupplierDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.SupplierReply> GetSupplierDataAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetSupplierData, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UpdateMaterialQuantityReply UpdateMaterialQuantity(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateMaterialQuantity(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UpdateMaterialQuantityReply UpdateMaterialQuantity(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateMaterialQuantity, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UpdateMaterialQuantityReply> UpdateMaterialQuantityAsync(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateMaterialQuantityAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UpdateMaterialQuantityReply> UpdateMaterialQuantityAsync(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateMaterialQuantity, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override DB_ServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -140,7 +393,14 @@ namespace SteelMES {
     public static grpc::ServerServiceDefinition BindService(DB_ServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_reqProdHistory, serviceImpl.reqProdHistory).Build();
+          .AddMethod(__Method_reqProdHistory, serviceImpl.reqProdHistory)
+          .AddMethod(__Method_GetAllDefects, serviceImpl.GetAllDefects)
+          .AddMethod(__Method_GetDefectsByProductID, serviceImpl.GetDefectsByProductID)
+          .AddMethod(__Method_GetFactoryData, serviceImpl.GetFactoryData)
+          .AddMethod(__Method_GetProductionLineData, serviceImpl.GetProductionLineData)
+          .AddMethod(__Method_GetMaterialData, serviceImpl.GetMaterialData)
+          .AddMethod(__Method_GetSupplierData, serviceImpl.GetSupplierData)
+          .AddMethod(__Method_UpdateMaterialQuantity, serviceImpl.UpdateMaterialQuantity).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -151,6 +411,13 @@ namespace SteelMES {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, DB_ServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_reqProdHistory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.prodHistoryInfoRequest, global::SteelMES.prodHistoryInfoReply>(serviceImpl.reqProdHistory));
+      serviceBinder.AddMethod(__Method_GetAllDefects, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.prodHistoryInfoReply>(serviceImpl.GetAllDefects));
+      serviceBinder.AddMethod(__Method_GetDefectsByProductID, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.DefectByProductIDRequest, global::SteelMES.prodHistoryInfoReply>(serviceImpl.GetDefectsByProductID));
+      serviceBinder.AddMethod(__Method_GetFactoryData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.FactoryReply>(serviceImpl.GetFactoryData));
+      serviceBinder.AddMethod(__Method_GetProductionLineData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.ProductionLineRequest, global::SteelMES.ProductionLineReply>(serviceImpl.GetProductionLineData));
+      serviceBinder.AddMethod(__Method_GetMaterialData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.MaterialReply>(serviceImpl.GetMaterialData));
+      serviceBinder.AddMethod(__Method_GetSupplierData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.SupplierReply>(serviceImpl.GetSupplierData));
+      serviceBinder.AddMethod(__Method_UpdateMaterialQuantity, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.UpdateMaterialQuantityRequest, global::SteelMES.UpdateMaterialQuantityReply>(serviceImpl.UpdateMaterialQuantity));
     }
 
   }

@@ -7,6 +7,8 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 //using System.Windows.Forms;
 using ReaLTaiizor.Forms;
 
@@ -61,6 +63,17 @@ namespace Project_SteelMES
 			Lost2 lost2Form = new Lost2();
 			lost2Form.Show();
 			this.Close();
+		}
+		private void OptionButton1_Click(object sender, EventArgs e)
+		{
+			Lost3 lost3 = new Lost3();
+			lost3.Show();
+			this.Hide();
+		}
+
+		private void OptionButton2_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("기능 미구현");
 		}
 	}
 }

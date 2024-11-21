@@ -150,6 +150,7 @@ namespace Project_SteelMES
 			this.button4.TabIndex = 6;
 			this.button4.Text = "생산 정보";
 			this.button4.UseVisualStyleBackColor = false;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
 			// 
 			// button3
 			// 

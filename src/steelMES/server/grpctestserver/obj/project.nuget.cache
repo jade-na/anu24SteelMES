@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Li18Yjijv/Q=",
+  "dgSpecHash": "aRYZuJM+Zg0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\grpctestserver\\grpctestserver.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\grpctestserver.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\google.protobuf\\3.28.3\\google.protobuf.3.28.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",

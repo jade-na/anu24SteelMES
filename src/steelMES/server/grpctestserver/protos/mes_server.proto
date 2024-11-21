@@ -2,18 +2,33 @@ syntax = "proto3";
 
 package SteelMES;
 
-// ì„œë¹„ìŠ¤ ì •ì˜
 service DB_Service {
     rpc reqProdHistory (prodHistoryInfoRequest) returns (prodHistoryInfoReply) {}
+    rpc GetAllDefects (Empty) returns (prodHistoryInfoReply) {}
+    rpc GetDefectsByProductID (DefectByProductIDRequest) returns (prodHistoryInfoReply) {}
+    rpc GetFactoryData (Empty) returns (FactoryReply) {}
+    rpc GetProductionLineData (ProductionLineRequest) returns (ProductionLineReply) {}
+    rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL µ¥ÀÌÅÍ¸¦ °¡Á®¿À´Â RPC
+    rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER µ¥ÀÌÅÍ¸¦ °¡Á®¿À´Â RPC
+    rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
+
 }
 
-// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ìš”ì²­ ë©”ì‹œì§€
+// ±âº» Empty ¸Ş½ÃÁö
+message Empty {}
+
+// ºÒ·® ÀÌ·Â ¿äÃ» ¸Ş½ÃÁö
 message prodHistoryInfoRequest {
     string fromTime = 1;
     string toTime = 2;
 }
 
-// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ì •ë³´
+// Æ¯Á¤ Á¦Ç° ID ±â¹İ ¿äÃ» ¸Ş½ÃÁö
+message DefectByProductIDRequest {
+    int32 productID = 1;
+}
+
+// ºÒ·® ÀÌ·Â Á¤º¸
 message prodHistoryInfo {
     int32 defectID = 1;
     int32 productID = 2;
@@ -23,8 +38,77 @@ message prodHistoryInfo {
     string location = 6;
 }
 
-// ì œí’ˆ ë¶ˆëŸ‰ ì´ë ¥ ì‘ë‹µ ë©”ì‹œì§€
+// ºÒ·® ÀÌ·Â ÀÀ´ä ¸Ş½ÃÁö
 message prodHistoryInfoReply {
     int32 errorCode = 1;
     repeated prodHistoryInfo infos = 2;
+}
+
+// °øÀå Á¤º¸
+message FactoryInfo {
+    int32 facID = 1;
+    string location = 2;
+}
+
+// °øÀå Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+message FactoryReply {
+    int32 errorCode = 1;
+    repeated FactoryInfo factories = 2;
+}
+
+// »ı»ê ¶óÀÎ ¿äÃ» ¸Ş½ÃÁö
+message ProductionLineRequest {
+    int32 facID = 1;
+}
+
+// »ı»ê ¶óÀÎ Á¤º¸
+message ProductionLineInfo {
+    int32 facID = 1;
+    int32 lineID = 2;
+    string lineName = 3;
+    string operateDate = 4;
+}
+
+// »ı»ê ¶óÀÎ ÀÀ´ä ¸Ş½ÃÁö
+message ProductionLineReply {
+    int32 errorCode = 1;
+    repeated ProductionLineInfo lines = 2;
+}
+
+// ÀÚÀç Á¤º¸
+message MaterialInfo {
+    int32 materialID = 1;
+    string materialName = 2;
+    int32 supplierID = 3;
+    int32 quantity = 4;
+    string importDate = 5;
+}
+
+// ÀÚÀç Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+message MaterialReply {
+    int32 errorCode = 1;
+    repeated MaterialInfo materials = 2;
+}
+
+// °ø±Ş¾÷Ã¼ Á¤º¸
+message SupplierInfo {
+    int32 supplierID = 1;
+    string supplierName = 2;
+    string contactInfo = 3;
+    string country = 4;
+}
+
+// °ø±Ş¾÷Ã¼ Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+message SupplierReply {
+    int32 errorCode = 1;
+    repeated SupplierInfo suppliers = 2;
+}
+// ÀÚÀç ¼ö·® DB ¾÷µ¥ÀÌÆ®
+message UpdateMaterialQuantityRequest {
+    int32 materialID = 1;
+    int32 additionalQuantity = 2;
+}
+
+message UpdateMaterialQuantityReply {
+    int32 errorCode = 1;
 }

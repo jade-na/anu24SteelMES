@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\grpctestserver\\grpctestserver.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\grpctestserver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\grpctestserver\\grpctestserver.csproj": {
+    "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\grpctestserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\grpctestserver\\grpctestserver.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\grpctestserver.csproj",
         "projectName": "grpctestserver",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\grpctestserver\\grpctestserver.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\grpctestserver.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\grpctestserver\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\grpctestserver - 복사본 (2)\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
