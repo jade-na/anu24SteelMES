@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|c:\\temp\\anu24steelmes\\src\\steelmes\\client\\project_steelmes\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:crown.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|c:\\temp\\anu24steelmes\\src\\steelmes\\client\\project_steelmes\\createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|solutionrelative:createid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31057C8F-E948-4315-8639-DC3F1A0450AC}|Project_SteelMES.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\lost3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -78,11 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Crown.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\Crown.cs",
               "RelativeDocumentMoniker": "Crown.cs",
@@ -95,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Crown.cs",
               "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\Crown.cs",
               "RelativeDocumentMoniker": "Crown.cs",
@@ -104,8 +104,7 @@
               "ViewState": "AgIAABgAAAAAAAAAAAA0wCEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:37:28.01Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -142,8 +141,7 @@
               "RelativeToolTip": "Lost2.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:40:04.218Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -156,8 +154,7 @@
               "ViewState": "AgIAAKwAAAAAAAAAAAAUwL8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:40:14.215Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -169,8 +166,7 @@
               "RelativeToolTip": "Material.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:41:41.766Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -183,8 +179,7 @@
               "ViewState": "AgIAABwAAAAAAAAAAAA3wA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T15:41:47.537Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -196,8 +191,7 @@
               "RelativeToolTip": "Metro.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T02:38:04.441Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -210,8 +204,7 @@
               "ViewState": "AgIAAEgAAAAAAAAAAAAUwFoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T02:38:12.313Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -223,8 +216,7 @@
               "RelativeToolTip": "Lost3.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T03:41:59.087Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -237,8 +229,7 @@
               "ViewState": "AgIAAAsAAAAAAAAAAADwvxcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T03:42:04.58Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -250,8 +241,7 @@
               "RelativeToolTip": "Lost4.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T04:15:53.148Z",
-              "IsPinned": true,
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -264,8 +254,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T04:15:55.453Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -273,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CreateID.cs",
               "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\CreateID.cs",
               "RelativeDocumentMoniker": "CreateID.cs",
@@ -286,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "CreateID.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\client\\Project_SteelMES\\CreateID.cs",
               "RelativeDocumentMoniker": "CreateID.cs",
@@ -306,8 +295,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T08:44:47.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T08:44:47.717Z"
             }
           ]
         }
