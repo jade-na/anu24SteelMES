@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package image;
+
+// 서비스 정의
+service ImageService {
+    rpc SendImage (ImageRequest) returns (ImageReply);
+}
+
+// 이미지 전송 요청 메시지
+message ImageRequest {
+    bytes image_data = 1; // 이미지 바이너리 데이터
+    string image_name = 2; // 이미지 이름
+}
+
+// 응답 메시지
+message ImageReply {
+    string status = 1; // 응답 메시지 상태
+}
