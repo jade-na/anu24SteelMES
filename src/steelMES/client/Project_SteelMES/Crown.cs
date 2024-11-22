@@ -122,5 +122,28 @@ namespace Project_SteelMES
             CreateID createForm= new CreateID();
             createForm.ShowDialog(); 
         }
+
+
+
+
+
+
+        private void button1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.button1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
+
+            if (hopeSwitch1.Checked)
+            {
+                hopeTextBox2.UseSystemPasswordChar = true;
+            }
+            else
+                hopeTextBox2.UseSystemPasswordChar = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.button1.Enter += new System.EventHandler(this.hopeTextBox1_Enter);
+            button1.Text = string.Empty;
+        }
     }
 }

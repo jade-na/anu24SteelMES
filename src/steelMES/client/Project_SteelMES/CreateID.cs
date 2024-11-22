@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class CreateID : Form
+    public partial class CreateID : PoisonForm
     {
         public CreateID()
         {

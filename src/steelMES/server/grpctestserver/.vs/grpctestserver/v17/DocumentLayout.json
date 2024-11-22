@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\",
+  "WorkspaceRootPath": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\temp\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\dbserviceserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\git\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\dbserviceserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|solutionrelative:dbserviceserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\temp\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\git\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\temp\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\protos\\mes_server.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|c:\\git\\anu24steelmes\\src\\steelmes\\server\\grpctestserver\\protos\\mes_server.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|solutionrelative:protos\\mes_server.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{26FA772A-E39E-4D9F-B6C4-B418AA6B72D4}|grpctestserver.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -29,11 +29,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -45,44 +53,41 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.100\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkBAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-11-22T00:01:07.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T00:01:07.908Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "mes_server.proto",
-              "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\protos\\mes_server.proto",
+              "DocumentMoniker": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\protos\\mes_server.proto",
               "RelativeDocumentMoniker": "protos\\mes_server.proto",
-              "ToolTip": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\protos\\mes_server.proto",
+              "ToolTip": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\protos\\mes_server.proto",
               "RelativeToolTip": "protos\\mes_server.proto",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2024-11-21T08:08:22.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-21T08:08:22.519Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Program.cs",
+              "DocumentMoniker": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Program.cs",
+              "ToolTip": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAQwBoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T08:30:19.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T08:30:19.719Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DBServiceServer.cs",
-              "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\DBServiceServer.cs",
+              "DocumentMoniker": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\DBServiceServer.cs",
               "RelativeDocumentMoniker": "DBServiceServer.cs",
-              "ToolTip": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\DBServiceServer.cs",
+              "ToolTip": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\DBServiceServer.cs",
               "RelativeToolTip": "DBServiceServer.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAADwv9UAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAMQAAAAAAAAAAADwv9cAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T01:12:41.925Z",
               "EditorCaption": ""
@@ -91,13 +96,12 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Form1.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Form1.cs",
+              "DocumentMoniker": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Form1.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "Form1.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\Form1.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T00:41:21.379Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2024-11-19T00:41:21.379Z"
             }
           ]
         }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("grpctestserver")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0c7165aff1ffeefb9c663826f131def6ba9eed9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3e9dad6541df121f0754fce8276fefd56f5a6b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("grpctestserver")]
 [assembly: System.Reflection.AssemblyTitleAttribute("grpctestserver")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -161,6 +161,12 @@
     <Compile Include="Lost4.Designer.cs">
       <DependentUpon>Lost4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lost5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost5.Designer.cs">
+      <DependentUpon>Lost5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Material.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lost4.resx">
       <DependentUpon>Lost4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost5.resx">
+      <DependentUpon>Lost5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Material.resx">
       <DependentUpon>Material.cs</DependentUpon>
@@ -225,9 +234,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Background2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +250,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factory1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factory2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supply1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supply2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prosess3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />

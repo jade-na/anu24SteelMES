@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj": {}
+    "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj": {
+    "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj",
+        "projectUniqueName": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj",
         "projectName": "grpctestserver",
-        "projectPath": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj",
+        "projectPath": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\grpctestserver.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\obj\\",
+        "outputPath": "C:\\git\\anu24SteelMES\\src\\steelMES\\server\\grpctestserver\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -42,9 +42,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -92,7 +91,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
