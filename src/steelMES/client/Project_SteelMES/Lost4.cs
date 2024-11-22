@@ -38,15 +38,15 @@ namespace Project_SteelMES
 
 		private async void button6_Click(object sender, EventArgs e)
 		{
-			// MATERIAL 데이터를 처음 한 번만 로드
-			if (materialDataLoaded)
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            // MATERIAL 데이터를 처음 한 번만 로드
+            if (materialDataLoaded)
 			{
 				MessageBox.Show("MATERIAL 데이터는 이미 로드되었습니다.");
 				return;
 			}
-
-			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-			var client = new DB_Service.DB_ServiceClient(channel);
 
 			try
 			{

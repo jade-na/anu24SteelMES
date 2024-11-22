@@ -6,6 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Oracle.ManagedDataAccess.Client;
+
+using System.Windows.Forms;
+
 //using System.Windows.Forms;
 using ReaLTaiizor.Forms;
 
@@ -25,9 +29,53 @@ namespace Project_SteelMES
 
         private void materialButton1_Click(object sender, EventArgs e) //Sign in
         {
-            Lost lost = new Lost();
-            lost.Show(); 
-            this.Hide();
+            string username = hopeTextBox1.Text;
+            string password = hopeTextBox2.Text;
+            hopeTextBox2.PasswordChar = '*';
+            // 오라클 연결 문자열
+            string connectionString = "User Id=scott;Password=tiger;Data Source=//localhost:1521/XE";
+
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM Users WHERE Username = :username AND Password = :password";
+
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
+                    {
+                        // 매개변수 추가
+                        cmd.Parameters.Add(new OracleParameter("username", username));
+                        cmd.Parameters.Add(new OracleParameter("password", password));
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("로그인 성공!");
+
+                            // Lost 폼 열기
+                            Lost lostForm = new Lost();
+                            lostForm.Show();
+
+                            // 현재 로그인 창 숨기기
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.");
+                        }
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    MessageBox.Show("데이터베이스 오류: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("오류 발생: " + ex.Message);
+                }
+            }
         }
 
         private void panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
@@ -66,6 +114,13 @@ namespace Project_SteelMES
         private void hopeTextBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+            // 회원가입 창 띄우기
+            CreateID createForm= new CreateID();
+            createForm.ShowDialog(); 
         }
     }
 }
