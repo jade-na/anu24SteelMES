@@ -272,9 +272,9 @@ namespace grpcDummyMesServer
 				await connection.OpenAsync();
 
 				const string query = @"
-			UPDATE MATERIAL
-			SET QUANTITY = QUANTITY + :additionalQuantity
-			WHERE MATERIALID = :materialID";
+									UPDATE MATERIAL
+									SET QUANTITY = QUANTITY + :additionalQuantity
+									WHERE MATERIALID = :materialID";
 
 				await using var command = new OracleCommand(query, connection);
 				command.Parameters.Add(new OracleParameter("additionalQuantity", request.AdditionalQuantity));
@@ -340,5 +340,69 @@ namespace grpcDummyMesServer
 			}
 			return result;
 		}
-	}
+        public override async Task<AddMaterialReply> AddMaterial(AddMaterialRequest request, ServerCallContext context)
+        {
+            var result = new AddMaterialReply();
+
+            try
+            {
+                // 요청받은 데이터
+                string name = request.Name;
+                int supplierID = request.SupplierID;
+                int quantity = request.Quantity;
+
+                // 입력 데이터 검증
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "원자재 이름(Name)은 비워둘 수 없습니다.";
+                    return result;
+                }
+
+                if (supplierID <= 0 || quantity <= 0)
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "공급업체 ID와 수량은 양수여야 합니다.";
+                    return result;
+                }
+
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // 원자재 삽입 쿼리 (MaterialID는 DB의 트리거와 시퀀스에서 자동 생성)
+                const string insertQuery = @"
+									INSERT INTO MATERIAL (MATERIALNAME, SUPPLIERID, QUANTITY, IMPORTDATE)
+									VALUES (:name, :supplierID, :quantity, SYSDATE)";
+
+                await using var command = new OracleCommand(insertQuery, connection);
+
+                // 파라미터 설정
+                command.Parameters.Add(new OracleParameter("name", OracleDbType.Varchar2) { Value = name });
+                command.Parameters.Add(new OracleParameter("supplierID", OracleDbType.Int32) { Value = supplierID });
+                command.Parameters.Add(new OracleParameter("quantity", OracleDbType.Int32) { Value = quantity });
+
+                // 삽입 실행
+                int rowsInserted = await command.ExecuteNonQueryAsync();
+
+                // 결과 처리
+                if (rowsInserted > 0)
+                {
+                    result.ErrorCode = 0;
+                    result.Message = "원자재가 성공적으로 추가되었습니다.";
+                }
+                else
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "원자재를 추가할 수 없습니다.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding material: {ex.Message}");
+                result.ErrorCode = -1;
+                result.Message = $"오류 발생: {ex.Message}";
+            }
+            return result;
+        }
+    }
 }
