@@ -25,9 +25,9 @@ namespace grpcDummyMesServer
 
 				await using var connection = new OracleConnection(_connectionString);
 				await connection.OpenAsync();
-
+				 
 				const string query = @"
-					SELECT DefectID, ProductID, MaterialID, DefectType, DetectionDate, Location
+					SELECT DefectID, ProductID, DefectType, DetectionDate
 					FROM SCOTT.DEFECT
 					WHERE DetectionDate BETWEEN TO_DATE(:fromTime, 'YYYY-MM-DD') AND TO_DATE(:toTime, 'YYYY-MM-DD')";
 
@@ -42,10 +42,8 @@ namespace grpcDummyMesServer
 					{
 						DefectID = reader.GetInt32(0),
 						ProductID = reader.GetInt32(1),
-						MaterialID = reader.GetInt32(2),
-						DefectType = reader.GetString(3),
-						DefectionDate = reader.GetDateTime(4).ToString("yyyy-MM-dd"),
-						Location = reader.GetString(5)
+						DefectType = reader.GetString(2),
+						DetectionDate = reader.GetDateTime(3).ToString("yyyy-MM-dd"),
 					});
 				}
 
@@ -67,37 +65,35 @@ namespace grpcDummyMesServer
 		{
 			var result = new prodHistoryInfoReply();
 
-			try
-			{
-				await using var connection = new OracleConnection(_connectionString);
-				await connection.OpenAsync();
+            try
+            {
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
 
-				const string query = "SELECT DefectID, ProductID, MaterialID, DefectType, DetectionDate, Location FROM SCOTT.DEFECT";
+				// SQL 쿼리 수정: 잘못된 쉼표와 오타 제거
+				const string query = @"SELECT DefectID, ProductID,DefectType,DetectionDate FROM SCOTT.DEFECT";
 
-				await using var command = new OracleCommand(query, connection);
-				await using var reader = await command.ExecuteReaderAsync();
+                await using var command = new OracleCommand(query, connection);
+                await using var reader = await command.ExecuteReaderAsync();
 
-				while (await reader.ReadAsync())
-				{
-					result.Infos.Add(new prodHistoryInfo
-					{
-						DefectID = reader.GetInt32(0),
-						ProductID = reader.GetInt32(1),
-						MaterialID = reader.GetInt32(2),
-						DefectType = reader.GetString(3),
-						DefectionDate = reader.GetDateTime(4).ToString("yyyy-MM-dd"),
-						Location = reader.GetString(5)
-					});
-				}
+                while (await reader.ReadAsync())
+                {
+                    result.Infos.Add(new prodHistoryInfo
+                    {
+                        DefectID = reader.GetInt32(0), // 첫 번째 열은 0번 인덱스
+                        ProductID = reader.GetInt32(1), // 두 번째 열은 1번 인덱스
+                        DefectType = reader.GetString(2), // 세 번째 열은 2번 인덱스
+                        DetectionDate = reader.GetDateTime(3).ToString("yyyy-MM-dd"), // 네 번째 열은 3번 인덱스
+                    });
+                }
 
-				result.ErrorCode = result.Infos.Count > 0 ? 0 : -1;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error: {ex.Message}");
-				result.ErrorCode = -1;
-			}
-
+                result.ErrorCode = result.Infos.Count > 0 ? 0 : -1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                result.ErrorCode = -1;
+            }
 			return result;
 		}
 
@@ -293,6 +289,55 @@ namespace grpcDummyMesServer
 				result.ErrorCode = -1;
 			}
 
+			return result;
+		}
+		public override async Task<AddFactoryReply> AddFactory(AddFactoryRequest request, ServerCallContext context)
+		{
+			var result = new AddFactoryReply();
+			try
+			{
+				// 요청받은 Location 값
+				string location = request.Location;
+
+				if (string.IsNullOrWhiteSpace(location))
+				{
+					result.ErrorCode = -1;
+					result.Message = "공장 위치(Location)는 비워둘 수 없습니다.";
+					return result;
+				}
+
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 공장 삽입 쿼리 (FacID는 DB의 트리거와 시퀀스에서 자동 생성)
+				const string insertQuery = "INSERT INTO FACTORY (LOCATION) VALUES (:location)";
+
+				await using var command = new OracleCommand(insertQuery, connection);
+
+				// 파라미터 설정
+				command.Parameters.Add(new OracleParameter("location", OracleDbType.Varchar2) { Value = location });
+
+				// 삽입 실행
+				int rowsInserted = await command.ExecuteNonQueryAsync();
+
+				// 결과 처리
+				if (rowsInserted > 0)
+				{
+					result.ErrorCode = 0;
+					result.Message = "공장이 성공적으로 추가되었습니다.";
+				}
+				else
+				{
+					result.ErrorCode = -1;
+					result.Message = "공장을 추가할 수 없습니다.";
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error adding factory: {ex.Message}");
+				result.ErrorCode = -1;
+				result.Message = $"오류 발생: {ex.Message}";
+			}
 			return result;
 		}
 	}
