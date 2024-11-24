@@ -27,8 +27,9 @@ https://sourceforge.net/projects/y-a-terminal/files/
 
 ![alt text](./images/image-3.png)
 
-저희는 UDP를 사용하고 그중에서 양방향 통신을 할 예정이므로 PairSocket을 사용 합니다. Host와 Port는 적절히 조정해 줍니다. 저는 노트북 한대에서 터미널 프로그램과 파이썬 프로그램을 모두 실행 시킬 예정이라서 localhost로 설정하였고 포트는 10000과 10001을 사용하였습니다.
+저희는 UDP를 사용하고 UDP/IP Client를 사용 합니다. Host와 Port는 적절히 조정해 줍니다. 저는 노트북 한대에서 터미널 프로그램과 파이썬 프로그램을 모두 실행 시킬 예정이라서 localhost로 설정하였고 포트는 10000을 사용하였습니다. 필요에 따라 적절히 조정 해주세요.
 ![alt text](./images/image-4.png)
+
 
 문자 송신 시에 CR LF를 붙여주어 Pi에 문자가 전달 되면 '\n'으로 명령 입력을 구분하도록 하겠습니다.
 ![alt text](./images/image-5.png)

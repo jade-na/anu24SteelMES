@@ -5,7 +5,7 @@ user_command = ""  # 명령어를 저장할 문자열
 def create_udp_socket():
     # UDP 소켓 생성
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(('127.0.0.1', 10001))  # local port 10000
+    sock.bind(('127.0.0.1', 10000))  # local port 10000
     # 소켓을 non-blocking 모드로 설정
     sock.setblocking(False)
     return sock
@@ -47,7 +47,7 @@ def main():
     try:
         # UDP 소켓 생성
         sock = create_udp_socket()
-        print("UDP Server Start (local port: 10001)")
+        print("UDP Server Start (local port: 10000)")
         
         # 메인 루프 실행
         main_loop(sock)
