@@ -26,14 +26,14 @@
 * e-mail : jonghee4911@naver.com
 
 #### 김정주
-* 전공 : 안동대학교 기계설계공학 (20?? ~ 2025)
+* 전공 : 안동대학교 기계로봇공학 (2021 ~ 2025)
 * 보유기술 : C++/Python, AI
 * 역할 : Virtual Env, 라즈베리파이를 이용한 제품 이송 장치 목업 구현
 * e-mail : megan001222@gmail.com
 
 #### 김성태
 * 전공 : 안동대학교 기계설계공학 (2019 ~ 2025)
-* 보유기술 : C#
+* 보유기술 : C#, Inventor(3D 모델링)
 * 역할 : Front End, MES 기획 (기능 분석 및 기능 설계), MES Client 개발
 * e-mail : honest0719@naver.com
 
