@@ -34,6 +34,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.UserName = new System.Windows.Forms.TextBox();
             this.Password = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("휴먼엑스포", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(23, 151);
+            this.label2.Location = new System.Drawing.Point(35, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 14);
             this.label2.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("휴먼엑스포", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(26, 198);
+            this.label3.Location = new System.Drawing.Point(35, 201);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 14);
             this.label3.TabIndex = 2;
@@ -69,9 +71,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("휴먼엑스포", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(79, 264);
+            this.button1.Location = new System.Drawing.Point(50, 272);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 59);
+            this.button1.Size = new System.Drawing.Size(90, 38);
             this.button1.TabIndex = 3;
             this.button1.Text = "회원가입";
             this.button1.UseVisualStyleBackColor = true;
@@ -79,24 +81,50 @@
             // 
             // UserName
             // 
-            this.UserName.Location = new System.Drawing.Point(103, 149);
+            this.UserName.Location = new System.Drawing.Point(115, 168);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(148, 21);
             this.UserName.TabIndex = 4;
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(103, 196);
+            this.Password.Location = new System.Drawing.Point(115, 199);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(148, 21);
             this.Password.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("휴먼엑스포", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Location = new System.Drawing.Point(183, 272);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 38);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "취소";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("휴먼엑스포", 9.75F);
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "admin",
+            "manager"});
+            this.comboBox1.Location = new System.Drawing.Point(83, 101);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(148, 22);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.Text = "USER LEVEL";
             // 
             // CreateID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(326, 364);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.UserName);
             this.Controls.Add(this.button1);
@@ -118,5 +146,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox UserName;
         private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

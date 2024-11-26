@@ -32,7 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
+            this.hopePictureBox2 = new ReaLTaiizor.Controls.HopePictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -68,30 +71,27 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dungeonLabel4 = new ReaLTaiizor.Controls.DungeonLabel();
             this.button9 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hopePictureBox2 = new ReaLTaiizor.Controls.HopePictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,6 +124,20 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // hopePictureBox3
+            // 
+            this.hopePictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.hopePictureBox3.Image = global::Project_SteelMES.Properties.Resources.icon3;
+            this.hopePictureBox3.Location = new System.Drawing.Point(98, 85);
+            this.hopePictureBox3.Name = "hopePictureBox3";
+            this.hopePictureBox3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox3.Size = new System.Drawing.Size(24, 25);
+            this.hopePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox3.TabIndex = 0;
+            this.hopePictureBox3.TabStop = false;
+            this.hopePictureBox3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,6 +149,36 @@
             this.button1.Text = "Monitoring";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // hopePictureBox1
+            // 
+            this.hopePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
+            this.hopePictureBox1.Location = new System.Drawing.Point(33, 85);
+            this.hopePictureBox1.Name = "hopePictureBox1";
+            this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox1.Size = new System.Drawing.Size(26, 25);
+            this.hopePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox1.TabIndex = 4;
+            this.hopePictureBox1.TabStop = false;
+            this.hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox2
+            // 
+            this.hopePictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.hopePictureBox2.Enabled = false;
+            this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
+            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
+            this.hopePictureBox2.Name = "hopePictureBox2";
+            this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
+            this.hopePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox2.TabIndex = 2;
+            this.hopePictureBox2.TabStop = false;
+            this.hopePictureBox2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // button3
             // 
@@ -157,7 +201,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(179, 70);
             this.button4.TabIndex = 6;
-            this.button4.Text = "생산 정보";
+            this.button4.Text = "작업 지시";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
@@ -499,6 +543,16 @@
             this.label5.TabIndex = 22;
             this.label5.Text = "공급업체1";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.supply1;
+            this.pictureBox1.Location = new System.Drawing.Point(81, 52);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 121);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
             // dungeonLabel3
             // 
             this.dungeonLabel3.AutoSize = true;
@@ -510,6 +564,16 @@
             this.dungeonLabel3.Size = new System.Drawing.Size(74, 21);
             this.dungeonLabel3.TabIndex = 11;
             this.dungeonLabel3.Text = "공급업체";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Project_SteelMES.Properties.Resources.supply2;
+            this.pictureBox2.Location = new System.Drawing.Point(228, 52);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(137, 121);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
             // 
             // button8
             // 
@@ -585,70 +649,6 @@
             this.textBox7.Size = new System.Drawing.Size(87, 29);
             this.textBox7.TabIndex = 23;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.supply1;
-            this.pictureBox1.Location = new System.Drawing.Point(81, 52);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(137, 121);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Project_SteelMES.Properties.Resources.supply2;
-            this.pictureBox2.Location = new System.Drawing.Point(228, 52);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(137, 121);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 20;
-            this.pictureBox2.TabStop = false;
-            // 
-            // hopePictureBox3
-            // 
-            this.hopePictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox3.Image = global::Project_SteelMES.Properties.Resources.icon3;
-            this.hopePictureBox3.Location = new System.Drawing.Point(98, 85);
-            this.hopePictureBox3.Name = "hopePictureBox3";
-            this.hopePictureBox3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox3.Size = new System.Drawing.Size(24, 25);
-            this.hopePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox3.TabIndex = 0;
-            this.hopePictureBox3.TabStop = false;
-            this.hopePictureBox3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // hopePictureBox1
-            // 
-            this.hopePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
-            this.hopePictureBox1.Location = new System.Drawing.Point(33, 85);
-            this.hopePictureBox1.Name = "hopePictureBox1";
-            this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox1.Size = new System.Drawing.Size(26, 25);
-            this.hopePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox1.TabIndex = 4;
-            this.hopePictureBox1.TabStop = false;
-            this.hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // hopePictureBox2
-            // 
-            this.hopePictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.hopePictureBox2.Enabled = false;
-            this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
-            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
-            this.hopePictureBox2.Name = "hopePictureBox2";
-            this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
-            this.hopePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox2.TabIndex = 2;
-            this.hopePictureBox2.TabStop = false;
-            this.hopePictureBox2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // Lost4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -665,6 +665,9 @@
             this.Text = "강철주야";
             this.Load += new System.EventHandler(this.Lost4_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -673,13 +676,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -708,8 +708,6 @@
         private System.Windows.Forms.Button button7; //주문 버튼
         private System.Windows.Forms.Panel panel4; //공급업체 컨테이너
         private System.Windows.Forms.DataGridView dataGridView2; //공급업체DB
-        private System.Windows.Forms.PictureBox pictureBox1; //사진1
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button8; //조회 버튼
         private System.Windows.Forms.Panel panel5; //제품 생산 컨테이너
         private System.Windows.Forms.Label label4; //생산 개수 라벨
@@ -734,7 +732,9 @@
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel4;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel3;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

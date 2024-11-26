@@ -107,7 +107,7 @@ namespace Project_SteelMES
             this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
             this.materialButton2.Size = new System.Drawing.Size(108, 36);
             this.materialButton2.TabIndex = 21;
-            this.materialButton2.Text = "Sign Up";
+            this.materialButton2.Text = "회원가입";
             this.materialButton2.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton2.UseAccentColor = false;
             this.materialButton2.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@ namespace Project_SteelMES
             this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
             this.materialButton1.Size = new System.Drawing.Size(108, 36);
             this.materialButton1.TabIndex = 20;
-            this.materialButton1.Text = "Sign In";
+            this.materialButton1.Text = "로그인";
             this.materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton1.UseAccentColor = false;
             this.materialButton1.UseVisualStyleBackColor = false;

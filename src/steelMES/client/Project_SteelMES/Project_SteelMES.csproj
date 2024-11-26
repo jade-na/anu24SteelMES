@@ -167,11 +167,59 @@
     <Compile Include="Lost5.Designer.cs">
       <DependentUpon>Lost5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lost6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost6.Designer.cs">
+      <DependentUpon>Lost6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lost7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost7.Designer.cs">
+      <DependentUpon>Lost7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lost8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost8.Designer.cs">
+      <DependentUpon>Lost8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lost9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost9.Designer.cs">
+      <DependentUpon>Lost9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Material.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Material.Designer.cs">
       <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Material2.Designer.cs">
+      <DependentUpon>Material2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Material3.Designer.cs">
+      <DependentUpon>Material3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Material4.Designer.cs">
+      <DependentUpon>Material4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialOrder.Designer.cs">
+      <DependentUpon>MaterialOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Metro.cs">
       <SubType>Form</SubType>
@@ -202,8 +250,32 @@
     <EmbeddedResource Include="Lost5.resx">
       <DependentUpon>Lost5.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lost6.resx">
+      <DependentUpon>Lost6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost7.resx">
+      <DependentUpon>Lost7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost8.resx">
+      <DependentUpon>Lost8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost9.resx">
+      <DependentUpon>Lost9.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Material.resx">
       <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Material2.resx">
+      <DependentUpon>Material2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Material3.resx">
+      <DependentUpon>Material3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Material4.resx">
+      <DependentUpon>Material4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialOrder.resx">
+      <DependentUpon>MaterialOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Metro.resx">
       <DependentUpon>Metro.cs</DependentUpon>
@@ -280,6 +352,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon2 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon2 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-settings-48-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-more-64-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon1 %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />

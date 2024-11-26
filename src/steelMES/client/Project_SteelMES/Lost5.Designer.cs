@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
@@ -96,14 +96,14 @@
             this.Weight,
             this.QualityGrade,
             this.DefectID});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(61, 370);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -208,14 +208,14 @@
             this.생산관리ToolStripMenuItem.ForeColor = System.Drawing.Color.SkyBlue;
             this.생산관리ToolStripMenuItem.Name = "생산관리ToolStripMenuItem";
             this.생산관리ToolStripMenuItem.Size = new System.Drawing.Size(81, 23);
-            this.생산관리ToolStripMenuItem.Text = "생산 관리";
+            this.생산관리ToolStripMenuItem.Text = "작업 지시";
             // 
             // 자재관리ToolStripMenuItem
             // 
             this.자재관리ToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.자재관리ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.자재관리ToolStripMenuItem.Name = "자재관리ToolStripMenuItem";
-            this.자재관리ToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.자재관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.자재관리ToolStripMenuItem.Text = "자재 관리";
             // 
             // 공정관리ToolStripMenuItem
@@ -223,7 +223,7 @@
             this.공정관리ToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.공정관리ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.공정관리ToolStripMenuItem.Name = "공정관리ToolStripMenuItem";
-            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.공정관리ToolStripMenuItem.Text = "공정 관리";
             // 
             // 종료ToolStripMenuItem
@@ -242,7 +242,7 @@
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(111, 39);
             this.dungeonLabel1.TabIndex = 7;
-            this.dungeonLabel1.Text = "공정 관리";
+            this.dungeonLabel1.Text = "생산 현황";
             // 
             // pictureBox3
             // 

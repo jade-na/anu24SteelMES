@@ -30,138 +30,37 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.button6 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hopePictureBox2 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(33)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.hopePictureBox1);
-            this.panel1.Controls.Add(this.hopePictureBox2);
-            this.panel1.Controls.Add(this.hopePictureBox3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(2, 36);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(158, 562);
-            this.panel1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.SkyBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(-8, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(179, 70);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "불량 이력";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button5.Location = new System.Drawing.Point(-8, 402);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(179, 70);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "종료";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button4.Location = new System.Drawing.Point(-8, 332);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(179, 70);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "생산정보";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button3.Location = new System.Drawing.Point(-8, 262);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(179, 70);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "불량 정의";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.button1.Location = new System.Drawing.Point(-11, 122);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 70);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Monitoring";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(34)))));
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dungeonLabel1);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dungeonLabel2);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.dungeonLabel3);
-            this.panel2.Controls.Add(this.button6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(160, 36);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(688, 562);
+            this.panel2.Size = new System.Drawing.Size(733, 693);
             this.panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(308, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 28);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "~";
             // 
             // dataGridView1
             // 
@@ -169,155 +68,126 @@ namespace Project_SteelMES
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 156);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 147);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 16F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(686, 513);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 25F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(301, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 46);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "~";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(15, 11);
+            this.dungeonLabel1.Location = new System.Drawing.Point(11, 9);
+            this.dungeonLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dungeonLabel1.Name = "dungeonLabel1";
-            this.dungeonLabel1.Size = new System.Drawing.Size(172, 39);
+            this.dungeonLabel1.Size = new System.Drawing.Size(158, 46);
             this.dungeonLabel1.TabIndex = 9;
             this.dungeonLabel1.Text = "불량 이력";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(333, 101);
+            this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(345, 91);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 29);
+            this.dateTimePicker2.Size = new System.Drawing.Size(258, 32);
             this.dateTimePicker2.TabIndex = 13;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dungeonLabel2
             // 
             this.dungeonLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dungeonLabel2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(101, 79);
+            this.dungeonLabel2.Location = new System.Drawing.Point(11, 60);
+            this.dungeonLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dungeonLabel2.Name = "dungeonLabel2";
-            this.dungeonLabel2.Size = new System.Drawing.Size(54, 19);
+            this.dungeonLabel2.Size = new System.Drawing.Size(103, 29);
             this.dungeonLabel2.TabIndex = 10;
             this.dungeonLabel2.Text = "시작일";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 101);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(202, 29);
-            this.dateTimePicker1.TabIndex = 12;
-            // 
-            // dungeonLabel3
-            // 
-            this.dungeonLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel3.Location = new System.Drawing.Point(331, 79);
-            this.dungeonLabel3.Name = "dungeonLabel3";
-            this.dungeonLabel3.Size = new System.Drawing.Size(51, 19);
-            this.dungeonLabel3.TabIndex = 11;
-            this.dungeonLabel3.Text = "종료일";
+            this.dungeonLabel2.Click += new System.EventHandler(this.dungeonLabel2_Click);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Yellow;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(588, 108);
+            this.button6.Location = new System.Drawing.Point(618, 85);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(70, 42);
+            this.button6.Size = new System.Drawing.Size(70, 38);
             this.button6.TabIndex = 15;
             this.button6.Text = "조회";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // hopePictureBox1
+            // dateTimePicker1
             // 
-            this.hopePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
-            this.hopePictureBox1.Location = new System.Drawing.Point(33, 85);
-            this.hopePictureBox1.Name = "hopePictureBox1";
-            this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox1.Size = new System.Drawing.Size(26, 25);
-            this.hopePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox1.TabIndex = 7;
-            this.hopePictureBox1.TabStop = false;
-            this.hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
+            this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 91);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(285, 32);
+            this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // hopePictureBox2
+            // dungeonLabel3
             // 
-            this.hopePictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.hopePictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.hopePictureBox2.Enabled = false;
-            this.hopePictureBox2.Image = global::Project_SteelMES.Properties.Resources.icon2;
-            this.hopePictureBox2.Location = new System.Drawing.Point(65, 85);
-            this.hopePictureBox2.Name = "hopePictureBox2";
-            this.hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox2.Size = new System.Drawing.Size(27, 25);
-            this.hopePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox2.TabIndex = 7;
-            this.hopePictureBox2.TabStop = false;
-            this.hopePictureBox2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // hopePictureBox3
-            // 
-            this.hopePictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox3.Image = global::Project_SteelMES.Properties.Resources.icon3;
-            this.hopePictureBox3.Location = new System.Drawing.Point(98, 85);
-            this.hopePictureBox3.Name = "hopePictureBox3";
-            this.hopePictureBox3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox3.Size = new System.Drawing.Size(24, 25);
-            this.hopePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox3.TabIndex = 7;
-            this.hopePictureBox3.TabStop = false;
-            this.hopePictureBox3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.dungeonLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dungeonLabel3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.dungeonLabel3.Location = new System.Drawing.Point(340, 61);
+            this.dungeonLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dungeonLabel3.Name = "dungeonLabel3";
+            this.dungeonLabel3.Size = new System.Drawing.Size(122, 28);
+            this.dungeonLabel3.TabIndex = 11;
+            this.dungeonLabel3.Text = "종료일";
+            this.dungeonLabel3.Click += new System.EventHandler(this.dungeonLabel3_Click);
             // 
             // Lost2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 600);
+            this.ClientSize = new System.Drawing.Size(733, 693);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Image = global::Project_SteelMES.Properties.Resources.logo1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Lost2";
             this.Text = "강철주야";
             this.Load += new System.EventHandler(this.Lost2_Load);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1; //Left
         private System.Windows.Forms.Panel panel2; //Main
-        private System.Windows.Forms.Button button1; //Dashboard 버튼
-        private System.Windows.Forms.Button button2; //불량 이력 버튼
-        private System.Windows.Forms.Button button3; //불량 정의 버튼
-        private System.Windows.Forms.Button button4; //생산 정보 버튼
-        private System.Windows.Forms.Button button5; //종료 버튼
         private System.Windows.Forms.Button button6; //날짜 조회 버튼
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1; //불량 이력 제목
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2; //시작일 라벨
@@ -326,8 +196,5 @@ namespace Project_SteelMES
         private System.Windows.Forms.DateTimePicker dateTimePicker2; //종료일
         private System.Windows.Forms.DataGridView dataGridView1; //표
         private System.Windows.Forms.Label label1;
-        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox3;
-        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2;
-        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
     }
 }
