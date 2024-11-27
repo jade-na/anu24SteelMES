@@ -15,9 +15,9 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Crown : CrownForm
+    public partial class Login : CrownForm
     {
-        public Crown()
+        public Login()
         {
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace Project_SteelMES
 
         private void materialButton1_Click(object sender, EventArgs e) //Sign in
         {
-            string username = hopeTextBox1.Text;
-            string password = hopeTextBox2.Text;
-            hopeTextBox2.PasswordChar = '*';
+            string username = UserID_TextBox.Text;
+            string password = Password_TextBox.Text;
+            Password_TextBox.PasswordChar = '*';
             // 오라클 연결 문자열
             string connectionString = "User Id=scott;Password=tiger;Data Source=//localhost:1521/XE";
 
@@ -55,7 +55,7 @@ namespace Project_SteelMES
                             MessageBox.Show("로그인 성공!");
 
                             // Lost 폼 열기
-                            Lost lostForm = new Lost();
+                            Monitoring lostForm = new Monitoring();
                             lostForm.Show();
 
                             // 현재 로그인 창 숨기기
@@ -89,17 +89,17 @@ namespace Project_SteelMES
 
             if (hopeSwitch1.Checked)
             {
-                hopeTextBox2.UseSystemPasswordChar = true;
+                Password_TextBox.UseSystemPasswordChar = true;
             }
             else
-                hopeTextBox2.UseSystemPasswordChar = false;
+                Password_TextBox.UseSystemPasswordChar = false;
         }
 
         private void hopeTextBox1_Click(object sender, EventArgs e) //ID 입력 시 초기화
         {
 
-            this.hopeTextBox1.Enter += new System.EventHandler(this.hopeTextBox1_Enter);
-            hopeTextBox1.Text = string.Empty;
+            this.UserID_TextBox.Enter += new System.EventHandler(this.hopeTextBox1_Enter);
+            UserID_TextBox.Text = string.Empty;
         }
         private void hopeTextBox1_Enter(object sender, EventArgs e)
         {
@@ -108,8 +108,8 @@ namespace Project_SteelMES
 
         private void hopeTextBox2_Click(object sender, EventArgs e) //Password 입력 시 초기화
         {
-            this.hopeTextBox2.Enter += new System.EventHandler(this.hopeTextBox2_Enter);
-            hopeTextBox2.Text = string.Empty;
+            this.Password_TextBox.Enter += new System.EventHandler(this.hopeTextBox2_Enter);
+            Password_TextBox.Text = string.Empty;
         }
         private void hopeTextBox2_Enter(object sender, EventArgs e)
         {

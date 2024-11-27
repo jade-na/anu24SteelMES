@@ -14,14 +14,14 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Material : MaterialForm
+    public partial class DefectRecord2 : MaterialForm
     {
 		public string DefectID { get; set; }
 		public string ProductID { get; set; }
 		public string MaterialID { get; set; }
 		public string DefectType { get; set; }
 		public string DetectionDate { get; set; }
-		public Material()
+		public DefectRecord2()
         {
             InitializeComponent();
         }
@@ -38,21 +38,21 @@ namespace Project_SteelMES
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-            Lost lost = new Lost();
+            Monitoring lost = new Monitoring();
             lost.Show();
             this.Hide();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-            Lost2 lost2 = new Lost2();
+            DefectRecord lost2 = new DefectRecord();
             lost2.Show();
             this.Hide();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-            Metro metro = new Metro();
+            Definition metro = new Definition();
             metro.Show();
             this.Hide();
 		}
@@ -60,7 +60,7 @@ namespace Project_SteelMES
 		private void button5_Click(object sender, EventArgs e)
 		{
 			// Lost2 폼으로 돌아가기
-			Lost2 lost2Form = new Lost2();
+			DefectRecord lost2Form = new DefectRecord();
 			lost2Form.Show();
 			this.Close();
 		}

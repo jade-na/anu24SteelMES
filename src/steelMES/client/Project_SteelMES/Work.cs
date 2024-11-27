@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project_SteelMES
 {
-    public partial class Lost8 : Form
+    public partial class Work : Form
     {
-        public Lost8()
+        public Work()
         {
             InitializeComponent();
         }
@@ -83,7 +83,7 @@ namespace Project_SteelMES
             }
 
             // DataGridView에 새 행 추가
-            dataGridView2.Rows.Add(comboBox1Value, numericUpDown7Value, comboBox3Value);
+            dataGridView1.Rows.Add(comboBox1Value, numericUpDown7Value, comboBox3Value);
         }
 
         private void button9_Click(object sender, EventArgs e) //작업 지시 버튼

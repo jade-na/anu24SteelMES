@@ -11,9 +11,9 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Lost9 : LostForm
+    public partial class Membership : LostForm
     {
-        public Lost9()
+        public Membership()
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Material4 material4 = new Material4(this);
+            Membership2 material4 = new Membership2(this);
             material4.Show();
         }
     }

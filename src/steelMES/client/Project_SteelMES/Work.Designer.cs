@@ -1,6 +1,6 @@
 ﻿namespace Project_SteelMES
 {
-    partial class Lost8
+    partial class Work
     {
         /// <summary>
         /// Required designer variable.
@@ -35,12 +35,12 @@
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.SelectBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.WorkBtn = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FactoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,15 +49,15 @@
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.button9);
-            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Controls.Add(this.WorkBtn);
+            this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.dungeonLabel2);
             this.panel3.Location = new System.Drawing.Point(14, 59);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -70,7 +70,7 @@
             this.groupBox1.Controls.Add(this.numericUpDown7);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.SelectBtn);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label9);
@@ -114,22 +114,22 @@
             this.comboBox1.Size = new System.Drawing.Size(94, 20);
             this.comboBox1.TabIndex = 20;
             // 
-            // button8
+            // SelectBtn
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(568, 125);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(58, 36);
-            this.button8.TabIndex = 33;
-            this.button8.Text = "조회";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.SelectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.SelectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SelectBtn.FlatAppearance.BorderSize = 0;
+            this.SelectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.SelectBtn.ForeColor = System.Drawing.Color.Black;
+            this.SelectBtn.Location = new System.Drawing.Point(568, 125);
+            this.SelectBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectBtn.Name = "SelectBtn";
+            this.SelectBtn.Size = new System.Drawing.Size(58, 36);
+            this.SelectBtn.TabIndex = 33;
+            this.SelectBtn.Text = "조회";
+            this.SelectBtn.UseVisualStyleBackColor = false;
+            this.SelectBtn.Click += new System.EventHandler(this.button8_Click);
             // 
             // label4
             // 
@@ -169,29 +169,29 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "제품 선택";
             // 
-            // button9
+            // WorkBtn
             // 
-            this.button9.BackColor = System.Drawing.Color.Yellow;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button9.ForeColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(294, 370);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(104, 31);
-            this.button9.TabIndex = 35;
-            this.button9.Text = "작업 지시";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.WorkBtn.BackColor = System.Drawing.Color.Yellow;
+            this.WorkBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.WorkBtn.FlatAppearance.BorderSize = 0;
+            this.WorkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WorkBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.WorkBtn.ForeColor = System.Drawing.Color.Black;
+            this.WorkBtn.Location = new System.Drawing.Point(294, 370);
+            this.WorkBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.WorkBtn.Name = "WorkBtn";
+            this.WorkBtn.Size = new System.Drawing.Size(104, 31);
+            this.WorkBtn.TabIndex = 35;
+            this.WorkBtn.Text = "작업 지시";
+            this.WorkBtn.UseVisualStyleBackColor = false;
+            this.WorkBtn.Click += new System.EventHandler(this.button9_Click);
             // 
-            // dataGridView2
+            // dataGridView1
             // 
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16F);
@@ -199,28 +199,28 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Quantity,
             this.FactoryName});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.Location = new System.Drawing.Point(61, 230);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.Size = new System.Drawing.Size(567, 130);
-            this.dataGridView2.TabIndex = 34;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(61, 230);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(567, 130);
+            this.dataGridView1.TabIndex = 34;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -280,7 +280,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,8 +289,8 @@
         private System.Windows.Forms.Panel panel3;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel3;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button SelectBtn;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn FactoryName;
@@ -301,6 +301,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button WorkBtn;
     }
 }

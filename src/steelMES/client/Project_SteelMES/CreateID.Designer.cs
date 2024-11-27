@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.JoinBtn = new System.Windows.Forms.Button();
             this.UserName = new System.Windows.Forms.TextBox();
             this.Password = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,16 +67,16 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Password";
             // 
-            // button1
+            // JoinBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button1.Location = new System.Drawing.Point(55, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 38);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "회원가입";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.JoinBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.JoinBtn.Location = new System.Drawing.Point(55, 409);
+            this.JoinBtn.Name = "JoinBtn";
+            this.JoinBtn.Size = new System.Drawing.Size(97, 38);
+            this.JoinBtn.TabIndex = 3;
+            this.JoinBtn.Text = "회원가입";
+            this.JoinBtn.UseVisualStyleBackColor = true;
+            this.JoinBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // UserName
             // 
@@ -95,25 +95,25 @@
             this.Password.Size = new System.Drawing.Size(148, 32);
             this.Password.TabIndex = 5;
             // 
-            // button2
+            // CancelBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button2.Location = new System.Drawing.Point(187, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 38);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "취소";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CancelBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CancelBtn.Location = new System.Drawing.Point(187, 409);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(80, 38);
+            this.CancelBtn.TabIndex = 6;
+            this.CancelBtn.Text = "취소";
+            this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // CreateID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(326, 539);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.UserName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.JoinBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -129,9 +129,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button JoinBtn;
         private System.Windows.Forms.TextBox UserName;
         private System.Windows.Forms.TextBox Password;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CancelBtn;
     }
 }

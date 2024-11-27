@@ -11,11 +11,11 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Material4 : MaterialForm
+    public partial class Membership2 : MaterialForm
     {
-        private Lost9 _lost9; // Lost9 참조
+        private Membership _lost9; // Lost9 참조
 
-        public Material4(Lost9 lost9)
+        public Membership2(Membership lost9)
         {
             InitializeComponent();
             _lost9 = lost9; // Lost9 참조 저장
@@ -32,7 +32,7 @@ namespace Project_SteelMES
         private void button1_Click(object sender, EventArgs e) //검색 버튼
         {
             // textBox1 값 가져오기
-            string searchValue = textBox1.Text.Trim();
+            string searchValue = InputTextBox.Text.Trim();
 
             // 입력값이 비어 있는 경우
             if (string.IsNullOrEmpty(searchValue))
@@ -49,8 +49,8 @@ namespace Project_SteelMES
                     row.Cells["UserName"].Value.ToString() == searchValue)
                 {
                     // 일치하는 데이터 발견
-                    label4.Text = row.Cells["UserName"].Value.ToString();
-                    label5.Text = row.Cells["Password"].Value.ToString();
+                    UserNameLabel.Text = row.Cells["UserName"].Value.ToString();
+                    PasswordLabel.Text = row.Cells["Password"].Value.ToString();
                     found = true;
                     break;
                 }
@@ -82,7 +82,7 @@ namespace Project_SteelMES
             }
 
             // label4의 텍스트 가져오기 (검색된 UserName 값)
-            string userName = label4.Text;
+            string userName = UserNameLabel.Text;
 
             if (string.IsNullOrEmpty(userName))
             {

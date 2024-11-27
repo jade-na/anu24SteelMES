@@ -1,6 +1,6 @@
 ﻿namespace Project_SteelMES
 {
-    partial class Material
+    partial class DefectRecord2
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.CloseBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dungeonLabel1
@@ -164,27 +164,27 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "label6";
             // 
-            // button5
+            // CloseBtn
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button5.Location = new System.Drawing.Point(384, 350);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 39);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "돌아가기";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
+            this.CloseBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CloseBtn.Location = new System.Drawing.Point(384, 350);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(95, 39);
+            this.CloseBtn.TabIndex = 6;
+            this.CloseBtn.Text = "돌아가기";
+            this.CloseBtn.UseVisualStyleBackColor = false;
+            this.CloseBtn.Click += new System.EventHandler(this.button5_Click);
             // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 400);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -215,6 +215,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button CloseBtn;
 	}
 }

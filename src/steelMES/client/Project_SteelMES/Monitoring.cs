@@ -13,14 +13,14 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Lost : LostForm
+    public partial class Monitoring : LostForm
     {
         private Button optionButton1; //공장 등록 버튼
         private Button optionButton2; //공급업체 등록 버튼
         private Button optionButton3; //회원 관리 버튼
         private bool areOptionButtonsVisible = false; // 가시성 상태 저장
 
-		public Lost()
+		public Monitoring()
         {
             InitializeComponent();
 		}
@@ -33,18 +33,18 @@ namespace Project_SteelMES
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button2.BackColor = Color.SkyBlue;
-            button2.ForeColor = Color.Black;
+            Menu_DefectRecordBtn.BackColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.ForeColor = Color.Black;
 
-            button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.SkyBlue;
-            button3.BackColor = Color.Transparent;
-            button3.ForeColor = Color.SkyBlue;
-            button4.BackColor = Color.Transparent;
-            button4.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
             // Form2 인스턴스 생성
-            Lost2 lost2 = new Lost2();
+            DefectRecord lost2 = new DefectRecord();
 
             // Form2를 panel1에 표시
             lost2.TopLevel = false; // 폼을 자식 컨트롤로 설정
@@ -102,17 +102,17 @@ namespace Project_SteelMES
 
 		private void button4_Click(object sender, EventArgs e)
         {
-            button4.BackColor = Color.SkyBlue;
-            button4.ForeColor = Color.Black;
+            Menu_WorkBtn.BackColor = Color.SkyBlue;
+            Menu_WorkBtn.ForeColor = Color.Black;
 
-            button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.SkyBlue;
-            button2.BackColor = Color.Transparent;
-            button2.ForeColor = Color.SkyBlue;
-            button3.BackColor = Color.Transparent;
-            button3.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
 
-            Lost8 lost8 = new Lost8();
+            Work lost8 = new Work();
 
             // Form2를 panel1에 표시
             lost8.TopLevel = false; // 폼을 자식 컨트롤로 설정
@@ -127,7 +127,7 @@ namespace Project_SteelMES
 
         private void OptionButton1_Click(object sender, EventArgs e)
         {
-            Lost6 lost6 = new Lost6();
+            FactoryRegister lost6 = new FactoryRegister();
             lost6.Show();
         }
 
@@ -139,24 +139,24 @@ namespace Project_SteelMES
 
         private void OptionButton3_Click(object sender, EventArgs e)
         {
-            Lost9 lost9 = new Lost9();
+            Membership lost9 = new Membership();
             lost9.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
 		{
-            button3.BackColor = Color.SkyBlue;
-            button3.ForeColor = Color.Black;
+            Menu_DefinitonBtn.BackColor = Color.SkyBlue;
+            Menu_DefinitonBtn.ForeColor = Color.Black;
 
-            button2.BackColor = Color.Transparent;
-            button2.ForeColor = Color.SkyBlue;
-            button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.SkyBlue;
-            button4.BackColor = Color.Transparent;
-            button4.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
             // Form2 인스턴스 생성
-            Metro metro = new Metro();
+            Definition metro = new Definition();
 
             // Form2를 panel1에 표시
             metro.TopLevel = false; // 폼을 자식 컨트롤로 설정
@@ -198,21 +198,21 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Lost lost = new Lost();
+            Monitoring lost = new Monitoring();
             lost.Show();
             this.Hide();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            button3.BackColor = Color.Transparent;
-            button3.ForeColor = Color.SkyBlue;
-            button2.BackColor = Color.Transparent;
-            button2.ForeColor = Color.SkyBlue;
-            button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.SkyBlue;
-            button4.BackColor = Color.Transparent;
-            button4.ForeColor = Color.SkyBlue;
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
             MaterialOrder matOrder = new MaterialOrder();
 
@@ -229,16 +229,16 @@ namespace Project_SteelMES
 
         private void button7_Click(object sender, EventArgs e)
         {
-            button3.BackColor = Color.Transparent;
-            button3.ForeColor = Color.SkyBlue;
-            button2.BackColor = Color.Transparent;
-            button2.ForeColor = Color.SkyBlue;
-            button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.SkyBlue;
-            button4.BackColor = Color.Transparent;
-            button4.ForeColor = Color.SkyBlue;
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
-            Lost5 lost5 = new Lost5();
+            ProcessManagement lost5 = new ProcessManagement();
 
             lost5.TopLevel = false;
             lost5.FormBorderStyle = FormBorderStyle.None; // 테두리 제거

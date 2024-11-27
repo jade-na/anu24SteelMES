@@ -7,9 +7,9 @@ using System.Drawing;
 
 namespace Project_SteelMES
 {
-	public partial class Lost2 : Form
+	public partial class DefectRecord : Form
 	{
-		public Lost2()
+		public DefectRecord()
 		{
 			InitializeComponent();
 		}
@@ -82,14 +82,14 @@ namespace Project_SteelMES
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Lost lost = new Lost();
+			Monitoring lost = new Monitoring();
 			lost.Show();
 			this.Hide();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			Metro metro = new Metro();
+			Definition metro = new Definition();
 			metro.Show();
 			this.Hide();
 		}
@@ -112,7 +112,7 @@ namespace Project_SteelMES
 				var detectionDate = dataGridView1.Rows[e.RowIndex].Cells["DefectionDate"].Value.ToString();
 
 				// Material 폼 열기
-				Material materialForm = new Material
+				DefectRecord2 materialForm = new DefectRecord2
 				{
 					DefectID = defectID,
 					ProductID = productID,

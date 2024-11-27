@@ -11,9 +11,9 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Metro : MetroForm
+    public partial class Definition : MetroForm
     {
-		public Metro()
+		public Definition()
         {
             InitializeComponent();
         }
@@ -25,14 +25,14 @@ namespace Project_SteelMES
 		
 		private void button1_Click(object sender, EventArgs e)
 		{
-            Lost lost = new Lost();
+            Monitoring lost = new Monitoring();
             lost.Show();
             this.Hide();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-            Lost2 lost2 = new Lost2();
+            DefectRecord lost2 = new DefectRecord();
             lost2.Show();
             this.Hide();
 		}

@@ -33,42 +33,42 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.OrderBtn = new System.Windows.Forms.Button();
-            this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.SelectBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.SupplyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MaterialID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaterialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.OrderBtn = new System.Windows.Forms.Button();
+            this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.SupplyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.panel1.Controls.Add(this.SelectBtn);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.dungeonLabel2);
             this.panel1.Controls.Add(this.OrderBtn);
@@ -76,6 +76,95 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(740, 199);
             this.panel1.TabIndex = 11;
+            // 
+            // SelectBtn
+            // 
+            this.SelectBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SelectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.SelectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SelectBtn.FlatAppearance.BorderSize = 0;
+            this.SelectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.SelectBtn.ForeColor = System.Drawing.Color.Black;
+            this.SelectBtn.Location = new System.Drawing.Point(560, 167);
+            this.SelectBtn.Name = "SelectBtn";
+            this.SelectBtn.Size = new System.Drawing.Size(80, 32);
+            this.SelectBtn.TabIndex = 14;
+            this.SelectBtn.Text = "조회";
+            this.SelectBtn.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaterialID,
+            this.MaterialName,
+            this.SupplyID,
+            this.Quantity,
+            this.ImportDate});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(726, 109);
+            this.dataGridView1.TabIndex = 13;
+            // 
+            // MaterialID
+            // 
+            this.MaterialID.HeaderText = "MaterialID";
+            this.MaterialID.Name = "MaterialID";
+            // 
+            // MaterialName
+            // 
+            this.MaterialName.HeaderText = "MaterialName";
+            this.MaterialName.Name = "MaterialName";
+            // 
+            // SupplyID
+            // 
+            this.SupplyID.HeaderText = "SupplyName";
+            this.SupplyID.Name = "SupplyID";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // ImportDate
+            // 
+            this.ImportDate.HeaderText = "ImportDate";
+            this.ImportDate.Name = "ImportDate";
+            // 
+            // dungeonLabel2
+            // 
+            this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.dungeonLabel2.Location = new System.Drawing.Point(8, 7);
+            this.dungeonLabel2.Name = "dungeonLabel2";
+            this.dungeonLabel2.Size = new System.Drawing.Size(209, 40);
+            this.dungeonLabel2.TabIndex = 9;
+            this.dungeonLabel2.Text = "자재 정보";
             // 
             // OrderBtn
             // 
@@ -105,46 +194,9 @@
             this.dungeonLabel1.TabIndex = 12;
             this.dungeonLabel1.Text = "자재 주문";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaterialID,
-            this.MaterialName,
-            this.SupplyID,
-            this.Quantity,
-            this.ImportDate});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(726, 109);
-            this.dataGridView1.TabIndex = 13;
-            // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.SearchBtn);
             this.panel2.Controls.Add(this.dateTimePicker1);
@@ -155,22 +207,41 @@
             this.panel2.Size = new System.Drawing.Size(735, 50);
             this.panel2.TabIndex = 13;
             // 
-            // comboBox1
+            // pictureBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel",
-            "BBB Steel",
-            "CCC Steel"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 11);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 38);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "공급업체 선택";
+            this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
+            this.pictureBox1.Location = new System.Drawing.Point(624, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBtn.AutoSize = true;
+            this.SearchBtn.BackColor = System.Drawing.Color.DarkGray;
+            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.SearchBtn.FlatAppearance.BorderSize = 0;
+            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.SearchBtn.Location = new System.Drawing.Point(640, 7);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(69, 30);
+            this.SearchBtn.TabIndex = 14;
+            this.SearchBtn.Text = "     검색";
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.dateTimePicker1.Location = new System.Drawing.Point(328, 12);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(270, 36);
+            this.dateTimePicker1.TabIndex = 13;
             // 
             // comboBox2
             // 
@@ -190,35 +261,26 @@
             this.comboBox2.TabIndex = 1;
             this.comboBox2.Text = "자재 선택";
             // 
-            // dateTimePicker1
+            // comboBox1
             // 
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(328, 12);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(270, 36);
-            this.dateTimePicker1.TabIndex = 13;
-            // 
-            // SearchBtn
-            // 
-            this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBtn.AutoSize = true;
-            this.SearchBtn.BackColor = System.Drawing.Color.DarkGray;
-            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.SearchBtn.FlatAppearance.BorderSize = 0;
-            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.SearchBtn.Location = new System.Drawing.Point(640, 7);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(69, 30);
-            this.SearchBtn.TabIndex = 14;
-            this.SearchBtn.Text = "     검색";
-            this.SearchBtn.UseVisualStyleBackColor = false;
+            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "ABC Steel",
+            "AAA Steel",
+            "BBB Steel",
+            "CCC Steel"});
+            this.comboBox1.Location = new System.Drawing.Point(8, 11);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(177, 38);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.Text = "공급업체 선택";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.panel3.Controls.Add(this.dungeonLabel3);
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Location = new System.Drawing.Point(3, 332);
@@ -226,22 +288,22 @@
             this.panel3.Size = new System.Drawing.Size(740, 160);
             this.panel3.TabIndex = 14;
             // 
-            // dungeonLabel2
+            // dungeonLabel3
             // 
-            this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(8, 7);
-            this.dungeonLabel2.Name = "dungeonLabel2";
-            this.dungeonLabel2.Size = new System.Drawing.Size(209, 40);
-            this.dungeonLabel2.TabIndex = 9;
-            this.dungeonLabel2.Text = "자재 현황";
+            this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.dungeonLabel3.Location = new System.Drawing.Point(11, 9);
+            this.dungeonLabel3.Name = "dungeonLabel3";
+            this.dungeonLabel3.Size = new System.Drawing.Size(209, 40);
+            this.dungeonLabel3.TabIndex = 20;
+            this.dungeonLabel3.Text = "공급업체";
             // 
             // dataGridView2
             // 
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -256,7 +318,7 @@
             this.ContactInfo,
             this.Country});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -286,17 +348,6 @@
             this.Country.HeaderText = "Country";
             this.Country.Name = "Country";
             // 
-            // dungeonLabel3
-            // 
-            this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel3.Location = new System.Drawing.Point(11, 9);
-            this.dungeonLabel3.Name = "dungeonLabel3";
-            this.dungeonLabel3.Size = new System.Drawing.Size(209, 40);
-            this.dungeonLabel3.TabIndex = 20;
-            this.dungeonLabel3.Text = "공급업체";
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.panel3);
@@ -307,57 +358,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(766, 509);
             this.panel4.TabIndex = 15;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(624, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // MaterialID
-            // 
-            this.MaterialID.HeaderText = "MaterialID";
-            this.MaterialID.Name = "MaterialID";
-            // 
-            // MaterialName
-            // 
-            this.MaterialName.HeaderText = "MaterialName";
-            this.MaterialName.Name = "MaterialName";
-            // 
-            // SupplyID
-            // 
-            this.SupplyID.HeaderText = "SupplyName";
-            this.SupplyID.Name = "SupplyID";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // ImportDate
-            // 
-            this.ImportDate.HeaderText = "ImportDate";
-            this.ImportDate.Name = "ImportDate";
-            // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(560, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 32);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "조회";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // MaterialOrder
             // 
@@ -372,10 +372,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -405,6 +405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplyID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImportDate;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SelectBtn;
     }
 }

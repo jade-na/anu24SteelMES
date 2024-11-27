@@ -11,11 +11,11 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Lost6 : LostForm
+    public partial class FactoryRegister : LostForm
     {
 
         
-        public Lost6()
+        public FactoryRegister()
         {
             InitializeComponent();
 
@@ -32,7 +32,7 @@ namespace Project_SteelMES
 
         private void button7_Click(object sender, EventArgs e) //추가 버튼
         {
-            Material2 material2 = new Material2(this);
+            FactoryRegister2 material2 = new FactoryRegister2(this);
             material2.StartPosition = FormStartPosition.Manual; // 위치를 수동으로 지정
             material2.Location = new Point(1000, 220);
             material2.Show();
@@ -53,21 +53,21 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Lost lost = new Lost();
+            Monitoring lost = new Monitoring();
             lost.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Lost2 lost2 = new Lost2();
+            DefectRecord lost2 = new DefectRecord();
             lost2.Show();
             this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Metro metro = new Metro();
+            Definition metro = new Definition();
             metro.Show();
             this.Hide();
         }

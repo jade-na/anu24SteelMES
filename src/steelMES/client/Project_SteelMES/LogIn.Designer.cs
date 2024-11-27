@@ -2,7 +2,7 @@
 
 namespace Project_SteelMES
 {
-    partial class Crown
+    partial class Login
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -35,11 +35,11 @@ namespace Project_SteelMES
             this.panel1 = new System.Windows.Forms.Panel();
             this.parrotFormHandle2 = new ReaLTaiizor.Controls.ParrotFormHandle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialButton2 = new ReaLTaiizor.Controls.MaterialButton();
+            this.JoinBtn = new ReaLTaiizor.Controls.MaterialButton();
             this.hopeSwitch1 = new ReaLTaiizor.Controls.HopeSwitch();
-            this.hopeTextBox2 = new ReaLTaiizor.Controls.HopeTextBox();
-            this.materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
-            this.hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
+            this.Password_TextBox = new ReaLTaiizor.Controls.HopeTextBox();
+            this.LogInBtn = new ReaLTaiizor.Controls.MaterialButton();
+            this.UserID_TextBox = new ReaLTaiizor.Controls.HopeTextBox();
             this.hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
             this.dungeonLinkLabel1 = new ReaLTaiizor.Controls.DungeonLinkLabel();
             this.materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
@@ -76,11 +76,11 @@ namespace Project_SteelMES
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(34)))));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.materialButton2);
+            this.panel2.Controls.Add(this.JoinBtn);
             this.panel2.Controls.Add(this.hopeSwitch1);
-            this.panel2.Controls.Add(this.hopeTextBox2);
-            this.panel2.Controls.Add(this.materialButton1);
-            this.panel2.Controls.Add(this.hopeTextBox1);
+            this.panel2.Controls.Add(this.Password_TextBox);
+            this.panel2.Controls.Add(this.LogInBtn);
+            this.panel2.Controls.Add(this.UserID_TextBox);
             this.panel2.Controls.Add(this.hopePictureBox1);
             this.panel2.Location = new System.Drawing.Point(1, 1);
             this.panel2.Name = "panel2";
@@ -88,30 +88,30 @@ namespace Project_SteelMES
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // materialButton2
+            // JoinBtn
             // 
-            this.materialButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialButton2.AutoSize = false;
-            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton2.CharacterCasing = ReaLTaiizor.Controls.MaterialButton.CharacterCasingEnum.Normal;
-            this.materialButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialButton2.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.materialButton2.Location = new System.Drawing.Point(168, 474);
-            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton2.Size = new System.Drawing.Size(108, 36);
-            this.materialButton2.TabIndex = 21;
-            this.materialButton2.Text = "회원가입";
-            this.materialButton2.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
-            this.materialButton2.Click += new System.EventHandler(this.materialButton2_Click);
+            this.JoinBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.JoinBtn.AutoSize = false;
+            this.JoinBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.JoinBtn.CharacterCasing = ReaLTaiizor.Controls.MaterialButton.CharacterCasingEnum.Normal;
+            this.JoinBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.JoinBtn.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.JoinBtn.Depth = 0;
+            this.JoinBtn.HighEmphasis = true;
+            this.JoinBtn.Icon = null;
+            this.JoinBtn.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.JoinBtn.Location = new System.Drawing.Point(168, 474);
+            this.JoinBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.JoinBtn.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.JoinBtn.Name = "JoinBtn";
+            this.JoinBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.JoinBtn.Size = new System.Drawing.Size(108, 36);
+            this.JoinBtn.TabIndex = 21;
+            this.JoinBtn.Text = "회원가입";
+            this.JoinBtn.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.JoinBtn.UseAccentColor = false;
+            this.JoinBtn.UseVisualStyleBackColor = true;
+            this.JoinBtn.Click += new System.EventHandler(this.materialButton2_Click);
             // 
             // hopeSwitch1
             // 
@@ -131,85 +131,85 @@ namespace Project_SteelMES
             this.hopeSwitch1.UseVisualStyleBackColor = true;
             this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
             // 
-            // hopeTextBox2
+            // Password_TextBox
             // 
-            this.hopeTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hopeTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
-            this.hopeTextBox2.BaseColor = System.Drawing.Color.Transparent;
-            this.hopeTextBox2.BorderColorA = System.Drawing.Color.DodgerBlue;
-            this.hopeTextBox2.BorderColorB = System.Drawing.Color.DarkGray;
-            this.hopeTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeTextBox2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.hopeTextBox2.Hint = "";
-            this.hopeTextBox2.Location = new System.Drawing.Point(47, 292);
-            this.hopeTextBox2.MaxLength = 128;
-            this.hopeTextBox2.Multiline = false;
-            this.hopeTextBox2.Name = "hopeTextBox2";
-            this.hopeTextBox2.PasswordChar = '*';
-            this.hopeTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.hopeTextBox2.SelectedText = "";
-            this.hopeTextBox2.SelectionLength = 0;
-            this.hopeTextBox2.SelectionStart = 0;
-            this.hopeTextBox2.Size = new System.Drawing.Size(219, 38);
-            this.hopeTextBox2.TabIndex = 8;
-            this.hopeTextBox2.TabStop = false;
-            this.hopeTextBox2.Text = "Password";
-            this.hopeTextBox2.UseSystemPasswordChar = false;
-            this.hopeTextBox2.Click += new System.EventHandler(this.hopeTextBox2_Click);
+            this.Password_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Password_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
+            this.Password_TextBox.BaseColor = System.Drawing.Color.Transparent;
+            this.Password_TextBox.BorderColorA = System.Drawing.Color.DodgerBlue;
+            this.Password_TextBox.BorderColorB = System.Drawing.Color.DarkGray;
+            this.Password_TextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Password_TextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.Password_TextBox.Hint = "";
+            this.Password_TextBox.Location = new System.Drawing.Point(47, 292);
+            this.Password_TextBox.MaxLength = 128;
+            this.Password_TextBox.Multiline = false;
+            this.Password_TextBox.Name = "Password_TextBox";
+            this.Password_TextBox.PasswordChar = '*';
+            this.Password_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Password_TextBox.SelectedText = "";
+            this.Password_TextBox.SelectionLength = 0;
+            this.Password_TextBox.SelectionStart = 0;
+            this.Password_TextBox.Size = new System.Drawing.Size(219, 38);
+            this.Password_TextBox.TabIndex = 8;
+            this.Password_TextBox.TabStop = false;
+            this.Password_TextBox.Text = "Password";
+            this.Password_TextBox.UseSystemPasswordChar = false;
+            this.Password_TextBox.Click += new System.EventHandler(this.hopeTextBox2_Click);
             // 
-            // materialButton1
+            // LogInBtn
             // 
-            this.materialButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.materialButton1.AutoEllipsis = true;
-            this.materialButton1.AutoSize = false;
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.BackColor = System.Drawing.Color.Orange;
-            this.materialButton1.CharacterCasing = ReaLTaiizor.Controls.MaterialButton.CharacterCasingEnum.Normal;
-            this.materialButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialButton1.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.materialButton1.Location = new System.Drawing.Point(33, 474);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Size = new System.Drawing.Size(108, 36);
-            this.materialButton1.TabIndex = 20;
-            this.materialButton1.Text = "로그인";
-            this.materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = false;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            this.LogInBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LogInBtn.AutoEllipsis = true;
+            this.LogInBtn.AutoSize = false;
+            this.LogInBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.LogInBtn.BackColor = System.Drawing.Color.Orange;
+            this.LogInBtn.CharacterCasing = ReaLTaiizor.Controls.MaterialButton.CharacterCasingEnum.Normal;
+            this.LogInBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogInBtn.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.LogInBtn.Depth = 0;
+            this.LogInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogInBtn.HighEmphasis = true;
+            this.LogInBtn.Icon = null;
+            this.LogInBtn.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.LogInBtn.Location = new System.Drawing.Point(33, 474);
+            this.LogInBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.LogInBtn.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.LogInBtn.Name = "LogInBtn";
+            this.LogInBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.LogInBtn.Size = new System.Drawing.Size(108, 36);
+            this.LogInBtn.TabIndex = 20;
+            this.LogInBtn.Text = "로그인";
+            this.LogInBtn.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.LogInBtn.UseAccentColor = false;
+            this.LogInBtn.UseVisualStyleBackColor = false;
+            this.LogInBtn.Click += new System.EventHandler(this.materialButton1_Click);
             // 
-            // hopeTextBox1
+            // UserID_TextBox
             // 
-            this.hopeTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hopeTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
-            this.hopeTextBox1.BaseColor = System.Drawing.Color.Transparent;
-            this.hopeTextBox1.BorderColorA = System.Drawing.Color.DodgerBlue;
-            this.hopeTextBox1.BorderColorB = System.Drawing.Color.DarkGray;
-            this.hopeTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeTextBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.hopeTextBox1.Hint = "";
-            this.hopeTextBox1.Location = new System.Drawing.Point(47, 231);
-            this.hopeTextBox1.MaxLength = 128;
-            this.hopeTextBox1.Multiline = false;
-            this.hopeTextBox1.Name = "hopeTextBox1";
-            this.hopeTextBox1.PasswordChar = '\0';
-            this.hopeTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.hopeTextBox1.SelectedText = "";
-            this.hopeTextBox1.SelectionLength = 0;
-            this.hopeTextBox1.SelectionStart = 0;
-            this.hopeTextBox1.Size = new System.Drawing.Size(219, 38);
-            this.hopeTextBox1.TabIndex = 7;
-            this.hopeTextBox1.TabStop = false;
-            this.hopeTextBox1.Text = "ID";
-            this.hopeTextBox1.UseSystemPasswordChar = false;
-            this.hopeTextBox1.Click += new System.EventHandler(this.hopeTextBox1_Click);
+            this.UserID_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserID_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(12)))), ((int)(((byte)(45)))));
+            this.UserID_TextBox.BaseColor = System.Drawing.Color.Transparent;
+            this.UserID_TextBox.BorderColorA = System.Drawing.Color.DodgerBlue;
+            this.UserID_TextBox.BorderColorB = System.Drawing.Color.DarkGray;
+            this.UserID_TextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.UserID_TextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.UserID_TextBox.Hint = "";
+            this.UserID_TextBox.Location = new System.Drawing.Point(47, 231);
+            this.UserID_TextBox.MaxLength = 128;
+            this.UserID_TextBox.Multiline = false;
+            this.UserID_TextBox.Name = "UserID_TextBox";
+            this.UserID_TextBox.PasswordChar = '\0';
+            this.UserID_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.UserID_TextBox.SelectedText = "";
+            this.UserID_TextBox.SelectionLength = 0;
+            this.UserID_TextBox.SelectionStart = 0;
+            this.UserID_TextBox.Size = new System.Drawing.Size(219, 38);
+            this.UserID_TextBox.TabIndex = 7;
+            this.UserID_TextBox.TabStop = false;
+            this.UserID_TextBox.Text = "ID";
+            this.UserID_TextBox.UseSystemPasswordChar = false;
+            this.UserID_TextBox.Click += new System.EventHandler(this.hopeTextBox1_Click);
             // 
             // hopePictureBox1
             // 
@@ -261,7 +261,7 @@ namespace Project_SteelMES
             this.materialLabel1.Text = "Remember me";
             this.materialLabel1.UseAccent = true;
             // 
-            // Crown
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -271,7 +271,7 @@ namespace Project_SteelMES
             this.Controls.Add(this.dungeonLinkLabel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Crown";
+            this.Name = "Login";
             this.Text = "Crown";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -287,14 +287,14 @@ namespace Project_SteelMES
         private ReaLTaiizor.Controls.ParrotFormEllipse parrotFormEllipse1;
         private ReaLTaiizor.Controls.ParrotFormHandle parrotFormHandle1;
         private ReaLTaiizor.Controls.ParrotFormHandle parrotFormHandle2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
+        private ReaLTaiizor.Controls.HopeTextBox Password_TextBox;
+        private ReaLTaiizor.Controls.HopeTextBox UserID_TextBox;
         private ReaLTaiizor.Controls.HopeSwitch hopeSwitch1;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.DungeonLinkLabel dungeonLinkLabel1;
         private System.Windows.Forms.Panel panel2;
-        private ReaLTaiizor.Controls.MaterialButton materialButton2;
-        private ReaLTaiizor.Controls.MaterialButton materialButton1;
+        private ReaLTaiizor.Controls.MaterialButton JoinBtn;
+        private ReaLTaiizor.Controls.MaterialButton LogInBtn;
         private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
     }
 }

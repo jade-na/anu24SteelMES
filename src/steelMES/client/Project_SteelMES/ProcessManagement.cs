@@ -11,14 +11,19 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Lost5 : Form
+    public partial class ProcessManagement : Form
     {
-        public Lost5()
+        public ProcessManagement()
         {
             InitializeComponent();
         }
 
         private void Lost5_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
