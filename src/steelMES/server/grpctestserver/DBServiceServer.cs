@@ -404,5 +404,49 @@ namespace grpcDummyMesServer
             }
             return result;
         }
-    }
+		/// <summary>
+		/// Product 테이블에서 데이터를 가져오는 메서드
+		/// </summary>
+		public override async Task<ProductReply> GetAllProductData(SteelMES.Empty request, ServerCallContext context)
+		{
+			var result = new ProductReply();
+
+			try
+			{
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				const string query = @"
+        SELECT P.PRODUCTID, P.PRODUCTNAME, P.WEIGHT, P.PRODUCTIONDATE, P.QUALITYGRADE, D.DEFECTID, P.FACID
+        FROM SCOTT.PRODUCT P
+        LEFT JOIN SCOTT.DEFECT D ON P.PRODUCTID = D.PRODUCTID";
+
+				await using var command = new OracleCommand(query, connection);
+				await using var reader = await command.ExecuteReaderAsync();
+
+				while (await reader.ReadAsync())
+				{
+					result.Products.Add(new ProductInfo
+					{
+						ProductID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
+						ProductName = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+						Weight = reader.IsDBNull(2) ? 0 : reader.GetDouble(2),
+						ProductionDate = reader.IsDBNull(3) ? string.Empty : reader.GetDateTime(3).ToString("yyyy-MM-dd"),
+						QualityGrade = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
+						DefectID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5),
+						FacID = reader.IsDBNull(6) ? 0 : reader.GetInt32(6)
+					});
+				}
+
+				result.ErrorCode = result.Products.Count > 0 ? 0 : -1; // 데이터가 있는지 여부에 따라 에러코드 설정
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Exception 발생: {ex.Message}");
+				result.ErrorCode = -1;
+			}
+
+			return result;
+		}
+	}
 }

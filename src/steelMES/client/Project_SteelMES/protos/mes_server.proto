@@ -11,8 +11,10 @@ service DB_Service {
     rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL 데이터를 가져오는 RPC
     rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER 데이터를 가져오는 RPC
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
-      rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
+    rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
+    rpc GetAllProductData (Empty) returns (ProductReply);  // 모든 제품 데이터 요청
+
 }
 
 // 기본 Empty 메시지
@@ -109,8 +111,9 @@ message UpdateMaterialQuantityRequest {
     int32 additionalQuantity = 2;
 }
 
-message UpdateMaterialQuantityReply {
-    int32 errorCode = 1;
+// 자재 수량 업데이트 응답 메시지
+message UpdateMaterialQuantityReply { 
+    int32 errorCode = 1;    // 특정 제품 ID로 조회 (선택사항)
 }
 
 // 공장 데이터를 추가하는 요청 메시지
@@ -137,4 +140,22 @@ message AddMaterialReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
     string message = 2;    // 결과 메시지
     int32 materialID = 3;  // 새로 생성된 MaterialID
+}
+
+// 제품 정보 메시지
+message ProductInfo {
+    int32 productID = 1;          // 제품 ID
+    string productName = 2;       // 제품명
+    double weight = 3;            // 무게
+    int32 materialID = 4;         // 자재 ID
+    string productionDate = 5;    // 생산 날짜
+    string qualityGrade = 6;      // 품질 등급
+    int32 defectID = 7;           // 불량 ID (DEFECT 테이블에서 가져옴)
+    int32 facID = 8;              // 공장 ID
+}
+
+// 제품 정보 응답 메시지
+message ProductReply {
+    int32 errorCode = 1;               // 오류 코드 (0: 성공, 그 외: 실패)
+    repeated ProductInfo products = 2; // 제품 목록
 }
