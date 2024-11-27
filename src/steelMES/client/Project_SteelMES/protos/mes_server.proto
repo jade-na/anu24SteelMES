@@ -11,7 +11,8 @@ service DB_Service {
     rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL 데이터를 가져오는 RPC
     rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER 데이터를 가져오는 RPC
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
-
+      rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
+    rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
 }
 
 // 기본 Empty 메시지
@@ -32,10 +33,9 @@ message DefectByProductIDRequest {
 message prodHistoryInfo {
     int32 defectID = 1;
     int32 productID = 2;
-    int32 materialID = 3;
-    string defectType = 4;
-    string defectionDate = 5;
-    string location = 6;
+    string defectType = 3;
+    string defectionDate = 4;
+    
 }
 
 // 불량 이력 응답 메시지
@@ -111,4 +111,30 @@ message UpdateMaterialQuantityRequest {
 
 message UpdateMaterialQuantityReply {
     int32 errorCode = 1;
+}
+
+// 공장 데이터를 추가하는 요청 메시지
+message AddFactoryRequest {
+    string location = 1; // 공장 위치
+}
+
+// 공장 데이터를 추가한 결과를 반환하는 응답 메시지
+message AddFactoryReply {
+    int32 errorCode = 1;   // 0: 성공, -1: 실패
+    string message = 2;    // 결과 메시지
+    int32 facID = 3;       // 새로 생성된 FacID
+}
+
+// 원자재 데이터를 추가하는 요청 메시지
+message AddMaterialRequest {
+    string name = 1;       // 원자재 이름
+    int32 supplierID = 2;  // 공급업체 ID
+    int32 quantity = 3;    // 공급받은 수량
+}
+
+// 원자재 데이터를 추가한 결과를 반환하는 응답 메시지
+message AddMaterialReply {
+    int32 errorCode = 1;   // 0: 성공, -1: 실패
+    string message = 2;    // 결과 메시지
+    int32 materialID = 3;  // 새로 생성된 MaterialID
 }

@@ -21,10 +21,8 @@ namespace Project_SteelMES
 			{
 				dataGridView1.Columns.Add("DefectID", "검출 ID");
 				dataGridView1.Columns.Add("ProductID", "제품 ID");
-				dataGridView1.Columns.Add("MaterialID", "자재 ID");
 				dataGridView1.Columns.Add("DefectType", "검출 타입");
 				dataGridView1.Columns.Add("DefectionDate", "검출 날짜");
-				dataGridView1.Columns.Add("Location", "위치");
 			}
 
 			
@@ -56,7 +54,7 @@ namespace Project_SteelMES
 					dataGridView1.Rows.Clear();
 					foreach (var info in response.Infos)
 					{
-						dataGridView1.Rows.Add(info.DefectID, info.ProductID, info.MaterialID, info.DefectType, info.DefectionDate, info.Location);
+						dataGridView1.Rows.Add(info.DefectID, info.ProductID, info.DefectType, info.DefectionDate);
 					}
 				}
 				else
@@ -110,7 +108,6 @@ namespace Project_SteelMES
 				// 클릭한 행의 데이터를 가져오기
 				var defectID = dataGridView1.Rows[e.RowIndex].Cells["DefectID"].Value.ToString();
 				var productID = dataGridView1.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
-				var materialID = dataGridView1.Rows[e.RowIndex].Cells["MaterialID"].Value.ToString();
 				var defectType = dataGridView1.Rows[e.RowIndex].Cells["DefectType"].Value.ToString();
 				var detectionDate = dataGridView1.Rows[e.RowIndex].Cells["DefectionDate"].Value.ToString();
 
@@ -119,7 +116,6 @@ namespace Project_SteelMES
 				{
 					DefectID = defectID,
 					ProductID = productID,
-					MaterialID = materialID,
 					DefectType = defectType,
 					DetectionDate = detectionDate
 				};

@@ -13,7 +13,6 @@ service DB_Service {
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
     rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
-
 }
 
 // 기본 Empty 메시지
