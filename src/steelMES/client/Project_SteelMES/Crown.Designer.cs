@@ -217,10 +217,10 @@ namespace Project_SteelMES
             this.hopePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.hopePictureBox1.Enabled = false;
             this.hopePictureBox1.Image = global::Project_SteelMES.Properties.Resources.Logo;
-            this.hopePictureBox1.Location = new System.Drawing.Point(83, 61);
+            this.hopePictureBox1.Location = new System.Drawing.Point(83, 70);
             this.hopePictureBox1.Name = "hopePictureBox1";
             this.hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox1.Size = new System.Drawing.Size(147, 113);
+            this.hopePictureBox1.Size = new System.Drawing.Size(160, 98);
             this.hopePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hopePictureBox1.TabIndex = 0;

@@ -226,5 +226,27 @@ namespace Project_SteelMES
 
             
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.Transparent;
+            button3.ForeColor = Color.SkyBlue;
+            button2.BackColor = Color.Transparent;
+            button2.ForeColor = Color.SkyBlue;
+            button1.BackColor = Color.Transparent;
+            button1.ForeColor = Color.SkyBlue;
+            button4.BackColor = Color.Transparent;
+            button4.ForeColor = Color.SkyBlue;
+
+            Lost5 lost5 = new Lost5();
+
+            lost5.TopLevel = false;
+            lost5.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
+            lost5.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
+
+            panel5.Controls.Clear(); // 기존 컨트롤 제거
+            panel5.Controls.Add(lost5); // Form2 추가
+            lost5.Show(); // Form2 표시
+        }
     }
 }

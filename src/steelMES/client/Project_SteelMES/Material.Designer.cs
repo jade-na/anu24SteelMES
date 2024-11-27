@@ -58,11 +58,11 @@
             // 
             this.dungeonLabel2.AutoSize = true;
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dungeonLabel2.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
             this.dungeonLabel2.Location = new System.Drawing.Point(22, 114);
             this.dungeonLabel2.Name = "dungeonLabel2";
-            this.dungeonLabel2.Size = new System.Drawing.Size(167, 24);
+            this.dungeonLabel2.Size = new System.Drawing.Size(161, 31);
             this.dungeonLabel2.TabIndex = 6;
             this.dungeonLabel2.Text = "DetectType :";
             // 
@@ -70,11 +70,11 @@
             // 
             this.dungeonLabel3.AutoSize = true;
             this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dungeonLabel3.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel3.Location = new System.Drawing.Point(22, 159);
+            this.dungeonLabel3.Location = new System.Drawing.Point(22, 167);
             this.dungeonLabel3.Name = "dungeonLabel3";
-            this.dungeonLabel3.Size = new System.Drawing.Size(133, 24);
+            this.dungeonLabel3.Size = new System.Drawing.Size(130, 31);
             this.dungeonLabel3.TabIndex = 7;
             this.dungeonLabel3.Text = "DetectID :";
             // 
@@ -82,11 +82,11 @@
             // 
             this.dungeonLabel4.AutoSize = true;
             this.dungeonLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel4.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dungeonLabel4.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel4.Location = new System.Drawing.Point(22, 208);
+            this.dungeonLabel4.Location = new System.Drawing.Point(22, 217);
             this.dungeonLabel4.Name = "dungeonLabel4";
-            this.dungeonLabel4.Size = new System.Drawing.Size(146, 24);
+            this.dungeonLabel4.Size = new System.Drawing.Size(145, 31);
             this.dungeonLabel4.TabIndex = 8;
             this.dungeonLabel4.Text = "ProductID :";
             // 
@@ -94,11 +94,11 @@
             // 
             this.dungeonLabel5.AutoSize = true;
             this.dungeonLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel5.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dungeonLabel5.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel5.Location = new System.Drawing.Point(22, 257);
+            this.dungeonLabel5.Location = new System.Drawing.Point(22, 268);
             this.dungeonLabel5.Name = "dungeonLabel5";
-            this.dungeonLabel5.Size = new System.Drawing.Size(152, 24);
+            this.dungeonLabel5.Size = new System.Drawing.Size(151, 31);
             this.dungeonLabel5.TabIndex = 9;
             this.dungeonLabel5.Text = "MaterialID :";
             // 
@@ -106,11 +106,11 @@
             // 
             this.dungeonLabel6.AutoSize = true;
             this.dungeonLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel6.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dungeonLabel6.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel6.Location = new System.Drawing.Point(22, 302);
+            this.dungeonLabel6.Location = new System.Drawing.Point(22, 317);
             this.dungeonLabel6.Name = "dungeonLabel6";
-            this.dungeonLabel6.Size = new System.Drawing.Size(204, 24);
+            this.dungeonLabel6.Size = new System.Drawing.Size(198, 31);
             this.dungeonLabel6.TabIndex = 10;
             this.dungeonLabel6.Text = "DetectionDate :";
             // 
@@ -118,7 +118,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label2.Location = new System.Drawing.Point(195, 114);
+            this.label2.Location = new System.Drawing.Point(189, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 30);
             this.label2.TabIndex = 11;
@@ -128,7 +128,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label3.Location = new System.Drawing.Point(165, 158);
+            this.label3.Location = new System.Drawing.Point(173, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 30);
             this.label3.TabIndex = 12;
@@ -138,7 +138,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label4.Location = new System.Drawing.Point(180, 207);
+            this.label4.Location = new System.Drawing.Point(173, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 30);
             this.label4.TabIndex = 13;
@@ -148,7 +148,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label5.Location = new System.Drawing.Point(180, 256);
+            this.label5.Location = new System.Drawing.Point(180, 268);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 30);
             this.label5.TabIndex = 14;
@@ -158,7 +158,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label6.Location = new System.Drawing.Point(234, 301);
+            this.label6.Location = new System.Drawing.Point(226, 317);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 30);
             this.label6.TabIndex = 15;
@@ -166,17 +166,17 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.button5.Location = new System.Drawing.Point(384, 355);
+            this.button5.Location = new System.Drawing.Point(384, 350);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(113, 39);
+            this.button5.Size = new System.Drawing.Size(107, 39);
             this.button5.TabIndex = 6;
             this.button5.Text = "돌아가기";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Material

@@ -34,24 +34,24 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 100D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint21 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint22 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 25D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint23 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint24 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 15D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint25 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint26 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 9D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint92 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint93 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint94 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint95 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 80D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint96 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 100D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint97 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint98 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 60D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint99 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint100 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 25D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint101 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint102 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 15D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint103 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint104 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 9D);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
@@ -73,6 +73,8 @@ namespace Project_SteelMES
             this.button7 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox1)).BeginInit();
@@ -82,6 +84,7 @@ namespace Project_SteelMES
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -224,47 +227,47 @@ namespace Project_SteelMES
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
             this.panel2.Controls.Add(this.chart1);
             this.panel2.Controls.Add(this.dungeonLabel2);
-            this.panel2.Location = new System.Drawing.Point(3, 75);
+            this.panel2.Location = new System.Drawing.Point(3, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(929, 344);
+            this.panel2.Size = new System.Drawing.Size(960, 344);
             this.panel2.TabIndex = 1;
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(64)))));
-            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY.MajorGrid.Enabled = false;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(64)))));
-            chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea15.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea15.AxisX.MajorGrid.Enabled = false;
+            chartArea15.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(64)))));
+            chartArea15.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea15.AxisY.MajorGrid.Enabled = false;
+            chartArea15.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(64)))));
+            chartArea15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
+            chartArea15.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea15);
             this.chart1.Location = new System.Drawing.Point(80, 43);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(225)))), ((int)(((byte)(245)))));
-            series3.IsValueShownAsLabel = true;
-            series3.LabelForeColor = System.Drawing.Color.White;
-            series3.Legend = "Legend1";
-            series3.Name = "Coil Production";
-            dataPoint14.AxisLabel = "Jan";
-            dataPoint15.AxisLabel = "Feb";
-            dataPoint16.AxisLabel = "Mar";
-            dataPoint17.AxisLabel = "Apr";
-            dataPoint18.AxisLabel = "May";
-            dataPoint19.AxisLabel = "Jun";
-            dataPoint20.AxisLabel = "Jul";
-            series3.Points.Add(dataPoint14);
-            series3.Points.Add(dataPoint15);
-            series3.Points.Add(dataPoint16);
-            series3.Points.Add(dataPoint17);
-            series3.Points.Add(dataPoint18);
-            series3.Points.Add(dataPoint19);
-            series3.Points.Add(dataPoint20);
-            series3.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.chart1.Series.Add(series3);
+            series15.ChartArea = "ChartArea1";
+            series15.Color = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(225)))), ((int)(((byte)(245)))));
+            series15.IsValueShownAsLabel = true;
+            series15.LabelForeColor = System.Drawing.Color.White;
+            series15.Legend = "Legend1";
+            series15.Name = "Coil Production";
+            dataPoint92.AxisLabel = "Jan";
+            dataPoint93.AxisLabel = "Feb";
+            dataPoint94.AxisLabel = "Mar";
+            dataPoint95.AxisLabel = "Apr";
+            dataPoint96.AxisLabel = "May";
+            dataPoint97.AxisLabel = "Jun";
+            dataPoint98.AxisLabel = "Jul";
+            series15.Points.Add(dataPoint92);
+            series15.Points.Add(dataPoint93);
+            series15.Points.Add(dataPoint94);
+            series15.Points.Add(dataPoint95);
+            series15.Points.Add(dataPoint96);
+            series15.Points.Add(dataPoint97);
+            series15.Points.Add(dataPoint98);
+            series15.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.chart1.Series.Add(series15);
             this.chart1.Size = new System.Drawing.Size(731, 289);
             this.chart1.TabIndex = 0;
             // 
@@ -286,7 +289,7 @@ namespace Project_SteelMES
             this.panel3.Controls.Add(this.chart2);
             this.panel3.Location = new System.Drawing.Point(3, 439);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(451, 290);
+            this.panel3.Size = new System.Drawing.Size(494, 306);
             this.panel3.TabIndex = 1;
             // 
             // dungeonLabel3
@@ -303,49 +306,49 @@ namespace Project_SteelMES
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
-            chartArea4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
-            chartArea4.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea4);
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            legend2.ForeColor = System.Drawing.Color.White;
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(54, 55);
+            chartArea16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(44)))));
+            chartArea16.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea16);
+            legend8.BackColor = System.Drawing.Color.Transparent;
+            legend8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            legend8.ForeColor = System.Drawing.Color.White;
+            legend8.IsTextAutoFit = false;
+            legend8.Name = "Legend1";
+            this.chart2.Legends.Add(legend8);
+            this.chart2.Location = new System.Drawing.Point(80, 55);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "Defects";
-            dataPoint21.AxisLabel = "";
-            dataPoint21.BorderColor = System.Drawing.Color.ForestGreen;
-            dataPoint21.Color = System.Drawing.Color.Yellow;
-            dataPoint21.Label = "";
-            dataPoint21.LabelForeColor = System.Drawing.Color.Black;
-            dataPoint21.LegendText = "Crazing";
-            dataPoint22.Color = System.Drawing.Color.Lime;
-            dataPoint22.Label = "";
-            dataPoint22.LegendText = "Inclusions";
-            dataPoint23.Color = System.Drawing.Color.Cyan;
-            dataPoint23.Label = "";
-            dataPoint23.LegendText = "Patches";
-            dataPoint24.Color = System.Drawing.Color.Magenta;
-            dataPoint24.Label = "";
-            dataPoint24.LegendText = "Pitted Surface";
-            dataPoint25.Color = System.Drawing.Color.DarkViolet;
-            dataPoint25.Label = "";
-            dataPoint25.LegendText = "Roll-in Scale";
-            dataPoint26.Color = System.Drawing.Color.OrangeRed;
-            dataPoint26.LegendText = "Scratches";
-            series4.Points.Add(dataPoint21);
-            series4.Points.Add(dataPoint22);
-            series4.Points.Add(dataPoint23);
-            series4.Points.Add(dataPoint24);
-            series4.Points.Add(dataPoint25);
-            series4.Points.Add(dataPoint26);
-            this.chart2.Series.Add(series4);
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series16.Legend = "Legend1";
+            series16.Name = "Defects";
+            dataPoint99.AxisLabel = "";
+            dataPoint99.BorderColor = System.Drawing.Color.ForestGreen;
+            dataPoint99.Color = System.Drawing.Color.Yellow;
+            dataPoint99.Label = "";
+            dataPoint99.LabelForeColor = System.Drawing.Color.Black;
+            dataPoint99.LegendText = "Crazing";
+            dataPoint100.Color = System.Drawing.Color.Lime;
+            dataPoint100.Label = "";
+            dataPoint100.LegendText = "Inclusions";
+            dataPoint101.Color = System.Drawing.Color.Cyan;
+            dataPoint101.Label = "";
+            dataPoint101.LegendText = "Patches";
+            dataPoint102.Color = System.Drawing.Color.Magenta;
+            dataPoint102.Label = "";
+            dataPoint102.LegendText = "Pitted Surface";
+            dataPoint103.Color = System.Drawing.Color.DarkViolet;
+            dataPoint103.Label = "";
+            dataPoint103.LegendText = "Roll-in Scale";
+            dataPoint104.Color = System.Drawing.Color.OrangeRed;
+            dataPoint104.LegendText = "Scratches";
+            series16.Points.Add(dataPoint99);
+            series16.Points.Add(dataPoint100);
+            series16.Points.Add(dataPoint101);
+            series16.Points.Add(dataPoint102);
+            series16.Points.Add(dataPoint103);
+            series16.Points.Add(dataPoint104);
+            this.chart2.Series.Add(series16);
             this.chart2.Size = new System.Drawing.Size(357, 219);
             this.chart2.TabIndex = 0;
             // 
@@ -354,9 +357,9 @@ namespace Project_SteelMES
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(55)))));
             this.panel4.Controls.Add(this.button8);
             this.panel4.Controls.Add(this.button7);
-            this.panel4.Location = new System.Drawing.Point(476, 439);
+            this.panel4.Location = new System.Drawing.Point(521, 439);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(453, 290);
+            this.panel4.Size = new System.Drawing.Size(442, 306);
             this.panel4.TabIndex = 1;
             // 
             // button8
@@ -379,6 +382,7 @@ namespace Project_SteelMES
             this.button7.TabIndex = 11;
             this.button7.Text = "생산 현황";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel5
             // 
@@ -386,17 +390,37 @@ namespace Project_SteelMES
             this.panel5.Controls.Add(this.panel4);
             this.panel5.Controls.Add(this.panel3);
             this.panel5.Controls.Add(this.panel2);
-            this.panel5.Location = new System.Drawing.Point(309, 202);
+            this.panel5.Location = new System.Drawing.Point(298, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(932, 784);
+            this.panel5.Size = new System.Drawing.Size(966, 808);
             this.panel5.TabIndex = 8;
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(309, 61);
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
+            this.panel6.Controls.Add(this.comboBox1);
+            this.panel6.Controls.Add(this.dateTimePicker1);
+            this.panel6.Location = new System.Drawing.Point(298, 61);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(932, 135);
+            this.panel6.Size = new System.Drawing.Size(966, 93);
             this.panel6.TabIndex = 9;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.dateTimePicker1.Location = new System.Drawing.Point(489, 26);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(342, 36);
+            this.dateTimePicker1.TabIndex = 8;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(852, 27);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(96, 33);
+            this.comboBox1.TabIndex = 9;
             // 
             // Lost
             // 
@@ -420,6 +444,7 @@ namespace Project_SteelMES
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -447,5 +472,7 @@ namespace Project_SteelMES
         private Panel panel6;
         private Button button8;
         private Button button7;
+        private DateTimePicker dateTimePicker1;
+        private ComboBox comboBox1;
     }
 }

@@ -16,5 +16,17 @@ namespace Project_SteelMES
         {
             InitializeComponent();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void OrderBtn_Click(object sender, EventArgs e)
+        {
+            MaterialOrder2 matOrder = new MaterialOrder2();
+            matOrder.Show();
+            
+        }
     }
 }

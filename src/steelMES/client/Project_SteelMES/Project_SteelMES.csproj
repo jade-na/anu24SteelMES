@@ -221,6 +221,12 @@
     <Compile Include="MaterialOrder.Designer.cs">
       <DependentUpon>MaterialOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaterialOrder2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialOrder2.Designer.cs">
+      <DependentUpon>MaterialOrder2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Metro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialOrder.resx">
       <DependentUpon>MaterialOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialOrder2.resx">
+      <DependentUpon>MaterialOrder2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Metro.resx">
       <DependentUpon>Metro.cs</DependentUpon>

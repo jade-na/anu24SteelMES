@@ -11,7 +11,7 @@ using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Lost5 : LostForm
+    public partial class Lost5 : Form
     {
         public Lost5()
         {
