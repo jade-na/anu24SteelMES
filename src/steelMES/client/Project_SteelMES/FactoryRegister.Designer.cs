@@ -39,8 +39,6 @@ namespace Project_SteelMES
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.FacID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,7 +49,7 @@ namespace Project_SteelMES
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
             this.dungeonLabel1.Location = new System.Drawing.Point(18, 48);
             this.dungeonLabel1.Name = "dungeonLabel1";
@@ -141,9 +139,6 @@ namespace Project_SteelMES
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FacID,
-            this.Location});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -161,19 +156,7 @@ namespace Project_SteelMES
             this.dataGridView1.Size = new System.Drawing.Size(620, 210);
             this.dataGridView1.TabIndex = 8;
             // 
-            // FacID
-            // 
-            this.FacID.HeaderText = "공장명";
-            this.FacID.Name = "FacID";
-            this.FacID.ReadOnly = true;
-            // 
-            // Location
-            // 
-            this.Location.HeaderText = "공장 위치";
-            this.Location.Name = "Location";
-            this.Location.ReadOnly = true;
-            // 
-            // FactoryResister
+            // FactoryRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,7 +166,7 @@ namespace Project_SteelMES
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dungeonLabel1);
             this.Image = global::Project_SteelMES.Properties.Resources.logo1;
-            this.Name = "FactoryResister";
+            this.Name = "FactoryRegister";
             this.Text = "강철주야";
             this.Load += new System.EventHandler(this.Lost6_Load);
             this.panel2.ResumeLayout(false);
@@ -200,8 +183,6 @@ namespace Project_SteelMES
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FacID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.PictureBox pictureBox1;

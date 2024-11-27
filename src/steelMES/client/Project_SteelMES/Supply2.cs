@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf.Collections;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
@@ -34,12 +35,12 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e) //등록 버튼
         {
-            string text1 = textBox1.Text;
-            string text2 = textBox2.Text;
-            string text3 = textBox3.Text;
+            string supplierName = textBox1.Text; // 공급업체명 입력 필드
+            string contactInfo = textBox2.Text;   // 연락처 입력 필드
+            string country = textBox3.Text;           // 업체국가 입력 필드
 
             // 입력값 검증
-            if (string.IsNullOrWhiteSpace(text1) || string.IsNullOrWhiteSpace(text2) || string.IsNullOrWhiteSpace(text3))
+            if (string.IsNullOrWhiteSpace(supplierName) || string.IsNullOrWhiteSpace(contactInfo) || string.IsNullOrWhiteSpace(country))
             {
                 MessageBox.Show("모든 필드를 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -50,18 +51,56 @@ namespace Project_SteelMES
 
             if (result == DialogResult.OK)
             {
-                // 확인을 누르면 Lost7에 데이터 전달
-                lost7.AddRowToDataGridView(text1, text2, text3);
+                // DB에 데이터 저장
+                if (InsertSupplierToDatabase(supplierName, contactInfo, country))
+                {
+                    MessageBox.Show("등록 성공!", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // TextBox 초기화
-                textBox1.Clear();
-                textBox2.Clear();
-                textBox3.Clear();
-
+                    // TextBox 초기화
+                    textBox1.Clear();
+                    textBox2.Clear();
+                    textBox3.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("등록 실패. 다시 시도하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (result == DialogResult.Cancel)
+        }
+        // 공급업체 정보를 DB에 저장하는 메서드
+        private bool InsertSupplierToDatabase(string supplierName, string contactInfo, string country)
+        {
+            try
             {
-                return;
+                // Oracle 연결 문자열
+                string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
+
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // INSERT 쿼리
+                    string query = "INSERT INTO SUPPLIER (SupplierName, ContactInfo, Country) VALUES (:SupplierName, :ContactInfo, :Country)";
+
+                    using (OracleCommand command = new OracleCommand(query, connection))
+                    {
+                        // 파라미터 추가
+                        command.Parameters.Add(new OracleParameter(":SupplierName", supplierName));
+                        command.Parameters.Add(new OracleParameter(":ContactInfo", contactInfo));
+                        command.Parameters.Add(new OracleParameter(":Country", country));
+
+                        // 쿼리 실행
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // 쿼리 성공 여부 반환
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

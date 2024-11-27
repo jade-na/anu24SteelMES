@@ -34,9 +34,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SupplyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -50,7 +47,7 @@
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
             this.dungeonLabel1.Location = new System.Drawing.Point(18, 49);
             this.dungeonLabel1.Name = "dungeonLabel1";
@@ -96,10 +93,6 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplyName,
-            this.ContactInfo,
-            this.Country});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -117,24 +110,7 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(434, 210);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // SupplyName
-            // 
-            this.SupplyName.HeaderText = "공급업체명";
-            this.SupplyName.Name = "SupplyName";
-            this.SupplyName.ReadOnly = true;
-            // 
-            // ContactInfo
-            // 
-            this.ContactInfo.HeaderText = "연락처";
-            this.ContactInfo.Name = "ContactInfo";
-            this.ContactInfo.ReadOnly = true;
-            // 
-            // Country
-            // 
-            this.Country.HeaderText = "업체 국가";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // AddBtn
             // 
@@ -210,8 +186,5 @@
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContactInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
     }
 }

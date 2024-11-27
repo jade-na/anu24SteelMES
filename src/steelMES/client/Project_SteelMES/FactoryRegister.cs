@@ -7,24 +7,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
     public partial class FactoryRegister : LostForm
     {
+        // Oracle 연결 문자열
+        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
 
-        
         public FactoryRegister()
         {
             InitializeComponent();
 
-            dataGridView1.Rows.Add("포항공장", "경상북도 포항시 남구 동해안로 6261 (괴동동)");
-            dataGridView1.Rows.Add("광양공장", "전남 광양시 폭포사랑길 20-26 (금호동)");
-            dataGridView1.Rows.Add("당진공장", "충청남도 당진시 송악읍 북부산업로 1480");
-
+            // Oracle 데이터를 바로 로드
+            LoadFactoryDataFromOracle();
+            
         }
+        
+        
+        //오라클DB연동해오기
+        private void LoadFactoryDataFromOracle()
+        {
+            try
+            {
+                // Oracle 연결
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
 
+                    // SQL 쿼리
+                    string query = "SELECT FACID AS 공장ID,FACNAME AS 공장이름, LOCATION AS 공장위치 FROM FACTORY";
+
+                    // 데이터 어댑터와 데이터 테이블 생성
+                    using (OracleDataAdapter adapter = new OracleDataAdapter(query, connection))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // DataGridView에 데이터 바인딩
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 오류 메시지 표시
+                MessageBox.Show($"데이터를 불러오는 중 오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void Lost6_Load(object sender, EventArgs e)
         {
             
