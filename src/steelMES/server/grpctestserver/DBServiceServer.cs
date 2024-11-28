@@ -102,39 +102,42 @@ namespace grpcDummyMesServer
 		/// </summary>
 		public override async Task<FactoryReply> GetFactoryData(SteelMES.Empty request, ServerCallContext context)
 		{
-			var result = new FactoryReply();
 
-			try
-			{
-				await using var connection = new OracleConnection(_connectionString);
-				await connection.OpenAsync();
+            var result = new FactoryReply();
 
-				const string query = "SELECT FACID, LOCATION FROM FACTORY";
+            try
+            {
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
 
-				await using var command = new OracleCommand(query, connection);
-				await using var reader = await command.ExecuteReaderAsync();
+                const string query = "SELECT FACID, FACNAME, LOCATION FROM FACTORY";  // FACNAME 포함 확인
 
-				while (await reader.ReadAsync())
-				{
-					result.Factories.Add(new FactoryInfo
-					{
-						FacID = reader.GetInt32(0),
-						Location = reader.IsDBNull(1) ? string.Empty : reader.GetString(1)
-					});
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error: {ex.Message}");
-			}
+                await using var command = new OracleCommand(query, connection);
+                await using var reader = await command.ExecuteReaderAsync();
 
-			return result;
-		}
+                while (await reader.ReadAsync())
+                {
+                    result.Factories.Add(new FactoryInfo
+                    {
+                        FacID = reader.GetInt32(0),
+                        FacName = reader.GetString(1),  // FACNAME 읽기
+                        Location = reader.IsDBNull(2) ? string.Empty : reader.GetString(2)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching factory data: {ex.Message}");
+            }
 
-		/// <summary>
-		/// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
-		/// </summary>
-		public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
+            return result;
+
+        }
+
+        /// <summary>
+        /// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
+        /// </summary>
+        public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
 		{
 			var result = new ProductionLineReply();
 
@@ -309,10 +312,10 @@ namespace grpcDummyMesServer
 				await using var connection = new OracleConnection(_connectionString);
 				await connection.OpenAsync();
 
-				// 공장 삽입 쿼리 (FacID는 DB의 트리거와 시퀀스에서 자동 생성)
-				const string insertQuery = "INSERT INTO FACTORY (LOCATION) VALUES (:location)";
+                // 공장 삽입 쿼리 (FacID는 DB의 트리거와 시퀀스에서 자동 생성)
+                string query = "INSERT INTO FACTORY (FacName, Location) VALUES (:FacName, :Location)";
 
-				await using var command = new OracleCommand(insertQuery, connection);
+                await using var command = new OracleCommand(query, connection);
 
 				// 파라미터 설정
 				command.Parameters.Add(new OracleParameter("location", OracleDbType.Varchar2) { Value = location });
@@ -340,6 +343,34 @@ namespace grpcDummyMesServer
 			}
 			return result;
 		}
+        public override async Task<AddSupplieReply> AddSupplier(AddSupplierRequest request, ServerCallContext context)
+        {
+            var result = new AddSupplieReply();
+
+            try
+            {
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                const string query = "INSERT INTO Supplier (SupplierName, ContactInfo, Country) VALUES (:SupplierName, :ContactInfo, :Country)";
+                await using var command = new OracleCommand(query, connection);
+                command.Parameters.Add(new OracleParameter(":SupplierName", request.SupplierName));
+                command.Parameters.Add(new OracleParameter(":ContactInfo", request.ContactInfo));
+                command.Parameters.Add(new OracleParameter(":Country", request.Country));
+
+                int rowsAffected = await command.ExecuteNonQueryAsync();
+                result.ErrorCode = rowsAffected > 0 ? 0 : -1; // 성공 여부 확인
+                result.Message = rowsAffected > 0 ? "Success" : "Failed to insert supplier.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inserting supplier: {ex.Message}");
+                result.ErrorCode = 1;
+                result.Message = $"Error: {ex.Message}";
+            }
+
+            return result;
+        }
         public override async Task<AddMaterialReply> AddMaterial(AddMaterialRequest request, ServerCallContext context)
         {
             var result = new AddMaterialReply();

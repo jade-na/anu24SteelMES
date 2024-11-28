@@ -36,6 +36,7 @@ namespace Project_SteelMES
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.viewbtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -92,6 +93,7 @@ namespace Project_SteelMES
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.panel3.Controls.Add(this.viewbtn);
             this.panel3.Controls.Add(this.DeleteBtn);
             this.panel3.Controls.Add(this.AddBtn);
             this.panel3.Controls.Add(this.dataGridView1);
@@ -99,6 +101,22 @@ namespace Project_SteelMES
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(750, 308);
             this.panel3.TabIndex = 9;
+            // 
+            // viewbtn
+            // 
+            this.viewbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.viewbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.viewbtn.FlatAppearance.BorderSize = 0;
+            this.viewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewbtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.viewbtn.ForeColor = System.Drawing.Color.Black;
+            this.viewbtn.Location = new System.Drawing.Point(65, 251);
+            this.viewbtn.Name = "viewbtn";
+            this.viewbtn.Size = new System.Drawing.Size(104, 40);
+            this.viewbtn.TabIndex = 11;
+            this.viewbtn.Text = "조회";
+            this.viewbtn.UseVisualStyleBackColor = false;
+            this.viewbtn.Click += new System.EventHandler(this.viewbtn_Click);
             // 
             // DeleteBtn
             // 
@@ -155,6 +173,7 @@ namespace Project_SteelMES
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(620, 210);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FactoryRegister
             // 
@@ -187,5 +206,6 @@ namespace Project_SteelMES
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private PictureBox pictureBox3;
+        private Button viewbtn;
     }
 }

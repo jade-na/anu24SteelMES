@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
     public partial class Membership2 : MaterialForm
     {
+        // Oracle 연결 문자열
+        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
         private Membership _lost9; // Lost9 참조
 
         public Membership2(Membership lost9)
@@ -31,39 +34,58 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e) //검색 버튼
         {
-            // textBox1 값 가져오기
             string searchValue = InputTextBox.Text.Trim();
 
             // 입력값이 비어 있는 경우
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("검색결과 없음", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("검색할 값을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // DataGridView에서 검색
-            bool found = false;
-            foreach (DataGridViewRow row in _lost9.dataGridView1.Rows)
+            // DB에서 사용자 검색
+            SearchUserInDatabase(searchValue);
+            
+        }
+        private void SearchUserInDatabase(string username)
+        {
+            try
             {
-                if (row.Cells["UserName"].Value != null &&
-                    row.Cells["UserName"].Value.ToString() == searchValue)
+                using (OracleConnection connection = new OracleConnection(connectionString))
                 {
-                    // 일치하는 데이터 발견
-                    UserNameLabel.Text = row.Cells["UserName"].Value.ToString();
-                    PasswordLabel.Text = row.Cells["Password"].Value.ToString();
-                    found = true;
-                    break;
+                    connection.Open();
+
+                    // SQL 쿼리
+                    string query = "SELECT UserName, Password FROM Users WHERE UserName = :username";
+
+                    using (OracleCommand command = new OracleCommand(query, connection))
+                    {
+                        // 파라미터 추가
+                        command.Parameters.Add(new OracleParameter(":username", username));
+
+                        using (OracleDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // 검색 결과 출력
+                                UserNameLabel.Text = reader["UserName"].ToString();
+                                PasswordLabel.Text = reader["Password"].ToString();
+                            }
+                            else
+                            {
+                                // 검색 결과 없음
+                                MessageBox.Show("검색 결과 없음", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
                 }
             }
-
-            // 일치하는 데이터가 없는 경우
-            if (!found)
+            catch (Exception ex)
             {
-                MessageBox.Show("검색결과 없음", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // 오류 처리
+                MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             

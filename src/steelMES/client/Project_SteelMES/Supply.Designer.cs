@@ -37,6 +37,7 @@
             this.AddBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Viewbtn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -78,6 +79,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.panel3.Controls.Add(this.Viewbtn);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(288, 98);
             this.panel3.Name = "panel3";
@@ -154,6 +156,23 @@
             this.panel4.Size = new System.Drawing.Size(246, 159);
             this.panel4.TabIndex = 11;
             // 
+            // Viewbtn
+            // 
+            this.Viewbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Viewbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.Viewbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Viewbtn.FlatAppearance.BorderSize = 0;
+            this.Viewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Viewbtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.Viewbtn.ForeColor = System.Drawing.Color.Black;
+            this.Viewbtn.Location = new System.Drawing.Point(377, 246);
+            this.Viewbtn.Name = "Viewbtn";
+            this.Viewbtn.Size = new System.Drawing.Size(84, 27);
+            this.Viewbtn.TabIndex = 12;
+            this.Viewbtn.Text = "조회";
+            this.Viewbtn.UseVisualStyleBackColor = false;
+            this.Viewbtn.Click += new System.EventHandler(this.Viewbtn_Click);
+            // 
             // Lost7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -186,5 +205,6 @@
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button Viewbtn;
     }
 }

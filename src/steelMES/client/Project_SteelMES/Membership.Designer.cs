@@ -34,9 +34,6 @@
             this.dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
             this.SettingBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -100,10 +97,6 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserName,
-            this.Password,
-            this.UserLevel});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -123,28 +116,10 @@
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "UserName";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            // 
-            // UserLevel
-            // 
-            this.UserLevel.HeaderText = "UserLevel";
-            this.UserLevel.Name = "UserLevel";
-            this.UserLevel.ReadOnly = true;
-            // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
             this.dungeonLabel1.Location = new System.Drawing.Point(19, 49);
             this.dungeonLabel1.Name = "dungeonLabel1";
@@ -240,7 +215,7 @@
             this.ApprovalBtn.Text = "승인";
             this.ApprovalBtn.UseVisualStyleBackColor = false;
             // 
-            // Lost9
+            // Membership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -250,7 +225,7 @@
             this.Controls.Add(this.dungeonLabel1);
             this.Controls.Add(this.panel1);
             this.Image = global::Project_SteelMES.Properties.Resources.logo1;
-            this.Name = "Lost9";
+            this.Name = "Membership";
             this.Text = "강철주야";
             this.Load += new System.EventHandler(this.Lost9_Load);
             this.panel1.ResumeLayout(false);
@@ -268,9 +243,6 @@
         private System.Windows.Forms.Panel panel1;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserLevel;
         private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.Button ApprovalBtn;
         public System.Windows.Forms.DataGridView dataGridView1;

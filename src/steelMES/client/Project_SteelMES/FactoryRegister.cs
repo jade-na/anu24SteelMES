@@ -7,56 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Grpc.Core;
 using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
+using SteelMES;
 
 namespace Project_SteelMES
 {
     public partial class FactoryRegister : LostForm
     {
-        // Oracle 연결 문자열
-        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
-
+        
         public FactoryRegister()
         {
             InitializeComponent();
-
-            // Oracle 데이터를 바로 로드
-            LoadFactoryDataFromOracle();
             
         }
         
-        
-        //오라클DB연동해오기
-        private void LoadFactoryDataFromOracle()
-        {
-            try
-            {
-                // Oracle 연결
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // SQL 쿼리
-                    string query = "SELECT FACID AS 공장ID,FACNAME AS 공장이름, LOCATION AS 공장위치 FROM FACTORY";
-
-                    // 데이터 어댑터와 데이터 테이블 생성
-                    using (OracleDataAdapter adapter = new OracleDataAdapter(query, connection))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // DataGridView에 데이터 바인딩
-                        dataGridView1.DataSource = dataTable;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // 오류 메시지 표시
-                MessageBox.Show($"데이터를 불러오는 중 오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
         private void Lost6_Load(object sender, EventArgs e)
         {
             
@@ -107,6 +74,59 @@ namespace Project_SteelMES
         private void button6_Click_1(object sender, EventArgs e)
         {
             
+        }
+
+        private async void viewbtn_Click(object sender, EventArgs e)
+        {
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // gRPC 서버에서 Supplier 데이터를 가져옴
+                var response = await client.GetFactoryDataAsync(new Empty());
+
+                if (response.ErrorCode != 0)
+                {
+                    MessageBox.Show($"서버 오류 코드: {response.ErrorCode}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // DataTable 생성
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("FacID", typeof(int));
+                dataTable.Columns.Add("FacName", typeof(string));
+                dataTable.Columns.Add("Location", typeof(string));
+
+
+                foreach (var factory in response.Factories)
+                {
+                    dataTable.Rows.Add(
+                         factory.FacID,
+                         factory.FacName,
+                         factory.Location
+                    );
+                }
+
+                // DataGridView에 DataTable 바인딩
+                dataGridView1.DataSource = dataTable;
+
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

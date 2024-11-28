@@ -14,6 +14,7 @@ service DB_Service {
     rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
     rpc GetAllProductData (Empty) returns (ProductReply);  // 모든 제품 데이터 요청
+     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
 
 }
 
@@ -48,9 +49,9 @@ message prodHistoryInfoReply {
 // 공장 정보
 message FactoryInfo {
     int32 facID = 1;
-    string location = 2;
+     string facName = 2;
+    string location = 3;
 }
-
 // 공장 정보 응답 메시지
 message FactoryReply {
     int32 errorCode = 1;
@@ -104,6 +105,20 @@ message SupplierReply {
     int32 errorCode = 1;
     repeated SupplierInfo suppliers = 2;
 }
+
+// 공장 데이터를 추가하는 요청 메시지
+message AddFactoryRequest {
+    string facName = 1;
+    string location = 2; // 공장 위치
+}
+
+// 공장 데이터를 추가한 결과를 반환하는 응답 메시지
+message AddFactoryReply {
+    int32 errorCode = 1;   // 0: 성공, -1: 실패
+    string message = 2;    // 결과 메시지
+    int32 facID = 3;       // 새로 생성된 FacID
+}
+
 // 자재 수량 DB 업데이트
 message UpdateMaterialQuantityRequest {
     int32 materialID = 1;
@@ -116,15 +131,16 @@ message UpdateMaterialQuantityReply {
 }
 
 // 공장 데이터를 추가하는 요청 메시지
-message AddFactoryRequest {
-    string location = 1; // 공장 위치
+message AddSupplierRequest {
+    string supplierName = 1; // 공급업체이름
+    string contactInfo =2; //공급업체번호
+    string country =3 ; //공급업체위치
 }
-
 // 공장 데이터를 추가한 결과를 반환하는 응답 메시지
-message AddFactoryReply {
+message AddSupplieReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
     string message = 2;    // 결과 메시지
-    int32 facID = 3;       // 새로 생성된 FacID
+    int32 supplierID = 3;       // 새로 생성된 FacID
 }
 
 // 원자재 데이터를 추가하는 요청 메시지

@@ -169,6 +169,7 @@
             this.SelectBtn.TabIndex = 9;
             this.SelectBtn.Text = "조회";
             this.SelectBtn.UseVisualStyleBackColor = false;
+            this.SelectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
             // dungeonLabel2
             // 
@@ -202,7 +203,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
