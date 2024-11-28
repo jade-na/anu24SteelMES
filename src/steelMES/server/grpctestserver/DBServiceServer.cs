@@ -191,7 +191,7 @@ namespace grpcDummyMesServer
 				await connection.OpenAsync();
 
 				const string query = @"
-                    SELECT MATERIALID, MATERIALNAME, SUPPLIERID, QUANTITY, IMPORTDATE 
+                    SELECT MATERIALID, MATERIALNAME, SUPPLIERNAME, QUANTITY, IMPORTDATE 
                     FROM MATERIAL";
 
 				await using var command = new OracleCommand(query, connection);
@@ -200,10 +200,10 @@ namespace grpcDummyMesServer
 				while (await reader.ReadAsync())
 				{
 					result.Materials.Add(new MaterialInfo
-					{
+                    {
 						MaterialID = reader.GetInt32(0),
 						MaterialName = reader.GetString(1),
-						SupplierID = reader.GetInt32(2),
+                        SupplierName = reader.GetString(2),
 						Quantity = reader.GetInt32(3),
 						ImportDate = reader.GetDateTime(4).ToString("yyyy-MM-dd")
 					});
@@ -378,22 +378,22 @@ namespace grpcDummyMesServer
             try
             {
                 // 요청받은 데이터
-                string name = request.Name;
-                int supplierID = request.SupplierID;
+                string materialName = request.MaterialName;
+                string supplierName = request.SupplierName;
                 int quantity = request.Quantity;
 
                 // 입력 데이터 검증
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(materialName))
                 {
                     result.ErrorCode = -1;
                     result.Message = "원자재 이름(Name)은 비워둘 수 없습니다.";
                     return result;
                 }
 
-                if (supplierID <= 0 || quantity <= 0)
+                if (string.IsNullOrEmpty(supplierName) || quantity <= 0)
                 {
                     result.ErrorCode = -1;
-                    result.Message = "공급업체 ID와 수량은 양수여야 합니다.";
+                    result.Message = "공급업체를 선택하세요.";
                     return result;
                 }
 
@@ -402,14 +402,14 @@ namespace grpcDummyMesServer
 
                 // 원자재 삽입 쿼리 (MaterialID는 DB의 트리거와 시퀀스에서 자동 생성)
                 const string insertQuery = @"
-									INSERT INTO MATERIAL (MATERIALNAME, SUPPLIERID, QUANTITY, IMPORTDATE)
-									VALUES (:name, :supplierID, :quantity, SYSDATE)";
+									INSERT INTO MATERIAL (MATERIALNAME, SUPPLIERNAME, QUANTITY, IMPORTDATE)
+									VALUES (:materialName, :supplierName, :quantity, SYSDATE)";
 
                 await using var command = new OracleCommand(insertQuery, connection);
 
                 // 파라미터 설정
-                command.Parameters.Add(new OracleParameter("name", OracleDbType.Varchar2) { Value = name });
-                command.Parameters.Add(new OracleParameter("supplierID", OracleDbType.Int32) { Value = supplierID });
+                command.Parameters.Add(new OracleParameter("materialName", OracleDbType.Varchar2) { Value = materialName });
+                command.Parameters.Add(new OracleParameter("supplierName", OracleDbType.Varchar2) { Value = supplierName });
                 command.Parameters.Add(new OracleParameter("quantity", OracleDbType.Int32) { Value = quantity });
 
                 // 삽입 실행

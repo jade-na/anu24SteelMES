@@ -60,7 +60,7 @@ namespace Project_SteelMES
                     dataGridView1.Rows.Add(
                          material.MaterialID,
                          material.MaterialName,
-                         material.SupplierID,
+                         material.SupplierName,
                          material.Quantity,
                          material.ImportDate
                     );
@@ -160,6 +160,11 @@ namespace Project_SteelMES
             {
                 await channel.ShutdownAsync();
             }
+        }
+
+        private void MaterialOrder_Load(object sender, EventArgs e)
+        {
+
         }
 
         //private void ViewSupBtn_Click(object sender, EventArgs e)
