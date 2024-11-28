@@ -1,143 +1,164 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
+using Grpc.Core;  // Grpc.Core 사용
+using SteelMES;
 using ReaLTaiizor.Forms;
 
 namespace Project_SteelMES
 {
-    public partial class Membership2 : MaterialForm
-    {
-        // Oracle 연결 문자열
-        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
-        private Membership _lost9; // Lost9 참조
+	public partial class Membership2 : MaterialForm
+	{
+		private DB_Service.DB_ServiceClient _client;
+		private readonly Membership _lost9;
+		private Channel _channel;
 
-        public Membership2(Membership lost9)
-        {
-            InitializeComponent();
-            _lost9 = lost9; // Lost9 참조 저장
+		public Membership2(Membership lost9)
+		{
+			InitializeComponent();
+			_lost9 = lost9;
+			comboBox1.SelectedIndex = 0; // 첫 번째 항목 선택
+			this.Load += new EventHandler(Membership2_Load);  // Form Load 이벤트 처리
+		}
 
-            // 기본값 선택 (옵션)
-            comboBox1.SelectedIndex = 0; // 첫 번째 항목 선택
-        }
+		// Form Load 시 gRPC 클라이언트 초기화
+		private void Membership2_Load(object sender, EventArgs e)
+		{
+			InitializeGrpcClient();  // 비동기적으로 gRPC 클라이언트 초기화
+		}
 
-        private void Material4_Load(object sender, EventArgs e)
-        {
+		// gRPC 클라이언트 초기화
+		private void InitializeGrpcClient()
+		{
+			try
+			{
+				// Grpc.Core 채널 초기화
+				_channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+				_client = new DB_Service.DB_ServiceClient(_channel);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"gRPC 채널 초기화 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
-        }
+		// 검색 버튼 클릭 시
+		private async void button1_Click(object sender, EventArgs e)
+		{
+			string searchValue = InputTextBox.Text.Trim();
 
-        private void button1_Click(object sender, EventArgs e) //검색 버튼
-        {
-            string searchValue = InputTextBox.Text.Trim();
+			if (string.IsNullOrEmpty(searchValue))
+			{
+				MessageBox.Show("검색할 값을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-            // 입력값이 비어 있는 경우
-            if (string.IsNullOrEmpty(searchValue))
-            {
-                MessageBox.Show("검색할 값을 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+			try
+			{
+				var request = new SearchUserRequest { Username = searchValue };
+				var response = await _client.SearchUserAsync(request);
 
-            // DB에서 사용자 검색
-            SearchUserInDatabase(searchValue);
-            
-        }
-        private void SearchUserInDatabase(string username)
-        {
-            try
-            {
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
+				if (response.ErrorCode == 0)
+				{
+					UserNameLabel.Text = response.Users[0].Username;
+					PasswordLabel.Text = response.Users[0].Password;
+					comboBox1.SelectedItem = response.Users[0].UserLevel.ToString();
+				}
+				else
+				{
+					MessageBox.Show(response.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"gRPC 호출 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
-                    // SQL 쿼리
-                    string query = "SELECT UserName, Password FROM Users WHERE UserName = :username";
+		// 변경 버튼 클릭 시
+		// 변경 버튼 클릭 시
+		private async void button2_Click(object sender, EventArgs e)
+		{
+			string selectedLevel = comboBox1.SelectedItem?.ToString();
+			string userName = UserNameLabel.Text;
 
-                    using (OracleCommand command = new OracleCommand(query, connection))
-                    {
-                        // 파라미터 추가
-                        command.Parameters.Add(new OracleParameter(":username", username));
+			if (string.IsNullOrEmpty(selectedLevel))
+			{
+				MessageBox.Show("레벨을 선택하세요", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-                        using (OracleDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                // 검색 결과 출력
-                                UserNameLabel.Text = reader["UserName"].ToString();
-                                PasswordLabel.Text = reader["Password"].ToString();
-                            }
-                            else
-                            {
-                                // 검색 결과 없음
-                                MessageBox.Show("검색 결과 없음", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // 오류 처리
-                MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+			if (string.IsNullOrEmpty(userName))
+			{
+				MessageBox.Show("먼저 사용자를 검색하세요", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-        private void button2_Click(object sender, EventArgs e) //변경 버튼
-        {
-            // comboBox1에서 선택한 값 가져오기
-            string selectedLevel = comboBox1.SelectedItem?.ToString();
+			int userLevelInt = -1; // 기본값으로 유효하지 않은 값 설정
 
-            // 선택된 값이 없는 경우
-            if (string.IsNullOrEmpty(selectedLevel))
-            {
-                MessageBox.Show("레벨을 선택하세요", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+			if (selectedLevel == "admin")
+			{
+				userLevelInt = 0;
+			}
+			else if (selectedLevel == "manager")
+			{
+				userLevelInt = 1;
+			}
+			else if (selectedLevel == "operator")
+			{
+				userLevelInt = 2;
+			}
 
-            // label4의 텍스트 가져오기 (검색된 UserName 값)
-            string userName = UserNameLabel.Text;
+			if (userLevelInt == -1)
+			{
+				MessageBox.Show("유효하지 않은 사용자 레벨입니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
-            if (string.IsNullOrEmpty(userName))
-            {
-                MessageBox.Show("먼저 사용자를 검색하세요", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+			var result = MessageBox.Show("변경하시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			if (result == DialogResult.OK)
+			{
+				try
+				{
+					var request = new UpdateUserLevelRequest
+					{
+						Username = userName,
+						UserLevel = userLevelInt.ToString() // gRPC 서버에 전송 시 string으로 변환
+					};
 
-            // 변경 확인 메시지 표시
-            var result = MessageBox.Show("변경하시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+					// gRPC 서버 요청
+					var response = await _client.UpdateUserLevelAsync(request);
 
-            if (result == DialogResult.OK)
-            {
-                // UserName이 일치하는 Row를 찾아 UserLevel 업데이트
-                foreach (DataGridViewRow row in _lost9.dataGridView1.Rows)
-                {
-                    if (row.Cells["UserName"].Value != null &&
-                        row.Cells["UserName"].Value.ToString() == userName)
-                    {
-                        // UserLevel 컬럼에 선택된 레벨 설정
-                        row.Cells["UserLevel"].Value = selectedLevel;
-                        MessageBox.Show("레벨이 변경되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                }
+					if (response.ErrorCode == 0)
+					{
+						MessageBox.Show(response.Message, "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 일치하는 데이터가 없는 경우
-                MessageBox.Show("사용자를 찾을 수 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+						// 변경 완료 후 창 닫기
+						this.Close(); // Membership2 창 닫기
+					}
+					else
+					{
+						MessageBox.Show(response.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+				catch (RpcException rpcEx)
+				{
+					// gRPC 관련 예외 처리
+					MessageBox.Show($"gRPC 오류: {rpcEx.StatusCode} - {rpcEx.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-    }
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			this.Dispose();
+		}
+
+		// Form 종료 시 채널 종료
+		private void Membership2_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			_channel?.ShutdownAsync().Wait();  // 채널 닫기
+		}
+	}
 }

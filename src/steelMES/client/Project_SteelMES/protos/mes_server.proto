@@ -15,6 +15,9 @@ service DB_Service {
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
     rpc GetAllProductData (Empty) returns (ProductReply);  // 모든 제품 데이터 요청
     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
+    rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
+    rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
+    rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
 }
 
 // 기본 Empty 메시지
@@ -36,8 +39,7 @@ message prodHistoryInfo {
     int32 defectID = 1;
     int32 productID = 2;
     string defectType = 3;
-    string defectionDate = 4;
-    
+    string detectionDate = 4;
 }
 
 // 불량 이력 응답 메시지
@@ -52,13 +54,11 @@ message FactoryInfo {
      string facName = 2;
     string location = 3;
 }
-
 // 공장 정보 응답 메시지
 message FactoryReply {
     int32 errorCode = 1;
     repeated FactoryInfo factories = 2;
 }
-
 
 // 생산 라인 요청 메시지
 message ProductionLineRequest {
@@ -93,28 +93,19 @@ message MaterialReply {
     int32 errorCode = 1;
     repeated MaterialInfo materials = 2;
 }
-//공급업체 정보
+
+// 공급업체 정보
 message SupplierInfo {
     int32 supplierID = 1;
     string supplierName = 2;
     string contactInfo = 3;
     string country = 4;
 }
-//공급업체 응답
+
+// 공급업체 정보 응답 메시지
 message SupplierReply {
     int32 errorCode = 1;
     repeated SupplierInfo suppliers = 2;
-}
-
-// 자재 수량 DB 업데이트
-message UpdateMaterialQuantityRequest {
-    int32 materialID = 1;
-    int32 additionalQuantity = 2;
-}
-
-// 자재 수량 업데이트 응답 메시지
-message UpdateMaterialQuantityReply { 
-    int32 errorCode = 1;    // 특정 제품 ID로 조회 (선택사항)
 }
 
 // 공장 데이터를 추가하는 요청 메시지
@@ -130,13 +121,24 @@ message AddFactoryReply {
     int32 facID = 3;       // 새로 생성된 FacID
 }
 
-// 공급업체 데이터 추가하는 요청 메시지
+// 자재 수량 DB 업데이트
+message UpdateMaterialQuantityRequest {
+    int32 materialID = 1;
+    int32 additionalQuantity = 2;
+}
+
+// 자재 수량 업데이트 응답 메시지
+message UpdateMaterialQuantityReply { 
+    int32 errorCode = 1;    // 특정 제품 ID로 조회 (선택사항)
+}
+
+// 공장 데이터를 추가하는 요청 메시지
 message AddSupplierRequest {
     string supplierName = 1; // 공급업체이름
     string contactInfo =2; //공급업체번호
     string country =3 ; //공급업체위치
 }
-// 공급업체 데이터를 추가한 결과를 반환하는 응답 메시지
+// 공장 데이터를 추가한 결과를 반환하는 응답 메시지
 message AddSupplieReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
     string message = 2;    // 결과 메시지
@@ -173,4 +175,41 @@ message ProductInfo {
 message ProductReply {
     int32 errorCode = 1;               // 오류 코드 (0: 성공, 그 외: 실패)
     repeated ProductInfo products = 2; // 제품 목록
+}
+
+// 유저 정보 메시지
+message UsersInfo {
+    int32 ID = 1;               // 유저 번호
+    string username = 2;        // 유저 ID
+    int32 user_level = 3;       // 유저 등급
+    string password = 4;        // 유저 비밀번호
+}
+
+// 유저 정보 응답 메시지
+message UsersReply  {
+    int32 errorCode = 1;            // 오류 코드 (0 : 성공, 그 외: 실패)
+    repeated UsersInfo users = 2;   // 유저 목록
+}
+
+message SearchUserRequest {
+    string username = 1;
+}
+
+message SearchUserReply {
+    string username = 1;
+    string password = 2;
+    string userLevel = 3;
+    string message = 4;
+    int32 errorCode = 5;
+    repeated UsersInfo users = 6;
+}
+
+message UpdateUserLevelRequest {
+    string username = 1;
+    string userLevel = 2;
+}
+
+message UpdateUserLevelReply {
+    string message = 1;
+    int32 errorCode = 2;
 }

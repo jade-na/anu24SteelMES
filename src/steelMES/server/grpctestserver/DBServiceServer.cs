@@ -479,5 +479,141 @@ namespace grpcDummyMesServer
 
 			return result;
 		}
+		/// <summary>
+		/// Users 테이블에서 데이터를 가져오는 메서드
+		/// </summary>
+		public override async Task<UsersReply> GetAllUsersData(SteelMES.Empty request, ServerCallContext context)
+		{
+			var result = new UsersReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// Password를 제외하고 ID, USERNAME, USER_LEVEL만 가져오기
+				const string query = @"
+SELECT ID, USERNAME, USER_LEVEL
+FROM SCOTT.USERS"; // Password 제외
+
+				await using var command = new OracleCommand(query, connection);
+				await using var reader = await command.ExecuteReaderAsync();
+
+				// 데이터 읽기
+				while (await reader.ReadAsync())
+				{
+					result.Users.Add(new UsersInfo
+					{
+						ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),        // ID 컬럼 (0번 인덱스)
+						Username = reader.IsDBNull(1) ? string.Empty : reader.GetString(1), // USERNAME 컬럼 (1번 인덱스)
+						UserLevel = reader.IsDBNull(2) ? 0 : reader.GetInt32(2)  // USER_LEVEL 컬럼 (2번 인덱스)
+					});
+				}
+
+				// 데이터가 있으면 성공 코드 설정
+				result.ErrorCode = result.Users.Count > 0 ? 0 : -1;
+			}
+			catch (Exception ex)
+			{
+				result.ErrorCode = -1;
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+		/// <summary>
+		// 사용자 정보를 가져오는 메서드
+		/// </summary>
+		public override async Task<SearchUserReply> SearchUser(SearchUserRequest request, ServerCallContext context)
+		{
+			var result = new SearchUserReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 사용자 정보 조회 쿼리
+				const string query = "SELECT USERNAME, PASSWORD, USER_LEVEL FROM USERS WHERE USERNAME = :username";
+				await using var command = new OracleCommand(query, connection);
+				command.Parameters.Add(new OracleParameter(":username", request.Username));
+
+				await using var reader = await command.ExecuteReaderAsync();
+
+				// 데이터 읽기
+				if (await reader.ReadAsync())
+				{
+					result.Users.Add(new UsersInfo
+					{
+						Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0),
+						Password = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+						UserLevel = reader.IsDBNull(2) ? 0 : reader.GetInt32(2)
+					});
+
+					result.ErrorCode = 0;  // 성공
+				}
+				else
+				{
+					result.ErrorCode = -1;  // 사용자 없음
+					result.Message = "User not found.";  // 사용자 없음 메시지
+				}
+			}
+			catch (Exception ex)
+			{
+				result.ErrorCode = -1;  // 예외 발생
+				result.Message = $"Error: {ex.Message}";
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+
+		// 사용자 레벨 변경 메서드
+		public override async Task<UpdateUserLevelReply> UpdateUserLevel(UpdateUserLevelRequest request, ServerCallContext context)
+		{
+			var reply = new UpdateUserLevelReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 트랜잭션 시작
+				using var transaction = await connection.BeginTransactionAsync();
+
+				const string updateQuery = "UPDATE USERS SET USER_LEVEL = :userLevel WHERE USERNAME = :username";
+				await using var command = new OracleCommand(updateQuery, connection);
+				command.Parameters.Add(new OracleParameter(":userLevel", request.UserLevel));
+				command.Parameters.Add(new OracleParameter(":username", request.Username));
+
+				// 비동기적으로 쿼리 실행
+				int rowsAffected = await command.ExecuteNonQueryAsync();
+
+				// 트랜잭션 커밋 또는 롤백 처리
+				if (rowsAffected > 0)
+				{
+					await transaction.CommitAsync();
+					reply.ErrorCode = 0;  // 성공
+					reply.Message = "유저권한등급 변경 완료.";
+				}
+				else
+				{
+					await transaction.RollbackAsync();
+					reply.ErrorCode = -1;  // 실패
+					reply.Message = "유저를 찾지 못했거나 권한등급을 변경하지 못했습니다.";
+				}
+			}
+			catch (Exception ex)
+			{
+				// 예외 발생 시 트랜잭션 롤백
+				reply.ErrorCode = -1;
+				reply.Message = $"Error: {ex.Message}";
+			}
+
+			return reply;
+		}
 	}
 }
