@@ -162,6 +162,11 @@ namespace Project_SteelMES
             }
         }
 
+        private void MaterialOrder_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //private void ViewSupBtn_Click(object sender, EventArgs e)
         //{
 
