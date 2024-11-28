@@ -300,8 +300,16 @@ namespace grpcDummyMesServer
 			try
 			{
 				// 요청받은 Location 값
+				string facName = request.FacName;
 				string location = request.Location;
 
+				// 필수값 체크
+				if (string.IsNullOrWhiteSpace(facName))
+				{
+					result.ErrorCode = -1;
+					result.Message = "공장 이름(FacName)은 비워둘 수 없습니다.";
+					return result;
+				}
 				if (string.IsNullOrWhiteSpace(location))
 				{
 					result.ErrorCode = -1;
@@ -318,6 +326,7 @@ namespace grpcDummyMesServer
                 await using var command = new OracleCommand(query, connection);
 
 				// 파라미터 설정
+				command.Parameters.Add(new OracleParameter("FacName", OracleDbType.Varchar2) { Value = facName });
 				command.Parameters.Add(new OracleParameter("location", OracleDbType.Varchar2) { Value = location });
 
 				// 삽입 실행
