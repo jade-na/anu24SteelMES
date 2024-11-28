@@ -83,7 +83,7 @@ message ProductionLineReply {
 message MaterialInfo {
     int32 materialID = 1;
     string materialName = 2;
-    int32 supplierID = 3;
+    string supplierName = 3;
     int32 quantity = 4;
     string importDate = 5;
 }
@@ -145,8 +145,8 @@ message AddSupplieReply {
 
 // 원자재 데이터를 추가하는 요청 메시지
 message AddMaterialRequest {
-    string name = 1;       // 원자재 이름
-    int32 supplierID = 2;  // 공급업체 ID
+    string materialName = 1;       // 원자재 이름
+    string supplierName = 2;  // 공급업체 ID
     int32 quantity = 3;    // 공급받은 수량
 }
 

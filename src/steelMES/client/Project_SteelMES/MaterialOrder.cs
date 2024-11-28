@@ -60,7 +60,7 @@ namespace Project_SteelMES
                     dataGridView1.Rows.Add(
                          material.MaterialID,
                          material.MaterialName,
-                         material.SupplierID,
+                         material.SupplierName,
                          material.Quantity,
                          material.ImportDate
                     );
