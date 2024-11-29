@@ -33,11 +33,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Viewbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.AddBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.Viewbtn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -86,6 +86,23 @@
             this.panel3.Size = new System.Drawing.Size(492, 486);
             this.panel3.TabIndex = 10;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // Viewbtn
+            // 
+            this.Viewbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Viewbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.Viewbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Viewbtn.FlatAppearance.BorderSize = 0;
+            this.Viewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Viewbtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.Viewbtn.ForeColor = System.Drawing.Color.Black;
+            this.Viewbtn.Location = new System.Drawing.Point(377, 246);
+            this.Viewbtn.Name = "Viewbtn";
+            this.Viewbtn.Size = new System.Drawing.Size(84, 27);
+            this.Viewbtn.TabIndex = 12;
+            this.Viewbtn.Text = "조회";
+            this.Viewbtn.UseVisualStyleBackColor = false;
+            this.Viewbtn.Click += new System.EventHandler(this.Viewbtn_Click);
             // 
             // dataGridView1
             // 
@@ -145,6 +162,7 @@
             this.DeleteBtn.TabIndex = 11;
             this.DeleteBtn.Text = "삭제";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // panel4
             // 
@@ -155,23 +173,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(246, 159);
             this.panel4.TabIndex = 11;
-            // 
-            // Viewbtn
-            // 
-            this.Viewbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Viewbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.Viewbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Viewbtn.FlatAppearance.BorderSize = 0;
-            this.Viewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Viewbtn.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.Viewbtn.ForeColor = System.Drawing.Color.Black;
-            this.Viewbtn.Location = new System.Drawing.Point(377, 246);
-            this.Viewbtn.Name = "Viewbtn";
-            this.Viewbtn.Size = new System.Drawing.Size(84, 27);
-            this.Viewbtn.TabIndex = 12;
-            this.Viewbtn.Text = "조회";
-            this.Viewbtn.UseVisualStyleBackColor = false;
-            this.Viewbtn.Click += new System.EventHandler(this.Viewbtn_Click);
             // 
             // Lost7
             // 

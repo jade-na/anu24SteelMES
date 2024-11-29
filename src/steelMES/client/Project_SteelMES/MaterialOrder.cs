@@ -145,7 +145,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox2.Items.Clear();
 
                 foreach (var material in response.Materials)
                 {

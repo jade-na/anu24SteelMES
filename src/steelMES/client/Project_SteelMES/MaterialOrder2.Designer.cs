@@ -148,9 +148,6 @@
             this.comboBox5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.comboBox5.Location = new System.Drawing.Point(302, 18);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox5.Name = "comboBox5";
@@ -220,9 +217,6 @@
             this.comboBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.comboBox4.Location = new System.Drawing.Point(300, 15);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox4.Name = "comboBox4";
@@ -292,9 +286,6 @@
             this.comboBox3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.comboBox3.Location = new System.Drawing.Point(298, 15);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
@@ -364,9 +355,6 @@
             this.comboBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.comboBox2.Location = new System.Drawing.Point(297, 17);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
@@ -436,9 +424,6 @@
             this.SupplyOption1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.SupplyOption1.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.SupplyOption1.FormattingEnabled = true;
-            this.SupplyOption1.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.SupplyOption1.Location = new System.Drawing.Point(299, 19);
             this.SupplyOption1.Margin = new System.Windows.Forms.Padding(2);
             this.SupplyOption1.Name = "SupplyOption1";
@@ -508,9 +493,6 @@
             this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ABC Steel",
-            "AAA Steel"});
             this.comboBox1.Location = new System.Drawing.Point(296, 16);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";

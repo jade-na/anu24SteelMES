@@ -516,7 +516,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                SupplyOption1.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {
@@ -551,7 +551,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox1.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {
@@ -586,7 +586,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox2.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {
@@ -621,7 +621,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox3.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {
@@ -656,7 +656,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox4.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {
@@ -691,7 +691,7 @@ namespace Project_SteelMES
                     return;
                 }
 
-
+                comboBox5.Items.Clear();
 
                 foreach (var material in response.Suppliers)
                 {

@@ -16,7 +16,7 @@ namespace Project_SteelMES
 {
     public partial class FactoryRegister : LostForm
     {
-        
+        private int? selectedFacID; // 클릭된 FacID를 저장하는 변수
         public FactoryRegister()
         {
             InitializeComponent();
@@ -99,6 +99,8 @@ namespace Project_SteelMES
                 dataTable.Columns.Add("FacName", typeof(string));
                 dataTable.Columns.Add("Location", typeof(string));
 
+                dataTable.Clear();
+
 
                 foreach (var factory in response.Factories)
                 {
@@ -127,6 +129,71 @@ namespace Project_SteelMES
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            int rowIndex = e.RowIndex;
+
+            if (rowIndex >= 0) // 유효한 행 클릭
+            {
+                var cellValue = dataGridView1.Rows[rowIndex].Cells["FacID"].Value;
+
+                if (cellValue != null)
+                {
+                    selectedFacID = Convert.ToInt32(cellValue); // FacID를 변수에 저장
+                    MessageBox.Show($"클릭된 셀의 데이터: {selectedFacID}");
+                }
+                else
+                {
+                    selectedFacID = null; // 값이 없는 경우 초기화
+                    MessageBox.Show("유효한 데이터를 클릭하세요.");
+                }
+            }
+        }
+
+        private async void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            // 선택된 FacID 확인
+            if (selectedFacID == null)
+            {
+                MessageBox.Show("삭제할 공장을 선택하세요.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // 삭제 요청 생성
+                var deleteRequest = new DeleteFactoryRequest { FacID = { selectedFacID.Value } };
+                var response = await client.DeleteFactoryDataAsync(deleteRequest);
+
+                if (response.ErrorCode == 0)
+                {
+                    MessageBox.Show($"FacID {selectedFacID} 공장이 삭제 처리되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // DataGridView에서 선택된 행 제거
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["FacID"].Value != null && (int)row.Cells["FacID"].Value == selectedFacID)
+                        {
+                            dataGridView1.Rows.Remove(row);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"삭제 중 오류 발생: {response.ErrorMessage}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
         }
     }
 }

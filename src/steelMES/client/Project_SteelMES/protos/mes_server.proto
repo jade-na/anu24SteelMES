@@ -12,9 +12,11 @@ service DB_Service {
     rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER 데이터를 가져오는 RPC
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
     rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
+    rpc DeleteFactoryData(DeleteFactoryRequest) returns (DeleteFactoryReply); //공장 삭제 
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
     rpc GetAllProductData (Empty) returns (ProductReply);  // 모든 제품 데이터 요청
     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
+    rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //공급업체 삭제 
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
     rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
@@ -51,8 +53,9 @@ message prodHistoryInfoReply {
 // 공장 정보
 message FactoryInfo {
     int32 facID = 1;
-     string facName = 2;
+    string facName = 2;
     string location = 3;
+    int32 Deleted = 4;
 }
 // 공장 정보 응답 메시지
 message FactoryReply {
@@ -100,6 +103,7 @@ message SupplierInfo {
     string supplierName = 2;
     string contactInfo = 3;
     string country = 4;
+    int32 Deleted = 5;
 }
 
 // 공급업체 정보 응답 메시지
@@ -121,6 +125,17 @@ message AddFactoryReply {
     int32 facID = 3;       // 새로 생성된 FacID
 }
 
+// 공장 삭제 요청 메시지
+message DeleteFactoryRequest {
+    repeated int32 facID = 1;
+}
+
+// 공장 삭제 응답 메시지
+message DeleteFactoryReply {
+    int32 errorCode = 1;
+    string errorMessage = 2;
+}
+
 // 자재 수량 DB 업데이트
 message UpdateMaterialQuantityRequest {
     int32 materialID = 1;
@@ -132,17 +147,27 @@ message UpdateMaterialQuantityReply {
     int32 errorCode = 1;    // 특정 제품 ID로 조회 (선택사항)
 }
 
-// 공장 데이터를 추가하는 요청 메시지
+// 공급업체 데이터를 추가하는 요청 메시지
 message AddSupplierRequest {
     string supplierName = 1; // 공급업체이름
     string contactInfo =2; //공급업체번호
     string country =3 ; //공급업체위치
 }
-// 공장 데이터를 추가한 결과를 반환하는 응답 메시지
+// 공급업체 데이터를 추가한 결과를 반환하는 응답 메시지
 message AddSupplieReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
     string message = 2;    // 결과 메시지
     int32 supplierID = 3;       // 새로 생성된 FacID
+}
+// 공급업체 삭제 요청 메시지
+message DeleteSupplyRequest {
+    repeated int32 supplierID = 1;
+}
+
+// 공급업체 삭제 응답 메시지
+message DeleteSupplyReply {
+    int32 errorCode = 1;
+    string errorMessage = 2;
 }
 
 // 원자재 데이터를 추가하는 요청 메시지
