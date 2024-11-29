@@ -57,7 +57,7 @@ namespace Project_SteelMES
 					dataGridView1.Rows.Add(
 						product.ProductID,
 						product.ProductName,
-						product.Weight,
+						product.Quantity,
 						product.ProductionDate,
 						product.QualityGrade,
 						product.DefectID,
