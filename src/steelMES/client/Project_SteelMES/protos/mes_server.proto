@@ -20,6 +20,8 @@ service DB_Service {
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
     rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
+    rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // 제품 주문 추가
+    rpc GetProductList (Empty) returns (ProductListReply); // 제품 목록 가져오기
 }
 
 // 기본 Empty 메시지
@@ -103,7 +105,7 @@ message SupplierInfo {
     string supplierName = 2;
     string contactInfo = 3;
     string country = 4;
-    int32 Deleted = 5;
+     int32 Deleted = 5;
 }
 
 // 공급업체 정보 응답 메시지
@@ -123,17 +125,6 @@ message AddFactoryReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
     string message = 2;    // 결과 메시지
     int32 facID = 3;       // 새로 생성된 FacID
-}
-
-// 공장 삭제 요청 메시지
-message DeleteFactoryRequest {
-    repeated int32 facID = 1;
-}
-
-// 공장 삭제 응답 메시지
-message DeleteFactoryReply {
-    int32 errorCode = 1;
-    string errorMessage = 2;
 }
 
 // 자재 수량 DB 업데이트
@@ -159,6 +150,7 @@ message AddSupplieReply {
     string message = 2;    // 결과 메시지
     int32 supplierID = 3;       // 새로 생성된 FacID
 }
+
 // 공급업체 삭제 요청 메시지
 message DeleteSupplyRequest {
     repeated int32 supplierID = 1;
@@ -169,6 +161,17 @@ message DeleteSupplyReply {
     int32 errorCode = 1;
     string errorMessage = 2;
 }
+// 공장 삭제 요청 메시지
+message DeleteFactoryRequest {
+    repeated int32 FacID = 1;
+}
+
+// 공장 삭제 응답 메시지
+message DeleteFactoryReply {
+    int32 errorCode = 1;
+    string errorMessage = 2;
+}
+
 
 // 원자재 데이터를 추가하는 요청 메시지
 message AddMaterialRequest {
@@ -188,7 +191,7 @@ message AddMaterialReply {
 message ProductInfo {
     int32 productID = 1;          // 제품 ID
     string productName = 2;       // 제품명
-    double weight = 3;            // 무게
+    double quantity = 3;            // 무게
     int32 materialID = 4;         // 자재 ID
     string productionDate = 5;    // 생산 날짜
     string qualityGrade = 6;      // 품질 등급
@@ -237,4 +240,21 @@ message UpdateUserLevelRequest {
 message UpdateUserLevelReply {
     string message = 1;
     int32 errorCode = 2;
+}
+
+message ProductOrderRequest {
+    string productName = 1;
+    int32 quantity = 2;
+    int32 factoryId = 3;
+    string productionDate = 4;
+}
+
+message ProductOrderResponse {
+    int32 errorCode = 1;
+    string message = 2;
+}
+
+message ProductListReply {
+    int32 errorCode = 1;
+    repeated string productNames = 2;
 }
