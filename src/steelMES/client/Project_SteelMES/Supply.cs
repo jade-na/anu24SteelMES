@@ -7,27 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Grpc.Core;
+using Grpc.Net.Client;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
+using SteelMES;
 
 namespace Project_SteelMES
 {
     public partial class Lost7 : LostForm
     {
-
-        
+        // Oracle 연결 문자열
+        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
 
         public Lost7()
         {
             InitializeComponent();
-
             
         }
 
-        
-
         private void Lost7_Load(object sender, EventArgs e)
         {
-
+            // DataGridView 설정 (최초 한 번만 호출)
+            if (dataGridView1.Columns.Count == 0)
+            {
+                dataGridView1.Columns.Add("SupplierID", "공급업체 ID");
+                dataGridView1.Columns.Add("SupplierName", "공급업체");
+                dataGridView1.Columns.Add("ContactInfo", "연락처");
+                dataGridView1.Columns.Add("Country", "위치");
+            }
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -74,6 +82,49 @@ namespace Project_SteelMES
         {
         }
 
-        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void Viewbtn_Click(object sender, EventArgs e)
+        {
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // gRPC 서버에서 Supplier 데이터를 가져옴
+                var response = await client.GetSupplierDataAsync(new Empty());
+
+                if (response.ErrorCode != 0)
+                {
+                    MessageBox.Show($"서버 오류 코드: {response.ErrorCode}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // DataGridView 초기화
+                dataGridView1.Rows.Clear();
+
+                foreach (var supplier in response.Suppliers)
+                {
+                    dataGridView1.Rows.Add(
+                         supplier.SupplierID,
+                         supplier.SupplierName,
+                         supplier.ContactInfo,
+                         supplier.Country
+                    );
+                }
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+        }
     }
 }

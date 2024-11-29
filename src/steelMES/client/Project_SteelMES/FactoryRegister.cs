@@ -7,24 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Grpc.Core;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
+using SteelMES;
 
 namespace Project_SteelMES
 {
     public partial class FactoryRegister : LostForm
     {
-
         
         public FactoryRegister()
         {
             InitializeComponent();
-
-            dataGridView1.Rows.Add("포항공장", "경상북도 포항시 남구 동해안로 6261 (괴동동)");
-            dataGridView1.Rows.Add("광양공장", "전남 광양시 폭포사랑길 20-26 (금호동)");
-            dataGridView1.Rows.Add("당진공장", "충청남도 당진시 송악읍 북부산업로 1480");
-
+            
         }
-
+        
+       
         private void Lost6_Load(object sender, EventArgs e)
         {
             
@@ -75,6 +74,59 @@ namespace Project_SteelMES
         private void button6_Click_1(object sender, EventArgs e)
         {
             
+        }
+
+        private async void viewbtn_Click(object sender, EventArgs e)
+        {
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // gRPC 서버에서 Supplier 데이터를 가져옴
+                var response = await client.GetFactoryDataAsync(new Empty());
+
+                if (response.ErrorCode != 0)
+                {
+                    MessageBox.Show($"서버 오류 코드: {response.ErrorCode}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // DataTable 생성
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("FacID", typeof(int));
+                dataTable.Columns.Add("FacName", typeof(string));
+                dataTable.Columns.Add("Location", typeof(string));
+
+
+                foreach (var factory in response.Factories)
+                {
+                    dataTable.Rows.Add(
+                         factory.FacID,
+                         factory.FacName,
+                         factory.Location
+                    );
+                }
+
+                // DataGridView에 DataTable 바인딩
+                dataGridView1.DataSource = dataTable;
+
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

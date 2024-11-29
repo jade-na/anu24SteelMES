@@ -102,39 +102,42 @@ namespace grpcDummyMesServer
 		/// </summary>
 		public override async Task<FactoryReply> GetFactoryData(SteelMES.Empty request, ServerCallContext context)
 		{
-			var result = new FactoryReply();
 
-			try
-			{
-				await using var connection = new OracleConnection(_connectionString);
-				await connection.OpenAsync();
+            var result = new FactoryReply();
 
-				const string query = "SELECT FACID, LOCATION FROM FACTORY";
+            try
+            {
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
 
-				await using var command = new OracleCommand(query, connection);
-				await using var reader = await command.ExecuteReaderAsync();
+                const string query = "SELECT FACID, FACNAME, LOCATION FROM FACTORY";  // FACNAME 포함 확인
 
-				while (await reader.ReadAsync())
-				{
-					result.Factories.Add(new FactoryInfo
-					{
-						FacID = reader.GetInt32(0),
-						Location = reader.IsDBNull(1) ? string.Empty : reader.GetString(1)
-					});
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error: {ex.Message}");
-			}
+                await using var command = new OracleCommand(query, connection);
+                await using var reader = await command.ExecuteReaderAsync();
 
-			return result;
-		}
+                while (await reader.ReadAsync())
+                {
+                    result.Factories.Add(new FactoryInfo
+                    {
+                        FacID = reader.GetInt32(0),
+                        FacName = reader.GetString(1),  // FACNAME 읽기
+                        Location = reader.IsDBNull(2) ? string.Empty : reader.GetString(2)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching factory data: {ex.Message}");
+            }
 
-		/// <summary>
-		/// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
-		/// </summary>
-		public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
+            return result;
+
+        }
+
+        /// <summary>
+        /// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
+        /// </summary>
+        public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
 		{
 			var result = new ProductionLineReply();
 
@@ -188,7 +191,7 @@ namespace grpcDummyMesServer
 				await connection.OpenAsync();
 
 				const string query = @"
-                    SELECT MATERIALID, MATERIALNAME, SUPPLIERID, QUANTITY, IMPORTDATE 
+                    SELECT MATERIALID, MATERIALNAME, SUPPLIERNAME, QUANTITY, IMPORTDATE 
                     FROM MATERIAL";
 
 				await using var command = new OracleCommand(query, connection);
@@ -197,10 +200,10 @@ namespace grpcDummyMesServer
 				while (await reader.ReadAsync())
 				{
 					result.Materials.Add(new MaterialInfo
-					{
+                    {
 						MaterialID = reader.GetInt32(0),
 						MaterialName = reader.GetString(1),
-						SupplierID = reader.GetInt32(2),
+                        SupplierName = reader.GetString(2),
 						Quantity = reader.GetInt32(3),
 						ImportDate = reader.GetDateTime(4).ToString("yyyy-MM-dd")
 					});
@@ -297,8 +300,16 @@ namespace grpcDummyMesServer
 			try
 			{
 				// 요청받은 Location 값
+				string facName = request.FacName;
 				string location = request.Location;
 
+				// 필수값 체크
+				if (string.IsNullOrWhiteSpace(facName))
+				{
+					result.ErrorCode = -1;
+					result.Message = "공장 이름(FacName)은 비워둘 수 없습니다.";
+					return result;
+				}
 				if (string.IsNullOrWhiteSpace(location))
 				{
 					result.ErrorCode = -1;
@@ -309,12 +320,13 @@ namespace grpcDummyMesServer
 				await using var connection = new OracleConnection(_connectionString);
 				await connection.OpenAsync();
 
-				// 공장 삽입 쿼리 (FacID는 DB의 트리거와 시퀀스에서 자동 생성)
-				const string insertQuery = "INSERT INTO FACTORY (LOCATION) VALUES (:location)";
+                // 공장 삽입 쿼리 (FacID는 DB의 트리거와 시퀀스에서 자동 생성)
+                string query = "INSERT INTO FACTORY (FacName, Location) VALUES (:FacName, :Location)";
 
-				await using var command = new OracleCommand(insertQuery, connection);
+                await using var command = new OracleCommand(query, connection);
 
 				// 파라미터 설정
+				command.Parameters.Add(new OracleParameter("FacName", OracleDbType.Varchar2) { Value = facName });
 				command.Parameters.Add(new OracleParameter("location", OracleDbType.Varchar2) { Value = location });
 
 				// 삽입 실행
@@ -340,6 +352,34 @@ namespace grpcDummyMesServer
 			}
 			return result;
 		}
+        public override async Task<AddSupplieReply> AddSupplier(AddSupplierRequest request, ServerCallContext context)
+        {
+            var result = new AddSupplieReply();
+
+            try
+            {
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                const string query = "INSERT INTO Supplier (SupplierName, ContactInfo, Country) VALUES (:SupplierName, :ContactInfo, :Country)";
+                await using var command = new OracleCommand(query, connection);
+                command.Parameters.Add(new OracleParameter(":SupplierName", request.SupplierName));
+                command.Parameters.Add(new OracleParameter(":ContactInfo", request.ContactInfo));
+                command.Parameters.Add(new OracleParameter(":Country", request.Country));
+
+                int rowsAffected = await command.ExecuteNonQueryAsync();
+                result.ErrorCode = rowsAffected > 0 ? 0 : -1; // 성공 여부 확인
+                result.Message = rowsAffected > 0 ? "Success" : "Failed to insert supplier.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inserting supplier: {ex.Message}");
+                result.ErrorCode = 1;
+                result.Message = $"Error: {ex.Message}";
+            }
+
+            return result;
+        }
         public override async Task<AddMaterialReply> AddMaterial(AddMaterialRequest request, ServerCallContext context)
         {
             var result = new AddMaterialReply();
@@ -347,22 +387,22 @@ namespace grpcDummyMesServer
             try
             {
                 // 요청받은 데이터
-                string name = request.Name;
-                int supplierID = request.SupplierID;
+                string materialName = request.MaterialName;
+                string supplierName = request.SupplierName;
                 int quantity = request.Quantity;
 
                 // 입력 데이터 검증
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(materialName))
                 {
                     result.ErrorCode = -1;
                     result.Message = "원자재 이름(Name)은 비워둘 수 없습니다.";
                     return result;
                 }
 
-                if (supplierID <= 0 || quantity <= 0)
+                if (string.IsNullOrEmpty(supplierName) || quantity <= 0)
                 {
                     result.ErrorCode = -1;
-                    result.Message = "공급업체 ID와 수량은 양수여야 합니다.";
+                    result.Message = "공급업체를 선택하세요.";
                     return result;
                 }
 
@@ -371,14 +411,14 @@ namespace grpcDummyMesServer
 
                 // 원자재 삽입 쿼리 (MaterialID는 DB의 트리거와 시퀀스에서 자동 생성)
                 const string insertQuery = @"
-									INSERT INTO MATERIAL (MATERIALNAME, SUPPLIERID, QUANTITY, IMPORTDATE)
-									VALUES (:name, :supplierID, :quantity, SYSDATE)";
+									INSERT INTO MATERIAL (MATERIALNAME, SUPPLIERNAME, QUANTITY, IMPORTDATE)
+									VALUES (:materialName, :supplierName, :quantity, SYSDATE)";
 
                 await using var command = new OracleCommand(insertQuery, connection);
 
                 // 파라미터 설정
-                command.Parameters.Add(new OracleParameter("name", OracleDbType.Varchar2) { Value = name });
-                command.Parameters.Add(new OracleParameter("supplierID", OracleDbType.Int32) { Value = supplierID });
+                command.Parameters.Add(new OracleParameter("materialName", OracleDbType.Varchar2) { Value = materialName });
+                command.Parameters.Add(new OracleParameter("supplierName", OracleDbType.Varchar2) { Value = supplierName });
                 command.Parameters.Add(new OracleParameter("quantity", OracleDbType.Int32) { Value = quantity });
 
                 // 삽입 실행
@@ -404,5 +444,185 @@ namespace grpcDummyMesServer
             }
             return result;
         }
-    }
+		/// <summary>
+		/// Product 테이블에서 데이터를 가져오는 메서드
+		/// </summary>
+		public override async Task<ProductReply> GetAllProductData(SteelMES.Empty request, ServerCallContext context)
+		{
+			var result = new ProductReply();
+
+			try
+			{
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				const string query = @"
+        SELECT P.PRODUCTID, P.PRODUCTNAME, P.WEIGHT, P.PRODUCTIONDATE, P.QUALITYGRADE, D.DEFECTID, P.FACID
+        FROM SCOTT.PRODUCT P
+        LEFT JOIN SCOTT.DEFECT D ON P.PRODUCTID = D.PRODUCTID";
+
+				await using var command = new OracleCommand(query, connection);
+				await using var reader = await command.ExecuteReaderAsync();
+
+				while (await reader.ReadAsync())
+				{
+					result.Products.Add(new ProductInfo
+					{
+						ProductID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
+						ProductName = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+						Weight = reader.IsDBNull(2) ? 0 : reader.GetDouble(2),
+						ProductionDate = reader.IsDBNull(3) ? string.Empty : reader.GetDateTime(3).ToString("yyyy-MM-dd"),
+						QualityGrade = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
+						DefectID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5),
+						FacID = reader.IsDBNull(6) ? 0 : reader.GetInt32(6)
+					});
+				}
+
+				result.ErrorCode = result.Products.Count > 0 ? 0 : -1; // 데이터가 있는지 여부에 따라 에러코드 설정
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Exception 발생: {ex.Message}");
+				result.ErrorCode = -1;
+			}
+
+			return result;
+		}
+		/// <summary>
+		/// Users 테이블에서 데이터를 가져오는 메서드
+		/// </summary>
+		public override async Task<UsersReply> GetAllUsersData(SteelMES.Empty request, ServerCallContext context)
+		{
+			var result = new UsersReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// Password를 제외하고 ID, USERNAME, USER_LEVEL만 가져오기
+				const string query = @"
+SELECT ID, USERNAME, USER_LEVEL
+FROM SCOTT.USERS"; // Password 제외
+
+				await using var command = new OracleCommand(query, connection);
+				await using var reader = await command.ExecuteReaderAsync();
+
+				// 데이터 읽기
+				while (await reader.ReadAsync())
+				{
+					result.Users.Add(new UsersInfo
+					{
+						ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),        // ID 컬럼 (0번 인덱스)
+						Username = reader.IsDBNull(1) ? string.Empty : reader.GetString(1), // USERNAME 컬럼 (1번 인덱스)
+						UserLevel = reader.IsDBNull(2) ? 0 : reader.GetInt32(2)  // USER_LEVEL 컬럼 (2번 인덱스)
+					});
+				}
+
+				// 데이터가 있으면 성공 코드 설정
+				result.ErrorCode = result.Users.Count > 0 ? 0 : -1;
+			}
+			catch (Exception ex)
+			{
+				result.ErrorCode = -1;
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+		/// <summary>
+		// 사용자 정보를 가져오는 메서드
+		/// </summary>
+		public override async Task<SearchUserReply> SearchUser(SearchUserRequest request, ServerCallContext context)
+		{
+			var result = new SearchUserReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 사용자 정보 조회 쿼리
+				const string query = "SELECT USERNAME, PASSWORD, USER_LEVEL FROM USERS WHERE USERNAME = :username";
+				await using var command = new OracleCommand(query, connection);
+				command.Parameters.Add(new OracleParameter(":username", request.Username));
+
+				await using var reader = await command.ExecuteReaderAsync();
+
+				// 데이터 읽기
+				if (await reader.ReadAsync())
+				{
+					result.Users.Add(new UsersInfo
+					{
+						Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0),
+						Password = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
+						UserLevel = reader.IsDBNull(2) ? 0 : reader.GetInt32(2)
+					});
+
+					result.ErrorCode = 0;  // 성공
+				}
+				else
+				{
+					result.ErrorCode = -1;  // 사용자 없음
+					result.Message = "User not found.";  // 사용자 없음 메시지
+				}
+			}
+			catch (Exception ex)
+			{
+				result.ErrorCode = -1;  // 예외 발생
+				result.Message = $"Error: {ex.Message}";
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+
+		// 사용자 레벨 변경 메서드
+		public override async Task<UpdateUserLevelReply> UpdateUserLevel(UpdateUserLevelRequest request, ServerCallContext context)
+		{
+			var reply = new UpdateUserLevelReply();
+
+			try
+			{
+				// Oracle DB 연결
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 트랜잭션 시작
+				using var transaction = await connection.BeginTransactionAsync();
+
+				const string updateQuery = "UPDATE USERS SET USER_LEVEL = :userLevel WHERE USERNAME = :username";
+				await using var command = new OracleCommand(updateQuery, connection);
+				command.Parameters.Add(new OracleParameter(":userLevel", request.UserLevel));
+				command.Parameters.Add(new OracleParameter(":username", request.Username));
+
+				// 비동기적으로 쿼리 실행
+				int rowsAffected = await command.ExecuteNonQueryAsync();
+
+				// 트랜잭션 커밋 또는 롤백 처리
+				if (rowsAffected > 0)
+				{
+					await transaction.CommitAsync();
+					reply.ErrorCode = 0;  // 성공
+					reply.Message = "유저권한등급 변경 완료.";
+				}
+				else
+				{
+					await transaction.RollbackAsync();
+					reply.ErrorCode = -1;  // 실패
+					reply.Message = "유저를 찾지 못했거나 권한등급을 변경하지 못했습니다.";
+				}
+			}
+			catch (Exception ex)
+			{
+				// 예외 발생 시 트랜잭션 롤백
+				reply.ErrorCode = -1;
+				reply.Message = $"Error: {ex.Message}";
+			}
+
+			return reply;
+		}
+	}
 }

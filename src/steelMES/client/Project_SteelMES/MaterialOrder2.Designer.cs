@@ -98,12 +98,12 @@
             // 
             this.dungeonLabel1.AutoSize = true;
             this.dungeonLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.Black;
             this.dungeonLabel1.Location = new System.Drawing.Point(1, 20);
             this.dungeonLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dungeonLabel1.Name = "dungeonLabel1";
-            this.dungeonLabel1.Size = new System.Drawing.Size(110, 37);
+            this.dungeonLabel1.Size = new System.Drawing.Size(92, 37);
             this.dungeonLabel1.TabIndex = 10;
             this.dungeonLabel1.Text = "주문표";
             this.dungeonLabel1.Click += new System.EventHandler(this.dungeonLabel1_Click);
@@ -157,6 +157,7 @@
             this.comboBox5.Size = new System.Drawing.Size(149, 33);
             this.comboBox5.TabIndex = 32;
             this.comboBox5.Text = "공급업체 선택";
+            this.comboBox5.DropDown += new System.EventHandler(this.comboBox5_DropDown);
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // numericUpDown5
@@ -172,12 +173,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(80, 20);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 27);
+            this.label6.Size = new System.Drawing.Size(77, 31);
             this.label6.TabIndex = 10;
             this.label6.Text = "크로뮴";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -228,6 +229,7 @@
             this.comboBox4.Size = new System.Drawing.Size(149, 33);
             this.comboBox4.TabIndex = 32;
             this.comboBox4.Text = "공급업체 선택";
+            this.comboBox4.DropDown += new System.EventHandler(this.comboBox4_DropDown);
             this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // numericUpDown4
@@ -243,12 +245,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(90, 20);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 27);
+            this.label5.Size = new System.Drawing.Size(56, 31);
             this.label5.TabIndex = 10;
             this.label5.Text = "석회";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -299,6 +301,7 @@
             this.comboBox3.Size = new System.Drawing.Size(149, 33);
             this.comboBox3.TabIndex = 32;
             this.comboBox3.Text = "공급업체 선택";
+            this.comboBox3.DropDown += new System.EventHandler(this.comboBox3_DropDown);
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // numericUpDown3
@@ -314,12 +317,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(90, 20);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 27);
+            this.label3.Size = new System.Drawing.Size(56, 31);
             this.label3.TabIndex = 10;
             this.label3.Text = "망간";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -370,6 +373,7 @@
             this.comboBox2.Size = new System.Drawing.Size(149, 33);
             this.comboBox2.TabIndex = 32;
             this.comboBox2.Text = "공급업체 선택";
+            this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // numericUpDown7
@@ -385,12 +389,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(89, 20);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 27);
+            this.label4.Size = new System.Drawing.Size(56, 31);
             this.label4.TabIndex = 10;
             this.label4.Text = "니켈";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -441,6 +445,7 @@
             this.SupplyOption1.Size = new System.Drawing.Size(149, 33);
             this.SupplyOption1.TabIndex = 32;
             this.SupplyOption1.Text = "공급업체 선택";
+            this.SupplyOption1.DropDown += new System.EventHandler(this.SupplyOption1_DropDown);
             this.SupplyOption1.SelectedIndexChanged += new System.EventHandler(this.SupplyOption1_SelectedIndexChanged);
             // 
             // numericUpDown1
@@ -456,12 +461,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(77, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 27);
+            this.label1.Size = new System.Drawing.Size(77, 31);
             this.label1.TabIndex = 10;
             this.label1.Text = "철광석";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -512,6 +517,7 @@
             this.comboBox1.Size = new System.Drawing.Size(149, 33);
             this.comboBox1.TabIndex = 32;
             this.comboBox1.Text = "공급업체 선택";
+            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // OrderBtn2
@@ -544,12 +550,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 18F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(88, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 27);
+            this.label2.Size = new System.Drawing.Size(56, 31);
             this.label2.TabIndex = 10;
             this.label2.Text = "석탄";
             this.label2.Click += new System.EventHandler(this.label2_Click);

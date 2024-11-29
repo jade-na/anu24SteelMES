@@ -8,7 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf.Collections;
+using Grpc.Core;
+using Grpc.Net.Client;
+using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
+using SteelMES;
 
 namespace Project_SteelMES
 {
@@ -32,38 +36,47 @@ namespace Project_SteelMES
 
         }
 
-        private void button1_Click(object sender, EventArgs e) //등록 버튼
+        private async void button1_Click(object sender, EventArgs e) //등록 버튼
         {
-            string text1 = textBox1.Text;
-            string text2 = textBox2.Text;
-            string text3 = textBox3.Text;
+            string supplierName = textBox1.Text;
+            string contactInfo = textBox2.Text;
+            string country = textBox3.Text;
 
-            // 입력값 검증
-            if (string.IsNullOrWhiteSpace(text1) || string.IsNullOrWhiteSpace(text2) || string.IsNullOrWhiteSpace(text3))
+            if (string.IsNullOrWhiteSpace(supplierName) || string.IsNullOrWhiteSpace(contactInfo) || string.IsNullOrWhiteSpace(country))
             {
                 MessageBox.Show("모든 필드를 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 메시지 박스 표시
-            DialogResult result = MessageBox.Show("등록하시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
 
-            if (result == DialogResult.OK)
+            try
             {
-                // 확인을 누르면 Lost7에 데이터 전달
-                lost7.AddRowToDataGridView(text1, text2, text3);
+                var request = new AddSupplierRequest
+                {
+                    SupplierName = supplierName,
+                    ContactInfo = contactInfo,
+                    Country = country
+                };
 
-                // TextBox 초기화
-                textBox1.Clear();
-                textBox2.Clear();
-                textBox3.Clear();
-
+                var response = await client.AddSupplierAsync(request);
+                
+                if (response.ErrorCode == 0)
+                {
+                    MessageBox.Show("공급업체 등록 성공!", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"공급업체 등록 실패: {response.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (result == DialogResult.Cancel)
+            catch (RpcException ex)
             {
-                return;
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+       
 
         private void button2_Click(object sender, EventArgs e) //돌아가기 버튼
         {
