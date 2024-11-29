@@ -324,9 +324,6 @@
     <None Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8-settings-48-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
@@ -361,9 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\clock2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon3.png" />
@@ -417,9 +411,6 @@
     <None Include="Resources\setting.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\work.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\work2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +436,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\foward %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon2 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon2 %283%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />
