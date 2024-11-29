@@ -76,7 +76,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(121, 16);
             this.progressBar1.TabIndex = 2;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            
             // 
             // progressBar2
             // 
@@ -85,7 +85,7 @@
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(121, 16);
             this.progressBar2.TabIndex = 5;
-            this.progressBar2.Click += new System.EventHandler(this.progressBar2_Click);
+            
             // 
             // progressBar3
             // 
@@ -94,7 +94,7 @@
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(121, 16);
             this.progressBar3.TabIndex = 6;
-            this.progressBar3.Click += new System.EventHandler(this.progressBar3_Click);
+            
             // 
             // SelectBtn
             // 
@@ -131,7 +131,7 @@
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(121, 16);
             this.progressBar4.TabIndex = 14;
-            this.progressBar4.Click += new System.EventHandler(this.progressBar4_Click);
+            
             // 
             // panel1
             // 

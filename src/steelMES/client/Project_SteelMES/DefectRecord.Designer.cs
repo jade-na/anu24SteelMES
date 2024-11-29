@@ -152,7 +152,7 @@ namespace Project_SteelMES
             this.SelectBtn.TabIndex = 15;
             this.SelectBtn.Text = "조회";
             this.SelectBtn.UseVisualStyleBackColor = false;
-            this.SelectBtn.Click += new System.EventHandler(this.button6_Click);
+            this.SelectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
             // dateTimePicker1
             // 
