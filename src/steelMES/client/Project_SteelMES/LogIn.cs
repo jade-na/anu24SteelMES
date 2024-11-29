@@ -27,11 +27,71 @@ namespace Project_SteelMES
 
         }
 
-        private void materialButton1_Click(object sender, EventArgs e) //Sign in
+        private void panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-            string username = UserID_TextBox.Text;
-            string password = Password_TextBox.Text;
-            Password_TextBox.PasswordChar = '*';
+
+        }
+
+        private void hopeSwitch1_CheckedChanged(object sender, EventArgs e) //Password 암호화
+        {
+            this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
+
+            if (hopeSwitch1.Checked)
+            {
+                Password.UseSystemPasswordChar = true;
+            }
+            else
+                Password.UseSystemPasswordChar = false;
+        }
+
+        private void UseId_Click(object sender, EventArgs e) //ID 입력 시 초기화
+        {
+            this.UserID.Enter += new System.EventHandler(this.UseId_Enter);
+            UserID.Text = string.Empty;
+        }
+        private void UseId_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void hopeTextBox2_Click(object sender, EventArgs e) //Password 입력 시 초기화
+        {
+            this.Password.Enter += new System.EventHandler(this.hopeTextBox2_Enter);
+            Password.Text = string.Empty;
+        }
+        private void hopeTextBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+            // 회원가입 창 띄우기
+            CreateID createForm= new CreateID();
+            createForm.ShowDialog(); 
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void JoinBtn_Click(object sender, EventArgs e)
+        {
+            // 회원가입 창 띄우기
+            CreateID createForm = new CreateID();
+            //createForm.ShowDialog();
+            createForm.Show();
+            this.Hide();
+        }
+
+        private void LoginBtn_Click(object sender, EventArgs e)
+        {
+            string username = UserID.Text;
+            string password = Password.Text;
+            Password.PasswordChar = '*';
             // 오라클 연결 문자열
             string connectionString = "User Id=scott;Password=tiger;Data Source=//localhost:1521/XE";
 
@@ -77,57 +137,5 @@ namespace Project_SteelMES
                 }
             }
         }
-
-        private void panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-
-        }
-
-        private void hopeSwitch1_CheckedChanged(object sender, EventArgs e) //Password 암호화
-        {
-            this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
-
-            if (hopeSwitch1.Checked)
-            {
-                Password_TextBox.UseSystemPasswordChar = true;
-            }
-            else
-                Password_TextBox.UseSystemPasswordChar = false;
-        }
-
-        private void hopeTextBox1_Click(object sender, EventArgs e) //ID 입력 시 초기화
-        {
-
-            this.UserID_TextBox.Enter += new System.EventHandler(this.hopeTextBox1_Enter);
-            UserID_TextBox.Text = string.Empty;
-        }
-        private void hopeTextBox1_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void hopeTextBox2_Click(object sender, EventArgs e) //Password 입력 시 초기화
-        {
-            this.Password_TextBox.Enter += new System.EventHandler(this.hopeTextBox2_Enter);
-            Password_TextBox.Text = string.Empty;
-        }
-        private void hopeTextBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialButton2_Click(object sender, EventArgs e)
-        {
-            // 회원가입 창 띄우기
-            CreateID createForm= new CreateID();
-            createForm.ShowDialog(); 
-        }
-
-
-
-
-
-
-      
     }
 }

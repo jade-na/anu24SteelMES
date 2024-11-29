@@ -31,30 +31,6 @@ namespace Project_SteelMES
 			CreateOptionButtons();
 		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Menu_DefectRecordBtn.BackColor = Color.SkyBlue;
-            Menu_DefectRecordBtn.ForeColor = Color.Black;
-
-            Menu_MonitoringBtn.BackColor = Color.Transparent;
-            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
-            Menu_DefinitonBtn.BackColor = Color.Transparent;
-            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
-            Menu_WorkBtn.BackColor = Color.Transparent;
-            Menu_WorkBtn.ForeColor = Color.SkyBlue;
-
-            // Form2 인스턴스 생성
-            DefectRecord lost2 = new DefectRecord();
-
-            // Form2를 panel1에 표시
-            lost2.TopLevel = false; // 폼을 자식 컨트롤로 설정
-            lost2.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
-            lost2.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
-
-            panel5.Controls.Clear(); // 기존 컨트롤 제거
-            panel5.Controls.Add(lost2); // Form2 추가
-            lost2.Show(); // Form2 표시
-        }
 		private void CreateOptionButtons()
 		{
 			
@@ -247,6 +223,43 @@ namespace Project_SteelMES
             panel5.Controls.Clear(); // 기존 컨트롤 제거
             panel5.Controls.Add(lost5); // Form2 추가
             lost5.Show(); // Form2 표시
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_DefectRecordBtn_Click(object sender, EventArgs e)
+        {
+
+            Menu_DefectRecordBtn.BackColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.ForeColor = Color.Black;
+
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
+
+            // Form2 인스턴스 생성
+            DefectRecord lost2 = new DefectRecord();
+
+            // Form2를 panel1에 표시
+            lost2.TopLevel = false; // 폼을 자식 컨트롤로 설정
+            lost2.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
+            lost2.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
+
+            panel5.Controls.Clear(); // 기존 컨트롤 제거
+            panel5.Controls.Add(lost2); // Form2 추가
+            lost2.Show(); // Form2 표시
         }
     }
 }
