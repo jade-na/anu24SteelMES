@@ -60,7 +60,7 @@
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel2.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel2.Location = new System.Drawing.Point(22, 114);
+            this.dungeonLabel2.Location = new System.Drawing.Point(37, 114);
             this.dungeonLabel2.Name = "dungeonLabel2";
             this.dungeonLabel2.Size = new System.Drawing.Size(161, 31);
             this.dungeonLabel2.TabIndex = 6;
@@ -72,7 +72,7 @@
             this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel3.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel3.Location = new System.Drawing.Point(22, 167);
+            this.dungeonLabel3.Location = new System.Drawing.Point(37, 167);
             this.dungeonLabel3.Name = "dungeonLabel3";
             this.dungeonLabel3.Size = new System.Drawing.Size(130, 31);
             this.dungeonLabel3.TabIndex = 7;
@@ -84,7 +84,7 @@
             this.dungeonLabel4.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel4.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel4.Location = new System.Drawing.Point(22, 217);
+            this.dungeonLabel4.Location = new System.Drawing.Point(37, 217);
             this.dungeonLabel4.Name = "dungeonLabel4";
             this.dungeonLabel4.Size = new System.Drawing.Size(145, 31);
             this.dungeonLabel4.TabIndex = 8;
@@ -96,7 +96,7 @@
             this.dungeonLabel5.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel5.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel5.Location = new System.Drawing.Point(22, 268);
+            this.dungeonLabel5.Location = new System.Drawing.Point(37, 268);
             this.dungeonLabel5.Name = "dungeonLabel5";
             this.dungeonLabel5.Size = new System.Drawing.Size(151, 31);
             this.dungeonLabel5.TabIndex = 9;
@@ -108,7 +108,7 @@
             this.dungeonLabel6.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel6.Font = new System.Drawing.Font("Gadugi", 20.25F);
             this.dungeonLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel6.Location = new System.Drawing.Point(22, 317);
+            this.dungeonLabel6.Location = new System.Drawing.Point(37, 317);
             this.dungeonLabel6.Name = "dungeonLabel6";
             this.dungeonLabel6.Size = new System.Drawing.Size(198, 31);
             this.dungeonLabel6.TabIndex = 10;
@@ -118,7 +118,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label2.Location = new System.Drawing.Point(189, 115);
+            this.label2.Location = new System.Drawing.Point(204, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 30);
             this.label2.TabIndex = 11;
@@ -128,7 +128,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label3.Location = new System.Drawing.Point(173, 168);
+            this.label3.Location = new System.Drawing.Point(188, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 30);
             this.label3.TabIndex = 12;
@@ -138,7 +138,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label4.Location = new System.Drawing.Point(173, 217);
+            this.label4.Location = new System.Drawing.Point(188, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 30);
             this.label4.TabIndex = 13;
@@ -148,7 +148,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label5.Location = new System.Drawing.Point(180, 268);
+            this.label5.Location = new System.Drawing.Point(195, 268);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 30);
             this.label5.TabIndex = 14;
@@ -158,7 +158,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.label6.Location = new System.Drawing.Point(226, 317);
+            this.label6.Location = new System.Drawing.Point(241, 317);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 30);
             this.label6.TabIndex = 15;
@@ -171,15 +171,15 @@
             this.CloseBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CloseBtn.Location = new System.Drawing.Point(384, 350);
+            this.CloseBtn.Location = new System.Drawing.Point(387, 345);
             this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(95, 39);
+            this.CloseBtn.Size = new System.Drawing.Size(86, 39);
             this.CloseBtn.TabIndex = 6;
-            this.CloseBtn.Text = "돌아가기";
+            this.CloseBtn.Text = "닫기";
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Material
+            // DefectRecord2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,7 +196,7 @@
             this.Controls.Add(this.dungeonLabel3);
             this.Controls.Add(this.dungeonLabel2);
             this.Controls.Add(this.dungeonLabel1);
-            this.Name = "Material";
+            this.Name = "DefectRecord2";
             this.Load += new System.EventHandler(this.Material_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

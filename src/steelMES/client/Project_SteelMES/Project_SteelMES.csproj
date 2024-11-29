@@ -149,18 +149,6 @@
     <Compile Include="DefectRecord.Designer.cs">
       <DependentUpon>DefectRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lost3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lost3.Designer.cs">
-      <DependentUpon>Lost3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lost4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lost4.Designer.cs">
-      <DependentUpon>Lost4.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProcessManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +160,11 @@
     </Compile>
     <Compile Include="FactoryRegister.Designer.cs">
       <DependentUpon>FactoryRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Supply.cs">
       <SubType>Form</SubType>
@@ -247,12 +240,6 @@
     <EmbeddedResource Include="DefectRecord.resx">
       <DependentUpon>DefectRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lost3.resx">
-      <DependentUpon>Lost3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lost4.resx">
-      <DependentUpon>Lost4.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProcessManagement.resx">
       <DependentUpon>ProcessManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,11 +287,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -313,24 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background2.png.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\factory1.jpg" />
@@ -363,31 +327,124 @@
     <None Include="Resources\logo1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icon2 %282%29.png" />
+    <None Include="Resources\icons8-settings-48-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icon2 %283%29.png" />
+    <None Include="Resources\process4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-menu.gif" />
+    <None Include="Resources\Account_nonact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Account_act.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo2-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KakaoTalk_20241127_162220691.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon1 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon2 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-settings-48-removebg-preview.png" />
+    <None Include="Resources\facebook.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-menu-64.png" />
+    <None Include="Resources\google.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-search-more-64-removebg-preview %281%29.png" />
+    <None Include="Resources\instargram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreateID_BackImg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createID.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserName.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo %282%29.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon1 %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\process4.png" />
+    <None Include="Resources\iccon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon3 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foward %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />

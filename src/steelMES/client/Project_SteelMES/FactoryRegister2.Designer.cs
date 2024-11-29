@@ -80,7 +80,7 @@
             this.RegisterBtn.FlatAppearance.BorderSize = 0;
             this.RegisterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.RegisterBtn.Location = new System.Drawing.Point(287, 338);
+            this.RegisterBtn.Location = new System.Drawing.Point(286, 338);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(76, 40);
             this.RegisterBtn.TabIndex = 11;
@@ -98,13 +98,13 @@
             this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.CloseBtn.Location = new System.Drawing.Point(383, 338);
             this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(98, 40);
+            this.CloseBtn.Size = new System.Drawing.Size(76, 40);
             this.CloseBtn.TabIndex = 12;
-            this.CloseBtn.Text = "돌아가기";
+            this.CloseBtn.Text = "닫기";
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Material2
+            // FactoryRegister2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.Name = "Material2";
+            this.Name = "FactoryRegister2";
             this.Padding = new System.Windows.Forms.Padding(6, 160, 6, 8);
             this.Text = " ";
             this.Load += new System.EventHandler(this.Material2_Load);

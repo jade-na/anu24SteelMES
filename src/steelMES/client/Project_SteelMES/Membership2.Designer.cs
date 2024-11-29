@@ -45,30 +45,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 37);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.label1.Location = new System.Drawing.Point(69, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 31);
+            this.label1.Size = new System.Drawing.Size(154, 37);
             this.label1.TabIndex = 9;
             this.label1.Text = "UserName :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 79);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.label2.Location = new System.Drawing.Point(69, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 31);
+            this.label2.Size = new System.Drawing.Size(141, 37);
             this.label2.TabIndex = 10;
             this.label2.Text = "Password :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 122);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.label3.Location = new System.Drawing.Point(69, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 31);
+            this.label3.Size = new System.Drawing.Size(144, 37);
             this.label3.TabIndex = 11;
             this.label3.Text = "UserLevel :";
             // 
@@ -77,7 +77,7 @@
             this.InputTextBox.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.InputTextBox.Location = new System.Drawing.Point(95, 91);
             this.InputTextBox.Name = "InputTextBox";
-            this.InputTextBox.Size = new System.Drawing.Size(254, 32);
+            this.InputTextBox.Size = new System.Drawing.Size(296, 32);
             this.InputTextBox.TabIndex = 12;
             this.InputTextBox.Text = "UserName 입력";
             this.InputTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -91,11 +91,11 @@
             this.SearchBtn.FlatAppearance.BorderSize = 0;
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.SearchBtn.Location = new System.Drawing.Point(351, 90);
+            this.SearchBtn.Image = global::Project_SteelMES.Properties.Resources.search__2_;
+            this.SearchBtn.Location = new System.Drawing.Point(359, 89);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(61, 35);
+            this.SearchBtn.Size = new System.Drawing.Size(53, 36);
             this.SearchBtn.TabIndex = 13;
-            this.SearchBtn.Text = "검색";
             this.SearchBtn.UseVisualStyleBackColor = false;
             this.SearchBtn.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -110,17 +110,17 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "admin",
             "manager",
             "operator"});
-            this.comboBox1.Location = new System.Drawing.Point(219, 123);
+            this.comboBox1.Location = new System.Drawing.Point(222, 123);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(130, 33);
+            this.comboBox1.Size = new System.Drawing.Size(130, 38);
             this.comboBox1.TabIndex = 15;
-            this.comboBox1.Text = "권한 선택";
+            this.comboBox1.Text = "  권한 선택";
             // 
             // ModifyBtn
             // 
@@ -148,9 +148,9 @@
             this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.CloseBtn.Location = new System.Drawing.Point(383, 338);
             this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(98, 40);
+            this.CloseBtn.Size = new System.Drawing.Size(76, 40);
             this.CloseBtn.TabIndex = 17;
-            this.CloseBtn.Text = "돌아가기";
+            this.CloseBtn.Text = "닫기";
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -180,7 +180,7 @@
             this.PasswordLabel.Size = new System.Drawing.Size(0, 30);
             this.PasswordLabel.TabIndex = 16;
             // 
-            // Material4
+            // Membership2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,7 +191,7 @@
             this.Controls.Add(this.ModifyBtn);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.InputTextBox);
-            this.Name = "Material4";
+            this.Name = "Membership2";
             this.Load += new System.EventHandler(this.Material4_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

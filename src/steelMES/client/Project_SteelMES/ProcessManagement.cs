@@ -27,5 +27,25 @@ namespace Project_SteelMES
         {
 
         }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace Project_SteelMES
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(921, 588);
+            this.richTextBox1.Size = new System.Drawing.Size(921, 660);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -61,7 +61,7 @@ namespace Project_SteelMES
             this.panel2.Location = new System.Drawing.Point(-14, 96);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 622);
+            this.panel2.Size = new System.Drawing.Size(963, 736);
             this.panel2.TabIndex = 1;
             // 
             // dungeonLabel1
@@ -69,13 +69,13 @@ namespace Project_SteelMES
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(18, 34);
+            this.dungeonLabel1.Location = new System.Drawing.Point(18, 28);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(200, 35);
             this.dungeonLabel1.TabIndex = 8;
             this.dungeonLabel1.Text = "불량 정의";
             // 
-            // Metro
+            // Definition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,7 +85,7 @@ namespace Project_SteelMES
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "Metro";
+            this.Name = "Definition";
             this.Padding = new System.Windows.Forms.Padding(20, 130, 20, 22);
             this.TextColor = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.Metro_Load);

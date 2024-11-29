@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReaLTaiizor.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Project_SteelMES
 {
@@ -20,7 +21,12 @@ namespace Project_SteelMES
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateID_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JoinBtn_Click(object sender, EventArgs e)
         {
             string username = UserName.Text;
             string password = Password.Text;
@@ -72,7 +78,48 @@ namespace Project_SteelMES
                     MessageBox.Show("데이터베이스 연결 오류: " + ex.Message);
                 }
             }
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancleBtn_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Hide();
+        }
+
+        private void UserName_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void UserName_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void Password_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

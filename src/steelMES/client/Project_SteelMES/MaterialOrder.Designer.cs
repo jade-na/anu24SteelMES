@@ -44,8 +44,6 @@
             this.OrderBtn = new System.Windows.Forms.Button();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SearchBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -56,10 +54,10 @@
             this.ContactInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
@@ -72,9 +70,9 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.dungeonLabel2);
             this.panel1.Controls.Add(this.OrderBtn);
-            this.panel1.Location = new System.Drawing.Point(3, 114);
+            this.panel1.Location = new System.Drawing.Point(6, 101);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 199);
+            this.panel1.Size = new System.Drawing.Size(740, 211);
             this.panel1.TabIndex = 11;
             // 
             // SelectBtn
@@ -86,7 +84,7 @@
             this.SelectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.SelectBtn.ForeColor = System.Drawing.Color.Black;
-            this.SelectBtn.Location = new System.Drawing.Point(560, 167);
+            this.SelectBtn.Location = new System.Drawing.Point(560, 178);
             this.SelectBtn.Name = "SelectBtn";
             this.SelectBtn.Size = new System.Drawing.Size(80, 32);
             this.SelectBtn.TabIndex = 14;
@@ -175,7 +173,7 @@
             this.OrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OrderBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.OrderBtn.ForeColor = System.Drawing.Color.Black;
-            this.OrderBtn.Location = new System.Drawing.Point(660, 166);
+            this.OrderBtn.Location = new System.Drawing.Point(660, 178);
             this.OrderBtn.Name = "OrderBtn";
             this.OrderBtn.Size = new System.Drawing.Size(80, 32);
             this.OrderBtn.TabIndex = 11;
@@ -188,7 +186,7 @@
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(7, 3);
+            this.dungeonLabel1.Location = new System.Drawing.Point(7, 7);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(231, 35);
             this.dungeonLabel1.TabIndex = 12;
@@ -197,47 +195,20 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
-            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.SearchBtn);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Location = new System.Drawing.Point(8, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(735, 50);
+            this.panel2.Size = new System.Drawing.Size(738, 33);
             this.panel2.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(624, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // SearchBtn
-            // 
-            this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBtn.AutoSize = true;
-            this.SearchBtn.BackColor = System.Drawing.Color.DarkGray;
-            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.SearchBtn.FlatAppearance.BorderSize = 0;
-            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.SearchBtn.Location = new System.Drawing.Point(640, 7);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(69, 30);
-            this.SearchBtn.TabIndex = 14;
-            this.SearchBtn.Text = "     검색";
-            this.SearchBtn.UseVisualStyleBackColor = false;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.HotTrack;
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(328, 12);
+            this.dateTimePicker1.Location = new System.Drawing.Point(378, 3);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(270, 36);
@@ -255,11 +226,11 @@
             "망간",
             "석회",
             "크로뮴"});
-            this.comboBox2.Location = new System.Drawing.Point(191, 11);
+            this.comboBox2.Location = new System.Drawing.Point(227, 3);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(132, 38);
             this.comboBox2.TabIndex = 1;
-            this.comboBox2.Text = "자재 선택";
+            this.comboBox2.Text = " 자재 선택";
             // 
             // comboBox1
             // 
@@ -272,20 +243,20 @@
             "AAA Steel",
             "BBB Steel",
             "CCC Steel"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 11);
+            this.comboBox1.Location = new System.Drawing.Point(27, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(177, 38);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "공급업체 선택";
+            this.comboBox1.Text = " 공급업체 선택";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.panel3.Controls.Add(this.dungeonLabel3);
             this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Location = new System.Drawing.Point(3, 332);
+            this.panel3.Location = new System.Drawing.Point(8, 335);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(740, 160);
+            this.panel3.Size = new System.Drawing.Size(738, 160);
             this.panel3.TabIndex = 14;
             // 
             // dungeonLabel3
@@ -359,6 +330,22 @@
             this.panel4.Size = new System.Drawing.Size(766, 509);
             this.panel4.TabIndex = 15;
             // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBtn.AutoSize = true;
+            this.SearchBtn.BackColor = System.Drawing.Color.DarkGray;
+            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SearchBtn.FlatAppearance.BorderSize = 0;
+            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBtn.Font = new System.Drawing.Font("Segoe UI", 2F);
+            this.SearchBtn.Image = global::Project_SteelMES.Properties.Resources.search__2_;
+            this.SearchBtn.Location = new System.Drawing.Point(660, 0);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(37, 36);
+            this.SearchBtn.TabIndex = 14;
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            // 
             // MaterialOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -372,7 +359,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel4.ResumeLayout(false);
@@ -398,7 +384,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContactInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaterialID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaterialName;

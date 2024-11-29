@@ -119,13 +119,13 @@
             this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.CloseBtn.Location = new System.Drawing.Point(383, 338);
             this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(98, 40);
+            this.CloseBtn.Size = new System.Drawing.Size(76, 40);
             this.CloseBtn.TabIndex = 15;
-            this.CloseBtn.Text = "돌아가기";
+            this.CloseBtn.Text = "닫기";
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Material3
+            // Supply2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -139,7 +139,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Material3";
+            this.Name = "Supply2";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Material3_Load);
             this.ResumeLayout(false);

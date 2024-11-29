@@ -66,9 +66,7 @@ namespace Project_SteelMES
 		}
 		private void OptionButton1_Click(object sender, EventArgs e)
 		{
-			Lost3 lost3 = new Lost3();
-			lost3.Show();
-			this.Hide();
+			
 		}
 
 		private void OptionButton2_Click(object sender, EventArgs e)
