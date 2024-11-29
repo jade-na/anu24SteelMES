@@ -110,18 +110,21 @@ namespace grpcDummyMesServer
                 await using var connection = new OracleConnection(_connectionString);
                 await connection.OpenAsync();
 
-                const string query = "SELECT FACID, FACNAME, LOCATION FROM FACTORY";  // FACNAME 포함 확인
+                const string query = "SELECT FACID, FACNAME, LOCATION, DELETED FROM FACTORY WHERE DELETED = 0";
 
                 await using var command = new OracleCommand(query, connection);
                 await using var reader = await command.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
                 {
+                    var deleted = reader.GetInt32(3); // DELETED 값 디버깅
+                    Console.WriteLine($"FacID: {reader.GetInt32(0)}, Deleted: {deleted}"); // 로그 추가
                     result.Factories.Add(new FactoryInfo
                     {
                         FacID = reader.GetInt32(0),
-                        FacName = reader.GetString(1),  // FACNAME 읽기
-                        Location = reader.IsDBNull(2) ? string.Empty : reader.GetString(2)
+                        FacName = reader.GetString(1),
+                        Location = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                        Deleted = deleted
                     });
                 }
             }
@@ -234,22 +237,20 @@ namespace grpcDummyMesServer
 				await using var connection = new OracleConnection(_connectionString);
 				await connection.OpenAsync();
 
-				const string query = @"
-                    SELECT SUPPLIERID, SUPPLIERNAME, CONTACTINFO, COUNTRY
-                    FROM SUPPLIER";
+                const string query = "SELECT SUPPLIERID, SUPPLIERNAME, CONTACTINFO, COUNTRY FROM supplier WHERE DELETED = 0";
 
-				await using var command = new OracleCommand(query, connection);
+                await using var command = new OracleCommand(query, connection);
 				await using var reader = await command.ExecuteReaderAsync();
 
 				while (await reader.ReadAsync())
 				{
 					result.Suppliers.Add(new SupplierInfo
 					{
-						SupplierID = reader.GetInt32(0),
-						SupplierName = reader.GetString(1),
-						ContactInfo = reader.GetString(2),
-						Country = reader.GetString(3)
-					});
+                        SupplierID = reader.GetInt32(0),
+                        SupplierName = reader.GetString(1),
+                        ContactInfo = reader.GetString(2),
+                        Country = reader.GetString(3)
+                    });
 				}
 
 				result.ErrorCode = result.Suppliers.Count > 0 ? 0 : -1;
@@ -352,6 +353,74 @@ namespace grpcDummyMesServer
 			}
 			return result;
 		}
+		//공장 제거 서비스
+        public override async Task<DeleteFactoryReply> DeleteFactoryData(DeleteFactoryRequest request, ServerCallContext context)
+        {
+            var response = new DeleteFactoryReply();
+
+            try
+            {
+                // FacIDs를 쉼표로 구분된 문자열로 변환
+                var facIds = string.Join(",", request.FacID);
+
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // DELETED 값을 1로 업데이트하는 SQL
+                var query = $"UPDATE FACTORY SET DELETED = 1 WHERE FACID IN ({facIds})";
+
+                await using var command = new OracleCommand(query, connection);
+                var rowsAffected = await command.ExecuteNonQueryAsync();
+
+                // 업데이트 성공 처리
+                response.ErrorCode = 0;
+                response.ErrorMessage = $"{rowsAffected}개의 공장이 삭제 처리되었습니다.";
+            }
+            catch (Exception ex)
+            {
+                // 예외 처리
+                response.ErrorCode = 1;
+                response.ErrorMessage = $"서버 오류: {ex.Message}";
+            }
+            return response;
+        }
+        //공급업체 제거 서비스
+        public override async Task<DeleteSupplyReply> DeleteSupplyData(DeleteSupplyRequest request, ServerCallContext context)
+        {
+            var response = new DeleteSupplyReply();
+
+            try
+            {
+                // FacIDs를 쉼표로 구분된 문자열로 변환
+                var supplyids = string.Join(",", request.SupplierID);
+
+
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                var query = $"UPDATE SUPPLIER SET DELETED = 1 WHERE SUPPLIERID IN ({string.Join(",", request.SupplierID.Select((_, i) => $":id{i}"))})";
+
+                await using var command = new OracleCommand(query, connection);
+
+                for (int i = 0; i < request.SupplierID.Count; i++)
+                {
+                    command.Parameters.Add(new OracleParameter($":id{i}", request.SupplierID[i]));
+                }
+
+                var rowsAffected = await command.ExecuteNonQueryAsync();
+
+                // 업데이트 성공 처리
+                response.ErrorCode = 0;
+                response.ErrorMessage = $"{rowsAffected}개의 공급업체가 삭제 처리되었습니다.";
+            }
+            catch (Exception ex)
+            {
+                // 예외 처리
+                response.ErrorCode = 1;
+                response.ErrorMessage = $"서버 오류: {ex.Message}";
+            }
+            return response;
+        }
         public override async Task<AddSupplieReply> AddSupplier(AddSupplierRequest request, ServerCallContext context)
         {
             var result = new AddSupplieReply();

@@ -138,6 +138,7 @@ namespace Project_SteelMES
             this.DeleteBtn.TabIndex = 10;
             this.DeleteBtn.Text = " 삭제";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // AddBtn
             // 

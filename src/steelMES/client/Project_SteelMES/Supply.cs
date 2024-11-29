@@ -17,6 +17,7 @@ namespace Project_SteelMES
 {
     public partial class Lost7 : LostForm
     {
+        private int? seletedID; // 클릭된 FacID를 저장하는 변수
         // Oracle 연결 문자열
         private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
 
@@ -81,10 +82,27 @@ namespace Project_SteelMES
         private void button6_Click(object sender, EventArgs e) //설정 아이콘 버튼
         {
         }
-
+        //sell을 클릭했을 때 정보를 받음
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            int rowIndex = e.RowIndex;
+
+            if (rowIndex >= 0) // 유효한 행 클릭
+            {
+                var cellValue = dataGridView1.Rows[rowIndex].Cells["SupplierID"].Value;
+
+                if (cellValue != null)
+                {
+                    seletedID = Convert.ToInt32(cellValue); // FacID를 변수에 저장
+                    MessageBox.Show($"클릭된 셀의 데이터: {seletedID}");
+                }
+                else
+                {
+                    seletedID = null; // 값이 없는 경우 초기화
+                    MessageBox.Show("유효한 데이터를 클릭하세요.");
+                }
+            }
         }
 
         private async void Viewbtn_Click(object sender, EventArgs e)
@@ -104,17 +122,77 @@ namespace Project_SteelMES
                     return;
                 }
 
+
                 // DataGridView 초기화
                 dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
 
+                // DataGridView 열 정의
+                dataGridView1.Columns.Add("SUPPLIERID", "Supplier ID");
+                dataGridView1.Columns.Add("SUPPLIERNAME", "Supplier Name");
+                dataGridView1.Columns.Add("CONTACTINFO", "Contact Info");
+                dataGridView1.Columns.Add("COUNTRY", "Country");
+
+                // 데이터 추가
                 foreach (var supplier in response.Suppliers)
                 {
                     dataGridView1.Rows.Add(
-                         supplier.SupplierID,
-                         supplier.SupplierName,
-                         supplier.ContactInfo,
-                         supplier.Country
+                        supplier.SupplierID,
+                        supplier.SupplierName,
+                        supplier.ContactInfo,
+                        supplier.Country
                     );
+                }
+
+                MessageBox.Show("데이터 로드 완료", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+        }
+
+        private async void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            // 선택된 FacID 확인
+            if (seletedID == null)
+            {
+                MessageBox.Show("삭제할 공장을 선택하세요.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                // 삭제 요청 생성
+                var deleteRequest = new DeleteSupplyRequest { SupplierID = { seletedID.Value } };
+                var response = await client.DeleteSupplyDataAsync(deleteRequest);
+
+
+                if (response.ErrorCode == 0)
+                {
+                    MessageBox.Show($"SupplierID {seletedID} 공급업체가 삭제 처리되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // DataGridView에서 선택된 행 제거
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["SupplierID"].Value != null && (int)row.Cells["SupplierID"].Value == seletedID)
+                        {
+                            dataGridView1.Rows.Remove(row);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"삭제 중 오류 발생: {response.ErrorMessage}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (RpcException ex)
