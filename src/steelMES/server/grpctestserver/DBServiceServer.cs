@@ -526,7 +526,7 @@ namespace grpcDummyMesServer
 				await connection.OpenAsync();
 
 				const string query = @"
-        SELECT P.PRODUCTID, P.PRODUCTNAME, P.WEIGHT, P.PRODUCTIONDATE, P.QUALITYGRADE, D.DEFECTID, P.FACID
+        SELECT P.PRODUCTID, P.PRODUCTNAME, P.QUANTITY, P.PRODUCTIONDATE, P.QUALITYGRADE, D.DEFECTID, P.FACID
         FROM SCOTT.PRODUCT P
         LEFT JOIN SCOTT.DEFECT D ON P.PRODUCTID = D.PRODUCTID";
 
@@ -539,7 +539,7 @@ namespace grpcDummyMesServer
 					{
 						ProductID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
 						ProductName = reader.IsDBNull(1) ? string.Empty : reader.GetString(1),
-						Weight = reader.IsDBNull(2) ? 0 : reader.GetDouble(2),
+						Quantity = reader.IsDBNull(2) ? 0 : reader.GetDouble(2),
 						ProductionDate = reader.IsDBNull(3) ? string.Empty : reader.GetDateTime(3).ToString("yyyy-MM-dd"),
 						QualityGrade = reader.IsDBNull(4) ? string.Empty : reader.GetString(4),
 						DefectID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5),
@@ -692,6 +692,53 @@ FROM SCOTT.USERS"; // Password 제외
 			}
 
 			return reply;
+		}
+		public override async Task<ProductListReply> GetProductList(SteelMES.Empty request, ServerCallContext context)
+		{
+			var result = new ProductListReply();
+			try
+			{
+				// 제품 목록을 하드코딩으로 제공
+				result.ProductNames.AddRange(new[] { "Steel Beam", "Heavy Plate", "Cold Rolled Coil", "Hot Rolled Coil" });
+				result.ErrorCode = 0;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error fetching product list: {ex.Message}");
+				result.ErrorCode = -1;
+			}
+			return await Task.FromResult(result);
+		}
+
+		public override async Task<ProductOrderResponse> CreateProductOrder(ProductOrderRequest request, ServerCallContext context)
+		{
+			var response = new ProductOrderResponse();
+			try
+			{
+				await using var connection = new OracleConnection(_connectionString);
+				await connection.OpenAsync();
+
+				// 제품 주문 삽입 쿼리 (ProductionDate는 SYSDATE가 기본값으로 자동 설정)
+				const string query = @"
+            INSERT INTO PRODUCT (PRODUCTNAME, QUANTITY, FACID, DELETED)
+            VALUES (:productName, :quantity, :facId, 0)";
+
+				await using var command = new OracleCommand(query, connection);
+				command.Parameters.Add(new OracleParameter(":productName", request.ProductName));
+				command.Parameters.Add(new OracleParameter(":quantity", request.Quantity));
+				command.Parameters.Add(new OracleParameter(":facId", request.FactoryId));
+
+				int rowsAffected = await command.ExecuteNonQueryAsync();
+				response.ErrorCode = rowsAffected > 0 ? 0 : -1; // 성공 여부 확인
+				response.Message = rowsAffected > 0 ? "Product order created successfully." : "Failed to create product order.";
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error creating product order: {ex.Message}");
+				response.ErrorCode = -1;
+				response.Message = $"Error: {ex.Message}";
+			}
+			return response;
 		}
 	}
 }

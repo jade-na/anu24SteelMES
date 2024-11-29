@@ -20,6 +20,8 @@ service DB_Service {
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
     rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
+    rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // 제품 주문 추가
+    rpc GetProductList (Empty) returns (ProductListReply); // 제품 목록 가져오기
 }
 
 // 기본 Empty 메시지
@@ -189,7 +191,7 @@ message AddMaterialReply {
 message ProductInfo {
     int32 productID = 1;          // 제품 ID
     string productName = 2;       // 제품명
-    double weight = 3;            // 무게
+    double quantity = 3;            // 무게
     int32 materialID = 4;         // 자재 ID
     string productionDate = 5;    // 생산 날짜
     string qualityGrade = 6;      // 품질 등급
@@ -238,4 +240,20 @@ message UpdateUserLevelRequest {
 message UpdateUserLevelReply {
     string message = 1;
     int32 errorCode = 2;
+}
+
+message ProductOrderRequest {
+    string productName = 1;
+    int32 quantity = 2;
+    int32 factoryId = 3;
+}
+
+message ProductOrderResponse {
+    int32 errorCode = 1;
+    string message = 2;
+}
+
+message ProductListReply {
+    int32 errorCode = 1;
+    repeated string productNames = 2;
 }
