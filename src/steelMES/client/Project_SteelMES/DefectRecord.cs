@@ -28,7 +28,7 @@ namespace Project_SteelMES
 			
 		}
 
-		private async void button6_Click(object sender, EventArgs e)
+		private async void SelectBtn_Click(object sender, EventArgs e)
 		{
 			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
 			var client = new DB_Service.DB_ServiceClient(channel);
@@ -54,7 +54,7 @@ namespace Project_SteelMES
 					dataGridView1.Rows.Clear();
 					foreach (var info in response.Infos)
 					{
-						dataGridView1.Rows.Add(info.DefectID, info.ProductID, info.DefectType, info.DefectionDate);
+						dataGridView1.Rows.Add(info.DefectID, info.ProductID, info.DefectType, info.DetectionDate);
 					}
 				}
 				else

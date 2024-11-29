@@ -30,7 +30,7 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -40,17 +40,21 @@ namespace Project_SteelMES
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
             this.dungeonLabel1.Location = new System.Drawing.Point(18, 48);
             this.dungeonLabel1.Name = "dungeonLabel1";
@@ -93,6 +97,8 @@ namespace Project_SteelMES
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            this.panel3.Controls.Add(this.pictureBox4);
+            this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.viewbtn);
             this.panel3.Controls.Add(this.DeleteBtn);
             this.panel3.Controls.Add(this.AddBtn);
@@ -130,7 +136,7 @@ namespace Project_SteelMES
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(104, 40);
             this.DeleteBtn.TabIndex = 10;
-            this.DeleteBtn.Text = "삭제";
+            this.DeleteBtn.Text = " 삭제";
             this.DeleteBtn.UseVisualStyleBackColor = false;
             // 
             // AddBtn
@@ -145,7 +151,7 @@ namespace Project_SteelMES
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(104, 40);
             this.AddBtn.TabIndex = 9;
-            this.AddBtn.Text = "추가";
+            this.AddBtn.Text = " 추가";
             this.AddBtn.UseVisualStyleBackColor = false;
             this.AddBtn.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -157,14 +163,14 @@ namespace Project_SteelMES
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(65, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -175,6 +181,28 @@ namespace Project_SteelMES
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.pictureBox2.Image = global::Project_SteelMES.Properties.Resources.add__2_;
+            this.pictureBox2.Location = new System.Drawing.Point(493, 257);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.pictureBox4.Image = global::Project_SteelMES.Properties.Resources.icon_delete;
+            this.pictureBox4.Location = new System.Drawing.Point(621, 258);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 13;
+            this.pictureBox4.TabStop = false;
+            // 
             // FactoryRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -184,15 +212,17 @@ namespace Project_SteelMES
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dungeonLabel1);
-            this.Image = global::Project_SteelMES.Properties.Resources.logo1;
+            this.Image = global::Project_SteelMES.Properties.Resources.logo2;
             this.Name = "FactoryRegister";
-            this.Text = "강철주야";
+            this.Text = "강 철 주 야";
             this.Load += new System.EventHandler(this.Lost6_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -207,5 +237,7 @@ namespace Project_SteelMES
         private System.Windows.Forms.PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Button viewbtn;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox4;
     }
 }
