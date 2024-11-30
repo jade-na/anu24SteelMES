@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReaLTaiizor.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
+using Grpc.Core;
+using SteelMES;
 
 namespace Project_SteelMES
 {
@@ -26,7 +28,7 @@ namespace Project_SteelMES
 
         }
 
-        private void JoinBtn_Click(object sender, EventArgs e)
+        private async void JoinBtn_Click(object sender, EventArgs e)
         {
             string username = UserName.Text;
             string password = Password.Text;
@@ -36,48 +38,38 @@ namespace Project_SteelMES
                 return;
             }
 
-            // 오라클 연결 문자열
-            string connectionString = "User Id=scott;Password=tiger;Data Source=//localhost:1521/XE";
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
 
-
-            using (OracleConnection conn = new OracleConnection(connectionString))
+            try
             {
-                try
+                // 서버에 회원가입 요청
+                var response = await client.AddUserAsync(new AddUserRequest
                 {
-                    conn.Open();
-                    string query = "INSERT INTO Users (Username, Password) VALUES (:username, :password)";
+                    Username = username,
+                    Password = password
+                });
 
-                    using (OracleCommand cmd = new OracleCommand(query, conn))
-                    {
-                        // 매개변수 추가
-                        cmd.Parameters.Add(new OracleParameter("username", username));
-                        cmd.Parameters.Add(new OracleParameter("password", password));
-
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("회원가입 성공!");
-                            this.Close(); // 회원가입 창 닫기
-                        }
-                        catch (OracleException ex)
-                        {
-                            // UNIQUE 제약 조건 위반 예외 처리
-                            if (ex.Number == 1) // ORA-00001: Unique Constraint 위반
-                            {
-                                MessageBox.Show("이미 존재하는 아이디입니다.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("오류 발생: " + ex.Message);
-                            }
-                        }
-                    }
+                if (response.ErrorCode == 0)
+                {
+                    MessageBox.Show(response.Message);
+                    this.Close(); // 회원가입 창 닫기
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("데이터베이스 연결 오류: " + ex.Message);
+                    MessageBox.Show(response.Message);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
