@@ -9,8 +9,9 @@ namespace grpcDummyMesServer
 {
 	public class DBServiceServer : DB_Service.DB_ServiceBase
 	{
+		//**************오라클 연결 할 떄 항상 IP 확인
 		private readonly string _connectionString =
-			"User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.9)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
+			"User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
 
 		/// <summary>
 		/// 요청 기간 내 불량 이력을 가져오는 메서드
@@ -602,6 +603,67 @@ namespace grpcDummyMesServer
                 Console.WriteLine($"Exception: {ex.Message}");
             }
 
+            return result;
+        }
+        public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
+        {
+            var result = new AddUserReply();
+
+            try
+            {
+                // 요청받은 데이터
+                string userName = request.Username;
+                string password = request.Password;
+
+                // 입력 데이터 검증
+                if (string.IsNullOrWhiteSpace(userName))
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "UserName은 비워둘 수 없습니다.";
+                    return result;
+                }
+
+                if (string.IsNullOrEmpty(password))
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "비밀번호를 입력하세요";
+                    return result;
+                }
+
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                const string insertQuery = @"
+										 INSERT INTO USERS (USERNAME, PASSWORD)
+										 VALUES (:username, :password)";
+
+                await using var command = new OracleCommand(insertQuery, connection);
+
+                // 파라미터 설정
+                command.Parameters.Add(new OracleParameter("username", OracleDbType.Varchar2) { Value = userName });
+                command.Parameters.Add(new OracleParameter("password", OracleDbType.Varchar2) { Value = password });
+
+                // 삽입 실행
+                int rowsInserted = await command.ExecuteNonQueryAsync();
+
+                // 결과 처리
+                if (rowsInserted > 0)
+                {
+                    result.ErrorCode = 0;
+                    result.Message = "회원가입 성공!";
+                }
+                else
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "회원가입 실패!";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding Users: {ex.Message}");
+                result.ErrorCode = -1;
+                result.Message = $"오류 발생: {ex.Message}";
+            }
             return result;
         }
 

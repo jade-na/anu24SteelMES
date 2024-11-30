@@ -18,6 +18,7 @@ service DB_Service {
     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
     rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //공급업체 삭제 
     rpc GetLogin (LoginRequest) returns (LoginReply); //로그인정보
+    rpc AddUser(AddUserRequest) returns (AddUserReply); //유저 추가
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
     rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
@@ -229,9 +230,20 @@ message LoginRequest {
 message LoginReply {
   int32 errorCode = 1;        // 오류 코드 (0: 성공, 그 외: 실패)
   string username = 2;        // 로그인 성공한 사용자 이름
-  string password = 3;        //
- int32 user_level = 4; 
+  string password = 3;        //password 리턴x
+  int32 user_level = 4;        //level 리턴
   string message = 5;         // 추가 메시지
+}
+
+//유저 추가
+message AddUserRequest {
+  string username = 1;
+  string password = 2;
+}
+message AddUserReply {
+   int32 errorCode = 1;   // 0: 성공, -1: 실패
+   string message = 2;    // 결과 메시지
+   int32 userID = 3;       // 새로 생성된 UserID
 }
 
 message SearchUserRequest {
