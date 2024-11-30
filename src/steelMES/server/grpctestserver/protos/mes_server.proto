@@ -245,7 +245,7 @@ message AddUserReply {
    string message = 2;    // 결과 메시지
    int32 userID = 3;       // 새로 생성된 UserID
 }
-
+//유저 찾기(권한부여 시 사용)
 message SearchUserRequest {
     string username = 1;
 }
@@ -258,7 +258,7 @@ message SearchUserReply {
     int32 errorCode = 5;
     repeated UsersInfo users = 6;
 }
-
+//유저 권한부여(admin)
 message UpdateUserLevelRequest {
     string username = 1;
     string userLevel = 2;
