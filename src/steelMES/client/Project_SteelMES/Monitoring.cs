@@ -20,16 +20,33 @@ namespace Project_SteelMES
         private Button optionButton3; //회원 관리 버튼
         private bool areOptionButtonsVisible = false; // 가시성 상태 저장
 
-		public Monitoring()
+        private int userLevel;
+        private string userName;
+
+		
+        public Monitoring(string userName, int userLevel)
         {
             InitializeComponent();
-		}
+            this.userLevel = userLevel;
+            this.userName = userName;
+        }
+
+        public Monitoring()
+        {
+        }
 
         private void Lost_Load(object sender, EventArgs e)
         {
 			// 하위 버튼 생성
 			CreateOptionButtons();
-		}
+
+            timer1.Start();
+
+            LoginInfo1.Text = $"{userName}님";
+            LoginInfo2.Text = $"Level : {userLevel}";
+
+
+        }
 
 		private void CreateOptionButtons()
 		{
@@ -260,6 +277,11 @@ namespace Project_SteelMES
             panel5.Controls.Clear(); // 기존 컨트롤 제거
             panel5.Controls.Add(lost2); // Form2 추가
             lost2.Show(); // Form2 표시
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToString();
         }
     }
 }

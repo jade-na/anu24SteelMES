@@ -16,7 +16,7 @@ namespace Project_SteelMES
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Monitoring());
+            Application.Run(new Login());
         }
     }
 }

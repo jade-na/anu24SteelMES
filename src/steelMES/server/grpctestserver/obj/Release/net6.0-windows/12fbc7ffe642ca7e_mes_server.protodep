@@ -1,0 +1,2 @@
+obj\Release\net6.0-windows\protos/MesServer.cs \
+obj\Release\net6.0-windows\protos/MesServerGrpc.cs: protos/mes_server.proto
