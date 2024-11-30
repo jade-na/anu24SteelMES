@@ -20,20 +20,37 @@ namespace Project_SteelMES
         private Button optionButton3; //회원 관리 버튼
         private bool areOptionButtonsVisible = false; // 가시성 상태 저장
 
-		public Monitoring()
+        private int userLevel;
+        private string userName;
+
+        public Monitoring(string userName, int userLevel)
         {
             InitializeComponent();
-		}
+            this.userLevel = userLevel;
+            this.userName = userName;
+        }
+
+        public Monitoring()
+        {
+
+        }
 
         private void Lost_Load(object sender, EventArgs e)
         {
-			// 하위 버튼 생성
-			CreateOptionButtons();
-		}
+            // 하위 버튼 생성
+            CreateOptionButtons();
 
-		private void CreateOptionButtons()
-		{
-			
+            timer1.Start();
+
+            LoginInfo1.Text = $"{userName}님";
+            LoginInfo2.Text = $"Level : {userLevel}";
+
+
+        }
+
+        private void CreateOptionButtons()
+        {
+
             //공장 등록 버튼
             optionButton1 = new Button();
             optionButton1.Text = "공장 등록";
@@ -68,15 +85,15 @@ namespace Project_SteelMES
             optionButton3.Click += OptionButton3_Click;
 
             // 동적으로 생성된 버튼을 폼에 추가
-   //         this.Controls.Add(optionButton1);
-			//this.Controls.Add(optionButton2);
+            //         this.Controls.Add(optionButton1);
+            //this.Controls.Add(optionButton2);
             this.Controls.Add(optionButton1);
             this.Controls.Add(optionButton2);
             this.Controls.Add(optionButton3);
 
         }
 
-		private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             Menu_WorkBtn.BackColor = Color.SkyBlue;
             Menu_WorkBtn.ForeColor = Color.Black;
@@ -99,7 +116,7 @@ namespace Project_SteelMES
             panel5.Controls.Add(lost8); // Form2 추가
             lost8.Show(); // Form2 표시
         }
-		
+
 
         private void OptionButton1_Click(object sender, EventArgs e)
         {
@@ -120,7 +137,7 @@ namespace Project_SteelMES
         }
 
         private void button3_Click(object sender, EventArgs e)
-		{
+        {
             Menu_DefinitonBtn.BackColor = Color.SkyBlue;
             Menu_DefinitonBtn.ForeColor = Color.Black;
 
@@ -143,12 +160,12 @@ namespace Project_SteelMES
             panel5.Controls.Add(metro); // Form2 추가
             metro.Show(); // Form2 표시
 
-		}
+        }
 
-		private void button5_Click(object sender, EventArgs e)
-		{
+        private void button5_Click(object sender, EventArgs e)
+        {
             Dispose();
-		}
+        }
 
         private void button6_Click(object sender, EventArgs e) //설정 아이콘 버튼
         {
@@ -164,7 +181,7 @@ namespace Project_SteelMES
             optionButton1.Visible = areOptionButtonsVisible;
             optionButton2.Visible = areOptionButtonsVisible;
             optionButton3.Visible = areOptionButtonsVisible;
-        
+
             // 버튼 앞으로 가져오기
             optionButton1.BringToFront();
             optionButton2.BringToFront();
@@ -200,7 +217,7 @@ namespace Project_SteelMES
             panel5.Controls.Add(matOrder); // Form2 추가
             matOrder.Show(); // Form2 표시
 
-            
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -260,6 +277,11 @@ namespace Project_SteelMES
             panel5.Controls.Clear(); // 기존 컨트롤 제거
             panel5.Controls.Add(lost2); // Form2 추가
             lost2.Show(); // Form2 표시
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToString();
         }
     }
 }

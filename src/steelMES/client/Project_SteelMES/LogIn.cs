@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 //using System.Windows.Forms;
 using ReaLTaiizor.Forms;
+using SteelMES;
+using Grpc.Core;
 
 namespace Project_SteelMES
 {
@@ -51,7 +53,7 @@ namespace Project_SteelMES
         }
         private void UseId_Enter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void hopeTextBox2_Click(object sender, EventArgs e) //Password 입력 시 초기화
@@ -67,16 +69,14 @@ namespace Project_SteelMES
         private void materialButton2_Click(object sender, EventArgs e)
         {
             // 회원가입 창 띄우기
-            CreateID createForm= new CreateID();
-            createForm.ShowDialog(); 
+            CreateID createForm = new CreateID();
+            createForm.ShowDialog();
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
 
         }
-
-        
 
         private void JoinBtn_Click(object sender, EventArgs e)
         {
@@ -87,55 +87,50 @@ namespace Project_SteelMES
             this.Hide();
         }
 
-        private void LoginBtn_Click(object sender, EventArgs e)
+        private async void LoginBtn_Click(object sender, EventArgs e)
         {
             string username = UserID.Text;
             string password = Password.Text;
-            Password.PasswordChar = '*';
-            // 오라클 연결 문자열
-            string connectionString = "User Id=scott;Password=tiger;Data Source=//localhost:1521/XE";
+            //Password.PasswordChar = '*';
 
-            using (OracleConnection conn = new OracleConnection(connectionString))
+            // gRPC 채널 생성
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
             {
-                try
+                // gRPC 서버로 로그인 요청
+                var response = await client.GetLoginAsync(new LoginRequest
                 {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM Users WHERE Username = :username AND Password = :password";
+                    Username = username,
+                    Password = password
+                });
 
-                    using (OracleCommand cmd = new OracleCommand(query, conn))
-                    {
-                        // 매개변수 추가
-                        cmd.Parameters.Add(new OracleParameter("username", username));
-                        cmd.Parameters.Add(new OracleParameter("password", password));
+                if (response.ErrorCode == 0)
+                {
+                    MessageBox.Show(response.Message);
 
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
+                    MonitoringForm.Show();
 
-                        if (count > 0)
-                        {
-                            MessageBox.Show("로그인 성공!");
-
-                            // Lost 폼 열기
-                            Monitoring lostForm = new Monitoring();
-                            lostForm.Show();
-
-                            // 현재 로그인 창 숨기기
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.");
-                        }
-                    }
+                    // 현재 로그인 창 숨기기
+                    this.Hide();
                 }
-                catch (OracleException ex)
+                else
                 {
-                    MessageBox.Show("데이터베이스 오류: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("오류 발생: " + ex.Message);
+                    MessageBox.Show(response.Message);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
+
+
         }
     }
 }
