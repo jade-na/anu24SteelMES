@@ -8,39 +8,39 @@ service DB_Service {
     rpc GetDefectsByProductID (DefectByProductIDRequest) returns (prodHistoryInfoReply) {}
     rpc GetFactoryData (Empty) returns (FactoryReply) {}
     rpc GetProductionLineData (ProductionLineRequest) returns (ProductionLineReply) {}
-    rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL µ¥ÀÌÅÍ¸¦ °¡Á®¿À´Â RPC
-    rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER µ¥ÀÌÅÍ¸¦ °¡Á®¿À´Â RPC
+    rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ëŠ” RPC
+    rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ëŠ” RPC
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
-    rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //°øÀå Ãß°¡ rpc
-    rpc DeleteFactoryData(DeleteFactoryRequest) returns (DeleteFactoryReply); //°øÀå »èÁ¦ 
-    rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //¿øÀÚÀç Ãß°¡ rpc
-    rpc GetAllProductData (Empty) returns (ProductReply);  // ¸ğµç Á¦Ç° µ¥ÀÌÅÍ ¿äÃ»
-    rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //°ø±Ş¾÷Ã¼ Á¤º¸ Ãß°¡
-    rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //°ø±Ş¾÷Ã¼ »èÁ¦ 
-    rpc GetLogin (LoginRequest) returns (LoginReply); //·Î±×ÀÎÁ¤º¸
-    rpc AddUser(AddUserRequest) returns (AddUserReply); //À¯Àú Ãß°¡
-    rpc GetAllUsersData (Empty) returns (UsersReply); // ¸ğµç È¸¿ø µ¥ÀÌÅÍ ¿äÃ»
-    rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // È¸¿ø µ¥ÀÌÅÍ °Ë»ö
-    rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // È¸¿ø µ¥ÀÌÅÍ ¾÷µ¥ÀÌÆ®
-    rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // Á¦Ç° ÁÖ¹® Ãß°¡
-    rpc GetProductList (Empty) returns (ProductListReply); // Á¦Ç° ¸ñ·Ï °¡Á®¿À±â
+    rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //ê³µì¥ ì¶”ê°€ rpc
+    rpc DeleteFactoryData(DeleteFactoryRequest) returns (DeleteFactoryReply); //ê³µì¥ ì‚­ì œ 
+    rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //ì›ìì¬ ì¶”ê°€ rpc
+    rpc GetAllProductData (Empty) returns (ProductReply);  // ëª¨ë“  ì œí’ˆ ë°ì´í„° ìš”ì²­
+    rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //ê³µê¸‰ì—…ì²´ ì •ë³´ ì¶”ê°€
+    rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //ê³µê¸‰ì—…ì²´ ì‚­ì œ 
+    rpc GetLogin (LoginRequest) returns (LoginReply); //ë¡œê·¸ì¸ì •ë³´
+    rpc AddUser(AddUserRequest) returns (AddUserReply); //ìœ ì € ì¶”ê°€
+    rpc GetAllUsersData (Empty) returns (UsersReply); // ëª¨ë“  íšŒì› ë°ì´í„° ìš”ì²­
+    rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // íšŒì› ë°ì´í„° ê²€ìƒ‰
+    rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // íšŒì› ë°ì´í„° ì—…ë°ì´íŠ¸
+    rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // ì œí’ˆ ì£¼ë¬¸ ì¶”ê°€
+    rpc GetProductList (Empty) returns (ProductListReply); // ì œí’ˆ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
 }
 
-// ±âº» Empty ¸Ş½ÃÁö
+// ê¸°ë³¸ Empty ë©”ì‹œì§€
 message Empty {}
 
-// ºÒ·® ÀÌ·Â ¿äÃ» ¸Ş½ÃÁö
+// ë¶ˆëŸ‰ ì´ë ¥ ìš”ì²­ ë©”ì‹œì§€
 message prodHistoryInfoRequest {
     string fromTime = 1;
     string toTime = 2;
 }
 
-// Æ¯Á¤ Á¦Ç° ID ±â¹İ ¿äÃ» ¸Ş½ÃÁö
+// íŠ¹ì • ì œí’ˆ ID ê¸°ë°˜ ìš”ì²­ ë©”ì‹œì§€
 message DefectByProductIDRequest {
     int32 productID = 1;
 }
 
-// ºÒ·® ÀÌ·Â Á¤º¸
+// ë¶ˆëŸ‰ ì´ë ¥ ì •ë³´
 message prodHistoryInfo {
     int32 defectID = 1;
     int32 productID = 2;
@@ -48,31 +48,31 @@ message prodHistoryInfo {
     string detectionDate = 4;
 }
 
-// ºÒ·® ÀÌ·Â ÀÀ´ä ¸Ş½ÃÁö
+// ë¶ˆëŸ‰ ì´ë ¥ ì‘ë‹µ ë©”ì‹œì§€
 message prodHistoryInfoReply {
     int32 errorCode = 1;
     repeated prodHistoryInfo infos = 2;
 }
 
-// °øÀå Á¤º¸
+// ê³µì¥ ì •ë³´
 message FactoryInfo {
     int32 facID = 1;
     string facName = 2;
     string location = 3;
     int32 Deleted = 4;
 }
-// °øÀå Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+// ê³µì¥ ì •ë³´ ì‘ë‹µ ë©”ì‹œì§€
 message FactoryReply {
     int32 errorCode = 1;
     repeated FactoryInfo factories = 2;
 }
 
-// »ı»ê ¶óÀÎ ¿äÃ» ¸Ş½ÃÁö
+// ìƒì‚° ë¼ì¸ ìš”ì²­ ë©”ì‹œì§€
 message ProductionLineRequest {
     int32 facID = 1;
 }
 
-// »ı»ê ¶óÀÎ Á¤º¸
+// ìƒì‚° ë¼ì¸ ì •ë³´
 message ProductionLineInfo {
     int32 facID = 1;
     int32 lineID = 2;
@@ -80,13 +80,13 @@ message ProductionLineInfo {
     string operateDate = 4;
 }
 
-// »ı»ê ¶óÀÎ ÀÀ´ä ¸Ş½ÃÁö
+// ìƒì‚° ë¼ì¸ ì‘ë‹µ ë©”ì‹œì§€
 message ProductionLineReply {
     int32 errorCode = 1;
     repeated ProductionLineInfo lines = 2;
 }
 
-// ÀÚÀç Á¤º¸
+// ìì¬ ì •ë³´
 message MaterialInfo {
     int32 materialID = 1;
     string materialName = 2;
@@ -95,13 +95,13 @@ message MaterialInfo {
     string importDate = 5;
 }
 
-// ÀÚÀç Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+// ìì¬ ì •ë³´ ì‘ë‹µ ë©”ì‹œì§€
 message MaterialReply {
     int32 errorCode = 1;
     repeated MaterialInfo materials = 2;
 }
 
-// °ø±Ş¾÷Ã¼ Á¤º¸
+// ê³µê¸‰ì—…ì²´ ì •ë³´
 message SupplierInfo {
     int32 supplierID = 1;
     string supplierName = 2;
@@ -110,142 +110,142 @@ message SupplierInfo {
      int32 Deleted = 5;
 }
 
-// °ø±Ş¾÷Ã¼ Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+// ê³µê¸‰ì—…ì²´ ì •ë³´ ì‘ë‹µ ë©”ì‹œì§€
 message SupplierReply {
     int32 errorCode = 1;
     repeated SupplierInfo suppliers = 2;
 }
 
-// °øÀå µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÏ´Â ¿äÃ» ¸Ş½ÃÁö
+// ê³µì¥ ë°ì´í„°ë¥¼ ì¶”ê°€í•˜ëŠ” ìš”ì²­ ë©”ì‹œì§€
 message AddFactoryRequest {
     string facName = 1;
-    string location = 2; // °øÀå À§Ä¡
+    string location = 2; // ê³µì¥ ìœ„ì¹˜
 }
 
-// °øÀå µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ °á°ú¸¦ ¹İÈ¯ÇÏ´Â ÀÀ´ä ¸Ş½ÃÁö
+// ê³µì¥ ë°ì´í„°ë¥¼ ì¶”ê°€í•œ ê²°ê³¼ë¥¼ ë°˜í™˜í•˜ëŠ” ì‘ë‹µ ë©”ì‹œì§€
 message AddFactoryReply {
-    int32 errorCode = 1;   // 0: ¼º°ø, -1: ½ÇÆĞ
-    string message = 2;    // °á°ú ¸Ş½ÃÁö
-    int32 facID = 3;       // »õ·Î »ı¼ºµÈ FacID
+    int32 errorCode = 1;   // 0: ì„±ê³µ, -1: ì‹¤íŒ¨
+    string message = 2;    // ê²°ê³¼ ë©”ì‹œì§€
+    int32 facID = 3;       // ìƒˆë¡œ ìƒì„±ëœ FacID
 }
 
-// ÀÚÀç ¼ö·® DB ¾÷µ¥ÀÌÆ®
+// ìì¬ ìˆ˜ëŸ‰ DB ì—…ë°ì´íŠ¸
 message UpdateMaterialQuantityRequest {
     int32 materialID = 1;
     int32 additionalQuantity = 2;
 }
 
-// ÀÚÀç ¼ö·® ¾÷µ¥ÀÌÆ® ÀÀ´ä ¸Ş½ÃÁö
+// ìì¬ ìˆ˜ëŸ‰ ì—…ë°ì´íŠ¸ ì‘ë‹µ ë©”ì‹œì§€
 message UpdateMaterialQuantityReply { 
-    int32 errorCode = 1;    // Æ¯Á¤ Á¦Ç° ID·Î Á¶È¸ (¼±ÅÃ»çÇ×)
+    int32 errorCode = 1;    // íŠ¹ì • ì œí’ˆ IDë¡œ ì¡°íšŒ (ì„ íƒì‚¬í•­)
 }
 
-// °ø±Ş¾÷Ã¼ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÏ´Â ¿äÃ» ¸Ş½ÃÁö
+// ê³µê¸‰ì—…ì²´ ë°ì´í„°ë¥¼ ì¶”ê°€í•˜ëŠ” ìš”ì²­ ë©”ì‹œì§€
 message AddSupplierRequest {
-    string supplierName = 1; // °ø±Ş¾÷Ã¼ÀÌ¸§
-    string contactInfo =2; //°ø±Ş¾÷Ã¼¹øÈ£
-    string country =3 ; //°ø±Ş¾÷Ã¼À§Ä¡
+    string supplierName = 1; // ê³µê¸‰ì—…ì²´ì´ë¦„
+    string contactInfo =2; //ê³µê¸‰ì—…ì²´ë²ˆí˜¸
+    string country =3 ; //ê³µê¸‰ì—…ì²´ìœ„ì¹˜
 }
-// °ø±Ş¾÷Ã¼ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ °á°ú¸¦ ¹İÈ¯ÇÏ´Â ÀÀ´ä ¸Ş½ÃÁö
+// ê³µê¸‰ì—…ì²´ ë°ì´í„°ë¥¼ ì¶”ê°€í•œ ê²°ê³¼ë¥¼ ë°˜í™˜í•˜ëŠ” ì‘ë‹µ ë©”ì‹œì§€
 message AddSupplieReply {
-    int32 errorCode = 1;   // 0: ¼º°ø, -1: ½ÇÆĞ
-    string message = 2;    // °á°ú ¸Ş½ÃÁö
-    int32 supplierID = 3;       // »õ·Î »ı¼ºµÈ FacID
+    int32 errorCode = 1;   // 0: ì„±ê³µ, -1: ì‹¤íŒ¨
+    string message = 2;    // ê²°ê³¼ ë©”ì‹œì§€
+    int32 supplierID = 3;       // ìƒˆë¡œ ìƒì„±ëœ FacID
 }
 
-// °ø±Ş¾÷Ã¼ »èÁ¦ ¿äÃ» ¸Ş½ÃÁö
+// ê³µê¸‰ì—…ì²´ ì‚­ì œ ìš”ì²­ ë©”ì‹œì§€
 message DeleteSupplyRequest {
     repeated int32 supplierID = 1;
 }
 
-// °ø±Ş¾÷Ã¼ »èÁ¦ ÀÀ´ä ¸Ş½ÃÁö
+// ê³µê¸‰ì—…ì²´ ì‚­ì œ ì‘ë‹µ ë©”ì‹œì§€
 message DeleteSupplyReply {
     int32 errorCode = 1;
     string errorMessage = 2;
 }
-// °øÀå »èÁ¦ ¿äÃ» ¸Ş½ÃÁö
+// ê³µì¥ ì‚­ì œ ìš”ì²­ ë©”ì‹œì§€
 message DeleteFactoryRequest {
     repeated int32 FacID = 1;
 }
 
-// °øÀå »èÁ¦ ÀÀ´ä ¸Ş½ÃÁö
+// ê³µì¥ ì‚­ì œ ì‘ë‹µ ë©”ì‹œì§€
 message DeleteFactoryReply {
     int32 errorCode = 1;
     string errorMessage = 2;
 }
 
 
-// ¿øÀÚÀç µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÏ´Â ¿äÃ» ¸Ş½ÃÁö
+// ì›ìì¬ ë°ì´í„°ë¥¼ ì¶”ê°€í•˜ëŠ” ìš”ì²­ ë©”ì‹œì§€
 message AddMaterialRequest {
-    string materialName = 1;       // ¿øÀÚÀç ÀÌ¸§
-    string supplierName = 2;  // °ø±Ş¾÷Ã¼ ID
-    int32 quantity = 3;    // °ø±Ş¹ŞÀº ¼ö·®
+    string materialName = 1;       // ì›ìì¬ ì´ë¦„
+    string supplierName = 2;  // ê³µê¸‰ì—…ì²´ ID
+    int32 quantity = 3;    // ê³µê¸‰ë°›ì€ ìˆ˜ëŸ‰
 }
 
-// ¿øÀÚÀç µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ °á°ú¸¦ ¹İÈ¯ÇÏ´Â ÀÀ´ä ¸Ş½ÃÁö
+// ì›ìì¬ ë°ì´í„°ë¥¼ ì¶”ê°€í•œ ê²°ê³¼ë¥¼ ë°˜í™˜í•˜ëŠ” ì‘ë‹µ ë©”ì‹œì§€
 message AddMaterialReply {
-    int32 errorCode = 1;   // 0: ¼º°ø, -1: ½ÇÆĞ
-    string message = 2;    // °á°ú ¸Ş½ÃÁö
-    int32 materialID = 3;  // »õ·Î »ı¼ºµÈ MaterialID
+    int32 errorCode = 1;   // 0: ì„±ê³µ, -1: ì‹¤íŒ¨
+    string message = 2;    // ê²°ê³¼ ë©”ì‹œì§€
+    int32 materialID = 3;  // ìƒˆë¡œ ìƒì„±ëœ MaterialID
 }
 
-// Á¦Ç° Á¤º¸ ¸Ş½ÃÁö
+// ì œí’ˆ ì •ë³´ ë©”ì‹œì§€
 message ProductInfo {
-    int32 productID = 1;          // Á¦Ç° ID
-    string productName = 2;       // Á¦Ç°¸í
-    double quantity = 3;            // ¹«°Ô
-    int32 materialID = 4;         // ÀÚÀç ID
-    string productionDate = 5;    // »ı»ê ³¯Â¥
-    string qualityGrade = 6;      // Ç°Áú µî±Ş
-    int32 defectID = 7;           // ºÒ·® ID (DEFECT Å×ÀÌºí¿¡¼­ °¡Á®¿È)
-    int32 facID = 8;              // °øÀå ID
+    int32 productID = 1;          // ì œí’ˆ ID
+    string productName = 2;       // ì œí’ˆëª…
+    double quantity = 3;            // ë¬´ê²Œ
+    int32 materialID = 4;         // ìì¬ ID
+    string productionDate = 5;    // ìƒì‚° ë‚ ì§œ
+    string qualityGrade = 6;      // í’ˆì§ˆ ë“±ê¸‰
+    int32 defectID = 7;           // ë¶ˆëŸ‰ ID (DEFECT í…Œì´ë¸”ì—ì„œ ê°€ì ¸ì˜´)
+    int32 facID = 8;              // ê³µì¥ ID
 }
 
-// Á¦Ç° Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+// ì œí’ˆ ì •ë³´ ì‘ë‹µ ë©”ì‹œì§€
 message ProductReply {
-    int32 errorCode = 1;               // ¿À·ù ÄÚµå (0: ¼º°ø, ±× ¿Ü: ½ÇÆĞ)
-    repeated ProductInfo products = 2; // Á¦Ç° ¸ñ·Ï
+    int32 errorCode = 1;               // ì˜¤ë¥˜ ì½”ë“œ (0: ì„±ê³µ, ê·¸ ì™¸: ì‹¤íŒ¨)
+    repeated ProductInfo products = 2; // ì œí’ˆ ëª©ë¡
 }
 
-// À¯Àú Á¤º¸ ¸Ş½ÃÁö
+// ìœ ì € ì •ë³´ ë©”ì‹œì§€
 message UsersInfo {
-    int32 ID = 1;               // À¯Àú ¹øÈ£
-    string username = 2;        // À¯Àú ID
-    int32 user_level = 3;       // À¯Àú µî±Ş
-    string password = 4;        // À¯Àú ºñ¹Ğ¹øÈ£
+    int32 ID = 1;               // ìœ ì € ë²ˆí˜¸
+    string username = 2;        // ìœ ì € ID
+    int32 user_level = 3;       // ìœ ì € ë“±ê¸‰
+    string password = 4;        // ìœ ì € ë¹„ë°€ë²ˆí˜¸
 }
 
-// À¯Àú Á¤º¸ ÀÀ´ä ¸Ş½ÃÁö
+// ìœ ì € ì •ë³´ ì‘ë‹µ ë©”ì‹œì§€
 message UsersReply  {
-    int32 errorCode = 1;            // ¿À·ù ÄÚµå (0 : ¼º°ø, ±× ¿Ü: ½ÇÆĞ)
-    repeated UsersInfo users = 2;   // À¯Àú ¸ñ·Ï
+    int32 errorCode = 1;            // ì˜¤ë¥˜ ì½”ë“œ (0 : ì„±ê³µ, ê·¸ ì™¸: ì‹¤íŒ¨)
+    repeated UsersInfo users = 2;   // ìœ ì € ëª©ë¡
 }
 
-//·Î±×ÀÎ ÀÀ´ä
+//ë¡œê·¸ì¸ ì‘ë‹µ
 message LoginRequest {
   string username = 1;
   string password = 2;
 }
 
 message LoginReply {
-  int32 errorCode = 1;        // ¿À·ù ÄÚµå (0: ¼º°ø, ±× ¿Ü: ½ÇÆĞ)
-  string username = 2;        // ·Î±×ÀÎ ¼º°øÇÑ »ç¿ëÀÚ ÀÌ¸§
-  string password = 3;        //password ¸®ÅÏx
-  int32 user_level = 4;        //level ¸®ÅÏ
-  string message = 5;         // Ãß°¡ ¸Ş½ÃÁö
+  int32 errorCode = 1;        // ì˜¤ë¥˜ ì½”ë“œ (0: ì„±ê³µ, ê·¸ ì™¸: ì‹¤íŒ¨)
+  string username = 2;        // ë¡œê·¸ì¸ ì„±ê³µí•œ ì‚¬ìš©ì ì´ë¦„
+  string password = 3;        //passwordë¥¼ ë¦¬í„´X
+  int32 user_level = 4;       //UserLevel ë¦¬í„´o
+  string message = 5;         // ì¶”ê°€ ë©”ì‹œì§€
 }
 
-//À¯Àú Ãß°¡
+//ìœ ì € ì¶”ê°€
 message AddUserRequest {
   string username = 1;
   string password = 2;
 }
 message AddUserReply {
-   int32 errorCode = 1;   // 0: ¼º°ø, -1: ½ÇÆĞ
-   string message = 2;    // °á°ú ¸Ş½ÃÁö
-   int32 userID = 3;       // »õ·Î »ı¼ºµÈ UserID
+   int32 errorCode = 1;   // 0: ì„±ê³µ, -1: ì‹¤íŒ¨
+   string message = 2;    // ê²°ê³¼ ë©”ì‹œì§€
+   int32 userID = 3;       // ìƒˆë¡œ ìƒì„±ëœ UserID
 }
-//À¯Àú Ã£±â(±ÇÇÑºÎ¿© ½Ã »ç¿ë)
+
 message SearchUserRequest {
     string username = 1;
 }
@@ -258,7 +258,7 @@ message SearchUserReply {
     int32 errorCode = 5;
     repeated UsersInfo users = 6;
 }
-//À¯Àú ±ÇÇÑºÎ¿©(admin)
+
 message UpdateUserLevelRequest {
     string username = 1;
     string userLevel = 2;
