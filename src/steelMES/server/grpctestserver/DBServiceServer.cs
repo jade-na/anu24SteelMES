@@ -557,10 +557,58 @@ namespace grpcDummyMesServer
 
 			return result;
 		}
-		/// <summary>
-		/// Users 테이블에서 데이터를 가져오는 메서드
-		/// </summary>
-		public override async Task<UsersReply> GetAllUsersData(SteelMES.Empty request, ServerCallContext context)
+		//로그인grpc
+        public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
+        {
+            var result = new LoginReply();
+
+            try
+            {
+                // 데이터베이스 연결
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // 사용자 인증 쿼리
+                const string query = @"
+									SELECT USERNAME, USER_LEVEL
+									FROM SCOTT.USERS 
+									WHERE USERNAME = :username AND PASSWORD = :password";
+
+                await using var command = new OracleCommand(query, connection);
+                command.Parameters.Add(new OracleParameter("username", request.Username));
+                command.Parameters.Add(new OracleParameter("password", request.Password));
+
+                await using var reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    // 로그인 성공
+                    result.ErrorCode = 0;
+                    result.Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0); // USERNAME
+					result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);  // USER_LEVEL 컬럼 (2번 인덱스)
+                    result.Message = "로그인 성공!";
+                }
+                else
+                {
+                    // 로그인 실패
+                    result.ErrorCode = -1;
+                    result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.ErrorCode = -1;
+                result.Message = $"서버 오류: {ex.Message}";
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Users 테이블에서 데이터를 가져오는 메서드
+        /// </summary>
+        public override async Task<UsersReply> GetAllUsersData(SteelMES.Empty request, ServerCallContext context)
 		{
 			var result = new UsersReply();
 
