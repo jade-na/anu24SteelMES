@@ -9,6 +9,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="appsetting.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="appsetting.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Protobuf Include="protos\mes_server.proto" />
 		<PackageReference Include="Google.Protobuf" Version="3.28.3" />
 		<PackageReference Include="Grpc.Core" Version="2.46.6" />
@@ -16,6 +26,9 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+		<PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Oracle.ManagedDataAccess" Version="23.6.1" />
 		<PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.6.1" />
 	</ItemGroup>

@@ -9,8 +9,16 @@ namespace grpcDummyMesServer
 {
     public class DBServiceServer : DB_Service.DB_ServiceBase
     {
-        private readonly string _connectionString =
-            "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST= 192.168.37.240)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
+        //private readonly string _connectionString = 
+        //   "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST= 192.168.0.9)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
+       
+        private readonly string _connectionString;
+        //_connectionString 구문 생각해보기 oracleconnetion부분으로 수정하면 될듯한데 모르겠음
+        public DBServiceServer(string CreateConnectionString)
+        {
+            _connectionString = CreateConnectionString;
+        }
+     
 
         /// <summary>
         /// 요청 기간 내 불량 이력을 가져오는 메서드
