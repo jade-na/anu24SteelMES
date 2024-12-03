@@ -80,5 +80,10 @@ namespace Project_SteelMES
 		{
 			LogindataFromGrpc();
 		}
-	}
+
+        private void dungeonLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -67,6 +67,52 @@ namespace SteelMES {
     static readonly grpc::Marshaller<global::SteelMES.UpdateMaterialQuantityRequest> __Marshaller_SteelMES_UpdateMaterialQuantityRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateMaterialQuantityRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::SteelMES.UpdateMaterialQuantityReply> __Marshaller_SteelMES_UpdateMaterialQuantityReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateMaterialQuantityReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddFactoryRequest> __Marshaller_SteelMES_AddFactoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddFactoryRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddFactoryReply> __Marshaller_SteelMES_AddFactoryReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddFactoryReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.DeleteFactoryRequest> __Marshaller_SteelMES_DeleteFactoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.DeleteFactoryRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.DeleteFactoryReply> __Marshaller_SteelMES_DeleteFactoryReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.DeleteFactoryReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddMaterialRequest> __Marshaller_SteelMES_AddMaterialRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddMaterialRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddMaterialReply> __Marshaller_SteelMES_AddMaterialReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddMaterialReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductReply> __Marshaller_SteelMES_ProductReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddSupplierRequest> __Marshaller_SteelMES_AddSupplierRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddSupplierRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddSupplieReply> __Marshaller_SteelMES_AddSupplieReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddSupplieReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.DeleteSupplyRequest> __Marshaller_SteelMES_DeleteSupplyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.DeleteSupplyRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.DeleteSupplyReply> __Marshaller_SteelMES_DeleteSupplyReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.DeleteSupplyReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.LoginRequest> __Marshaller_SteelMES_LoginRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.LoginRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.LoginReply> __Marshaller_SteelMES_LoginReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.LoginReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddUserRequest> __Marshaller_SteelMES_AddUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddUserRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.AddUserReply> __Marshaller_SteelMES_AddUserReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.AddUserReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.UsersReply> __Marshaller_SteelMES_UsersReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UsersReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.SearchUserRequest> __Marshaller_SteelMES_SearchUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.SearchUserRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.SearchUserReply> __Marshaller_SteelMES_SearchUserReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.SearchUserReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.UpdateUserLevelRequest> __Marshaller_SteelMES_UpdateUserLevelRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateUserLevelRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.UpdateUserLevelReply> __Marshaller_SteelMES_UpdateUserLevelReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.UpdateUserLevelReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductOrderRequest> __Marshaller_SteelMES_ProductOrderRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductOrderRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductOrderResponse> __Marshaller_SteelMES_ProductOrderResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductOrderResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::SteelMES.ProductListReply> __Marshaller_SteelMES_ProductListReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SteelMES.ProductListReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::SteelMES.prodHistoryInfoRequest, global::SteelMES.prodHistoryInfoReply> __Method_reqProdHistory = new grpc::Method<global::SteelMES.prodHistoryInfoRequest, global::SteelMES.prodHistoryInfoReply>(
@@ -132,6 +178,110 @@ namespace SteelMES {
         __Marshaller_SteelMES_UpdateMaterialQuantityRequest,
         __Marshaller_SteelMES_UpdateMaterialQuantityReply);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.AddFactoryRequest, global::SteelMES.AddFactoryReply> __Method_AddFactory = new grpc::Method<global::SteelMES.AddFactoryRequest, global::SteelMES.AddFactoryReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AddFactory",
+        __Marshaller_SteelMES_AddFactoryRequest,
+        __Marshaller_SteelMES_AddFactoryReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.DeleteFactoryRequest, global::SteelMES.DeleteFactoryReply> __Method_DeleteFactoryData = new grpc::Method<global::SteelMES.DeleteFactoryRequest, global::SteelMES.DeleteFactoryReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteFactoryData",
+        __Marshaller_SteelMES_DeleteFactoryRequest,
+        __Marshaller_SteelMES_DeleteFactoryReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.AddMaterialRequest, global::SteelMES.AddMaterialReply> __Method_AddMaterial = new grpc::Method<global::SteelMES.AddMaterialRequest, global::SteelMES.AddMaterialReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AddMaterial",
+        __Marshaller_SteelMES_AddMaterialRequest,
+        __Marshaller_SteelMES_AddMaterialReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.ProductReply> __Method_GetAllProductData = new grpc::Method<global::SteelMES.Empty, global::SteelMES.ProductReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllProductData",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_ProductReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.AddSupplierRequest, global::SteelMES.AddSupplieReply> __Method_AddSupplier = new grpc::Method<global::SteelMES.AddSupplierRequest, global::SteelMES.AddSupplieReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AddSupplier",
+        __Marshaller_SteelMES_AddSupplierRequest,
+        __Marshaller_SteelMES_AddSupplieReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.DeleteSupplyRequest, global::SteelMES.DeleteSupplyReply> __Method_DeleteSupplyData = new grpc::Method<global::SteelMES.DeleteSupplyRequest, global::SteelMES.DeleteSupplyReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteSupplyData",
+        __Marshaller_SteelMES_DeleteSupplyRequest,
+        __Marshaller_SteelMES_DeleteSupplyReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.LoginRequest, global::SteelMES.LoginReply> __Method_GetLogin = new grpc::Method<global::SteelMES.LoginRequest, global::SteelMES.LoginReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetLogin",
+        __Marshaller_SteelMES_LoginRequest,
+        __Marshaller_SteelMES_LoginReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.AddUserRequest, global::SteelMES.AddUserReply> __Method_AddUser = new grpc::Method<global::SteelMES.AddUserRequest, global::SteelMES.AddUserReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AddUser",
+        __Marshaller_SteelMES_AddUserRequest,
+        __Marshaller_SteelMES_AddUserReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.UsersReply> __Method_GetAllUsersData = new grpc::Method<global::SteelMES.Empty, global::SteelMES.UsersReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllUsersData",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_UsersReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.SearchUserRequest, global::SteelMES.SearchUserReply> __Method_SearchUser = new grpc::Method<global::SteelMES.SearchUserRequest, global::SteelMES.SearchUserReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SearchUser",
+        __Marshaller_SteelMES_SearchUserRequest,
+        __Marshaller_SteelMES_SearchUserReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.UpdateUserLevelRequest, global::SteelMES.UpdateUserLevelReply> __Method_UpdateUserLevel = new grpc::Method<global::SteelMES.UpdateUserLevelRequest, global::SteelMES.UpdateUserLevelReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateUserLevel",
+        __Marshaller_SteelMES_UpdateUserLevelRequest,
+        __Marshaller_SteelMES_UpdateUserLevelReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.ProductOrderRequest, global::SteelMES.ProductOrderResponse> __Method_CreateProductOrder = new grpc::Method<global::SteelMES.ProductOrderRequest, global::SteelMES.ProductOrderResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateProductOrder",
+        __Marshaller_SteelMES_ProductOrderRequest,
+        __Marshaller_SteelMES_ProductOrderResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SteelMES.Empty, global::SteelMES.ProductListReply> __Method_GetProductList = new grpc::Method<global::SteelMES.Empty, global::SteelMES.ProductListReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetProductList",
+        __Marshaller_SteelMES_Empty,
+        __Marshaller_SteelMES_ProductListReply);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -186,6 +336,162 @@ namespace SteelMES {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::SteelMES.UpdateMaterialQuantityReply> UpdateMaterialQuantity(global::SteelMES.UpdateMaterialQuantityRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///공장 추가 rpc
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.AddFactoryReply> AddFactory(global::SteelMES.AddFactoryRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///공장 삭제 
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.DeleteFactoryReply> DeleteFactoryData(global::SteelMES.DeleteFactoryRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///원자재 추가 rpc
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.AddMaterialReply> AddMaterial(global::SteelMES.AddMaterialRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 모든 제품 데이터 요청
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.ProductReply> GetAllProductData(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///공급업체 정보 추가
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.AddSupplieReply> AddSupplier(global::SteelMES.AddSupplierRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///공급업체 삭제 
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.DeleteSupplyReply> DeleteSupplyData(global::SteelMES.DeleteSupplyRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///로그인정보
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.LoginReply> GetLogin(global::SteelMES.LoginRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///유저 추가
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.AddUserReply> AddUser(global::SteelMES.AddUserRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 모든 회원 데이터 요청
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.UsersReply> GetAllUsersData(global::SteelMES.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 회원 데이터 검색
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.SearchUserReply> SearchUser(global::SteelMES.SearchUserRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 회원 데이터 업데이트
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.UpdateUserLevelReply> UpdateUserLevel(global::SteelMES.UpdateUserLevelRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 제품 주문 추가
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.ProductOrderResponse> CreateProductOrder(global::SteelMES.ProductOrderRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 제품 목록 가져오기
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SteelMES.ProductListReply> GetProductList(global::SteelMES.Empty request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -379,6 +685,630 @@ namespace SteelMES {
       {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateMaterialQuantity, null, options, request);
       }
+      /// <summary>
+      ///공장 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddFactoryReply AddFactory(global::SteelMES.AddFactoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddFactory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공장 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddFactoryReply AddFactory(global::SteelMES.AddFactoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddFactory, null, options, request);
+      }
+      /// <summary>
+      ///공장 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddFactoryReply> AddFactoryAsync(global::SteelMES.AddFactoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddFactoryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공장 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddFactoryReply> AddFactoryAsync(global::SteelMES.AddFactoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddFactory, null, options, request);
+      }
+      /// <summary>
+      ///공장 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.DeleteFactoryReply DeleteFactoryData(global::SteelMES.DeleteFactoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteFactoryData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공장 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.DeleteFactoryReply DeleteFactoryData(global::SteelMES.DeleteFactoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteFactoryData, null, options, request);
+      }
+      /// <summary>
+      ///공장 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.DeleteFactoryReply> DeleteFactoryDataAsync(global::SteelMES.DeleteFactoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteFactoryDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공장 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.DeleteFactoryReply> DeleteFactoryDataAsync(global::SteelMES.DeleteFactoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteFactoryData, null, options, request);
+      }
+      /// <summary>
+      ///원자재 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddMaterialReply AddMaterial(global::SteelMES.AddMaterialRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddMaterial(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///원자재 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddMaterialReply AddMaterial(global::SteelMES.AddMaterialRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddMaterial, null, options, request);
+      }
+      /// <summary>
+      ///원자재 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddMaterialReply> AddMaterialAsync(global::SteelMES.AddMaterialRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddMaterialAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///원자재 추가 rpc
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddMaterialReply> AddMaterialAsync(global::SteelMES.AddMaterialRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddMaterial, null, options, request);
+      }
+      /// <summary>
+      /// 모든 제품 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductReply GetAllProductData(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllProductData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 모든 제품 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductReply GetAllProductData(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllProductData, null, options, request);
+      }
+      /// <summary>
+      /// 모든 제품 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductReply> GetAllProductDataAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllProductDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 모든 제품 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductReply> GetAllProductDataAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllProductData, null, options, request);
+      }
+      /// <summary>
+      ///공급업체 정보 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddSupplieReply AddSupplier(global::SteelMES.AddSupplierRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddSupplier(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공급업체 정보 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddSupplieReply AddSupplier(global::SteelMES.AddSupplierRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddSupplier, null, options, request);
+      }
+      /// <summary>
+      ///공급업체 정보 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddSupplieReply> AddSupplierAsync(global::SteelMES.AddSupplierRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddSupplierAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공급업체 정보 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddSupplieReply> AddSupplierAsync(global::SteelMES.AddSupplierRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddSupplier, null, options, request);
+      }
+      /// <summary>
+      ///공급업체 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.DeleteSupplyReply DeleteSupplyData(global::SteelMES.DeleteSupplyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteSupplyData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공급업체 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.DeleteSupplyReply DeleteSupplyData(global::SteelMES.DeleteSupplyRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteSupplyData, null, options, request);
+      }
+      /// <summary>
+      ///공급업체 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.DeleteSupplyReply> DeleteSupplyDataAsync(global::SteelMES.DeleteSupplyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteSupplyDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///공급업체 삭제 
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.DeleteSupplyReply> DeleteSupplyDataAsync(global::SteelMES.DeleteSupplyRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteSupplyData, null, options, request);
+      }
+      /// <summary>
+      ///로그인정보
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.LoginReply GetLogin(global::SteelMES.LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLogin(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///로그인정보
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.LoginReply GetLogin(global::SteelMES.LoginRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetLogin, null, options, request);
+      }
+      /// <summary>
+      ///로그인정보
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.LoginReply> GetLoginAsync(global::SteelMES.LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLoginAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///로그인정보
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.LoginReply> GetLoginAsync(global::SteelMES.LoginRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetLogin, null, options, request);
+      }
+      /// <summary>
+      ///유저 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddUserReply AddUser(global::SteelMES.AddUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddUser(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///유저 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.AddUserReply AddUser(global::SteelMES.AddUserRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddUser, null, options, request);
+      }
+      /// <summary>
+      ///유저 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddUserReply> AddUserAsync(global::SteelMES.AddUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddUserAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///유저 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.AddUserReply> AddUserAsync(global::SteelMES.AddUserRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddUser, null, options, request);
+      }
+      /// <summary>
+      /// 모든 회원 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UsersReply GetAllUsersData(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllUsersData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 모든 회원 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UsersReply GetAllUsersData(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllUsersData, null, options, request);
+      }
+      /// <summary>
+      /// 모든 회원 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UsersReply> GetAllUsersDataAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllUsersDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 모든 회원 데이터 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UsersReply> GetAllUsersDataAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllUsersData, null, options, request);
+      }
+      /// <summary>
+      /// 회원 데이터 검색
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.SearchUserReply SearchUser(global::SteelMES.SearchUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SearchUser(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 회원 데이터 검색
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.SearchUserReply SearchUser(global::SteelMES.SearchUserRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SearchUser, null, options, request);
+      }
+      /// <summary>
+      /// 회원 데이터 검색
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.SearchUserReply> SearchUserAsync(global::SteelMES.SearchUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SearchUserAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 회원 데이터 검색
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.SearchUserReply> SearchUserAsync(global::SteelMES.SearchUserRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SearchUser, null, options, request);
+      }
+      /// <summary>
+      /// 회원 데이터 업데이트
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UpdateUserLevelReply UpdateUserLevel(global::SteelMES.UpdateUserLevelRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateUserLevel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 회원 데이터 업데이트
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.UpdateUserLevelReply UpdateUserLevel(global::SteelMES.UpdateUserLevelRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateUserLevel, null, options, request);
+      }
+      /// <summary>
+      /// 회원 데이터 업데이트
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UpdateUserLevelReply> UpdateUserLevelAsync(global::SteelMES.UpdateUserLevelRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateUserLevelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 회원 데이터 업데이트
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.UpdateUserLevelReply> UpdateUserLevelAsync(global::SteelMES.UpdateUserLevelRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateUserLevel, null, options, request);
+      }
+      /// <summary>
+      /// 제품 주문 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductOrderResponse CreateProductOrder(global::SteelMES.ProductOrderRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateProductOrder(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 제품 주문 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductOrderResponse CreateProductOrder(global::SteelMES.ProductOrderRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateProductOrder, null, options, request);
+      }
+      /// <summary>
+      /// 제품 주문 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductOrderResponse> CreateProductOrderAsync(global::SteelMES.ProductOrderRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateProductOrderAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 제품 주문 추가
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductOrderResponse> CreateProductOrderAsync(global::SteelMES.ProductOrderRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateProductOrder, null, options, request);
+      }
+      /// <summary>
+      /// 제품 목록 가져오기
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductListReply GetProductList(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetProductList(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 제품 목록 가져오기
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::SteelMES.ProductListReply GetProductList(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetProductList, null, options, request);
+      }
+      /// <summary>
+      /// 제품 목록 가져오기
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductListReply> GetProductListAsync(global::SteelMES.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetProductListAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 제품 목록 가져오기
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SteelMES.ProductListReply> GetProductListAsync(global::SteelMES.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetProductList, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override DB_ServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -400,7 +1330,20 @@ namespace SteelMES {
           .AddMethod(__Method_GetProductionLineData, serviceImpl.GetProductionLineData)
           .AddMethod(__Method_GetMaterialData, serviceImpl.GetMaterialData)
           .AddMethod(__Method_GetSupplierData, serviceImpl.GetSupplierData)
-          .AddMethod(__Method_UpdateMaterialQuantity, serviceImpl.UpdateMaterialQuantity).Build();
+          .AddMethod(__Method_UpdateMaterialQuantity, serviceImpl.UpdateMaterialQuantity)
+          .AddMethod(__Method_AddFactory, serviceImpl.AddFactory)
+          .AddMethod(__Method_DeleteFactoryData, serviceImpl.DeleteFactoryData)
+          .AddMethod(__Method_AddMaterial, serviceImpl.AddMaterial)
+          .AddMethod(__Method_GetAllProductData, serviceImpl.GetAllProductData)
+          .AddMethod(__Method_AddSupplier, serviceImpl.AddSupplier)
+          .AddMethod(__Method_DeleteSupplyData, serviceImpl.DeleteSupplyData)
+          .AddMethod(__Method_GetLogin, serviceImpl.GetLogin)
+          .AddMethod(__Method_AddUser, serviceImpl.AddUser)
+          .AddMethod(__Method_GetAllUsersData, serviceImpl.GetAllUsersData)
+          .AddMethod(__Method_SearchUser, serviceImpl.SearchUser)
+          .AddMethod(__Method_UpdateUserLevel, serviceImpl.UpdateUserLevel)
+          .AddMethod(__Method_CreateProductOrder, serviceImpl.CreateProductOrder)
+          .AddMethod(__Method_GetProductList, serviceImpl.GetProductList).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -418,6 +1361,19 @@ namespace SteelMES {
       serviceBinder.AddMethod(__Method_GetMaterialData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.MaterialReply>(serviceImpl.GetMaterialData));
       serviceBinder.AddMethod(__Method_GetSupplierData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.SupplierReply>(serviceImpl.GetSupplierData));
       serviceBinder.AddMethod(__Method_UpdateMaterialQuantity, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.UpdateMaterialQuantityRequest, global::SteelMES.UpdateMaterialQuantityReply>(serviceImpl.UpdateMaterialQuantity));
+      serviceBinder.AddMethod(__Method_AddFactory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.AddFactoryRequest, global::SteelMES.AddFactoryReply>(serviceImpl.AddFactory));
+      serviceBinder.AddMethod(__Method_DeleteFactoryData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.DeleteFactoryRequest, global::SteelMES.DeleteFactoryReply>(serviceImpl.DeleteFactoryData));
+      serviceBinder.AddMethod(__Method_AddMaterial, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.AddMaterialRequest, global::SteelMES.AddMaterialReply>(serviceImpl.AddMaterial));
+      serviceBinder.AddMethod(__Method_GetAllProductData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.ProductReply>(serviceImpl.GetAllProductData));
+      serviceBinder.AddMethod(__Method_AddSupplier, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.AddSupplierRequest, global::SteelMES.AddSupplieReply>(serviceImpl.AddSupplier));
+      serviceBinder.AddMethod(__Method_DeleteSupplyData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.DeleteSupplyRequest, global::SteelMES.DeleteSupplyReply>(serviceImpl.DeleteSupplyData));
+      serviceBinder.AddMethod(__Method_GetLogin, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.LoginRequest, global::SteelMES.LoginReply>(serviceImpl.GetLogin));
+      serviceBinder.AddMethod(__Method_AddUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.AddUserRequest, global::SteelMES.AddUserReply>(serviceImpl.AddUser));
+      serviceBinder.AddMethod(__Method_GetAllUsersData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.UsersReply>(serviceImpl.GetAllUsersData));
+      serviceBinder.AddMethod(__Method_SearchUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.SearchUserRequest, global::SteelMES.SearchUserReply>(serviceImpl.SearchUser));
+      serviceBinder.AddMethod(__Method_UpdateUserLevel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.UpdateUserLevelRequest, global::SteelMES.UpdateUserLevelReply>(serviceImpl.UpdateUserLevel));
+      serviceBinder.AddMethod(__Method_CreateProductOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.ProductOrderRequest, global::SteelMES.ProductOrderResponse>(serviceImpl.CreateProductOrder));
+      serviceBinder.AddMethod(__Method_GetProductList, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SteelMES.Empty, global::SteelMES.ProductListReply>(serviceImpl.GetProductList));
     }
 
   }

@@ -132,5 +132,10 @@ namespace Project_SteelMES
 
 
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
