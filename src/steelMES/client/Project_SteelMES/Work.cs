@@ -177,10 +177,15 @@ namespace Project_SteelMES
 			_channel.ShutdownAsync().Wait();
 			base.OnFormClosing(e);
 		}
-	}
 
-	// 공장 선택 시 사용되는 ComboBoxItem 클래스
-	public class ComboBoxItem
+        private void Work_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    // 공장 선택 시 사용되는 ComboBoxItem 클래스
+    public class ComboBoxItem
 	{
 		public string Text { get; }
 		public int Value { get; }

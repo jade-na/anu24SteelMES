@@ -18,9 +18,9 @@ namespace Project_SteelMES
 {
     public partial class Supply2 : MaterialForm
     {
-        private Lost7 lost7;
+        private Supply lost7;
 
-        public Supply2(Lost7 lost7)
+        public Supply2(Supply lost7)
         {
             InitializeComponent();
             this.lost7 = lost7; // lost7 참조 저장
