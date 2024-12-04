@@ -223,13 +223,19 @@ message UsersReply  {
     repeated UsersInfo users = 2;   // 유저 목록
 }
 
+message LoginRequest {
+    string username = 1;         // 로그인 결과 메시지
+    string password = 2;        // 사용자 이름
+}
 // 로그인 응답 메시지
 message LoginReply {
-    string message = 1;         // 로그인 결과 메시지
-    string username = 2;        // 사용자 이름
-    int32 user_level = 3;       // 사용자 레벨
-    int32 error_code = 4;       // 에러 코드
-    bool force_exit = 5;        // 기존 세션 종료 여부
+    int32 errorCode = 1;
+    string username = 2;         // 로그인 결과 메시지
+    string password = 3;        // 사용자 이름
+    int32 user_level = 4;       // 사용자 레벨
+    string message = 5;       // 에러 코드
+    bool force_exit = 6;        // 기존 세션 종료 여부
+    bool existingSession = 7; 
 }
 
 // 로그아웃 요청 메시지

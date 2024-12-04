@@ -1,5 +1,4 @@
 using Grpc.Core;
-using grpcDummyMesServer;
 using MongoDB.Driver.Core.Configuration;
 using SteelMES;
 using System.Threading;
@@ -19,30 +18,38 @@ namespace grpctestserver
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // gRPC 서버가 실행 중이라는 문구만 표시
+
             textBox1.Text = "Host Port 접속완료";  // 서버상태 표시
 
-            // Form이 로드되면 자동으로 서버 시작
-            var config = Program.LoadConfig(); // JSON 파일에서 설정 읽기
-            string host = config.GrpcSettings.Host;
-            int port = config.GrpcSettings.Port;
+            //// gRPC 서버가 실행 중이라는 문구만 표시
+            //textBox1.Text = "Host Port 접속완료";  // 서버상태 표시
 
-            try
-            {
-                // gRPC 서버를 시작
-                var server = new Server
-                {
-                    Services = { DB_Service.BindService(new DBServiceServer(connectionString)) },
-                    Ports = { new ServerPort(host, port, ServerCredentials.Insecure) }
-                };
+            //// Form이 로드되면 자동으로 서버 시작
+            //var config = Program.LoadConfig(); // JSON 파일에서 설정 읽기
+            //string host = config.GrpcSettings.Host;
+            //int port = config. GrpcSettings.Port;
 
-                server.Start();
-                Console.WriteLine($"gRPC 서버가 {host}:{port}에서 실행 중입니다.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"gRPC 서버 실행 중 오류 발생: {ex.Message}");
-            }
+            //try
+            //{
+            //    // gRPC 서버를 시작
+            //    grpcServer = new Server
+            //    {
+            //        Services = { DB_Service.BindService(new DBServiceServer()) },
+            //        Ports = { new ServerPort(host, port, ServerCredentials.Insecure) }
+            //    };
+
+            //    // 서버 시작
+            //    grpcServer.Start();
+            //    Console.WriteLine($"gRPC 서버가 {host}:{port}에서 실행 중입니다.");
+
+            //    textBox1.Text = $"gRPC 서버가 {host}:{port}에서 실행 중입니다.";
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"gRPC 서버 실행 중 오류 발생: {ex.Message}");
+            //    Console.WriteLine($"gRPC 서버 실행 중 오류 발생: {ex.Message}");
+            //}
+
         }
     }
 }
