@@ -144,6 +144,7 @@
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(94, 29);
             this.numericUpDown7.TabIndex = 32;
+            this.numericUpDown7.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
             // 
             // comboBox3
             // 
@@ -157,6 +158,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(94, 27);
             this.comboBox3.TabIndex = 21;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -196,6 +198,7 @@
             this.label4.Size = new System.Drawing.Size(131, 31);
             this.label4.TabIndex = 19;
             this.label4.Text = "공장 선택";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -208,6 +211,7 @@
             this.label5.Size = new System.Drawing.Size(131, 31);
             this.label5.TabIndex = 18;
             this.label5.Text = "수량 선택";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label9
             // 
@@ -300,6 +304,7 @@
             this.dungeonLabel3.Size = new System.Drawing.Size(156, 36);
             this.dungeonLabel3.TabIndex = 12;
             this.dungeonLabel3.Text = "작업 지시";
+            this.dungeonLabel3.Click += new System.EventHandler(this.dungeonLabel3_Click);
             // 
             // Work
             // 
@@ -312,6 +317,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Work";
             this.Text = "Lost8";
+            this.Load += new System.EventHandler(this.Lost8_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

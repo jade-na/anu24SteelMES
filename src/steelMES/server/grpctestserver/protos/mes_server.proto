@@ -18,8 +18,6 @@ service DB_Service {
     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
     rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //공급업체 삭제 
     rpc GetLogin (LoginRequest) returns (LoginReply); //로그인정보
-    rpc Logout(LogoutRequest) returns (LogoutReply); // 로그아웃
-    rpc ForceLogout(LogoutRequest) returns (ForceLogoutReply); // 강제 로그아웃
     rpc AddUser(AddUserRequest) returns (AddUserReply); //유저 추가
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
@@ -223,39 +221,18 @@ message UsersReply  {
     repeated UsersInfo users = 2;   // 유저 목록
 }
 
-//로그인 요청
+//로그인 응답
 message LoginRequest {
   string username = 1;
   string password = 2;
 }
 
-// 로그인 응답
 message LoginReply {
   int32 errorCode = 1;        // 오류 코드 (0: 성공, 그 외: 실패)
   string username = 2;        // 로그인 성공한 사용자 이름
   string password = 3;        //password를 리턴X
   int32 user_level = 4;       //UserLevel 리턴o
   string message = 5;         // 추가 메시지
-  bool forceExit = 6;
-  bool existingSession = 7;
-}
-
-// 로그아웃 요청 메시지
-message LogoutRequest {
-    string user_id = 1;
-}
-
-// 로그아웃 응답 메시지
-message LogoutReply {
-    bool success = 1;
-    string message = 2;
-}
-
-// 강제 로그아웃 응답 메시지
-message ForceLogoutReply {
-    bool success = 1;
-    string message = 2;
-    bool promptUser = 3;  // 사용자에게 메시지를 띄울지 여부
 }
 
 //유저 추가

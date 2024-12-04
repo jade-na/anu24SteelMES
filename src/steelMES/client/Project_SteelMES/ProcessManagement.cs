@@ -28,7 +28,6 @@ namespace Project_SteelMES
 				dataGridView1.Columns.Add("ProductID", "제품 ID");
 				dataGridView1.Columns.Add("ProductName", "제품명");
 				dataGridView1.Columns.Add("Weight", "무게");
-				dataGridView1.Columns.Add("Quantity", "갯수");
 				dataGridView1.Columns.Add("ProductionDate", "생산 날짜");
 				dataGridView1.Columns.Add("QualityGrade", "품질 등급");
 				dataGridView1.Columns.Add("DefectID", "불량 ID");
