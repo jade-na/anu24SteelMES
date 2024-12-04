@@ -15,13 +15,13 @@ using SteelMES;
 
 namespace Project_SteelMES
 {
-    public partial class Lost7 : LostForm
+    public partial class Supply : LostForm
     {
         private int? seletedID; // 클릭된 FacID를 저장하는 변수
         // Oracle 연결 문자열
         private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
 
-        public Lost7()
+        public Supply()
         {
             InitializeComponent();
             

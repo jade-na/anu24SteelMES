@@ -26,6 +26,7 @@ namespace Project_SteelMES
         public Monitoring(string userName, int userLevel)
         {
             InitializeComponent();
+
             this.userLevel = userLevel;
             this.userName = userName;
         }
@@ -42,8 +43,8 @@ namespace Project_SteelMES
 
             timer1.Start();
 
-            LoginInfo1.Text = $"{userName}님";
-            LoginInfo2.Text = $"Level : {userLevel}";
+            LoginInfo1.Text = $"{userName} 님";
+            LoginInfo2.Text = $"Level : {userLevel}"; 
 
 
         }
@@ -95,8 +96,8 @@ namespace Project_SteelMES
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Menu_WorkBtn.BackColor = Color.SkyBlue;
-            Menu_WorkBtn.ForeColor = Color.Black;
+            Menu_WorkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
             Menu_MonitoringBtn.BackColor = Color.Transparent;
             Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
@@ -118,28 +119,70 @@ namespace Project_SteelMES
         }
 
 
-        private void OptionButton1_Click(object sender, EventArgs e)
+        private void OptionButton1_Click(object sender, EventArgs e) //공장 등록 버튼
         {
-            FactoryRegister lost6 = new FactoryRegister();
-            lost6.Show();
+            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            {
+                if (userLevel == 0)
+                {
+                    FactoryRegister facRegister = new FactoryRegister();
+                    facRegister.Show();
+                }
+                else
+                {
+                    MessageBox.Show("권한 미달로 접속 금지");
+                }
+            }
+            else
+            {
+                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+            }
         }
 
-        private void OptionButton2_Click(object sender, EventArgs e)
+        private void OptionButton2_Click(object sender, EventArgs e) //공급업체 등록 버튼
         {
-            Lost7 lost7 = new Lost7();
-            lost7.Show();
+            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            {
+                if (userLevel == 0)
+                {
+                    Supply supply = new Supply();
+                    supply.Show();
+                }
+                else
+                {
+                    MessageBox.Show("권한 미달로 접속 금지");
+                }
+            }
+            else
+            {
+                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+            }
         }
 
-        private void OptionButton3_Click(object sender, EventArgs e)
+        private void OptionButton3_Click(object sender, EventArgs e) //회원 관리 버튼
         {
-            Membership lost9 = new Membership();
-            lost9.Show();
+            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            {
+                if (userLevel == 0)
+                {
+                    Membership membership = new Membership();
+                    membership.Show();
+                }
+                else
+                {
+                    MessageBox.Show("권한 미달로 접속 금지");
+                }
+            }
+            else
+            {
+                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Menu_DefinitonBtn.BackColor = Color.SkyBlue;
-            Menu_DefinitonBtn.ForeColor = Color.Black;
+            Menu_DefinitonBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
 
             Menu_DefectRecordBtn.BackColor = Color.Transparent;
             Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
@@ -164,6 +207,19 @@ namespace Project_SteelMES
 
         private void button5_Click(object sender, EventArgs e)
         {
+            Menu_CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+            Menu_CloseBtn.ForeColor = Color.SkyBlue;
+
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_MonitoringBtn.BackColor = Color.Transparent;
+            Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
+
+
             Dispose();
         }
 
@@ -191,6 +247,9 @@ namespace Project_SteelMES
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Menu_DefectRecordBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+
             Monitoring lost = new Monitoring();
             lost.Show();
             this.Hide();
@@ -254,9 +313,8 @@ namespace Project_SteelMES
 
         private void Menu_DefectRecordBtn_Click(object sender, EventArgs e)
         {
-
-            Menu_DefectRecordBtn.BackColor = Color.SkyBlue;
-            Menu_DefectRecordBtn.ForeColor = Color.Black;
+            Menu_DefectRecordBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
 
             Menu_MonitoringBtn.BackColor = Color.Transparent;
             Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
@@ -282,6 +340,16 @@ namespace Project_SteelMES
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = DateTime.Now.ToString();
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void LoginInfo2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
