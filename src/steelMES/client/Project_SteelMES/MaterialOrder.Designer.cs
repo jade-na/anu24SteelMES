@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SelectBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -74,7 +74,7 @@
             this.panel1.Controls.Add(this.OrderBtn);
             this.panel1.Location = new System.Drawing.Point(3, 114);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 199);
+            this.panel1.Size = new System.Drawing.Size(1043, 211);
             this.panel1.TabIndex = 11;
             // 
             // SelectBtn
@@ -84,11 +84,11 @@
             this.SelectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.SelectBtn.FlatAppearance.BorderSize = 0;
             this.SelectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.SelectBtn.ForeColor = System.Drawing.Color.Black;
-            this.SelectBtn.Location = new System.Drawing.Point(560, 167);
+            this.SelectBtn.Location = new System.Drawing.Point(904, 66);
             this.SelectBtn.Name = "SelectBtn";
-            this.SelectBtn.Size = new System.Drawing.Size(80, 32);
+            this.SelectBtn.Size = new System.Drawing.Size(109, 31);
             this.SelectBtn.TabIndex = 14;
             this.SelectBtn.Text = "조회";
             this.SelectBtn.UseVisualStyleBackColor = false;
@@ -100,14 +100,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 14F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 18F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaterialID,
@@ -115,20 +115,20 @@
             this.SupplyID,
             this.Quantity,
             this.ImportDate});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 16F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 18F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(53, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(726, 109);
+            this.dataGridView1.Size = new System.Drawing.Size(812, 135);
             this.dataGridView1.TabIndex = 13;
             // 
             // MaterialID
@@ -159,11 +159,11 @@
             // dungeonLabel2
             // 
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(8, 7);
+            this.dungeonLabel2.Location = new System.Drawing.Point(46, 4);
             this.dungeonLabel2.Name = "dungeonLabel2";
-            this.dungeonLabel2.Size = new System.Drawing.Size(209, 40);
+            this.dungeonLabel2.Size = new System.Drawing.Size(152, 40);
             this.dungeonLabel2.TabIndex = 9;
             this.dungeonLabel2.Text = "자재 정보";
             // 
@@ -174,11 +174,11 @@
             this.OrderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.OrderBtn.FlatAppearance.BorderSize = 0;
             this.OrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OrderBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.OrderBtn.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.OrderBtn.ForeColor = System.Drawing.Color.Black;
-            this.OrderBtn.Location = new System.Drawing.Point(660, 166);
+            this.OrderBtn.Location = new System.Drawing.Point(904, 119);
             this.OrderBtn.Name = "OrderBtn";
-            this.OrderBtn.Size = new System.Drawing.Size(80, 32);
+            this.OrderBtn.Size = new System.Drawing.Size(109, 32);
             this.OrderBtn.TabIndex = 11;
             this.OrderBtn.Text = "주문표";
             this.OrderBtn.UseVisualStyleBackColor = false;
@@ -187,9 +187,9 @@
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 26F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(8, 8);
+            this.dungeonLabel1.Location = new System.Drawing.Point(1, 16);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(231, 35);
             this.dungeonLabel1.TabIndex = 12;
@@ -203,7 +203,7 @@
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Location = new System.Drawing.Point(8, 46);
+            this.panel2.Location = new System.Drawing.Point(175, 48);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(735, 48);
             this.panel2.TabIndex = 13;
@@ -280,19 +280,19 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel3.Controls.Add(this.dungeonLabel3);
             this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Location = new System.Drawing.Point(3, 332);
+            this.panel3.Location = new System.Drawing.Point(3, 357);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(740, 160);
+            this.panel3.Size = new System.Drawing.Size(1043, 245);
             this.panel3.TabIndex = 14;
             // 
             // dungeonLabel3
             // 
             this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel3.Location = new System.Drawing.Point(11, 9);
+            this.dungeonLabel3.Location = new System.Drawing.Point(46, 4);
             this.dungeonLabel3.Name = "dungeonLabel3";
-            this.dungeonLabel3.Size = new System.Drawing.Size(209, 40);
+            this.dungeonLabel3.Size = new System.Drawing.Size(135, 40);
             this.dungeonLabel3.TabIndex = 20;
             this.dungeonLabel3.Text = "공급업체";
             // 
@@ -301,33 +301,33 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 14F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 18F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SupplyName,
             this.ContactInfo,
             this.Country});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.Location = new System.Drawing.Point(11, 52);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 18F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView2.Location = new System.Drawing.Point(53, 43);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.Size = new System.Drawing.Size(720, 108);
+            this.dataGridView2.Size = new System.Drawing.Size(609, 183);
             this.dataGridView2.TabIndex = 19;
             // 
             // SupplyName
@@ -354,7 +354,7 @@
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Location = new System.Drawing.Point(6, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(766, 509);
+            this.panel4.Size = new System.Drawing.Size(1146, 617);
             this.panel4.TabIndex = 15;
             // 
             // MaterialOrder
@@ -362,7 +362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(14)))), ((int)(((byte)(34)))));
-            this.ClientSize = new System.Drawing.Size(775, 518);
+            this.ClientSize = new System.Drawing.Size(1182, 647);
             this.Controls.Add(this.panel4);
             this.Name = "MaterialOrder";
             this.Text = "MaterialOrder";

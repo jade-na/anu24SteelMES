@@ -21,9 +21,8 @@ namespace Project_SteelMES
             InitializeComponent();
 
             // 위치 고정 설정
-            this.StartPosition = FormStartPosition.Manual; // 위치를 수동으로 설정
-            this.Location = new Point(1200, 250); // (300, 200) 위치에 폼 배치
-
+            this.StartPosition = FormStartPosition.Manual; 
+            this.Location = new Point(750, 230);
             
             
         }

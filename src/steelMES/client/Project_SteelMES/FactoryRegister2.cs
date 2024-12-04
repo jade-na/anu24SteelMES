@@ -27,7 +27,10 @@ namespace Project_SteelMES
 
         private void Material2_Load(object sender, EventArgs e)
         {
-
+            // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
+            // 폼의 위치를 고정된 좌표로 설정
+            this.Location = new Point(1255, 350);
         }
 
         private async void button1_Click(object sender, EventArgs e) //추가 버튼

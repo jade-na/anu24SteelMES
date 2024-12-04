@@ -121,7 +121,6 @@ namespace Project_SteelMES
 				};
 
 				materialForm.Show();
-				this.Hide();
 			}
 		}
 

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Grpc.Core;  // Grpc.Core 사용
 using SteelMES;
 using ReaLTaiizor.Forms;
+using System.Drawing;
 
 namespace Project_SteelMES
 {
@@ -25,7 +26,11 @@ namespace Project_SteelMES
 		private void Membership2_Load(object sender, EventArgs e)
 		{
 			InitializeGrpcClient();  // 비동기적으로 gRPC 클라이언트 초기화
-		}
+                                     // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
+            // 폼의 위치를 고정된 좌표로 설정
+            this.Location = new Point(1255, 350);
+        }
 
 		// gRPC 클라이언트 초기화
 		private void InitializeGrpcClient()
@@ -160,5 +165,7 @@ namespace Project_SteelMES
 		{
 			_channel?.ShutdownAsync().Wait();  // 채널 닫기
 		}
-	}
+
+        
+    }
 }

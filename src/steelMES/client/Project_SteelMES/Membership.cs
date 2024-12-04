@@ -68,7 +68,10 @@ namespace Project_SteelMES
 		}
 		private void Lost9_Load(object sender, EventArgs e)
         {
-
+            // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
+            // 폼의 위치를 고정된 좌표로 설정
+            this.Location = new Point(320, 220);
         }
         private void button1_Click(object sender, EventArgs e)
         {

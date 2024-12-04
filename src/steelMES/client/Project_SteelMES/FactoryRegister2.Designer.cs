@@ -39,27 +39,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(87, 143);
+            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(61, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 24);
+            this.label1.Size = new System.Drawing.Size(112, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "공장명 :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(76, 220);
+            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(61, 228);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 24);
+            this.label2.Size = new System.Drawing.Size(148, 31);
             this.label2.TabIndex = 8;
             this.label2.Text = "공장 위치 :";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(191, 135);
+            this.textBox1.Location = new System.Drawing.Point(188, 145);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(143, 35);
             this.textBox1.TabIndex = 9;
@@ -67,19 +67,19 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(191, 213);
+            this.textBox2.Location = new System.Drawing.Point(224, 223);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 35);
+            this.textBox2.Size = new System.Drawing.Size(216, 35);
             this.textBox2.TabIndex = 10;
             // 
             // RegisterBtn
             // 
             this.RegisterBtn.AutoSize = true;
-            this.RegisterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
+            this.RegisterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.RegisterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.RegisterBtn.FlatAppearance.BorderSize = 0;
             this.RegisterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.RegisterBtn.Location = new System.Drawing.Point(286, 338);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(76, 40);
@@ -91,12 +91,12 @@
             // CloseBtn
             // 
             this.CloseBtn.AutoSize = true;
-            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
+            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CloseBtn.FlatAppearance.BorderSize = 0;
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CloseBtn.Location = new System.Drawing.Point(383, 338);
+            this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.CloseBtn.Location = new System.Drawing.Point(384, 338);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(76, 40);
             this.CloseBtn.TabIndex = 12;

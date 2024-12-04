@@ -182,6 +182,11 @@ namespace Project_SteelMES
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // 공장 선택 시 사용되는 ComboBoxItem 클래스

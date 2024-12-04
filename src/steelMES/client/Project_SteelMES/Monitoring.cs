@@ -38,13 +38,18 @@ namespace Project_SteelMES
 
         private void Lost_Load(object sender, EventArgs e)
         {
+            // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
+            // 폼의 위치를 고정된 좌표로 설정
+            this.Location = new Point(0, 0);
+
             // 하위 버튼 생성
             CreateOptionButtons();
 
             timer1.Start();
 
             LoginInfo1.Text = $"{userName} 님";
-            LoginInfo2.Text = $"Level : {userLevel}"; 
+            LoginInfo2.Text = $"권한등급 : {userLevel}"; 
 
 
         }
@@ -121,61 +126,41 @@ namespace Project_SteelMES
 
         private void OptionButton1_Click(object sender, EventArgs e) //공장 등록 버튼
         {
-            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            
+            if(userLevel == 0)
             {
-                if (userLevel == 0)
-                {
-                    FactoryRegister facRegister = new FactoryRegister();
-                    facRegister.Show();
-                }
-                else
-                {
-                    MessageBox.Show("권한 미달로 접속 금지");
-                }
+                FactoryRegister facRegister = new FactoryRegister();
+                facRegister.Show();
             }
             else
             {
-                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+                MessageBox.Show("admin 권한 이상만 접속이 가능합니다.");
             }
         }
 
         private void OptionButton2_Click(object sender, EventArgs e) //공급업체 등록 버튼
         {
-            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            if (userLevel == 0)
             {
-                if (userLevel == 0)
-                {
-                    Supply supply = new Supply();
-                    supply.Show();
-                }
-                else
-                {
-                    MessageBox.Show("권한 미달로 접속 금지");
-                }
+                Supply supply = new Supply();
+                supply.Show();
             }
             else
             {
-                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+                MessageBox.Show("admin 권한 이상만 접속이 가능합니다.");
             }
         }
 
         private void OptionButton3_Click(object sender, EventArgs e) //회원 관리 버튼
         {
-            if (int.TryParse(LoginInfo2.Text, out int userLevel))
+            if (userLevel == 0)
             {
-                if (userLevel == 0)
-                {
-                    Membership membership = new Membership();
-                    membership.Show();
-                }
-                else
-                {
-                    MessageBox.Show("권한 미달로 접속 금지");
-                }
+               Membership membership = new Membership();
+                membership.Show();
             }
             else
             {
-                MessageBox.Show("UserLevel 정보를 확인할 수 없습니다.");
+                MessageBox.Show("admin 권한 이상만 접속이 가능합니다.");
             }
         }
 
@@ -255,7 +240,7 @@ namespace Project_SteelMES
             this.Hide();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e) //자재 주문 버튼
         {
             Menu_DefinitonBtn.BackColor = Color.Transparent;
             Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
@@ -265,6 +250,16 @@ namespace Project_SteelMES
             Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
             Menu_WorkBtn.BackColor = Color.Transparent;
             Menu_WorkBtn.ForeColor = Color.SkyBlue;
+
+            if (userLevel <= 1)
+            {
+                FactoryRegister facRegister = new FactoryRegister();
+                facRegister.Show();
+            }
+            else
+            {
+                MessageBox.Show("manager 권한 이상만 접속이 가능합니다.");
+            }
 
             MaterialOrder matOrder = new MaterialOrder();
 
