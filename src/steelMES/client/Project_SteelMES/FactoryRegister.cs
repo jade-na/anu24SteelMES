@@ -26,7 +26,10 @@ namespace Project_SteelMES
        
         private void Lost6_Load(object sender, EventArgs e)
         {
-            
+            // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
+            // 폼의 위치를 고정된 좌표로 설정
+            this.Location = new Point(320, 220);
         }
 
         private void button7_Click(object sender, EventArgs e) //추가 버튼
@@ -194,6 +197,21 @@ namespace Project_SteelMES
             {
                 await channel.ShutdownAsync();
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

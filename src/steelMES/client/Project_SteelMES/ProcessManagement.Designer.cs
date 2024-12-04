@@ -71,7 +71,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(21, 131);
+            this.progressBar1.Location = new System.Drawing.Point(112, 132);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(121, 16);
@@ -79,7 +79,7 @@
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(195, 131);
+            this.progressBar2.Location = new System.Drawing.Point(318, 132);
             this.progressBar2.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(121, 16);
@@ -87,7 +87,7 @@
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(365, 131);
+            this.progressBar3.Location = new System.Drawing.Point(519, 132);
             this.progressBar3.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(121, 16);
@@ -99,12 +99,12 @@
             this.SelectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.SelectBtn.FlatAppearance.BorderSize = 0;
             this.SelectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.SelectBtn.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.SelectBtn.ForeColor = System.Drawing.Color.Black;
-            this.SelectBtn.Location = new System.Drawing.Point(645, 136);
+            this.SelectBtn.Location = new System.Drawing.Point(905, 18);
             this.SelectBtn.Margin = new System.Windows.Forms.Padding(2);
             this.SelectBtn.Name = "SelectBtn";
-            this.SelectBtn.Size = new System.Drawing.Size(63, 43);
+            this.SelectBtn.Size = new System.Drawing.Size(97, 30);
             this.SelectBtn.TabIndex = 9;
             this.SelectBtn.Text = "조회";
             this.SelectBtn.UseVisualStyleBackColor = false;
@@ -113,9 +113,9 @@
             // dungeonLabel2
             // 
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel2.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel2.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 26F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel2.Location = new System.Drawing.Point(14, 15);
+            this.dungeonLabel2.Location = new System.Drawing.Point(1, 21);
             this.dungeonLabel2.Name = "dungeonLabel2";
             this.dungeonLabel2.Size = new System.Drawing.Size(231, 35);
             this.dungeonLabel2.TabIndex = 12;
@@ -123,7 +123,7 @@
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(537, 131);
+            this.progressBar4.Location = new System.Drawing.Point(740, 134);
             this.progressBar4.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(121, 16);
@@ -133,10 +133,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(22, 59);
+            this.panel1.Location = new System.Drawing.Point(8, 77);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 206);
+            this.panel1.Size = new System.Drawing.Size(1094, 181);
             this.panel1.TabIndex = 17;
             // 
             // groupBox1
@@ -157,18 +157,18 @@
             this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Location = new System.Drawing.Point(17, 21);
+            this.groupBox1.Location = new System.Drawing.Point(37, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(678, 158);
+            this.groupBox1.Size = new System.Drawing.Size(977, 158);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::Project_SteelMES.Properties.Resources.foward__2_;
-            this.pictureBox7.Location = new System.Drawing.Point(490, 51);
+            this.pictureBox7.Location = new System.Drawing.Point(671, 51);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(49, 51);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -178,7 +178,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Project_SteelMES.Properties.Resources.foward__2_;
-            this.pictureBox6.Location = new System.Drawing.Point(316, 51);
+            this.pictureBox6.Location = new System.Drawing.Point(452, 51);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(49, 51);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -188,9 +188,9 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Project_SteelMES.Properties.Resources.foward__2_;
-            this.pictureBox5.Location = new System.Drawing.Point(142, 51);
+            this.pictureBox5.Location = new System.Drawing.Point(253, 51);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(49, 51);
+            this.pictureBox5.Size = new System.Drawing.Size(48, 51);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 41;
             this.pictureBox5.TabStop = false;
@@ -198,61 +198,63 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(542, 1);
+            this.label4.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 16F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(741, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 22);
+            this.label4.Size = new System.Drawing.Size(107, 26);
             this.label4.TabIndex = 40;
             this.label4.Text = "불량 검출";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(399, 2);
+            this.label3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(556, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 22);
+            this.label3.Size = new System.Drawing.Size(56, 26);
             this.label3.TabIndex = 39;
             this.label3.Text = "압연";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(230, 1);
+            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 16F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(352, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 22);
+            this.label2.Size = new System.Drawing.Size(56, 26);
             this.label2.TabIndex = 38;
             this.label2.Text = "제강";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 1);
+            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 16F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(150, -1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 22);
+            this.label1.Size = new System.Drawing.Size(56, 26);
             this.label1.TabIndex = 37;
             this.label1.Text = "제선";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.progress1;
-            this.pictureBox1.Location = new System.Drawing.Point(26, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(115, 27);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(116, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Project_SteelMES.Properties.Resources.progress2;
-            this.pictureBox2.Location = new System.Drawing.Point(192, 23);
+            this.pictureBox2.Location = new System.Drawing.Point(317, 23);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(123, 98);
+            this.pictureBox2.Size = new System.Drawing.Size(126, 105);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -260,9 +262,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Project_SteelMES.Properties.Resources.process4;
-            this.pictureBox4.Location = new System.Drawing.Point(543, 37);
+            this.pictureBox4.Location = new System.Drawing.Point(734, 36);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(111, 74);
+            this.pictureBox4.Size = new System.Drawing.Size(130, 88);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
@@ -270,10 +272,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Project_SteelMES.Properties.Resources.prosess3;
-            this.pictureBox3.Location = new System.Drawing.Point(362, 39);
+            this.pictureBox3.Location = new System.Drawing.Point(518, 32);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(127, 72);
+            this.pictureBox3.Size = new System.Drawing.Size(129, 89);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
@@ -283,10 +285,10 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.SelectBtn);
-            this.panel2.Location = new System.Drawing.Point(22, 282);
+            this.panel2.Location = new System.Drawing.Point(8, 295);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(710, 181);
+            this.panel2.Size = new System.Drawing.Size(1094, 185);
             this.panel2.TabIndex = 18;
             // 
             // dataGridView1
@@ -318,13 +320,13 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(65, 18);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(706, 130);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 153);
             this.dataGridView1.TabIndex = 35;
             // 
             // ProductName
@@ -357,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(758, 470);
+            this.ClientSize = new System.Drawing.Size(1154, 540);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dungeonLabel2);

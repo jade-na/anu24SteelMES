@@ -41,30 +41,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(54, 132);
+            this.label1.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(74, 131);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.Size = new System.Drawing.Size(166, 31);
             this.label1.TabIndex = 8;
             this.label1.Text = "공급업체명 :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(68, 199);
+            this.label2.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(74, 198);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 24);
+            this.label2.Size = new System.Drawing.Size(112, 31);
             this.label2.TabIndex = 9;
             this.label2.Text = "연락처 :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(57, 266);
+            this.label3.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(74, 266);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 24);
+            this.label3.Size = new System.Drawing.Size(148, 31);
             this.label3.TabIndex = 10;
             this.label3.Text = "업체 국가 :";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -72,7 +72,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.textBox1.Location = new System.Drawing.Point(184, 126);
+            this.textBox1.Location = new System.Drawing.Point(249, 126);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(158, 35);
             this.textBox1.TabIndex = 11;
@@ -80,7 +80,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.textBox2.Location = new System.Drawing.Point(184, 193);
+            this.textBox2.Location = new System.Drawing.Point(196, 194);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(236, 35);
             this.textBox2.TabIndex = 12;
@@ -88,7 +88,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.textBox3.Location = new System.Drawing.Point(184, 261);
+            this.textBox3.Location = new System.Drawing.Point(231, 261);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(158, 35);
             this.textBox3.TabIndex = 13;
@@ -96,11 +96,11 @@
             // RegisterBtn
             // 
             this.RegisterBtn.AutoSize = true;
-            this.RegisterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
+            this.RegisterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.RegisterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.RegisterBtn.FlatAppearance.BorderSize = 0;
             this.RegisterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.RegisterBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.RegisterBtn.Location = new System.Drawing.Point(286, 338);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(76, 40);
@@ -112,11 +112,11 @@
             // CloseBtn
             // 
             this.CloseBtn.AutoSize = true;
-            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(235)))), ((int)(((byte)(245)))));
+            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CloseBtn.FlatAppearance.BorderSize = 0;
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CloseBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.CloseBtn.Location = new System.Drawing.Point(383, 338);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(76, 40);

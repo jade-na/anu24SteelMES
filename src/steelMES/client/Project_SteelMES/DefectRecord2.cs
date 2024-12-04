@@ -59,10 +59,7 @@ namespace Project_SteelMES
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			// Lost2 폼으로 돌아가기
-			DefectRecord lost2Form = new DefectRecord();
-			lost2Form.Show();
-			this.Close();
+			this.Dispose();
 		}
 		private void OptionButton1_Click(object sender, EventArgs e)
 		{

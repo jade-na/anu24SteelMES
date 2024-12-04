@@ -46,9 +46,9 @@
             this.panel1.Controls.Add(this.dungeonLabel2);
             this.panel1.Controls.Add(this.SettingBtn);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(26, 98);
+            this.panel1.Location = new System.Drawing.Point(39, 110);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 441);
+            this.panel1.Size = new System.Drawing.Size(823, 495);
             this.panel1.TabIndex = 10;
             // 
             // refreshBtn
@@ -60,9 +60,9 @@
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.refreshBtn.ForeColor = System.Drawing.Color.Black;
-            this.refreshBtn.Location = new System.Drawing.Point(618, 386);
+            this.refreshBtn.Location = new System.Drawing.Point(730, 454);
             this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(104, 40);
+            this.refreshBtn.Size = new System.Drawing.Size(90, 38);
             this.refreshBtn.TabIndex = 13;
             this.refreshBtn.Text = "조회";
             this.refreshBtn.UseVisualStyleBackColor = false;
@@ -74,7 +74,7 @@
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
             this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.dungeonLabel2.Location = new System.Drawing.Point(5, 8);
+            this.dungeonLabel2.Location = new System.Drawing.Point(10, 12);
             this.dungeonLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dungeonLabel2.Name = "dungeonLabel2";
             this.dungeonLabel2.Size = new System.Drawing.Size(141, 32);
@@ -91,9 +91,9 @@
             this.SettingBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.SettingBtn.ForeColor = System.Drawing.Color.IndianRed;
             this.SettingBtn.Image = global::Project_SteelMES.Properties.Resources.setting__2_;
-            this.SettingBtn.Location = new System.Drawing.Point(663, 1);
+            this.SettingBtn.Location = new System.Drawing.Point(755, 0);
             this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.Size = new System.Drawing.Size(66, 63);
+            this.SettingBtn.Size = new System.Drawing.Size(68, 66);
             this.SettingBtn.TabIndex = 11;
             this.SettingBtn.UseVisualStyleBackColor = false;
             this.SettingBtn.Click += new System.EventHandler(this.button1_Click);
@@ -114,22 +114,22 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 85);
+            this.dataGridView1.Location = new System.Drawing.Point(64, 84);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(673, 272);
+            this.dataGridView1.Size = new System.Drawing.Size(690, 337);
             this.dataGridView1.TabIndex = 9;
             // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 26F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(20, 49);
+            this.dungeonLabel1.Location = new System.Drawing.Point(32, 50);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(231, 35);
             this.dungeonLabel1.TabIndex = 11;
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(900, 630);
             this.Controls.Add(this.dungeonLabel1);
             this.Controls.Add(this.panel1);
             this.Image = global::Project_SteelMES.Properties.Resources.logo2;

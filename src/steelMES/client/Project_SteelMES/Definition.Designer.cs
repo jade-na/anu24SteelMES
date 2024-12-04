@@ -43,13 +43,13 @@ namespace Project_SteelMES
             this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(38, 0);
+            this.richTextBox1.Location = new System.Drawing.Point(21, 13);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(921, 660);
+            this.richTextBox1.Size = new System.Drawing.Size(1289, 685);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -58,16 +58,16 @@ namespace Project_SteelMES
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel2.Controls.Add(this.richTextBox1);
-            this.panel2.Location = new System.Drawing.Point(-14, 96);
+            this.panel2.Location = new System.Drawing.Point(4, 121);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 736);
+            this.panel2.Size = new System.Drawing.Size(1314, 711);
             this.panel2.TabIndex = 1;
             // 
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 26.25F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
             this.dungeonLabel1.Location = new System.Drawing.Point(18, 28);
             this.dungeonLabel1.Name = "dungeonLabel1";
@@ -80,7 +80,7 @@ namespace Project_SteelMES
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(973, 903);
+            this.ClientSize = new System.Drawing.Size(1377, 845);
             this.Controls.Add(this.dungeonLabel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);

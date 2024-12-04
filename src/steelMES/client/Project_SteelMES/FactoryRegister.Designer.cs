@@ -30,7 +30,7 @@ namespace Project_SteelMES
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -54,9 +54,9 @@ namespace Project_SteelMES
             // dungeonLabel1
             // 
             this.dungeonLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.dungeonLabel1.Font = new System.Drawing.Font("G마켓 산스 TTF Bold", 26F, System.Drawing.FontStyle.Bold);
             this.dungeonLabel1.ForeColor = System.Drawing.Color.White;
-            this.dungeonLabel1.Location = new System.Drawing.Point(21, 46);
+            this.dungeonLabel1.Location = new System.Drawing.Point(32, 50);
             this.dungeonLabel1.Name = "dungeonLabel1";
             this.dungeonLabel1.Size = new System.Drawing.Size(200, 35);
             this.dungeonLabel1.TabIndex = 7;
@@ -67,15 +67,16 @@ namespace Project_SteelMES
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(24, 103);
+            this.panel2.Controls.Add(this.viewbtn);
+            this.panel2.Location = new System.Drawing.Point(39, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 154);
+            this.panel2.Size = new System.Drawing.Size(827, 154);
             this.panel2.TabIndex = 8;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Project_SteelMES.Properties.Resources.Line;
-            this.pictureBox3.Location = new System.Drawing.Point(413, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(447, 0);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(165, 154);
@@ -86,7 +87,7 @@ namespace Project_SteelMES
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Project_SteelMES.Properties.Resources.factory1;
-            this.pictureBox1.Location = new System.Drawing.Point(183, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(209, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(165, 154);
@@ -99,36 +100,38 @@ namespace Project_SteelMES
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.viewbtn);
             this.panel3.Controls.Add(this.DeleteBtn);
             this.panel3.Controls.Add(this.AddBtn);
             this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Location = new System.Drawing.Point(24, 275);
+            this.panel3.Location = new System.Drawing.Point(39, 295);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(750, 308);
+            this.panel3.Size = new System.Drawing.Size(827, 302);
             this.panel3.TabIndex = 9;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             this.pictureBox4.Image = global::Project_SteelMES.Properties.Resources.icon_delete;
-            this.pictureBox4.Location = new System.Drawing.Point(621, 258);
+            this.pictureBox4.Location = new System.Drawing.Point(103, 252);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 13;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             this.pictureBox2.Image = global::Project_SteelMES.Properties.Resources.add__2_;
-            this.pictureBox2.Location = new System.Drawing.Point(493, 257);
+            this.pictureBox2.Location = new System.Drawing.Point(223, 250);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // viewbtn
             // 
@@ -138,7 +141,7 @@ namespace Project_SteelMES
             this.viewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewbtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.viewbtn.ForeColor = System.Drawing.Color.Black;
-            this.viewbtn.Location = new System.Drawing.Point(65, 251);
+            this.viewbtn.Location = new System.Drawing.Point(723, 3);
             this.viewbtn.Name = "viewbtn";
             this.viewbtn.Size = new System.Drawing.Size(104, 40);
             this.viewbtn.TabIndex = 11;
@@ -154,7 +157,7 @@ namespace Project_SteelMES
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.DeleteBtn.ForeColor = System.Drawing.Color.Black;
-            this.DeleteBtn.Location = new System.Drawing.Point(616, 251);
+            this.DeleteBtn.Location = new System.Drawing.Point(96, 245);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(104, 40);
             this.DeleteBtn.TabIndex = 10;
@@ -170,7 +173,7 @@ namespace Project_SteelMES
             this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.AddBtn.ForeColor = System.Drawing.Color.Black;
-            this.AddBtn.Location = new System.Drawing.Point(492, 251);
+            this.AddBtn.Location = new System.Drawing.Point(220, 245);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(104, 40);
             this.AddBtn.TabIndex = 9;
@@ -186,20 +189,21 @@ namespace Project_SteelMES
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(25)))), ((int)(((byte)(53)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Location = new System.Drawing.Point(65, 35);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(100, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(620, 210);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -209,7 +213,7 @@ namespace Project_SteelMES
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(900, 630);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dungeonLabel1);
