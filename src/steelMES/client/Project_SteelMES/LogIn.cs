@@ -87,55 +87,109 @@ namespace Project_SteelMES
             this.Hide();
         }
 
-        private async void LoginBtn_Click(object sender, EventArgs e)
-        {
-            string username = UserID.Text;
-            string password = Password.Text;
-            //Password.PasswordChar = '*';
+		private async void LoginBtn_Click(object sender, EventArgs e)
+		{
+			string username = UserID.Text;
+			string password = Password.Text;
 
-            // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-            var client = new DB_Service.DB_ServiceClient(channel);
+			// gRPC 채널 생성
+			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+			var client = new DB_Service.DB_ServiceClient(channel);
 
-            try
-            {
-                // gRPC 서버로 로그인 요청
-                var response = await client.GetLoginAsync(new LoginRequest
-                {
-                    Username = username,
-                    Password = password
-                });
+			try
+			{
+				// gRPC 서버로 로그인 요청
+				var response = await client.GetLoginAsync(new LoginRequest
+				{
+					Username = username,
+					Password = password
+				});
 
-                if (response.ErrorCode == 0)
-                {
-                    MessageBox.Show(response.Message);
+				if (response.ErrorCode == 0)
+				{
+					// 세션이 존재하는 경우
+					if (response.ForceExit) // 중복 로그인 세션이 감지된 경우
+					{
+						// 중복 로그인 경고 메시지 박스를 UI 스레드에서 띄운다.
+						var result = ShowMessageBox(response.Message, "중복 로그인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
-                    MonitoringForm.Show();
+						// 사용자가 "Yes"를 눌렀을 경우
+						if (result == DialogResult.Yes)
+						{
+							// 강제 로그아웃 요청
+							var forceLogoutResponse = await client.ForceLogoutAsync(new LogoutRequest { UserId = username });
 
-                    // 현재 로그인 창 숨기기
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show(response.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("gRPC 오류 발생: " + ex.Message);
-            }
-            finally
-            {
-                await channel.ShutdownAsync();
-            }
+							// 로그아웃 성공하면 새로운 세션으로 로그인 처리
+							if (forceLogoutResponse.Success)
+							{
+								// 로그아웃 후 다시 로그인
+								var newResponse = await client.GetLoginAsync(new LoginRequest
+								{
+									Username = username,
+									Password = password
+								});
 
+								if (newResponse.ErrorCode == 0)
+								{
+									MessageBox.Show("기존 세션이 강제로 종료되었습니다. 새로운 세션으로 로그인합니다.");
 
-        }
+									// Monitoring 폼으로 이동
+									Monitoring MonitoringForm = new Monitoring(username, newResponse.UserLevel);
+									MonitoringForm.Show();
+									this.Hide();
+								}
+								else
+								{
+									MessageBox.Show("로그인 실패: " + newResponse.Message);
+								}
+							}
+							else
+							{
+								MessageBox.Show("세션 종료 실패: " + forceLogoutResponse.Message);
+							}
+						}
+						else
+						{
+							// 사용자가 "No"를 눌렀을 경우, 로그인 취소
+							MessageBox.Show("로그인이 취소되었습니다.");
+						}
+					}
+					else
+					{
+						// 이미 로그인된 세션이 없으면 바로 로그인
+						Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
+						MonitoringForm.Show();
+						this.Hide();
+					}
+				}
+				else
+				{
+					// 로그인 실패
+					MessageBox.Show(response.Message);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+			}
+			finally
+			{
+				await channel.ShutdownAsync();
+			}
+		}
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-    }
+		private DialogResult ShowMessageBox(string message, string caption = "알림", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
+		{
+			// UI 스레드에서 메시지 박스를 띄운다.
+			if (InvokeRequired)
+			{
+				// UI 스레드에서 호출되도록 Invoke를 사용
+				return (DialogResult)Invoke(new Func<string, string, MessageBoxButtons, MessageBoxIcon, DialogResult>(ShowMessageBox), message, caption, buttons, icon);
+			}
+			else
+			{
+				return MessageBox.Show(message, caption, buttons, icon);
+			}
+		}
+	}
 }
