@@ -18,6 +18,8 @@ service DB_Service {
     rpc AddSupplier (AddSupplierRequest) returns (AddSupplieReply); //공급업체 정보 추가
     rpc DeleteSupplyData(DeleteSupplyRequest) returns (DeleteSupplyReply); //공급업체 삭제 
     rpc GetLogin (LoginRequest) returns (LoginReply); //로그인정보
+    rpc Logout (LogoutRequest) returns (LogoutReply);  // 로그아웃 메서드
+    rpc ForceLogout (ForceLogoutRequest) returns (ForceLogoutReply); // 강제 로그아웃 메서드
     rpc AddUser(AddUserRequest) returns (AddUserReply); //유저 추가
     rpc GetAllUsersData (Empty) returns (UsersReply); // 모든 회원 데이터 요청
     rpc SearchUser (SearchUserRequest) returns (SearchUserReply); // 회원 데이터 검색
@@ -220,19 +222,39 @@ message UsersReply  {
     int32 errorCode = 1;            // 오류 코드 (0 : 성공, 그 외: 실패)
     repeated UsersInfo users = 2;   // 유저 목록
 }
-//로그인 응답
-message LoginRequest {
-  string username = 1;
-  string password = 2;
+
+// 로그인 응답 메시지
+message LoginReply {
+    string message = 1;         // 로그인 결과 메시지
+    string username = 2;        // 사용자 이름
+    int32 user_level = 3;       // 사용자 레벨
+    int32 error_code = 4;       // 에러 코드
+    bool forceExit = 5;        // 기존 세션 종료 여부
 }
 
-message LoginReply {
-  int32 errorCode = 1;        // 오류 코드 (0: 성공, 그 외: 실패)
-  string username = 2;        // 로그인 성공한 사용자 이름
-  string password = 3;        //password 반환하지않음
-  int32 user_level = 4;       //Level반환
-  string message = 5;         // 추가 메시지
+// 로그아웃 요청 메시지
+message LogoutRequest {
+    string user_id = 1;         // 사용자 ID
 }
+
+// 로그아웃 응답 메시지
+message LogoutReply {
+    bool success = 1;           // 로그아웃 성공 여부
+    string message = 2;         // 로그아웃 결과 메시지
+}
+
+// 강제 로그아웃 요청 메시지
+message ForceLogoutRequest {
+    string user_id = 1;         // 사용자 ID
+}
+
+// 강제 로그아웃 응답 메시지
+message ForceLogoutReply {
+    bool success = 1;           // 강제 로그아웃 성공 여부
+    string message = 2;         // 강제 로그아웃 결과 메시지
+    bool prompt_user = 3;       // 클라이언트에 메시지 박스를 띄울지 여부
+}
+
 
 //유저 추가
 message AddUserRequest {
@@ -242,7 +264,7 @@ message AddUserRequest {
 message AddUserReply {
    int32 errorCode = 1;   // 0: 성공, -1: 실패
    string message = 2;    // 결과 메시지
-   int32 userID = 3;  // 새로 생성된 userID
+   int32 userID = 3;       // 새로 생성된 UserID
 }
 
 message SearchUserRequest {
@@ -272,7 +294,6 @@ message ProductOrderRequest {
     string productName = 1;
     int32 quantity = 2;
     int32 factoryId = 3;
-    string productionDate = 4;
 }
 
 message ProductOrderResponse {
