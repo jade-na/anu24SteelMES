@@ -16,10 +16,14 @@ namespace grpctestserver
         // "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST= 127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
 
         private readonly string _connectionString;
+        private readonly UserSessionManager m_UserSessionManager;
         public DBServiceServer()
         {
-            string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // JSON 파일 경로 설정
-            var config = ConfigLoader.LoadConfig(configFilePath);
+            m_UserSessionManager = new UserSessionManager();
+
+			string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+			//string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // JSON 파일 경로 설정
+			var config = ConfigLoader.LoadConfig(configFilePath);
 
             if (config != null)
             {
@@ -578,54 +582,165 @@ namespace grpctestserver
 
             return result;
         }
-        //로그인grpc
-        public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
-        {
-            var result = new LoginReply();
 
-            try
-            {
-                // 데이터베이스 연결
-                await using var connection = new OracleConnection(_connectionString);
-                await connection.OpenAsync();
+		// 로그인 gRPC
+		public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
+		{
+			var result = new LoginReply();
+			bool forceExit = false;
 
-                // 사용자 인증 쿼리
-                const string query = @"
-									SELECT USERNAME, USER_LEVEL
-									FROM SCOTT.USERS 
-									WHERE USERNAME = :username AND PASSWORD = :password";
+			try
+			{
+				if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit))
+				{
+					// 중복 로그인 세션이 있을 경우, forceExit는 true
+					result.ForceExit = forceExit;
+					result.Message = "중복 로그인 세션이 감지되었습니다."; // 중복 로그인 감지
+					result.ErrorCode = -1;
+					return result;
+				}
 
-                await using var command = new OracleCommand(query, connection);
-                command.Parameters.Add(new OracleParameter("username", request.Username));
-                command.Parameters.Add(new OracleParameter("password", request.Password));
+				// 데이터베이스 연결 및 인증 처리
+				if (string.IsNullOrEmpty(_connectionString))
+				{
+					result.ErrorCode = -1;
+					result.Message = "데이터베이스 연결 문자열이 설정되지 않았습니다.";
+					return result;
+				}
 
-                await using var reader = await command.ExecuteReaderAsync();
+				await using var connection = new OracleConnection(_connectionString);
+				if (connection == null)
+				{
+					result.ErrorCode = -1;
+					result.Message = "데이터베이스 연결 실패!";
+					return result;
+				}
 
-                if (await reader.ReadAsync())
-                {
-                    // 로그인 성공
-                    result.ErrorCode = 0;
-                    result.Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0); // USERNAME
-                    result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);  // USER_LEVEL 컬럼 (2번 인덱스)
-                    result.Message = "로그인 성공!";
-                }
-                else
-                {
-                    // 로그인 실패
-                    result.ErrorCode = -1;
-                    result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
-                }
-            }
-            catch (Exception ex)
-            {
-                result.ErrorCode = -1;
-                result.Message = $"서버 오류: {ex.Message}";
-                Console.WriteLine($"Exception: {ex.Message}");
-            }
+				await connection.OpenAsync();
 
-            return result;
-        }
-        public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
+				const string query = @"
+        SELECT USERNAME, USER_LEVEL
+        FROM SCOTT.USERS
+        WHERE USERNAME = :username AND PASSWORD = :password";
+
+				await using var command = new OracleCommand(query, connection);
+				command.Parameters.Add(new OracleParameter("username", request.Username));
+				command.Parameters.Add(new OracleParameter("password", request.Password));
+
+				await using var reader = await command.ExecuteReaderAsync();
+
+				if (reader == null)
+				{
+					result.ErrorCode = -1;
+					result.Message = "데이터베이스에서 데이터를 읽을 수 없습니다.";
+					return result;
+				}
+
+				if (await reader.ReadAsync())
+				{
+					result.ErrorCode = 0;
+					result.Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
+					result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+					result.Message = "로그인 성공!";
+					result.ForceExit = forceExit; // 세션 종료 여부 전달
+				}
+				else
+				{
+					result.ErrorCode = -1;
+					result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
+					result.ForceExit = forceExit; // 세션 종료 여부 전달
+				}
+			}
+			catch (Exception ex)
+			{
+				result.ErrorCode = -1;
+				result.Message = $"서버 오류: {ex.Message}";
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+
+
+		// 로그아웃 처리
+		public override async Task<LogoutReply> GetLogout(LogoutRequest request, ServerCallContext context)
+		{
+			var result = new LogoutReply();
+
+			try
+			{
+				// 사용자가 로그인되어 있는지 확인
+				bool isLoggedIn = m_UserSessionManager.IsUserLoggedIn(request.UserId);
+
+				if (isLoggedIn)
+				{
+					// 로그인된 세션이 있다면 로그아웃 처리
+					bool logoutSuccess = m_UserSessionManager.ForceLogout(request.UserId);
+
+					if (logoutSuccess)
+					{
+						result.Success = true;
+						result.Message = "로그아웃 성공!";
+					}
+					else
+					{
+						result.Success = false;
+						result.Message = "로그아웃 실패. 세션을 찾을 수 없습니다.";
+					}
+				}
+				else
+				{
+					// 로그인되지 않은 사용자가 로그아웃 요청 시
+					result.Success = false;
+					result.Message = "로그인되지 않은 사용자입니다.";
+				}
+			}
+			catch (Exception ex)
+			{
+				result.Success = false;
+				result.Message = $"서버 오류: {ex.Message}";
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+
+		// 강제 로그아웃 처리
+		public override async Task<ForceLogoutReply> ForceLogout(ForceLogoutRequest request, ServerCallContext context)
+		{
+			var result = new ForceLogoutReply();
+			bool isUserLoggedOut = false;
+
+			try
+			{
+				// 강제 로그아웃 처리
+				bool logoutSuccess = m_UserSessionManager.ForceLogoutAndReturnState(request.UserId, out isUserLoggedOut);
+
+				if (logoutSuccess)
+				{
+					result.Success = true;
+					result.Message = "기존 세션이 종료되었습니다.";
+					result.PromptUser = false;  // 클라이언트에 메시지를 띄우지 않음
+				}
+				else
+				{
+					result.Success = false;
+					result.Message = "해당 사용자가 로그인되지 않았습니다.";
+					result.PromptUser = true;  // 클라이언트에게 메시지를 띄우도록 알림
+				}
+			}
+			catch (Exception ex)
+			{
+				result.Success = false;
+				result.Message = $"서버 오류: {ex.Message}";
+				Console.WriteLine($"Exception: {ex.Message}");
+			}
+
+			return result;
+		}
+
+		// 회원 추가 메서드
+		public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
         {
             var result = new AddUserReply();
             try

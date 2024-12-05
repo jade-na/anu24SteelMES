@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Oracle.ManagedDataAccess.Client;
-
 using System.Windows.Forms;
 
 //using System.Windows.Forms;
@@ -17,7 +8,7 @@ using Grpc.Core;
 
 namespace Project_SteelMES
 {
-    public partial class Login : CrownForm
+	public partial class Login : CrownForm
     {
         public Login()
         {
@@ -37,7 +28,6 @@ namespace Project_SteelMES
         private void hopeSwitch1_CheckedChanged(object sender, EventArgs e) //Password 암호화
         {
             this.hopeSwitch1.CheckedChanged += new System.EventHandler(this.hopeSwitch1_CheckedChanged);
-
             if (hopeSwitch1.Checked)
             {
                 Password.UseSystemPasswordChar = true;
@@ -87,50 +77,96 @@ namespace Project_SteelMES
             this.Hide();
         }
 
-        private async void LoginBtn_Click(object sender, EventArgs e)
-        {
-            string username = UserID.Text;
-            string password = Password.Text;
-            //Password.PasswordChar = '*';
+		private async void LoginBtn_Click(object sender, EventArgs e)
+		{
+			string username = UserID.Text;
+			string password = Password.Text;
 
-            // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-            var client = new DB_Service.DB_ServiceClient(channel);
+			// gRPC 채널 생성
+			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+			var client = new DB_Service.DB_ServiceClient(channel);
 
-            try
-            {
-                // gRPC 서버로 로그인 요청
-                var response = await client.GetLoginAsync(new LoginRequest
-                {
-                    Username = username,
-                    Password = password
-                });
+			try
+			{
+				// gRPC 서버로 로그인 요청
+				var response = await client.GetLoginAsync(new LoginRequest
+				{
+					Username = username,
+					Password = password
+				});
 
-                if (response.ErrorCode == 0)
-                {
-                    MessageBox.Show(response.Message);
+				if (response.ErrorCode == 0)
+				{
+					if (response.ForceExit) // 중복 로그인 세션이 감지된 경우
+					{
+						// 서버에서 자동으로 강제 로그아웃 처리
+						var forceLogoutResponse = await client.ForceLogoutAsync(new ForceLogoutRequest { UserId = username });
 
-                    Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
-                    MonitoringForm.Show();
+						if (forceLogoutResponse.Success)
+						{
+							// 기존 세션이 강제 종료된 후 새로 로그인
+							MessageBox.Show("기존 세션이 강제로 종료되었습니다. 새로운 세션으로 로그인합니다.");
 
-                    // 현재 로그인 창 숨기기
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show(response.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("gRPC 오류 발생: " + ex.Message);
-            }
-            finally
-            {
-                await channel.ShutdownAsync();
-            }
+							// 강제 로그아웃 후 다시 로그인
+							var newResponse = await client.GetLoginAsync(new LoginRequest
+							{
+								Username = username,
+								Password = password
+							});
 
+							if (newResponse.ErrorCode == 0)
+							{
+								// 로그인 성공
+								Monitoring MonitoringForm = new Monitoring(username, newResponse.UserLevel);
+								MonitoringForm.Show();
+								this.Hide();
+							}
+							else
+							{
+								MessageBox.Show("로그인 실패: " + newResponse.Message);
+							}
+						}
+						else
+						{
+							MessageBox.Show("세션 종료 실패: " + forceLogoutResponse.Message);
+						}
+					}
+					else
+					{
+						// 이미 로그인된 세션이 없으면 바로 로그인
+						Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
+						MonitoringForm.Show();
+						this.Hide();
+					}
+				}
+				else
+				{
+					// 로그인 실패
+					MessageBox.Show(response.Message);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+			}
+			finally
+			{
+				await channel.ShutdownAsync();
+			}
+		}
 
-        }
-    }
+		private DialogResult ShowMessageBox(string message, string caption = "알림", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
+		{
+			// UI 스레드에서 메시지 박스를 띄운다.
+			if (InvokeRequired)
+			{
+				// UI 스레드에서 호출되도록 Invoke를 사용
+				return (DialogResult)Invoke(new Func<string, string, MessageBoxButtons, MessageBoxIcon, DialogResult>(ShowMessageBox), message, caption, buttons, icon);
+			}
+			else
+			{
+				return MessageBox.Show(message, caption, buttons, icon);
+			}
+		}
+	}
 }

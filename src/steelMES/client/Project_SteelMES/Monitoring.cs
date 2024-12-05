@@ -7,9 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Grpc.Core;
+
 
 //using System.Windows.Forms;
 using ReaLTaiizor.Forms;
+using SteelMES;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Project_SteelMES
 {
@@ -337,12 +341,40 @@ namespace Project_SteelMES
             label1.Text = DateTime.Now.ToString();
         }
 
-        private void LogoutBtn_Click(object sender, EventArgs e)
+        private async void LogoutBtn_Click(object sender, EventArgs e)
         {
-            
-        }
+			// gRPC 채널 생성
+			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+			var client = new DB_Service.DB_ServiceClient(channel);
 
-        private void LoginInfo2_Click(object sender, EventArgs e)
+			try
+			{
+				// 로그아웃 요청
+				var logoutResponse = await client.LogoutAsync(new LogoutRequest
+				{
+					UserId = userName  // 로그아웃할 사용자 ID
+				});
+
+				if (logoutResponse.Success)
+				{
+					MessageBox.Show("로그아웃 성공!");
+				}
+				else
+				{
+					MessageBox.Show("로그아웃 실패: " + logoutResponse.Message);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+			}
+			finally
+			{
+				await channel.ShutdownAsync();
+			}
+		}
+
+		private void LoginInfo2_Click(object sender, EventArgs e)
         {
 
         }

@@ -18,7 +18,9 @@ namespace grpctestserver
     {
         public string UserId { get; set; }
         public string Password { get; set; }
-    
+        public string Host {  get; set; }
+        public int Port { get; set; }   
+        public string Sid { get; set; }
     }
     public static class ConfigLoader
     {
@@ -39,7 +41,7 @@ namespace grpctestserver
         // 연결 문자열을 동적으로 생성
         public static string BuildConnectionString(OracleConnectionConfig config)
         {
-            return $"User Id={config.UserId};Password={config.Password};Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
+            return $"User Id={config.UserId};Password={config.Password};Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={config.Host})(PORT={config.Port}))(CONNECT_DATA=(SID={config.Sid})))";
         }
     }
 }

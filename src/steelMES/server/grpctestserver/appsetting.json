@@ -1,6 +1,10 @@
 {
   "OracleConnection": {
-    "ConnectionString": "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))"
+    "UserId": "scott",
+    "Password": "tiger",
+    "Host": "192.168.0.9",
+    "Port": 1521,
+    "Sid": "XE"
   },
   "GrpcSettings": {
     "Host": "127.0.0.1",

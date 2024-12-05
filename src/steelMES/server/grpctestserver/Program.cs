@@ -75,7 +75,8 @@ namespace grpctestserver
         }
         public static Config LoadConfig()
         {
-            string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // 절대 경로로 정확히 설정
+			string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+			//string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // 절대 경로로 정확히 설정
             try
             {
                 string json = File.ReadAllText(configFilePath);

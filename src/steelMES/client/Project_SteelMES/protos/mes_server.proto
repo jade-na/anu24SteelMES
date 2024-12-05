@@ -223,36 +223,39 @@ message UsersReply  {
     repeated UsersInfo users = 2;   // 유저 목록
 }
 
+message LoginRequest {
+    string username = 1;  // 사용자 ID
+    string password = 2;  // 사용자 password
+}
 // 로그인 응답 메시지
 message LoginReply {
-    string message = 1;         // 로그인 결과 메시지
-    string username = 2;        // 사용자 이름
-    int32 user_level = 3;       // 사용자 레벨
-    int32 error_code = 4;       // 에러 코드
-    bool forceExit = 5;        // 기존 세션 종료 여부
+    string message = 1;   // 로그인 결과 메시지
+    int32 errorCode = 2;  // 에러 코드
+    bool forceExit = 3;   // 기존 세션 종료 여부
+    int32 userLevel = 4;  // 사용자 레벨
+    string username = 5;
 }
 
 // 로그아웃 요청 메시지
 message LogoutRequest {
-    string user_id = 1;         // 사용자 ID
+    string user_id = 1;   // 사용자 ID
 }
 
 // 로그아웃 응답 메시지
 message LogoutReply {
-    bool success = 1;           // 로그아웃 성공 여부
-    string message = 2;         // 로그아웃 결과 메시지
+    bool success = 1;     // 로그아웃 성공 여부
+    string message = 2;   // 로그아웃 결과 메시지
 }
 
 // 강제 로그아웃 요청 메시지
 message ForceLogoutRequest {
-    string user_id = 1;         // 사용자 ID
+    string user_id = 1;   // 사용자 ID
 }
 
 // 강제 로그아웃 응답 메시지
 message ForceLogoutReply {
-    bool success = 1;           // 강제 로그아웃 성공 여부
-    string message = 2;         // 강제 로그아웃 결과 메시지
-    bool prompt_user = 3;       // 클라이언트에 메시지 박스를 띄울지 여부
+     bool success = 1;     // 강제 로그아웃 성공 여부
+    string message = 2;   // 강제 로그아웃 결과 메시지
 }
 
 
