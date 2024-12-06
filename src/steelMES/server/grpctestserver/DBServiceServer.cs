@@ -63,6 +63,12 @@ namespace grpctestserver
                 await using var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
                 {
+
+                    Console.WriteLine($"불량 식별 ID : {reader.GetInt32(0)}"); // 로그 추가
+                    Console.WriteLine($"제품 ID: {reader.GetInt32(1)}"); // 로그 추가
+                    Console.WriteLine($"불량 종류 : {reader.GetString(2)}"); // 로그 추가
+                    Console.WriteLine();
+
                     result.Infos.Add(new prodHistoryInfo
                     {
                         DefectID = reader.GetInt32(0),
@@ -103,6 +109,12 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
+
+                    Console.WriteLine($"불량 식별 ID : {reader.GetInt32(0)}"); // 로그 추가
+                    Console.WriteLine($"제품 ID: {reader.GetInt32(1)}"); // 로그 추가
+                    Console.WriteLine($"불량 종류 : {reader.GetString(2)}"); // 로그 추가
+                    Console.WriteLine();
+
                     result.Infos.Add(new prodHistoryInfo
                     {
                         DefectID = reader.GetInt32(0), // 첫 번째 열은 0번 인덱스
@@ -165,46 +177,46 @@ namespace grpctestserver
         /// <summary>
         /// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
         /// </summary>
-        public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
-        {
-            var result = new ProductionLineReply();
+     //   public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
+     //   {
+     //       var result = new ProductionLineReply();
 
-            try
-            {
-                await using var connection = new OracleConnection(_connectionString);
-                await connection.OpenAsync();
+     //       try
+     //       {
+     //           await using var connection = new OracleConnection(_connectionString);
+     //           await connection.OpenAsync();
 
-                const string query = @"
-					SELECT LINEID, FACID, LINENAME, OPERATINGDATE
-					FROM PRODUCTIONLINE
-					WHERE FACID = :facid";
+     //           const string query = @"
+					//SELECT LINEID, FACID, LINENAME, OPERATINGDATE
+					//FROM PRODUCTIONLINE
+					//WHERE FACID = :facid";
 
-                await using var command = new OracleCommand(query, connection);
-                command.Parameters.Add(new OracleParameter("facid", request.FacID));
+     //           await using var command = new OracleCommand(query, connection);
+     //           command.Parameters.Add(new OracleParameter("facid", request.FacID));
 
-                await using var reader = await command.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
-                {
+     //           await using var reader = await command.ExecuteReaderAsync();
+     //           while (await reader.ReadAsync())
+     //           {
                     
-                    result.Lines.Add(new ProductionLineInfo
-                    {
-                        LineID = reader.GetInt32(0),
-                        FacID = reader.GetInt32(1),
-                        LineName = reader.GetString(2),
-                        OperateDate = reader.GetDateTime(3).ToString("yyyy-MM-dd")
-                    });
-                }
+     //               result.Lines.Add(new ProductionLineInfo
+     //               {
+     //                   LineID = reader.GetInt32(0),
+     //                   FacID = reader.GetInt32(1),
+     //                   LineName = reader.GetString(2),
+     //                   OperateDate = reader.GetDateTime(3).ToString("yyyy-MM-dd")
+     //               });
+     //           }
 
-                result.ErrorCode = result.Lines.Count > 0 ? 0 : -1;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                result.ErrorCode = -1;
-            }
+     //           result.ErrorCode = result.Lines.Count > 0 ? 0 : -1;
+     //       }
+     //       catch (Exception ex)
+     //       {
+     //           Console.WriteLine($"Error: {ex.Message}");
+     //           result.ErrorCode = -1;
+     //       }
 
-            return result;
-        }
+     //       return result;
+     //   }
         /// <summary>
         /// MATERIAL 테이블에서 데이터를 가져오는 메서드
         /// </summary>
@@ -228,12 +240,11 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
-                    var MaterialID = reader.GetInt32(0);
-                    var MaterialName = reader.GetString(1);
-                    var SupplierName = reader.GetString(2);
+                   
                     Console.WriteLine($"원자재ID: {reader.GetInt32(0)}"); // 로그 추가
                     Console.WriteLine($"원자재 종류: {reader.GetString(1)}"); // 로그 추가
                     Console.WriteLine($"공급업체: {reader.GetString(2)}"); // 로그 추가
+                    Console.WriteLine();
 
                     result.Materials.Add(new MaterialInfo
                     {
@@ -277,11 +288,10 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
-                    var SupplierID = reader.GetInt32(0);
-                    var SupplierName = reader.GetString(1);
+                   
                     Console.WriteLine($"공급업체 ID: {reader.GetInt32(0)}"); // 로그 추가
                     Console.WriteLine($"공급업체 : {reader.GetString(1)}"); // 로그 추가
-
+                    Console.WriteLine();
                     result.Suppliers.Add(new SupplierInfo
                     {
                         SupplierID = reader.GetInt32(0),
