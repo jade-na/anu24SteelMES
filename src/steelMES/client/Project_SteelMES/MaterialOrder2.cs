@@ -11,20 +11,30 @@ using Grpc.Core;
 using ReaLTaiizor.Forms;
 using SteelMES;
 using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
     public partial class MaterialOrder2 : PoisonForm
     {
-        public MaterialOrder2()
+        private Config config; //추가
+
+        public MaterialOrder2() //추가
         {
             InitializeComponent();
 
             // 위치 고정 설정
             this.StartPosition = FormStartPosition.Manual; 
             this.Location = new Point(750, 230);
-            
-            
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void OrderBtn_Click(object sender, EventArgs e)
@@ -57,8 +67,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e) //크로뮴 주문 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = comboBox5.SelectedItem?.ToString();  // Null 체크
                                                                            // 라벨에서 원자재 이름 가져오기
@@ -74,7 +90,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -127,8 +143,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e) //석회 주문 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = comboBox4.SelectedItem?.ToString();  // Null 체크
                                                                            // 라벨에서 원자재 이름 가져오기
@@ -144,7 +166,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -202,8 +224,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e) //망간 주문 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = comboBox3.SelectedItem?.ToString();  // Null 체크
                                                                            // 라벨에서 원자재 이름 가져오기
@@ -219,7 +247,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -277,8 +305,15 @@ namespace Project_SteelMES
 
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e) //니켈 주문 버튼 //수정
         {
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = comboBox2.SelectedItem?.ToString();  // Null 체크
                                                                            // 라벨에서 원자재 이름 가져오기
@@ -294,7 +329,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -352,8 +387,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e) //철광석 주문 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = SupplyOption1.SelectedItem?.ToString();  // Null 체크
                                                                              
@@ -369,7 +410,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -432,8 +473,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e) //석탄 주문 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 콤보박스에서 선택한 공급업체명
             string selectedSupplier = comboBox1.SelectedItem?.ToString();  // Null 체크
                                                                                // 라벨에서 원자재 이름 가져오기
@@ -449,7 +496,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 서버에 연결
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);  // 서버 주소와 포트
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -497,10 +544,16 @@ namespace Project_SteelMES
 
         }
 
-        private async void SupplyOption1_DropDown(object sender, EventArgs e) //콤보박스 옆에 화살표 눌렀을 때
+        private async void SupplyOption1_DropDown(object sender, EventArgs e) //콤보박스 옆에 화살표 눌렀을 때 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -532,10 +585,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox1_DropDown(object sender, EventArgs e)
+        private async void comboBox1_DropDown(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -567,10 +626,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox2_DropDown(object sender, EventArgs e)
+        private async void comboBox2_DropDown(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -602,10 +667,17 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox3_DropDown(object sender, EventArgs e)
+        private async void comboBox3_DropDown(object sender, EventArgs e) //수정
         {
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -637,10 +709,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox4_DropDown(object sender, EventArgs e)
+        private async void comboBox4_DropDown(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -672,10 +750,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox5_DropDown(object sender, EventArgs e)
+        private async void comboBox5_DropDown(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

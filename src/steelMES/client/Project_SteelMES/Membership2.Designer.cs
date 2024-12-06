@@ -192,6 +192,7 @@
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.InputTextBox);
             this.Name = "Membership2";
+            this.Load += new System.EventHandler(this.Membership2_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

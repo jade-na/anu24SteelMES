@@ -12,6 +12,8 @@ using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using SteelMES;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
@@ -19,10 +21,20 @@ namespace Project_SteelMES
     {
         private FactoryRegister lost6;
 
-        public FactoryRegister2(FactoryRegister lost6)
+        private Config config; //추가
+
+        public FactoryRegister2(FactoryRegister lost6) //추가
         {
             InitializeComponent();
             this.lost6 = lost6; // lost6 참조 저장
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void Material2_Load(object sender, EventArgs e)
@@ -33,7 +45,7 @@ namespace Project_SteelMES
             this.Location = new Point(1255, 350);
         }
 
-        private async void button1_Click(object sender, EventArgs e) //추가 버튼
+        private async void button1_Click(object sender, EventArgs e) //추가 버튼 //수정
         {
             string FacName = textBox1.Text;
             string Loaction = textBox2.Text;
@@ -44,7 +56,14 @@ namespace Project_SteelMES
                 return;
             }
 
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
+            // gRPC 채널 생성
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -70,10 +89,12 @@ namespace Project_SteelMES
             {
                 MessageBox.Show($"gRPC 호출 실패: {ex.Status.Detail}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                await channel.ShutdownAsync();
+            }
 
         }
-
-       
 
         private void button2_Click(object sender, EventArgs e) //돌아가기 버튼
         {

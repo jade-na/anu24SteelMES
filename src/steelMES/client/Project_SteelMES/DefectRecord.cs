@@ -4,15 +4,27 @@ using Grpc.Core;
 using SteelMES;
 using ReaLTaiizor.Forms;
 using System.Drawing;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
 	public partial class DefectRecord : Form
 	{
-		public DefectRecord()
-		{
+        private Config config; //추가
+
+        public DefectRecord() //추가
+        {
 			InitializeComponent();
-		}
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
+        }
 
 		private void Lost2_Load(object sender, EventArgs e)
 		{
@@ -28,12 +40,18 @@ namespace Project_SteelMES
 			
 		}
 
-		private async void SelectBtn_Click(object sender, EventArgs e)
+		private async void SelectBtn_Click(object sender, EventArgs e) //수정
 		{
-			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-			var client = new DB_Service.DB_ServiceClient(channel);
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
 
-			try
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
 			{
 				var fromTime = dateTimePicker1.Value.ToString("yyyy-MM-dd");
 				var toTime = dateTimePicker2.Value.ToString("yyyy-MM-dd");

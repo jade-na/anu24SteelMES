@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Grpc.Core;
+using grpctestserver;
 using SteelMES;
 
 namespace Project_SteelMES
@@ -10,19 +12,30 @@ namespace Project_SteelMES
 		private readonly DB_Service.DB_ServiceClient _client;
 		private readonly Channel _channel;
 
-		public Work()
+        private Config config; //추가
+
+        public Work() //수정
 		{
 			InitializeComponent();
 
-			// gRPC Core를 위한 채널 생성
-			_channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-			_client = new DB_Service.DB_ServiceClient(_channel);
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
 
-			// 초기 데이터 로딩
-			LoadFactoryList();
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+                return;
+            }
+
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+            _client = new DB_Service.DB_ServiceClient(channel);
+
+            // 초기 데이터 로딩
+            LoadFactoryList();
 			InitializeProductComboBox();
 			InitializeDataGridView();
 		}
+
 		// DataGridView 초기화 메서드
 		private void InitializeDataGridView()
 		{
@@ -184,6 +197,11 @@ namespace Project_SteelMES
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Work_Load_1(object sender, EventArgs e)
         {
 
         }

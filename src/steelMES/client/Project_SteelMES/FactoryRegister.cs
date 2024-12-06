@@ -11,16 +11,29 @@ using Grpc.Core;
 using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 using SteelMES;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
     public partial class FactoryRegister : LostForm
     {
         private int? selectedFacID; // 클릭된 FacID를 저장하는 변수
-        public FactoryRegister()
+
+        private Config config; //추가
+
+        public FactoryRegister() //추가
         {
             InitializeComponent();
-            
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
+
         }
         
        
@@ -79,10 +92,16 @@ namespace Project_SteelMES
             
         }
 
-        private async void viewbtn_Click(object sender, EventArgs e)
+        private async void viewbtn_Click(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -151,7 +170,7 @@ namespace Project_SteelMES
             }
         }
 
-        private async void DeleteBtn_Click(object sender, EventArgs e)
+        private async void DeleteBtn_Click(object sender, EventArgs e) //수정
         {
             // 선택된 FacID 확인
             if (selectedFacID == null)
@@ -160,8 +179,14 @@ namespace Project_SteelMES
                 return;
             }
 
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

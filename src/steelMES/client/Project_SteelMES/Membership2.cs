@@ -5,6 +5,8 @@ using Grpc.Core;  // Grpc.Core 사용
 using SteelMES;
 using ReaLTaiizor.Forms;
 using System.Drawing;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
@@ -13,14 +15,24 @@ namespace Project_SteelMES
 		private DB_Service.DB_ServiceClient _client;
 		private readonly Membership _lost9;
 		private Channel _channel;
+        private Config _config; //추가
 
-		public Membership2(Membership lost9)
+        public Membership2(Membership lost9) //추가
 		{
 			InitializeComponent();
 			_lost9 = lost9;
 			comboBox1.SelectedIndex = 0; // 첫 번째 항목 선택
 			this.Load += new EventHandler(Membership2_Load);  // Form Load 이벤트 처리
-		}
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            _config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (_config == null || _config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
 
 		// Form Load 시 gRPC 클라이언트 초기화
 		private void Membership2_Load(object sender, EventArgs e)
@@ -33,15 +45,19 @@ namespace Project_SteelMES
         }
 
 		// gRPC 클라이언트 초기화
-		private void InitializeGrpcClient()
+		private void InitializeGrpcClient() //수정
 		{
-			try
-			{
-				// Grpc.Core 채널 초기화
-				_channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-				_client = new DB_Service.DB_ServiceClient(_channel);
-			}
-			catch (Exception ex)
+            try
+            {
+                // JSON 설정에서 서버 주소와 포트 로드
+                string host = _config.GrpcSettings.Host;
+                int port = _config.GrpcSettings.Port;
+
+                // Grpc.Core 채널 초기화
+                _channel = new Channel($"{host}:{port}", ChannelCredentials.Insecure);
+                _client = new DB_Service.DB_ServiceClient(_channel);
+            }
+            catch (Exception ex)
 			{
 				MessageBox.Show($"gRPC 채널 초기화 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
@@ -166,6 +182,9 @@ namespace Project_SteelMES
 			_channel?.ShutdownAsync().Wait();  // 채널 닫기
 		}
 
-        
+        private void Membership2_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

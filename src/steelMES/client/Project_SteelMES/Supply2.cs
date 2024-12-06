@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using Google.Protobuf.Collections;
 using Grpc.Core;
 using Grpc.Net.Client;
+using grpctestserver;
 using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 using SteelMES;
@@ -20,10 +22,20 @@ namespace Project_SteelMES
     {
         private Supply lost7;
 
+        private Config config; //추가
+
         public Supply2(Supply lost7)
         {
             InitializeComponent();
             this.lost7 = lost7; // lost7 참조 저장
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void Material3_Load(object sender, EventArgs e)
@@ -39,8 +51,14 @@ namespace Project_SteelMES
 
         }
 
-        private async void button1_Click(object sender, EventArgs e) //등록 버튼
+        private async void button1_Click(object sender, EventArgs e) //등록 버튼 //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             string supplierName = textBox1.Text;
             string contactInfo = textBox2.Text;
             string country = textBox3.Text;
@@ -51,7 +69,8 @@ namespace Project_SteelMES
                 return;
             }
 
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            // gRPC 채널 생성
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

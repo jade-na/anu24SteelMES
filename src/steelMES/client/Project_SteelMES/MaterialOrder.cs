@@ -1,24 +1,27 @@
 ﻿using Grpc.Core;
-using OpenTK.Graphics.OpenGL;
+using grpctestserver;
 using SteelMES;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Project_SteelMES
 {
     public partial class MaterialOrder : Form
     {
-        public MaterialOrder()
+        private Config config; //추가
+
+        public MaterialOrder() //추가
         {
             InitializeComponent();
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,11 +36,15 @@ namespace Project_SteelMES
             
         }
 
-        private async void SelectBtn_Click(object sender, EventArgs e)
+        private async void SelectBtn_Click(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
 
-            // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -92,10 +99,16 @@ namespace Project_SteelMES
 
         }
 
-        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -127,10 +140,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

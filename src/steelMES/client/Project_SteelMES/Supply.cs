@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Grpc.Core;
 using Grpc.Net.Client;
+using grpctestserver;
 using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
 using SteelMES;
@@ -18,13 +20,23 @@ namespace Project_SteelMES
     public partial class Supply : LostForm
     {
         private int? seletedID; // 클릭된 FacID를 저장하는 변수
-        // Oracle 연결 문자열
-        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
+
+        private Config config; //추가
+
+        //// Oracle 연결 문자열
+        //private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
 
         public Supply()
         {
             InitializeComponent();
-            
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void Lost7_Load(object sender, EventArgs e)
@@ -90,7 +102,6 @@ namespace Project_SteelMES
         //sell을 클릭했을 때 정보를 받음
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             int rowIndex = e.RowIndex;
 
             if (rowIndex >= 0) // 유효한 행 클릭
@@ -110,10 +121,16 @@ namespace Project_SteelMES
             }
         }
 
-        private async void Viewbtn_Click(object sender, EventArgs e)
+        private async void Viewbtn_Click(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try
@@ -126,7 +143,6 @@ namespace Project_SteelMES
                     MessageBox.Show($"서버 오류 코드: {response.ErrorCode}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
 
                 // DataGridView 초기화
                 dataGridView1.Rows.Clear();
@@ -161,8 +177,14 @@ namespace Project_SteelMES
             }
         }
 
-        private async void DeleteBtn_Click(object sender, EventArgs e)
+        private async void DeleteBtn_Click(object sender, EventArgs e) //수정
         {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
+
             // 선택된 FacID 확인
             if (seletedID == null)
             {
@@ -171,7 +193,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

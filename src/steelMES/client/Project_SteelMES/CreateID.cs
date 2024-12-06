@@ -13,14 +13,26 @@ using ReaLTaiizor.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
 using Grpc.Core;
 using SteelMES;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
     public partial class CreateID : PoisonForm
     {
-        public CreateID()
+        private Config config; //추가
+
+        public CreateID() //추가
         {
             InitializeComponent();
+
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json"); // JSON 파일 경로 설정
+            var config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void CreateID_Load(object sender, EventArgs e)
@@ -28,7 +40,7 @@ namespace Project_SteelMES
 
         }
 
-        private async void JoinBtn_Click(object sender, EventArgs e)
+        private async void JoinBtn_Click(object sender, EventArgs e) //수정
         {
             string username = UserName.Text;
             string password = Password.Text;
@@ -39,7 +51,7 @@ namespace Project_SteelMES
             }
 
             // gRPC 채널 생성
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure); //수정
             var client = new DB_Service.DB_ServiceClient(channel);
 
             try

@@ -11,30 +11,50 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using Oracle.ManagedDataAccess.Client;
 using ReaLTaiizor.Forms;
+using grpctestserver;
+using SteelMES;
+using System.IO;
 
 namespace Project_SteelMES
 {
-    public partial class Membership : LostForm
+    public partial class Membership : LostForm //수정
     {
-        // Oracle 연결 문자열
-        private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.9)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
+        private Config config;
+
+        //// Oracle 연결 문자열
+        //private string connectionString = "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.9)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));";
         public Membership()
         {
             InitializeComponent();
 
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
+
             // Oracle 데이터를 바로 로드
             LogindataFromGrpc();
         }
-		private async void LogindataFromGrpc()
-		{
-			try
-			{
-				// gRPC 채널 생성 (서버와 연결)
-				var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure); // gRPC 서버 주소
-				var client = new SteelMES.DB_Service.DB_ServiceClient(channel);
 
-				// 서버에서 사용자 데이터를 가져오는 gRPC 호출
-				var reply = await client.GetAllUsersDataAsync(new SteelMES.Empty()); // 서버의 GetAllUsersData 호출
+		private async void LogindataFromGrpc() //수정
+        {
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+			{
+                // gRPC 채널 생성 (서버와 연결)
+                var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+                var client = new DB_Service.DB_ServiceClient(channel);
+
+                // 서버에서 사용자 데이터를 가져오는 gRPC 호출
+                var reply = await client.GetAllUsersDataAsync(new SteelMES.Empty()); // 서버의 GetAllUsersData 호출
 
 				// 데이터가 성공적으로 반환된 경우
 				if (reply.ErrorCode == 0)

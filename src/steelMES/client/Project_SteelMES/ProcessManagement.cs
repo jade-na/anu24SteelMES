@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Grpc.Core;
+using grpctestserver;
 using ReaLTaiizor.Forms;
 using SteelMES;
 
@@ -15,9 +17,20 @@ namespace Project_SteelMES
 {
     public partial class ProcessManagement : Form
     {
-        public ProcessManagement()
+        private Config config; //추가
+
+        public ProcessManagement() //추가
         {
             InitializeComponent();
+
+            // JSON 설정 파일 경로
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            config = ConfigLoader.LoadConfig(configFilePath);
+
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+            }
         }
 
         private void Lost5_Load(object sender, EventArgs e)
@@ -35,12 +48,19 @@ namespace Project_SteelMES
 			}
 		}
 
-        private async void SelectBtn_Click(object sender, EventArgs e)
+        private async void SelectBtn_Click(object sender, EventArgs e) //수정
         {
-			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-			var client = new DB_Service.DB_ServiceClient(channel);
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 불러올 수 없습니다.");
+                return;
+            }
 
-			try
+            //gRPC 채널 생성
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
 			{
 				var response = await client.GetAllProductDataAsync(new Empty());
 

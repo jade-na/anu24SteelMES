@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-
-//using System.Windows.Forms;
+using System.Windows.Forms;
 using ReaLTaiizor.Forms;
 using SteelMES;
 using Grpc.Core;
+using grpctestserver;
+using System.IO;
 
 namespace Project_SteelMES
 {
@@ -77,16 +78,25 @@ namespace Project_SteelMES
             this.Hide();
         }
 
-		private async void LoginBtn_Click(object sender, EventArgs e)
-		{
+		private async void LoginBtn_Click(object sender, EventArgs e) //수정
+        {
 			string username = UserID.Text;
 			string password = Password.Text;
 
-			// gRPC 채널 생성
-			var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-			var client = new DB_Service.DB_ServiceClient(channel);
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            var config = ConfigLoader.LoadConfig(configFilePath);
 
-			try
+            if (config == null || config.GrpcSettings == null)
+            {
+                MessageBox.Show("gRPC 설정을 로드하는 데 실패했습니다.");
+                return;
+            }
+
+            // gRPC 채널 생성
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
 			{
 				// gRPC 서버로 로그인 요청
 				var response = await client.GetLoginAsync(new LoginRequest
