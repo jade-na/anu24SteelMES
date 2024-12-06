@@ -185,6 +185,7 @@ namespace grpctestserver
                 await using var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
                 {
+                    
                     result.Lines.Add(new ProductionLineInfo
                     {
                         LineID = reader.GetInt32(0),
@@ -227,6 +228,13 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
+                    var MaterialID = reader.GetInt32(0);
+                    var MaterialName = reader.GetString(1);
+                    var SupplierName = reader.GetString(2);
+                    Console.WriteLine($"원자재ID: {reader.GetInt32(0)}"); // 로그 추가
+                    Console.WriteLine($"원자재 종류: {reader.GetString(1)}"); // 로그 추가
+                    Console.WriteLine($"공급업체: {reader.GetString(2)}"); // 로그 추가
+
                     result.Materials.Add(new MaterialInfo
                     {
                         MaterialID = reader.GetInt32(0),
@@ -269,6 +277,11 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
+                    var SupplierID = reader.GetInt32(0);
+                    var SupplierName = reader.GetString(1);
+                    Console.WriteLine($"공급업체 ID: {reader.GetInt32(0)}"); // 로그 추가
+                    Console.WriteLine($"공급업체 : {reader.GetString(1)}"); // 로그 추가
+
                     result.Suppliers.Add(new SupplierInfo
                     {
                         SupplierID = reader.GetInt32(0),
@@ -560,6 +573,7 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
+
                     result.Products.Add(new ProductInfo
                     {
                         ProductID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
