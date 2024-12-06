@@ -135,6 +135,7 @@ namespace Project_SteelMES
 					{
 						// 이미 로그인된 세션이 없으면 바로 로그인
 						Monitoring MonitoringForm = new Monitoring(username, response.UserLevel);
+						MessageBox.Show($"{username} 님 반갑습니다.");
 						MonitoringForm.Show();
 						this.Hide();
 					}
@@ -142,12 +143,18 @@ namespace Project_SteelMES
 				else
 				{
 					// 로그인 실패
-					MessageBox.Show(response.Message);
+					MessageBox.Show("로그인 실패: " + response.Message);
 				}
+			}
+			catch (RpcException rpcEx)
+			{
+				// gRPC 호출 오류 처리
+				MessageBox.Show("gRPC 오류 발생: " + rpcEx.Status.Detail);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+				// 일반적인 오류 처리
+				MessageBox.Show("오류 발생: " + ex.Message);
 			}
 			finally
 			{
@@ -155,18 +162,5 @@ namespace Project_SteelMES
 			}
 		}
 
-		private DialogResult ShowMessageBox(string message, string caption = "알림", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
-		{
-			// UI 스레드에서 메시지 박스를 띄운다.
-			if (InvokeRequired)
-			{
-				// UI 스레드에서 호출되도록 Invoke를 사용
-				return (DialogResult)Invoke(new Func<string, string, MessageBoxButtons, MessageBoxIcon, DialogResult>(ShowMessageBox), message, caption, buttons, icon);
-			}
-			else
-			{
-				return MessageBox.Show(message, caption, buttons, icon);
-			}
-		}
 	}
 }

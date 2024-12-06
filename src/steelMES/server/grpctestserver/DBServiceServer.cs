@@ -597,14 +597,15 @@ namespace grpctestserver
             return result;
         }
 
-		// 로그인 gRPC
+		// 로그인 메서드
 		public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
 		{
 			var result = new LoginReply();
-			bool forceExit = false;
+			bool forceExit = false;  // 중복 로그인 여부를 저장할 변수 선언
 
 			try
 			{
+				// 세션 관리: 이미 로그인된 사용자가 있으면 로그인 거부하고 기존 세션을 로그아웃 후 새로 로그인 처리
 				if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit))
 				{
 					// 중복 로그인 세션이 있을 경우, forceExit는 true
@@ -615,40 +616,19 @@ namespace grpctestserver
 				}
 
 				// 데이터베이스 연결 및 인증 처리
-				if (string.IsNullOrEmpty(_connectionString))
-				{
-					result.ErrorCode = -1;
-					result.Message = "데이터베이스 연결 문자열이 설정되지 않았습니다.";
-					return result;
-				}
-
 				await using var connection = new OracleConnection(_connectionString);
-				if (connection == null)
-				{
-					result.ErrorCode = -1;
-					result.Message = "데이터베이스 연결 실패!";
-					return result;
-				}
-
 				await connection.OpenAsync();
 
 				const string query = @"
-        SELECT USERNAME, USER_LEVEL
-        FROM SCOTT.USERS
-        WHERE USERNAME = :username AND PASSWORD = :password";
+            SELECT USERNAME, USER_LEVEL
+            FROM SCOTT.USERS
+            WHERE USERNAME = :username AND PASSWORD = :password";
 
 				await using var command = new OracleCommand(query, connection);
 				command.Parameters.Add(new OracleParameter("username", request.Username));
 				command.Parameters.Add(new OracleParameter("password", request.Password));
 
 				await using var reader = await command.ExecuteReaderAsync();
-
-				if (reader == null)
-				{
-					result.ErrorCode = -1;
-					result.Message = "데이터베이스에서 데이터를 읽을 수 없습니다.";
-					return result;
-				}
 
 				if (await reader.ReadAsync())
 				{
@@ -674,7 +654,6 @@ namespace grpctestserver
 
 			return result;
 		}
-
 
 		// 로그아웃 처리
 		public override async Task<LogoutReply> GetLogout(LogoutRequest request, ServerCallContext context)
@@ -727,20 +706,28 @@ namespace grpctestserver
 
 			try
 			{
-				// 강제 로그아웃 처리
+				// 강제 로그아웃 처리 
 				bool logoutSuccess = m_UserSessionManager.ForceLogoutAndReturnState(request.UserId, out isUserLoggedOut);
 
 				if (logoutSuccess)
 				{
 					result.Success = true;
 					result.Message = "기존 세션이 종료되었습니다.";
-					result.PromptUser = false;  // 클라이언트에 메시지를 띄우지 않음
+					result.PromptUser = true;  // 클라이언트에게 로그아웃 메시지를 띄우도록 알림
+
+					bool sessionAdded = m_UserSessionManager.AddUserSession(request.UserId, out bool forceExit);
+					if (!sessionAdded)
+					{
+						result.Success = false;
+						result.Message = "새로운 세션을 추가하는 데 실패했습니다.";
+						result.PromptUser = true;
+					}
 				}
 				else
 				{
 					result.Success = false;
 					result.Message = "해당 사용자가 로그인되지 않았습니다.";
-					result.PromptUser = true;  // 클라이언트에게 메시지를 띄우도록 알림
+					result.PromptUser = false;  // 클라이언트에게 메시지를 띄우지 않음
 				}
 			}
 			catch (Exception ex)
@@ -752,6 +739,8 @@ namespace grpctestserver
 
 			return result;
 		}
+
+
 
 		// 회원 추가 메서드
 		public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
