@@ -38,7 +38,7 @@ namespace Project_SteelMES
             
         }
 
-        private async void SelectBtn_Click(object sender, EventArgs e) //수정
+        private async void SelectBtn_Click(object sender, EventArgs e) //조회 버튼 //수정
         {
             if (config == null || config.GrpcSettings == null)
             {
@@ -86,7 +86,9 @@ namespace Project_SteelMES
         }
 
 
-        private async void SearchButton_Click(object sender, EventArgs e)
+       
+
+        private async void SearchButton_Click(object sender, EventArgs e) //검색 버튼
         {
             // 공급업체명
             string supplierName = comboBox1.SelectedItem?.ToString() ?? ""; // ComboBox1에서 선택된 값

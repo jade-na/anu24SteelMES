@@ -29,7 +29,7 @@ namespace Project_SteelMES
 		{
 			InitializeComponent();
 
-			this.userLevel = userLevel;
+            this.userLevel = userLevel;
 			this.userName = userName;
 
             string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
@@ -41,15 +41,24 @@ namespace Project_SteelMES
             }
         }
 
-		public Monitoring()
+        //// 특정 패널을 가장 아래로 보내기
+        //private void SendPanelToBack()
+        //{
+        //    // "panel1"을 가장 아래로 설정
+        //    this.Controls.SetChildIndex(panel6, this.Controls.Count - 1);
+        //}
+
+        public Monitoring()
 		{
 
 		}
 
 		private void Lost_Load(object sender, EventArgs e)
 		{
-			// 폼 시작 위치를 사용자 정의로 설정
-			this.StartPosition = FormStartPosition.Manual;
+            //SendPanelToBack();
+
+            // 폼 시작 위치를 사용자 정의로 설정
+            this.StartPosition = FormStartPosition.Manual;
 			// 폼의 위치를 고정된 좌표로 설정
 			this.Location = new Point(0, 0);
 
@@ -123,14 +132,13 @@ namespace Project_SteelMES
 
 			Work lost8 = new Work();
 
-			// Form2를 panel1에 표시
 			lost8.TopLevel = false; // 폼을 자식 컨트롤로 설정
 			lost8.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
 			lost8.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
 
 			panel5.Controls.Clear(); // 기존 컨트롤 제거
-			panel5.Controls.Add(lost8); // Form2 추가
-			lost8.Show(); // Form2 표시
+			panel5.Controls.Add(lost8); 
+			lost8.Show(); 
 		}
 
 
@@ -214,7 +222,6 @@ namespace Project_SteelMES
 			Menu_WorkBtn.BackColor = Color.Transparent;
 			Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
-
 			Dispose();
 		}
 
@@ -239,16 +246,31 @@ namespace Project_SteelMES
 			optionButton3.BringToFront();
 
 		}
-
-		private void button1_Click(object sender, EventArgs e)
+        
+        private void button1_Click(object sender, EventArgs e) //모니터링 버튼
 		{
-			Menu_DefectRecordBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
-			Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+			Menu_MonitoringBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(44)))), ((int)(((byte)(77)))));
+			Menu_MonitoringBtn.ForeColor = Color.SkyBlue;
 
-			Monitoring lost = new Monitoring();
-			lost.Show();
-			this.Hide();
-		}
+            Menu_DefinitonBtn.BackColor = Color.Transparent;
+            Menu_DefinitonBtn.ForeColor = Color.SkyBlue;
+            Menu_DefectRecordBtn.BackColor = Color.Transparent;
+            Menu_DefectRecordBtn.ForeColor = Color.SkyBlue;
+            Menu_WorkBtn.BackColor = Color.Transparent;
+            Menu_WorkBtn.ForeColor = Color.SkyBlue;
+			Menu_CloseBtn.BackColor = Color.Transparent;
+			Menu_CloseBtn.ForeColor = Color.SkyBlue;
+
+
+			PanelForm pform = new PanelForm(userName, userLevel);
+            pform.TopLevel = false;
+            pform.FormBorderStyle = FormBorderStyle.None;
+            pform.Dock = DockStyle.Fill;
+            panel5.Controls.Clear(); // 기존 컨트롤 제거
+            panel5.Controls.Add(pform);
+            pform.Show();
+
+        }
 
 		private void button8_Click(object sender, EventArgs e) //자재 주문 버튼
 		{
@@ -263,25 +285,21 @@ namespace Project_SteelMES
 
 			if (userLevel <= 1)
 			{
-				FactoryRegister facRegister = new FactoryRegister();
-				facRegister.Show();
-			}
+                MaterialOrder matOrder = new MaterialOrder();
+				matOrder.Show();
+
+                matOrder.TopLevel = false;
+                matOrder.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
+                matOrder.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
+
+                panel5.Controls.Clear(); // 기존 컨트롤 제거
+                panel5.Controls.Add(matOrder); // Form2 추가
+                matOrder.Show(); // Form2 표시
+            }
 			else
 			{
 				MessageBox.Show("manager 권한 이상만 접속이 가능합니다.");
 			}
-
-			MaterialOrder matOrder = new MaterialOrder();
-
-			matOrder.TopLevel = false;
-			matOrder.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
-			matOrder.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
-
-			panel5.Controls.Clear(); // 기존 컨트롤 제거
-			panel5.Controls.Add(matOrder); // Form2 추가
-			matOrder.Show(); // Form2 표시
-
-
 		}
 
 		private void button7_Click(object sender, EventArgs e)
@@ -329,20 +347,20 @@ namespace Project_SteelMES
 			Menu_WorkBtn.BackColor = Color.Transparent;
 			Menu_WorkBtn.ForeColor = Color.SkyBlue;
 
-			// Form2 인스턴스 생성
 			DefectRecord lost2 = new DefectRecord();
 
-			// Form2를 panel1에 표시
 			lost2.TopLevel = false; // 폼을 자식 컨트롤로 설정
 			lost2.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
 			lost2.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
 
 			panel5.Controls.Clear(); // 기존 컨트롤 제거
-			panel5.Controls.Add(lost2); // Form2 추가
-			lost2.Show(); // Form2 표시
-		}
+			panel5.Controls.Add(lost2);
+			lost2.Show();
 
-		private void timer1_Tick(object sender, EventArgs e)
+			
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
 		{
 			label1.Text = DateTime.Now.ToString();
 		}

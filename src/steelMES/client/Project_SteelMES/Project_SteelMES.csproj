@@ -153,6 +153,12 @@
     <Compile Include="DefectRecord.Designer.cs">
       <DependentUpon>DefectRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PanelForm.Designer.cs">
+      <DependentUpon>PanelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProcessManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DefectRecord.resx">
       <DependentUpon>DefectRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelForm.resx">
+      <DependentUpon>PanelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessManagement.resx">
       <DependentUpon>ProcessManagement.cs</DependentUpon>
