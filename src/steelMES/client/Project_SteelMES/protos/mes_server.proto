@@ -11,7 +11,7 @@ service DB_Service {
     rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL 데이터를 가져오는 RPC
     rpc GetMaterialSearchData(MaterialSearchRequest) returns (MaterialReply) {} //원자재 정보 필터링
     rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER 데이터를 가져오는 RPC
-    rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
+    rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest)returns (UpdateMaterialQuantityReply);
     rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
     rpc DeleteFactoryData(DeleteFactoryRequest) returns (DeleteFactoryReply); //공장 삭제 
     rpc AddMaterial (AddMaterialRequest) returns (AddMaterialReply); //원자재 추가 rpc
@@ -27,6 +27,7 @@ service DB_Service {
     rpc UpdateUserLevel (UpdateUserLevelRequest) returns (UpdateUserLevelReply); // 회원 데이터 업데이트
     rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // 제품 주문 추가
     rpc GetProductList (Empty) returns (ProductListReply); // 제품 목록 가져오기
+    rpc AnalyzeImage (ImageRequest) returns (ImageAnalysisReply); // 이미지 받기
 }
 
 // 기본 Empty 메시지
@@ -64,6 +65,7 @@ message FactoryInfo {
     string location = 3;
     int32 Deleted = 4;
 }
+
 // 공장 정보 응답 메시지
 message FactoryReply {
     int32 errorCode = 1;
@@ -97,14 +99,12 @@ message MaterialInfo {
     int32 quantity = 4;
     string importDate = 5;
 }
-
 //자재정보 필터링
 message MaterialSearchRequest {
     string supplierName = 1;  // 공급업체 이름
     string materialName = 2;  // 자재 이름
     string importDate = 3;    // 입고 날짜
 }
-
 // 자재 정보 응답 메시지
 message MaterialReply {
     int32 errorCode = 1;
@@ -156,6 +156,7 @@ message AddSupplierRequest {
     string contactInfo =2; //공급업체번호
     string country =3 ; //공급업체위치
 }
+
 // 공급업체 데이터를 추가한 결과를 반환하는 응답 메시지
 message AddSupplieReply {
     int32 errorCode = 1;   // 0: 성공, -1: 실패
@@ -173,6 +174,7 @@ message DeleteSupplyReply {
     int32 errorCode = 1;
     string errorMessage = 2;
 }
+
 // 공장 삭제 요청 메시지
 message DeleteFactoryRequest {
     repeated int32 FacID = 1;
@@ -183,7 +185,6 @@ message DeleteFactoryReply {
     int32 errorCode = 1;
     string errorMessage = 2;
 }
-
 
 // 원자재 데이터를 추가하는 요청 메시지
 message AddMaterialRequest {
@@ -236,6 +237,7 @@ message LoginRequest {
     string username = 1;  // 사용자 ID
     string password = 2;  // 사용자 password
 }
+
 // 로그인 응답 메시지
 message LoginReply {
      string message = 1;   // 로그인 결과 메시지
@@ -265,9 +267,8 @@ message ForceLogoutRequest {
 message ForceLogoutReply {
      bool success = 1;     // 강제 로그아웃 성공 여부
      string message = 2;   // 강제 로그아웃 결과 메시지
-     bool promptUser =3;
+     bool promptUser = 3;  // 강제 로그아웃에 대한 사용자 확인 프롬프트 여부
 }
-
 
 // 유저 추가 요청 메시지
 message AddUserRequest {
@@ -297,7 +298,7 @@ message SearchUserReply {
     repeated UsersInfo users = 6;
 }
 
-//  유저 등급 업데이트 요청 메시지
+// 유저 등급 업데이트 요청 메시지
 message UpdateUserLevelRequest {
     string username = 1;
     string userLevel = 2;
@@ -326,4 +327,18 @@ message ProductOrderResponse {
 message ProductListReply {
     int32 errorCode = 1;
     repeated string productNames = 2;
+}
+
+// 이미지 요청 메시지
+message ImageRequest {
+    bytes imageData = 1; // 이미지 데이터를 바이트 배열로 받음
+    string productID = 2; // 제품 ID
+}
+
+// 이미지 분석 결과 메시지
+message ImageAnalysisReply {
+    int32 errorCode = 1;      // 오류 코드 (0: 성공, -1: 실패 등)
+    string message = 2;       // 메시지 (성공/실패에 대한 설명)
+    string defectType = 3;    // 불량 유형 (예: crazing, scratch, etc.)
+    string detectionDate = 4; // 불량 감지 날짜 (YYYY-MM-DD HH:mm:ss)
 }

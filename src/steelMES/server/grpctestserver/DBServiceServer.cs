@@ -3,7 +3,8 @@ using Oracle.ManagedDataAccess.Client;
 using SteelMES;
 using TorchSharp;
 using OpenCvSharp;
-using static TorchSharp.torch;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace grpctestserver
 {
@@ -243,6 +244,7 @@ namespace grpctestserver
                     Console.WriteLine($"원자재ID: {reader.GetInt32(0)}"); // 로그 추가
                     Console.WriteLine($"원자재 종류: {reader.GetString(1)}"); // 로그 추가
                     Console.WriteLine($"공급업체: {reader.GetString(2)}"); // 로그 추가
+                    Console.WriteLine($"수량 : {reader.GetInt32(3)}"); // 
                     Console.WriteLine();
 
                     result.Materials.Add(new MaterialInfo
@@ -1070,44 +1072,75 @@ FROM SCOTT.USERS"; // Password 제외
             return response;
         }
 
+		// 이미지 검출
 		public override async Task<ImageAnalysisReply> AnalyzeImage(ImageRequest request, ServerCallContext context)
 		{
 			var result = new ImageAnalysisReply();
 			try
 			{
-				// 이미지 데이터 받기
+				Console.WriteLine($"Received AnalyzeImage request for ProductID={request.ProductID}");
+
+				// 이미지 디코딩
 				byte[] imageData = request.ImageData.ToByteArray();
-
-				// 이미지를 OpenCV로 디코딩 및 리사이즈
 				using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
-				var resizedMat = new Mat();
-				Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640)); // YOLOv5 모델에 맞게 크기 조정
-
-				// 모델 로드
-				var model = LoadModel();
-
-				// 이미지를 텐서로 변환
-				var tensor = ConvertToTensor(resizedMat);
-
-				// YOLOv5 모델을 통해 예측
-				var resultTensor = (Tensor)model.forward(tensor.unsqueeze(0)); // forward() 결과를 Tensor로 캐스팅
-				var detectedClass = resultTensor.argmax(1).item<int>(); // 클래스 예측
-				var defectType = GetDefectType(detectedClass);
-
-				// 불량이 있을 경우 DB에 저장
-				if (defectType != "none")
+				if (mat.Empty())
 				{
-					await SaveDefectToDB(request.ProductID, defectType);
+					throw new Exception("Invalid image data received.");
 				}
+				Console.WriteLine("Image successfully decoded.");
+
+				// 이미지 리사이즈
+				var resizedMat = new Mat();
+				Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
+				Console.WriteLine("Image successfully resized.");
+
+				// 모델 로드 및 예측
+				var session = LoadOnnxModel();
+				var tensor = ConvertToTensor(resizedMat);
+				Console.WriteLine("Model loaded and tensor created.");
+
+				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("onnx::Cast_0", tensor) };
+				using var results = session.Run(inputTensor);
+				var outputTensor = results.First(x => x.Name == "1117").AsTensor<float>();
+				Console.WriteLine("Inference completed.");
+
+				// 결과 분석
+				float maxConfidence = 0.0f;
+				string maxConfidenceClass = "none";
+
+				for (int i = 0; i < 25200; i++)
+				{
+					float objectness = outputTensor[0, i, 4];
+					float[] classProbabilities = new float[6];
+					for (int j = 0; j < 6; j++)
+					{
+						classProbabilities[j] = outputTensor[0, i, 5 + j];
+					}
+
+					int predictedClass = ArgMax(classProbabilities);
+					string className = GetDefectType(predictedClass);
+					float confidence = objectness * classProbabilities[predictedClass];
+
+					if (confidence > maxConfidence)
+					{
+						maxConfidence = confidence;
+						maxConfidenceClass = className;
+					}
+				}
+
+				Console.WriteLine($"Analysis complete. MaxConfidenceClass: {maxConfidenceClass}, MaxConfidence: {maxConfidence}");
+
+				// 무조건 DB에 저장
+				await SaveDefectToDB(request.ProductID, maxConfidenceClass);
 
 				// 결과 설정
 				result.ErrorCode = 0;
-				result.Message = "Defect detected successfully!";
-				result.DefectType = defectType;
-				result.DetectionDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+				result.DefectType = maxConfidenceClass;
+				result.Message = "Defect detected successfully.";
 			}
 			catch (Exception ex)
 			{
+				Console.WriteLine($"Error in AnalyzeImage: {ex.Message}");
 				result.ErrorCode = -1;
 				result.Message = $"Error: {ex.Message}";
 			}
@@ -1115,44 +1148,65 @@ FROM SCOTT.USERS"; // Password 제외
 			return result;
 		}
 
-		// OpenCV 이미지를 PyTorch 텐서로 변환
-		private torch.Tensor ConvertToTensor(Mat mat)
+		// 배열에서 가장 큰 값의 인덱스를 반환하는 ArgMax 메서드
+		private int ArgMax(float[] values)
 		{
-			// OpenCV 이미지의 픽셀을 C# 배열로 변환
-			var npArray = new float[mat.Rows, mat.Cols, mat.Channels()];
+			if (values == null || values.Length == 0)
+				throw new ArgumentException("Array is null or empty.", nameof(values));
 
-			// 이미지의 각 픽셀 값 가져오기 (BGR 순서)
+			int maxIndex = 0;
+			float maxValue = float.MinValue;
+
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (values[i] > maxValue)
+				{
+					maxValue = values[i];
+					maxIndex = i;
+				}
+			}
+
+			return maxIndex;
+		}
+
+		// Tensor 변환 (OpenCV 이미지를 ONNX Runtime 호환 Tensor로 변환)
+		private DenseTensor<float> ConvertToTensor(Mat mat)
+		{
+			var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
+
 			for (int i = 0; i < mat.Rows; i++)
 			{
 				for (int j = 0; j < mat.Cols; j++)
 				{
-					var pixel = mat.At<Vec3b>(i, j);  // 픽셀 읽기
-					npArray[i, j, 0] = pixel.Item0;  // B
-					npArray[i, j, 1] = pixel.Item1;  // G
-					npArray[i, j, 2] = pixel.Item2;  // R
+					var pixel = mat.At<Vec3b>(i, j);
+					tensor[0, 0, i, j] = pixel.Item2 / 255.0f; // R (정규화)
+					tensor[0, 1, i, j] = pixel.Item1 / 255.0f; // G (정규화)
+					tensor[0, 2, i, j] = pixel.Item0 / 255.0f; // B (정규화)
 				}
 			}
-
-			// OpenCV 배열을 TorchSharp Tensor로 변환
-			var tensor = torch.tensor(npArray);
-
-			// 텐서의 차원을 [C, H, W]로 변경 (채널, 높이, 너비 순서)
-			tensor = tensor.permute(2, 0, 1); // [C, H, W] 형태로 변경
-
-			// 텐서 타입을 float32로 변경
-			tensor = tensor.to(torch.float32);
 
 			return tensor;
 		}
 
-		// 모델 로드 (최초 한 번만 로드하도록 최적화)
-		private torch.jit.ScriptModule LoadModel()
+		// 모델 로드
+		private InferenceSession LoadOnnxModel()
 		{
-			if (model == null)
+			try
 			{
-				string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241130best.pt");
+				string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241130best.onnx");
+				if (!File.Exists(modelPath))
+				{
+					throw new FileNotFoundException($"ONNX 모델 파일이 존재하지 않습니다: {modelPath}");
+				}
+
+				Console.WriteLine($"ONNX Model loaded from: {modelPath}");
+				return new InferenceSession(modelPath);
 			}
-			return model;
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Model load failed: {ex.Message}");
+				throw;
+			}
 		}
 
 		// 예측된 클래스를 불량 유형으로 변환
@@ -1175,23 +1229,36 @@ FROM SCOTT.USERS"; // Password 제외
 		{
 			try
 			{
+				Console.WriteLine($"SaveDefectToDB called with ProductID={productId}, DefectType={defectType}");
+
 				using (var connection = new OracleConnection(_connectionString))
 				{
 					await connection.OpenAsync();
-					var query = "INSERT INTO DEFECT (PRODUCTID, DEFECTTYPE, DETECTIONDATE) VALUES (:productId, :defectType, :detectionDate)";
+					Console.WriteLine("DB connection established.");
+
+					// 중복 확인 및 데이터 삽입
+					var query = @"
+                MERGE INTO DEFECT d
+                USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
+                ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE AND TRUNC(d.DETECTIONDATE) = TRUNC(src.DETECTIONDATE))
+                WHEN NOT MATCHED THEN
+                INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
+                VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
+
 					using (var command = new OracleCommand(query, connection))
 					{
 						command.Parameters.Add(new OracleParameter(":productId", productId));
 						command.Parameters.Add(new OracleParameter(":defectType", defectType));
 						command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
 
-						await command.ExecuteNonQueryAsync();
+						int rowsAffected = await command.ExecuteNonQueryAsync();
+						Console.WriteLine($"Insert or Merge successful. Rows affected: {rowsAffected}");
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Error saving to DB: {ex.Message}");
+				Console.WriteLine($"Error in SaveDefectToDB: {ex.Message}");
 			}
 		}
 	}

@@ -235,7 +235,7 @@
             this.SearchBtn.TabIndex = 14;
             this.SearchBtn.Text = "     검색";
             this.SearchBtn.UseVisualStyleBackColor = false;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            this.SearchBtn.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // dateTimePicker1
             // 
