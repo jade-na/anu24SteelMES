@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Amazon.SecurityToken.Model.Internal.MarshallTransformations;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SteelMES
 {
@@ -17,7 +19,7 @@ namespace SteelMES
             }
         }
         // 사용자를 로그인된 사용자 리스트에 추가 (기존 세션이 있으면 클라이언트에 전달)
-        public bool AddUserSession(string username, out bool forceExit)
+        public bool AddUserSession(string username, out bool forceExit, string clientInfo)
         {
             lock (sessionLock)
             {
@@ -32,7 +34,9 @@ namespace SteelMES
                 CurLogInUsers.Add(new UserSession
                 {
                     UserId = username,
-                    LoginTime = DateTime.UtcNow
+                    LoginTime = DateTime.Now,
+                    LastDiagnostic = DateTime.Now,
+                    clientInfo = clientInfo
                 });
                 return true; // 로그인 성공
             }
@@ -67,10 +71,48 @@ namespace SteelMES
                 return false;
             }
         }
+        public void ForceLogoutTimeOutUser()
+        {
+            var RemoveSession = new List<UserSession>();
+
+			lock (sessionLock)
+            {
+                
+                foreach (var session in CurLogInUsers)
+                {
+                    Console.WriteLine("세션 체크중...");
+                    var spendTime = DateTime.Now - session.LastDiagnostic;
+                    if (spendTime.TotalSeconds > 10)
+                    {
+                       
+						RemoveSession.Add(session);
+
+						Console.WriteLine("세션 종료");
+                    }
+                }
+                foreach (var session in RemoveSession)
+                {
+                    CurLogInUsers.Remove(session);
+                }
+            }
+        }
+        public void UpdateLastDiagnostic(string clientInfo)
+		{
+			lock (sessionLock)
+			{
+				var session = CurLogInUsers.FirstOrDefault(user => user.clientInfo == clientInfo);
+				if (session != null)
+				{
+                    session.LastDiagnostic = DateTime.Now;
+				}
+			}
+        }
     }
     public class UserSession
     {
         public string UserId { get; set; }
         public DateTime LoginTime { get; set; }
+        public string clientInfo { get; set; }
+        public DateTime LastDiagnostic {  get; set; }  
     }
 }

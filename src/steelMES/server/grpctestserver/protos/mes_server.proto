@@ -28,6 +28,7 @@ service DB_Service {
     rpc CreateProductOrder (ProductOrderRequest) returns (ProductOrderResponse); // 제품 주문 추가
     rpc GetProductList (Empty) returns (ProductListReply); // 제품 목록 가져오기
     rpc AnalyzeImage (ImageRequest) returns (ImageAnalysisReply); // 이미지 받기
+    rpc DiagnosticReqeust (Empty) returns (Empty); // 클라리언트 ping 수신
 }
 
 // 기본 Empty 메시지

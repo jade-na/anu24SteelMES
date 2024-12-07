@@ -5,6 +5,9 @@ using TorchSharp;
 using OpenCvSharp;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using System.Diagnostics.Tracing;
+using System.Timers;
+using OpenCvSharp.ML;
 
 namespace grpctestserver
 {
@@ -16,6 +19,13 @@ namespace grpctestserver
         private readonly string _connectionString;
         private readonly UserSessionManager m_UserSessionManager;
 		private static torch.jit.ScriptModule? model;
+        private System.Timers.Timer m_Timer;
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Console.WriteLine("Timer");
+            m_UserSessionManager.ForceLogoutTimeOutUser();
+		}
 
 		public DBServiceServer()
         {
@@ -29,7 +39,12 @@ namespace grpctestserver
             {
                 // 연결 문자열을 JSON 설정을 사용해 동적으로 생성
                 _connectionString = ConfigLoader.BuildConnectionString(config.OracleConnection);
-            }
+
+				m_Timer = new System.Timers.Timer(1000); // 1초에 한번씩 Timer_Elapsed 함수 들어옴
+                m_Timer.Elapsed += Timer_Elapsed; // 
+                m_Timer.AutoReset = true; // 자동 리셋
+                m_Timer.Enabled = true; // 타이머 시작
+			}
             else
             {
                 throw new Exception("설정 파일을 읽을 수 없습니다.");
@@ -691,11 +706,12 @@ namespace grpctestserver
 		{
 			var result = new LoginReply();
 			bool forceExit = false;  // 중복 로그인 여부를 저장할 변수 선언
+            string clientInfo = context.Peer;
 
 			try
 			{
 				// 세션 관리: 이미 로그인된 사용자가 있으면 로그인 거부하고 기존 세션을 로그아웃 후 새로 로그인 처리
-				if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit))
+				if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit, clientInfo))
 				{
 					// 중복 로그인 세션이 있을 경우, forceExit는 true
 					result.ForceExit = forceExit;
@@ -795,7 +811,7 @@ namespace grpctestserver
 		{
 			var result = new ForceLogoutReply();
 			bool isUserLoggedOut = false;
-
+            string clientInfo = context.Peer;
 			try
 			{
 				// 강제 로그아웃 처리 
@@ -807,7 +823,7 @@ namespace grpctestserver
 					result.Message = "기존 세션이 종료되었습니다.";
 					result.PromptUser = true;  // 클라이언트에게 로그아웃 메시지를 띄우도록 알림
 
-					bool sessionAdded = m_UserSessionManager.AddUserSession(request.UserId, out bool forceExit);
+					bool sessionAdded = m_UserSessionManager.AddUserSession(request.UserId, out bool forceExit, clientInfo);
 					if (!sessionAdded)
 					{
 						result.Success = false;
@@ -1261,5 +1277,12 @@ FROM SCOTT.USERS"; // Password 제외
 				Console.WriteLine($"Error in SaveDefectToDB: {ex.Message}");
 			}
 		}
+        public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
+        {
+			var result = new Empty();
+            string clientInfo = context.Peer;
+
+            return result;
+        }
 	}
 }
