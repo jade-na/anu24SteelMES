@@ -9,6 +9,7 @@ service DB_Service {
     rpc GetFactoryData (Empty) returns (FactoryReply) {}
     rpc GetProductionLineData (ProductionLineRequest) returns (ProductionLineReply) {}
     rpc GetMaterialData (Empty) returns (MaterialReply) {}       // MATERIAL 데이터를 가져오는 RPC
+    rpc GetMaterialSearchData(MaterialSearchRequest) returns (MaterialReply) {} //원자재 정보 필터링
     rpc GetSupplierData (Empty) returns (SupplierReply) {}       // SUPPLIER 데이터를 가져오는 RPC
     rpc UpdateMaterialQuantity (UpdateMaterialQuantityRequest) returns (UpdateMaterialQuantityReply);
     rpc AddFactory (AddFactoryRequest) returns (AddFactoryReply); //공장 추가 rpc
@@ -95,6 +96,13 @@ message MaterialInfo {
     string supplierName = 3;
     int32 quantity = 4;
     string importDate = 5;
+}
+
+//자재정보 필터링
+message MaterialSearchRequest {
+    string supplierName = 1;  // 공급업체 이름
+    string materialName = 2;  // 자재 이름
+    string importDate = 3;    // 입고 날짜
 }
 
 // 자재 정보 응답 메시지

@@ -266,6 +266,84 @@ namespace grpctestserver
             return result;
         }
 
+        public override async Task<MaterialReply> GetMaterialSearchData(MaterialSearchRequest request, ServerCallContext context)
+        {
+            var result = new MaterialReply();
+
+            try
+            {
+                Console.WriteLine("Received request for MATERIAL data with search criteria.");
+
+                // DB 연결
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // 기본 쿼리
+                var query = "SELECT MATERIALID, MATERIALNAME, SUPPLIERNAME, QUANTITY, IMPORTDATE FROM MATERIAL WHERE 1=1";
+                var parameters = new List<OracleParameter>();
+
+                // 검색 조건에 맞춰 WHERE 절 추가
+                if (!string.IsNullOrEmpty(request.SupplierName))
+                {
+                    query += " AND SUPPLIERNAME LIKE :SUPPLIERNAME";
+                    parameters.Add(new OracleParameter(":SUPPLIERNAME", "%" + request.SupplierName + "%"));
+                    Console.WriteLine($"Filtering by SupplierName: {request.SupplierName}");
+                }
+
+                if (!string.IsNullOrEmpty(request.MaterialName))
+                {
+                    query += " AND MATERIALNAME LIKE :MaterialName";
+                    parameters.Add(new OracleParameter(":MaterialName", "%" + request.MaterialName + "%"));
+                    Console.WriteLine($"Filtering by MaterialName: {request.MaterialName}");
+                }
+
+                if (!string.IsNullOrEmpty(request.ImportDate))
+                {
+                    query += " AND TO_CHAR(IMPORTDATE, 'YYYY-MM-DD') = :ImportDate";
+                    parameters.Add(new OracleParameter(":ImportDate", request.ImportDate));
+                    Console.WriteLine($"Filtering by ImportDate: {request.ImportDate}");
+                }
+
+                Console.WriteLine($"Executing Query: {query}");
+
+                // 쿼리 실행
+                await using var command = new OracleCommand(query, connection);
+                command.Parameters.AddRange(parameters.ToArray());
+
+                await using var reader = await command.ExecuteReaderAsync();
+
+                // 데이터 읽기
+                while (await reader.ReadAsync())
+                {
+                    Console.WriteLine($"원자재ID: {reader.GetInt32(0)}, 원자재명: {reader.GetString(1)}, 공급업체: {reader.GetString(2)}");
+
+                    result.Materials.Add(new MaterialInfo
+                    {
+                        MaterialID = reader.GetInt32(0),
+                        MaterialName = reader.GetString(1),
+                        SupplierName = reader.GetString(2),
+                        Quantity = reader.GetInt32(3),
+                        ImportDate = reader.GetDateTime(4).ToString("yyyy-MM-dd")
+                    });
+                }
+
+                result.ErrorCode = result.Materials.Count > 0 ? 0 : -1;
+
+                if (result.ErrorCode == -1)
+                {
+                    Console.WriteLine("No matching records found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching MATERIAL data: {ex.Message}");
+                result.ErrorCode = -1;
+            }
+
+            return result;
+        }
+
+
         /// <summary>
         /// SUPPLIER 테이블에서 데이터를 가져오는 메서드
         /// </summary>
@@ -646,13 +724,15 @@ namespace grpctestserver
 					result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
 					result.Message = "로그인 성공!";
 					result.ForceExit = forceExit; // 세션 종료 여부 전달
-				}
+                    Console.WriteLine($"[로그인 성공] 사용자: {request.Username}, 레벨: {result.UserLevel}, 세션 상태: {forceExit}");
+                }
 				else
 				{
 					result.ErrorCode = -1;
 					result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
 					result.ForceExit = forceExit; // 세션 종료 여부 전달
-				}
+                    Console.WriteLine($"[로그인 실패] 사용자: {request.Username}, 이유: 잘못된 아이디 또는 비밀번호.");
+                }
 			}
 			catch (Exception ex)
 			{
@@ -683,6 +763,7 @@ namespace grpctestserver
 					{
 						result.Success = true;
 						result.Message = "로그아웃 성공!";
+                        Console.WriteLine($"[로그아웃 성공] 사용자 ID: {request.UserId}");
 					}
 					else
 					{
