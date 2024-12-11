@@ -1,14 +1,14 @@
 ﻿syntax = "proto3";
 
-package PiControlService;
+package GrpcPiControl;
 
 // Pi 작업 제어 서비스
 service PiControlService {
     // Pi 작업 시작
-    rpc StartInspection (PiRequest) returns (PiResponse);
+    rpc StartInspection (PiRequest) returns (PiResponse) {}
 
     // 이미지 전송 (추가 기능)
-    rpc SendImage (ImageRequest) returns (ImageReply);
+    rpc SendImage (ImageRequest) returns (ImageReply) {}
 }
 
 // Pi 작업 시작 요청 메시지

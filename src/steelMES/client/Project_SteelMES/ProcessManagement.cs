@@ -2,8 +2,8 @@
 using System.IO;
 using System.Windows.Forms;
 using Grpc.Core;
+using GrpcPiControl;
 using grpctestserver;
-using PiControlService;
 using SteelMES;
 
 namespace Project_SteelMES
@@ -99,7 +99,7 @@ namespace Project_SteelMES
 				return;
 			}
 
-			var channel = new Channel("192.168.0.118:50052", ChannelCredentials.Insecure); // Python 서버 주소
+			var channel = new Channel($"{config.PiConnection.Host}:{config.PiConnection.Port}", ChannelCredentials.Insecure); // Python 서버 주소
 			var client = new PiControlService.PiControlServiceClient(channel);
 
 			try
