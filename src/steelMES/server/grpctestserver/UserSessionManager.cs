@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Amazon.SecurityToken.Model.Internal.MarshallTransformations;
+using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SteelMES
@@ -82,7 +83,7 @@ namespace SteelMES
                 {
                     Console.WriteLine("세션 체크중...");
                     var spendTime = DateTime.Now - session.LastDiagnostic;
-                    if (spendTime.TotalSeconds > 10)
+                    if (spendTime.TotalSeconds > 5*60)
                     {
                        
 						RemoveSession.Add(session);

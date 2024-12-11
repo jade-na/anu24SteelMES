@@ -1115,43 +1115,24 @@ FROM SCOTT.USERS"; // Password 제외
 				var tensor = ConvertToTensor(resizedMat);
 				Console.WriteLine("Model loaded and tensor created.");
 
-				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("onnx::Cast_0", tensor) };
+				// ONNX 추론 실행
+				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) }; // 수정된 입력 이름
 				using var results = session.Run(inputTensor);
-				var outputTensor = results.First(x => x.Name == "1117").AsTensor<float>();
+
+				// 모델 출력 추출
+				var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>(); // 수정된 출력 이름
 				Console.WriteLine("Inference completed.");
 
 				// 결과 분석
-				float maxConfidence = 0.0f;
-				string maxConfidenceClass = "none";
+				string detectedClass = AnalyzeOutput(outputTensor);
+				Console.WriteLine($"Analysis complete. Detected Class: {detectedClass}");
 
-				for (int i = 0; i < 25200; i++)
-				{
-					float objectness = outputTensor[0, i, 4];
-					float[] classProbabilities = new float[6];
-					for (int j = 0; j < 6; j++)
-					{
-						classProbabilities[j] = outputTensor[0, i, 5 + j];
-					}
-
-					int predictedClass = ArgMax(classProbabilities);
-					string className = GetDefectType(predictedClass);
-					float confidence = objectness * classProbabilities[predictedClass];
-
-					if (confidence > maxConfidence)
-					{
-						maxConfidence = confidence;
-						maxConfidenceClass = className;
-					}
-				}
-
-				Console.WriteLine($"Analysis complete. MaxConfidenceClass: {maxConfidenceClass}, MaxConfidence: {maxConfidence}");
-
-				// 무조건 DB에 저장
-				await SaveDefectToDB(request.ProductID, maxConfidenceClass);
+				// DB에 저장
+				await SaveDefectToDB(request.ProductID, detectedClass);
 
 				// 결과 설정
 				result.ErrorCode = 0;
-				result.DefectType = maxConfidenceClass;
+				result.DefectType = detectedClass;
 				result.Message = "Defect detected successfully.";
 			}
 			catch (Exception ex)
@@ -1164,28 +1145,77 @@ FROM SCOTT.USERS"; // Password 제외
 			return result;
 		}
 
-		// 배열에서 가장 큰 값의 인덱스를 반환하는 ArgMax 메서드
-		private int ArgMax(float[] values)
+		// ONNX 모델 로드
+		private InferenceSession LoadOnnxModel()
 		{
-			if (values == null || values.Length == 0)
-				throw new ArgumentException("Array is null or empty.", nameof(values));
-
-			int maxIndex = 0;
-			float maxValue = float.MinValue;
-
-			for (int i = 0; i < values.Length; i++)
+			try
 			{
-				if (values[i] > maxValue)
+				string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241211best.onnx"); // 수정된 모델 경로
+				if (!File.Exists(modelPath))
 				{
-					maxValue = values[i];
-					maxIndex = i;
+					throw new FileNotFoundException($"ONNX 모델 파일이 존재하지 않습니다: {modelPath}");
+				}
+
+				Console.WriteLine($"ONNX Model loaded from: {modelPath}");
+				return new InferenceSession(modelPath);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Model load failed: {ex.Message}");
+				throw;
+			}
+		}
+
+		// ONNX 출력 분석
+		private string AnalyzeOutput(Tensor<float> outputTensor)
+		{
+			if (outputTensor.Length == 0)
+			{
+				return "none"; // 검출된 객체가 없음
+			}
+
+			// 출력 텐서 차원 확인
+			var dimensions = outputTensor.Dimensions; // e.g., [batch, anchors, features]
+			if (dimensions.Length != 3)
+			{
+				throw new Exception("Unexpected output tensor dimensions.");
+			}
+
+			int batchSize = dimensions[0];
+			int anchors = dimensions[1];
+			int numFeatures = dimensions[2]; // Features includes bbox + class probabilities
+
+			// 클래스 확률을 분석
+			float maxConfidence = float.MinValue;
+			int maxClassIndex = -1;
+
+			for (int i = 0; i < anchors; i++) // 앵커 수만큼 반복
+			{
+				// 클래스 확률 추출: 보통 bbox 좌표(4)와 objectness(1)를 제외한 나머지가 클래스 확률
+				int numClasses = numFeatures - 5; // bbox(4) + objectness(1)
+				float objectness = outputTensor[0, i, 4]; // objectness confidence
+				for (int c = 0; c < numClasses; c++)
+				{
+					float classConfidence = outputTensor[0, i, 5 + c] * objectness; // 클래스 확률 * objectness
+					if (classConfidence > maxConfidence)
+					{
+						maxConfidence = classConfidence;
+						maxClassIndex = c;
+					}
 				}
 			}
 
-			return maxIndex;
+			if (maxClassIndex == -1)
+			{
+				return "none"; // 검출된 클래스가 없음
+			}
+
+			// 클래스 인덱스를 사용해 클래스 이름 반환
+			return GetDefectType(maxClassIndex);
 		}
 
-		// Tensor 변환 (OpenCV 이미지를 ONNX Runtime 호환 Tensor로 변환)
+
+		// OpenCV 이미지 → ONNX Tensor 변환
 		private DenseTensor<float> ConvertToTensor(Mat mat)
 		{
 			var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
@@ -1204,39 +1234,18 @@ FROM SCOTT.USERS"; // Password 제외
 			return tensor;
 		}
 
-		// 모델 로드
-		private InferenceSession LoadOnnxModel()
-		{
-			try
-			{
-				string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241130best.onnx");
-				if (!File.Exists(modelPath))
-				{
-					throw new FileNotFoundException($"ONNX 모델 파일이 존재하지 않습니다: {modelPath}");
-				}
-
-				Console.WriteLine($"ONNX Model loaded from: {modelPath}");
-				return new InferenceSession(modelPath);
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Model load failed: {ex.Message}");
-				throw;
-			}
-		}
-
 		// 예측된 클래스를 불량 유형으로 변환
 		private string GetDefectType(int predictedClass)
 		{
 			return predictedClass switch
 			{
 				0 => "crazing",
-				1 => "scratch",
-				2 => "inclusion",
-				3 => "rolled-in_scale",
-				4 => "pitted_surface",
-				5 => "patches",
-				_ => "none",  // 정상
+				1 => "inclusion",
+				2 => "patches",
+				3 => "pitted_surface",
+				4 => "rolled-in_scale",
+				5 => "scratches",
+				_ => "none", // 정상
 			};
 		}
 
@@ -1252,14 +1261,13 @@ FROM SCOTT.USERS"; // Password 제외
 					await connection.OpenAsync();
 					Console.WriteLine("DB connection established.");
 
-					// 중복 확인 및 데이터 삽입
 					var query = @"
-                MERGE INTO DEFECT d
-                USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
-                ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE AND TRUNC(d.DETECTIONDATE) = TRUNC(src.DETECTIONDATE))
-                WHEN NOT MATCHED THEN
-                INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
-                VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
+            MERGE INTO DEFECT d
+            USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
+            ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE AND TRUNC(d.DETECTIONDATE) = TRUNC(src.DETECTIONDATE))
+            WHEN NOT MATCHED THEN
+            INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
+            VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
 
 					using (var command = new OracleCommand(query, connection))
 					{
@@ -1277,7 +1285,8 @@ FROM SCOTT.USERS"; // Password 제외
 				Console.WriteLine($"Error in SaveDefectToDB: {ex.Message}");
 			}
 		}
-        public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
+
+		public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
         {
 			var result = new Empty();
             string clientInfo = context.Peer;
