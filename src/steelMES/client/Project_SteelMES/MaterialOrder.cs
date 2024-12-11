@@ -51,7 +51,7 @@ namespace Project_SteelMES
 
             try
             {
-                // gRPC 서버에서 Supplier 데이터를 가져옴
+                // gRPC 서버에서 Material 데이터를 가져옴
                 var responseMat = await client.GetMaterialDataAsync(new Empty());
 
                 if (responseMat.ErrorCode != 0)
@@ -62,7 +62,6 @@ namespace Project_SteelMES
 
                 // DataGridView 초기화
                 dataGridView1.Rows.Clear();
-
                 foreach (var material in responseMat.Materials)
                 {
                     dataGridView1.Rows.Add(
@@ -73,7 +72,25 @@ namespace Project_SteelMES
                          material.ImportDate
                     );
                 }
+
+                // gRPC 서버에서 Supplier 데이터를 가져옴
+                var responseSup = await client.GetSupplierDataAsync(new Empty());
+
+                if (responseSup.ErrorCode != 0)
+                {
+                    MessageBox.Show($"서버 오류 코드: {responseSup.ErrorCode}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 dataGridView2.Rows.Clear();
+                foreach (var supplier in responseSup.Suppliers)
+                {
+                    dataGridView2.Rows.Add(
+                         supplier.SupplierName,
+                         supplier.ContactInfo,
+                         supplier.Country
+                    );
+                }
             }
             catch (RpcException ex)
             {
@@ -84,9 +101,6 @@ namespace Project_SteelMES
                 await channel.ShutdownAsync();
             }
         }
-
-
-       
 
         private async void SearchButton_Click(object sender, EventArgs e) //검색 버튼
         {
