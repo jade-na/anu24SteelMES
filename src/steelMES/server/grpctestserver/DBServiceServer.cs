@@ -1,13 +1,11 @@
 ﻿using Grpc.Core;
 using Oracle.ManagedDataAccess.Client;
 using SteelMES;
+using GrpcPiControl;
 using TorchSharp;
 using OpenCvSharp;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using System.Diagnostics.Tracing;
-using System.Timers;
-using OpenCvSharp.ML;
 
 namespace grpctestserver
 {
@@ -1101,156 +1099,103 @@ FROM SCOTT.USERS"; // Password 제외
             return response;
         }
 
-		// 이미지 검출
-		public override async Task<ImageAnalysisReply> AnalyzeImage(ImageRequest request, ServerCallContext context)
+        // 이미지 검출
+		public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
 		{
 			var result = new ImageAnalysisReply();
+
 			try
 			{
-				Console.WriteLine($"Received AnalyzeImage request for ProductID={request.ProductID}");
+				Console.WriteLine($"[INFO] Received AnalyzeImage request for ProductID={request.ProductID}");
 
-				// 이미지 디코딩
 				byte[] imageData = request.ImageData.ToByteArray();
+				if (imageData == null || imageData.Length == 0)
+					throw new Exception("No image data received.");
+
 				using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
 				if (mat.Empty())
-				{
-					throw new Exception("Invalid image data received.");
-				}
-				Console.WriteLine("Image successfully decoded.");
+					throw new Exception("Failed to decode image data.");
 
-				// 이미지 리사이즈
 				var resizedMat = new Mat();
 				Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
-				Console.WriteLine("Image successfully resized.");
 
-				// 모델 로드 및 예측
 				var session = LoadOnnxModel();
 				var tensor = ConvertToTensor(resizedMat);
-				Console.WriteLine("Model loaded and tensor created.");
+				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) };
 
-				// ONNX 추론 실행
-				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) }; // 수정된 입력 이름
 				using var results = session.Run(inputTensor);
-
-				// 모델 출력 추출
-				var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>(); // 수정된 출력 이름
-				Console.WriteLine("Inference completed.");
-
-				// 결과 분석
+				var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>();
 				string detectedClass = AnalyzeOutput(outputTensor);
-				Console.WriteLine($"Analysis complete. Detected Class: {detectedClass}");
 
-				// DB에 저장
 				await SaveDefectToDB(request.ProductID, detectedClass);
 
-				// 결과 설정
 				result.ErrorCode = 0;
 				result.DefectType = detectedClass;
-				result.Message = "Defect detected successfully.";
+				result.Message = "Defect detected and saved successfully.";
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Error in AnalyzeImage: {ex.Message}");
+				Console.WriteLine($"[ERROR] {ex.Message}");
 				result.ErrorCode = -1;
-				result.Message = $"Error: {ex.Message}";
+				result.Message = ex.Message;
 			}
 
 			return result;
 		}
 
-		// ONNX 모델 로드
 		private InferenceSession LoadOnnxModel()
 		{
-			try
-			{
-				string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241211best.onnx"); // 수정된 모델 경로
-				if (!File.Exists(modelPath))
-				{
-					throw new FileNotFoundException($"ONNX 모델 파일이 존재하지 않습니다: {modelPath}");
-				}
+			string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241211best.onnx");
+			if (!File.Exists(modelPath))
+				throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
 
-				Console.WriteLine($"ONNX Model loaded from: {modelPath}");
-				return new InferenceSession(modelPath);
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Model load failed: {ex.Message}");
-				throw;
-			}
+			return new InferenceSession(modelPath);
 		}
 
-		// ONNX 출력 분석
+		private DenseTensor<float> ConvertToTensor(Mat mat)
+		{
+			var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
+			for (int i = 0; i < mat.Rows; i++)
+				for (int j = 0; j < mat.Cols; j++)
+				{
+					var pixel = mat.At<Vec3b>(i, j);
+					tensor[0, 0, i, j] = pixel.Item2 / 255.0f;
+					tensor[0, 1, i, j] = pixel.Item1 / 255.0f;
+					tensor[0, 2, i, j] = pixel.Item0 / 255.0f;
+				}
+			return tensor;
+		}
+
 		private string AnalyzeOutput(Tensor<float> outputTensor)
 		{
 			if (outputTensor.Length == 0)
-			{
-				return "none"; // 검출된 객체가 없음
-			}
+				return "none";
 
-			// 출력 텐서 차원 확인
-			var dimensions = outputTensor.Dimensions; // e.g., [batch, anchors, features]
+			var dimensions = outputTensor.Dimensions;
 			if (dimensions.Length != 3)
-			{
-				throw new Exception("Unexpected output tensor dimensions.");
-			}
+				throw new Exception("Unexpected output dimensions.");
 
-			int batchSize = dimensions[0];
 			int anchors = dimensions[1];
-			int numFeatures = dimensions[2]; // Features includes bbox + class probabilities
-
-			// 클래스 확률을 분석
+			int numFeatures = dimensions[2];
 			float maxConfidence = float.MinValue;
 			int maxClassIndex = -1;
 
-			for (int i = 0; i < anchors; i++) // 앵커 수만큼 반복
+			for (int i = 0; i < anchors; i++)
 			{
-				// 클래스 확률 추출: 보통 bbox 좌표(4)와 objectness(1)를 제외한 나머지가 클래스 확률
-				int numClasses = numFeatures - 5; // bbox(4) + objectness(1)
-				float objectness = outputTensor[0, i, 4]; // objectness confidence
+				int numClasses = numFeatures - 5;
+				float objectness = outputTensor[0, i, 4];
 				for (int c = 0; c < numClasses; c++)
 				{
-					float classConfidence = outputTensor[0, i, 5 + c] * objectness; // 클래스 확률 * objectness
-					if (classConfidence > maxConfidence)
+					float confidence = outputTensor[0, i, 5 + c] * objectness;
+					if (confidence > maxConfidence)
 					{
-						maxConfidence = classConfidence;
+						maxConfidence = confidence;
 						maxClassIndex = c;
 					}
 				}
 			}
 
-			if (maxClassIndex == -1)
-			{
-				return "none"; // 검출된 클래스가 없음
-			}
-
-			// 클래스 인덱스를 사용해 클래스 이름 반환
-			return GetDefectType(maxClassIndex);
-		}
-
-
-		// OpenCV 이미지 → ONNX Tensor 변환
-		private DenseTensor<float> ConvertToTensor(Mat mat)
-		{
-			var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
-
-			for (int i = 0; i < mat.Rows; i++)
-			{
-				for (int j = 0; j < mat.Cols; j++)
-				{
-					var pixel = mat.At<Vec3b>(i, j);
-					tensor[0, 0, i, j] = pixel.Item2 / 255.0f; // R (정규화)
-					tensor[0, 1, i, j] = pixel.Item1 / 255.0f; // G (정규화)
-					tensor[0, 2, i, j] = pixel.Item0 / 255.0f; // B (정규화)
-				}
-			}
-
-			return tensor;
-		}
-
-		// 예측된 클래스를 불량 유형으로 변환
-		private string GetDefectType(int predictedClass)
-		{
-			return predictedClass switch
+			return maxClassIndex switch
 			{
 				0 => "crazing",
 				1 => "inclusion",
@@ -1258,45 +1203,29 @@ FROM SCOTT.USERS"; // Password 제외
 				3 => "pitted_surface",
 				4 => "rolled-in_scale",
 				5 => "scratches",
-				_ => "none", // 정상
+				_ => "none",
 			};
 		}
 
-		// DB에 불량 정보 저장
 		private async Task SaveDefectToDB(string productId, string defectType)
 		{
-			try
-			{
-				Console.WriteLine($"SaveDefectToDB called with ProductID={productId}, DefectType={defectType}");
+			using var connection = new OracleConnection(_connectionString);
+			await connection.OpenAsync();
 
-				using (var connection = new OracleConnection(_connectionString))
-				{
-					await connection.OpenAsync();
-					Console.WriteLine("DB connection established.");
-
-					var query = @"
+			var query = @"
             MERGE INTO DEFECT d
             USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
-            ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE AND TRUNC(d.DETECTIONDATE) = TRUNC(src.DETECTIONDATE))
+            ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE)
             WHEN NOT MATCHED THEN
             INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
             VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
 
-					using (var command = new OracleCommand(query, connection))
-					{
-						command.Parameters.Add(new OracleParameter(":productId", productId));
-						command.Parameters.Add(new OracleParameter(":defectType", defectType));
-						command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
+			using var command = new OracleCommand(query, connection);
+			command.Parameters.Add(new OracleParameter(":productId", productId));
+			command.Parameters.Add(new OracleParameter(":defectType", defectType));
+			command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
 
-						int rowsAffected = await command.ExecuteNonQueryAsync();
-						Console.WriteLine($"Insert or Merge successful. Rows affected: {rowsAffected}");
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Error in SaveDefectToDB: {ex.Message}");
-			}
+			await command.ExecuteNonQueryAsync();
 		}
 
 		public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)

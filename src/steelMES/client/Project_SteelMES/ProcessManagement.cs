@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Grpc.Core;
 using grpctestserver;
+using PiControlService;
 using SteelMES;
 
 namespace Project_SteelMES
@@ -13,6 +13,7 @@ namespace Project_SteelMES
 		private Config config; // gRPC 설정 로드용
 		private int selectedProductId; // 선택된 제품 ID
 		private string selectedProductName; // 선택된 제품 이름
+		private int quantity; // 선택된 수량
 
 		public ProcessManagement()
 		{
@@ -92,60 +93,34 @@ namespace Project_SteelMES
 
 		private async void DefectBtn_Click(object sender, EventArgs e)
 		{
-			// 선택된 ProductID 확인
-			if (selectedProductId <= 0 || string.IsNullOrEmpty(selectedProductName))
+			if (selectedProductId <= 0 || quantity <= 0)
 			{
-				MessageBox.Show("먼저 분석할 제품을 선택하세요.");
+				MessageBox.Show("제품 ID와 수량을 입력하세요.");
 				return;
 			}
 
-			ResetProgressBars();
+			var channel = new Channel("192.168.0.118:50052", ChannelCredentials.Insecure); // Python 서버 주소
+			var client = new PiControlService.PiControlServiceClient(channel);
 
-			// ProgressBar 업데이트
-			for (int step = 1; step <= 4; step++)
+			try
 			{
-				UpdateProgressBar(step);
-				await Task.Delay(500); // 각 단계 간 지연
+				var response = await client.StartInspectionAsync(new PiRequest
+				{
+					ProductId = selectedProductId.ToString(),
+					Quantity = quantity
+				});
+
+				MessageBox.Show(response.ErrorCode == 0
+					? $"작업 성공: {response.Message}"
+					: $"작업 실패: {response.Message}");
 			}
-
-			if (progressBar4.Value == 100)
+			catch (RpcException ex)
 			{
-				var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-				var client = new DB_Service.DB_ServiceClient(channel);
-
-				var imagePath = "C:\\Users\\Admin\\Desktop\\AiTest\\defectmodel\\normal.jpg";
-
-				try
-				{
-					var imageData = File.ReadAllBytes(imagePath);
-
-					var request = new ImageRequest
-					{
-						ProductID = selectedProductId.ToString(),
-						ImageData = Google.Protobuf.ByteString.CopyFrom(imageData)
-					};
-
-					Console.WriteLine($"Sending gRPC request for ProductID={request.ProductID}");
-
-					var response = await client.AnalyzeImageAsync(request);
-
-					if (response.ErrorCode == 0)
-					{
-						MessageBox.Show($"검출된 불량 유형: {response.DefectType}");
-					}
-					else
-					{
-						MessageBox.Show($"이미지 분석 실패: {response.Message}");
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show($"서버 호출 실패: {ex.Message}");
-				}
-				finally
-				{
-					await channel.ShutdownAsync();
-				}
+				MessageBox.Show($"Pi 호출 실패: {ex.Status.Detail}");
+			}
+			finally
+			{
+				await channel.ShutdownAsync();
 			}
 		}
 
@@ -186,8 +161,9 @@ namespace Project_SteelMES
 				{
 					selectedProductId = Convert.ToInt32(selectedRow.Cells["ProductID"].Value);
 					selectedProductName = selectedRow.Cells["ProductName"].Value.ToString();
+					quantity = Convert.ToInt32(selectedRow.Cells["Quantity"].Value);
 
-					Console.WriteLine($"Selected ProductID={selectedProductId}, ProductName={selectedProductName}");
+					Console.WriteLine($"Selected ProductID={selectedProductId}, ProductName={selectedProductName}, Quantity={quantity}");
 				}
 				catch (Exception ex)
 				{
