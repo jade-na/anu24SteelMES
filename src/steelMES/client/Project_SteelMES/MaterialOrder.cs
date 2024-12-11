@@ -91,8 +91,9 @@ namespace Project_SteelMES
         private async void SearchButton_Click(object sender, EventArgs e) //검색 버튼
         {
             // 공급업체명
-            string supplierName = comboBox1.SelectedItem?.ToString() ?? ""; // ComboBox1에서 선택된 값
-            string materialName = comboBox2.SelectedItem?.ToString() ?? ""; // ComboBox2에서 선택된 값
+            // 공급업체명
+            string supplierName = comboBox1.SelectedItem?.ToString() ?? comboBox1.Text.Trim();
+            string materialName = comboBox2.SelectedItem?.ToString() ?? comboBox2.Text.Trim();
             string importDate = dateTimePicker1.Value.ToString("yyyy-MM-dd"); // DateTimePicker에서 선택된 날짜
 
             if (config == null || config.GrpcSettings == null)

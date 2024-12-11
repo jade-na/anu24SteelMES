@@ -290,6 +290,9 @@ namespace grpctestserver
             try
             {
                 Console.WriteLine("Received request for MATERIAL data with search criteria.");
+                Console.WriteLine($"SupplierName in request: '{request.SupplierName}'");
+                Console.WriteLine($"MaterialName in request: '{request.MaterialName}'");
+                Console.WriteLine($"ImportDate in request: '{request.ImportDate}'");
 
                 // DB 연결
                 await using var connection = new OracleConnection(_connectionString);
@@ -302,26 +305,35 @@ namespace grpctestserver
                 // 검색 조건에 맞춰 WHERE 절 추가
                 if (!string.IsNullOrEmpty(request.SupplierName))
                 {
-                    query += " AND SUPPLIERNAME LIKE :SUPPLIERNAME";
-                    parameters.Add(new OracleParameter(":SUPPLIERNAME", "%" + request.SupplierName + "%"));
-                    Console.WriteLine($"Filtering by SupplierName: {request.SupplierName}");
+                    query += " AND UPPER(COALESCE(SUPPLIERNAME, '')) LIKE :SUPPLIERNAME";
+                    parameters.Add(new OracleParameter(":SUPPLIERNAME", OracleDbType.Varchar2)
+                    {
+                        Value = $"%{request.SupplierName.Trim().ToUpper()}%"
+                    });
                 }
-
                 if (!string.IsNullOrEmpty(request.MaterialName))
                 {
-                    query += " AND MATERIALNAME LIKE :MaterialName";
-                    parameters.Add(new OracleParameter(":MaterialName", "%" + request.MaterialName + "%"));
-                    Console.WriteLine($"Filtering by MaterialName: {request.MaterialName}");
+                    query += " AND UPPER(COALESCE(MATERIALNAME, '')) LIKE :MaterialName";
+                    parameters.Add(new OracleParameter(":MaterialName", OracleDbType.Varchar2)
+                    {
+                        Value = $"%{request.MaterialName.Trim().ToUpper()}%"
+                    });
                 }
-
                 if (!string.IsNullOrEmpty(request.ImportDate))
                 {
-                    query += " AND TO_CHAR(IMPORTDATE, 'YYYY-MM-DD') = :ImportDate";
-                    parameters.Add(new OracleParameter(":ImportDate", request.ImportDate));
-                    Console.WriteLine($"Filtering by ImportDate: {request.ImportDate}");
+                    query += " AND TRUNC(IMPORTDATE) = TO_DATE(:ImportDate, 'YYYY-MM-DD')";
+                    parameters.Add(new OracleParameter(":ImportDate", OracleDbType.Varchar2)
+                    {
+                        Value = DateTime.Parse(request.ImportDate).ToString("yyyy-MM-dd") // 날짜만 문자열로 전달
+                    });
                 }
 
-                Console.WriteLine($"Executing Query: {query}");
+                // 최종 쿼리와 파라미터 출력
+                Console.WriteLine($"Generated Query: {query}");
+                foreach (var param in parameters)
+                {
+                    Console.WriteLine($"Parameter Name: {param.ParameterName}, Value: {param.Value}");
+                }
 
                 // 쿼리 실행
                 await using var command = new OracleCommand(query, connection);
@@ -332,16 +344,16 @@ namespace grpctestserver
                 // 데이터 읽기
                 while (await reader.ReadAsync())
                 {
-                    Console.WriteLine($"원자재ID: {reader.GetInt32(0)}, 원자재명: {reader.GetString(1)}, 공급업체: {reader.GetString(2)}");
-
-                    result.Materials.Add(new MaterialInfo
+                    var material = new MaterialInfo
                     {
                         MaterialID = reader.GetInt32(0),
                         MaterialName = reader.GetString(1),
                         SupplierName = reader.GetString(2),
                         Quantity = reader.GetInt32(3),
                         ImportDate = reader.GetDateTime(4).ToString("yyyy-MM-dd")
-                    });
+                    };
+                    Console.WriteLine($"Material Found - ID: {material.MaterialID}, Name: {material.MaterialName}, Supplier: {material.SupplierName}");
+                    result.Materials.Add(material);
                 }
 
                 result.ErrorCode = result.Materials.Count > 0 ? 0 : -1;
@@ -359,6 +371,7 @@ namespace grpctestserver
 
             return result;
         }
+
 
 
         /// <summary>
