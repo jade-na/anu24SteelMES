@@ -94,6 +94,7 @@ namespace Project_SteelMES
 				await channel.ShutdownAsync();
 			}
 		}
+		// 버튼 클릭 시 동작 요청 시작
 		private async void DefectBtn_Click(object sender, EventArgs e)
 		{
 			if (selectedProductId <= 0 || quantity <= 0)
@@ -102,17 +103,20 @@ namespace Project_SteelMES
 				return;
 			}
 
-			// 프로그레스바 초기화
+			// ProgressBar 초기화
 			ResetProgressBars();
 			progressStep = 0;
 
-			// 타이머 초기화 및 시작
-			progressTimer = new Timer();
-			progressTimer.Interval = 1000; // 1초 간격
+			// ProgressBar 업데이트를 위한 타이머 초기화
+			progressTimer = new Timer { Interval = 1000 }; // 1초 간격
 			progressTimer.Tick += async (s, ev) => await ProgressTimer_Tick();
 			progressTimer.Start();
+
+			// Pi에 검출 요청 보내기
+			await StartDefectInspection();
 		}
 
+		// ProgressBar 업데이트 로직
 		private async Task ProgressTimer_Tick()
 		{
 			progressStep++;
@@ -130,18 +134,16 @@ namespace Project_SteelMES
 					break;
 				case 4:
 					progressBar4.Value = 100;
-
-					// progressBar4가 시작될 때 작업 실행
-					await StartDefectInspection();
 					break;
 				case 5:
-					// 모든 작업 완료 후 타이머 중지
 					progressTimer.Stop();
 					progressTimer.Dispose();
 					MessageBox.Show("검출 작업이 완료되었습니다.");
 					break;
 			}
 		}
+
+		// Pi에 작업 요청
 		private async Task StartDefectInspection()
 		{
 			var channel = new Channel($"{config.PiConnection.Host}:{config.PiConnection.Port}", ChannelCredentials.Insecure);
@@ -174,33 +176,7 @@ namespace Project_SteelMES
 			}
 		}
 
-		private void UpdateProgressBar(int step)
-		{
-			switch (step)
-			{
-				case 1:
-					progressBar1.Value = 100;
-					break;
-				case 2:
-					progressBar2.Value = 100;
-					break;
-				case 3:
-					progressBar3.Value = 100;
-					break;
-				case 4:
-					progressBar4.Value = 100;
-					break;
-			}
-		}
-
-		private void ResetProgressBars()
-		{
-			progressBar1.Value = 0;
-			progressBar2.Value = 0;
-			progressBar3.Value = 0;
-			progressBar4.Value = 0;
-		}
-
+		// DataGridView 클릭 시 선택된 데이터 설정
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex >= 0)
@@ -213,13 +189,22 @@ namespace Project_SteelMES
 					selectedProductName = selectedRow.Cells["ProductName"].Value.ToString();
 					quantity = Convert.ToInt32(selectedRow.Cells["Quantity"].Value);
 
-					Console.WriteLine($"Selected ProductID={selectedProductId}, ProductName={selectedProductName}, Quantity={quantity}");
+					Console.WriteLine($"선택된 데이터: ProductID={selectedProductId}, ProductName={selectedProductName}, Quantity={quantity}");
 				}
 				catch (Exception ex)
 				{
 					MessageBox.Show($"선택된 데이터가 올바르지 않습니다: {ex.Message}");
 				}
 			}
+		}
+
+		// ProgressBar 초기화
+		private void ResetProgressBars()
+		{
+			progressBar1.Value = 0;
+			progressBar2.Value = 0;
+			progressBar3.Value = 0;
+			progressBar4.Value = 0;
 		}
 	}
 }

@@ -1237,6 +1237,7 @@ FROM SCOTT.USERS"; // Password 제외
             return result;
         }
 	}
+
     public class PiControlServiceImpl : PiControlService.PiControlServiceBase
     {
 		private readonly DBServiceServer _dbServiceServer;
@@ -1279,6 +1280,7 @@ FROM SCOTT.USERS"; // Password 제외
 					ImageData = Google.Protobuf.ByteString.CopyFrom(imageData)
 				};
 
+				// Pass the ServerCallContext to AnalyzeImage
 				var analysisResult = await _dbServiceServer.AnalyzeImage(analysisRequest, context);
 
 				// Populate the ImageReply based on analysis results
