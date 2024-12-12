@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Grpc.Core;
 using GrpcPiControl;
 using grpctestserver;
+using OpenTK.Graphics.OpenGL;
 using SteelMES;
 
 namespace Project_SteelMES
@@ -14,6 +16,8 @@ namespace Project_SteelMES
 		private int selectedProductId; // 선택된 제품 ID
 		private string selectedProductName; // 선택된 제품 이름
 		private int quantity; // 선택된 수량
+		private int progressStep = 0;
+		private Timer progressTimer;
 
 		public ProcessManagement()
 		{
@@ -90,7 +94,6 @@ namespace Project_SteelMES
 				await channel.ShutdownAsync();
 			}
 		}
-
 		private async void DefectBtn_Click(object sender, EventArgs e)
 		{
 			if (selectedProductId <= 0 || quantity <= 0)
@@ -99,7 +102,49 @@ namespace Project_SteelMES
 				return;
 			}
 
-			var channel = new Channel($"{config.PiConnection.Host}:{config.PiConnection.Port}", ChannelCredentials.Insecure); // Python 서버 주소
+			// 프로그레스바 초기화
+			ResetProgressBars();
+			progressStep = 0;
+
+			// 타이머 초기화 및 시작
+			progressTimer = new Timer();
+			progressTimer.Interval = 1000; // 1초 간격
+			progressTimer.Tick += async (s, ev) => await ProgressTimer_Tick();
+			progressTimer.Start();
+		}
+
+		private async Task ProgressTimer_Tick()
+		{
+			progressStep++;
+
+			switch (progressStep)
+			{
+				case 1:
+					progressBar1.Value = 100;
+					break;
+				case 2:
+					progressBar2.Value = 100;
+					break;
+				case 3:
+					progressBar3.Value = 100;
+					break;
+				case 4:
+					progressBar4.Value = 100;
+
+					// progressBar4가 시작될 때 작업 실행
+					await StartDefectInspection();
+					break;
+				case 5:
+					// 모든 작업 완료 후 타이머 중지
+					progressTimer.Stop();
+					progressTimer.Dispose();
+					MessageBox.Show("검출 작업이 완료되었습니다.");
+					break;
+			}
+		}
+		private async Task StartDefectInspection()
+		{
+			var channel = new Channel($"{config.PiConnection.Host}:{config.PiConnection.Port}", ChannelCredentials.Insecure);
 			var client = new PiControlService.PiControlServiceClient(channel);
 
 			try
@@ -110,9 +155,14 @@ namespace Project_SteelMES
 					Quantity = quantity
 				});
 
-				MessageBox.Show(response.ErrorCode == 0
-					? $"작업 성공: {response.Message}"
-					: $"작업 실패: {response.Message}");
+				if (response.ErrorCode == 0)
+				{
+					MessageBox.Show($"검출 작업 성공: {response.Message}");
+				}
+				else
+				{
+					MessageBox.Show($"검출 작업 실패: {response.Message}");
+				}
 			}
 			catch (RpcException ex)
 			{

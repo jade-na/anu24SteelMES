@@ -1099,7 +1099,8 @@ FROM SCOTT.USERS"; // Password 제외
             return response;
         }
 
-        // 이미지 검출
+		
+		// 이미지 검출
 		public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
 		{
 			var result = new ImageAnalysisReply();
@@ -1235,5 +1236,67 @@ FROM SCOTT.USERS"; // Password 제외
 
             return result;
         }
+	}
+    public class PiControlServiceImpl : PiControlService.PiControlServiceBase
+    {
+		private readonly DBServiceServer _dbServiceServer;
+
+		public PiControlServiceImpl(DBServiceServer dbServiceServer)
+		{
+			_dbServiceServer = dbServiceServer; // DBServiceServer 인스턴스 주입
+		}
+
+		public override async Task<ImageReply> SendImage(GrpcPiControl.ImageRequest request, ServerCallContext context)
+		{
+			var response = new ImageReply();
+
+			try
+			{
+				Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+
+				// Validate and save the image data
+				byte[] imageData = request.ImageData.ToByteArray();
+				if (imageData == null || imageData.Length == 0)
+				{
+					throw new Exception("No image data received.");
+				}
+
+				string outputDir = "C:\\home\\pi\\captured_images";
+				if (!Directory.Exists(outputDir))
+				{
+					Directory.CreateDirectory(outputDir);
+				}
+
+				string filePath = Path.Combine(outputDir, request.ImageName);
+				await File.WriteAllBytesAsync(filePath, imageData);
+				Console.WriteLine($"[INFO] Image saved at {filePath}");
+
+				// Call AnalyzeImage method to analyze the saved image
+				Console.WriteLine("[INFO] Starting image analysis...");
+				var analysisRequest = new SteelMES.ImageRequest
+				{
+					ProductID = request.ProductId,
+					ImageData = Google.Protobuf.ByteString.CopyFrom(imageData)
+				};
+
+				var analysisResult = await _dbServiceServer.AnalyzeImage(analysisRequest, context);
+
+				// Populate the ImageReply based on analysis results
+				response.Status = analysisResult.ErrorCode == 0 ? "Success" : "Failure";
+				response.DefectType = analysisResult.DefectType;
+				response.Message = analysisResult.Message;
+
+				Console.WriteLine($"[INFO] Image analysis completed. Result: {response.DefectType}");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[ERROR] {ex.Message}");
+				response.Status = "Failure";
+				response.DefectType = "None";
+				response.Message = $"Error processing image: {ex.Message}";
+			}
+
+			return response;
+		}
 	}
 }
