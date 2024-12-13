@@ -1429,16 +1429,23 @@ FROM SCOTT.USERS"; // Password 제외
                 }
             }
 
-            string defectType = maxClassIndex switch
-            {
-                0 => "crazing",
-                1 => "inclusion",
-                2 => "patches",
-                3 => "pitted_surface",
-                4 => "rolled-in_scale",
-                5 => "scratches",
-                _ => "none",
-            };
+			// 신뢰도가 50% 미만이면 "정상" 처리
+			if (maxConfidence < 0.5f)
+			{
+				return "normal";
+			}
+
+
+			string defectType = maxClassIndex switch
+			{
+				0 => "crazing",
+				1 => "inclusion",
+				2 => "patches",
+				3 => "pitted_surface",
+				4 => "rolled-in_scale",
+				5 => "scratches",
+				_ => "none",
+			};
 
             Console.WriteLine($"[분석 결과] 불량 유형: {defectType}, 신뢰도: {maxConfidence:F2}");
             return defectType;
