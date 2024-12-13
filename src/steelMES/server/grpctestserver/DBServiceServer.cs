@@ -21,7 +21,7 @@ namespace grpctestserver
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("Timer");
+            //Console.WriteLine("Timer");
             m_UserSessionManager.ForceLogoutTimeOutUser();
 		}
 
@@ -1241,64 +1241,58 @@ FROM SCOTT.USERS"; // Password 제외
     public class PiControlServiceImpl : PiControlService.PiControlServiceBase
     {
 		private readonly DBServiceServer _dbServiceServer;
-
-		public PiControlServiceImpl(DBServiceServer dbServiceServer)
-		{
-			_dbServiceServer = dbServiceServer; // DBServiceServer 인스턴스 주입
-		}
-
+		
 		public override async Task<ImageReply> SendImage(GrpcPiControl.ImageRequest request, ServerCallContext context)
-		{
-			var response = new ImageReply();
+        {
+        var response = new ImageReply();
+        
+        try
+        {
+            Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
 
-			try
-			{
-				Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+            // Validate and save the image data
+            byte[] imageData = request.ImageData.ToByteArray();
+            if (imageData == null || imageData.Length == 0)
+            {
+                throw new Exception("No image data received.");
+            }
 
-				// Validate and save the image data
-				byte[] imageData = request.ImageData.ToByteArray();
-				if (imageData == null || imageData.Length == 0)
-				{
-					throw new Exception("No image data received.");
-				}
+            // Define the output directory based on ProductID
+            string outputDir = Path.Combine("C:\\captured_images", $"product_{request.ProductId}");
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir); // Create directory if it doesn't exist
+                Console.WriteLine($"[INFO] Directory created: {outputDir}");
+            }
 
-				string outputDir = "C:\\home\\pi\\captured_images";
-				if (!Directory.Exists(outputDir))
-				{
-					Directory.CreateDirectory(outputDir);
-				}
+                // Define the image file path
+                //string filePath = Path.Combine(outputDir, request.ImageName);
+                //await File.WriteAllBytesAsync(filePath, imageData); // Save the image
+                //Console.WriteLine($"[INFO] Image saved at {filePath}");
 
-				string filePath = Path.Combine(outputDir, request.ImageName);
-				await File.WriteAllBytesAsync(filePath, imageData);
-				Console.WriteLine($"[INFO] Image saved at {filePath}");
+                // Sanitize and generate unique file name
+                string sanitizedFileName = Path.GetFileName(request.ImageName);
+                string uniqueFileName = $"{Path.GetFileNameWithoutExtension(sanitizedFileName)}_{Guid.NewGuid()}{Path.GetExtension(sanitizedFileName)}";
+                string filePath = Path.Combine(outputDir, uniqueFileName);
 
-				// Call AnalyzeImage method to analyze the saved image
-				Console.WriteLine("[INFO] Starting image analysis...");
-				var analysisRequest = new SteelMES.ImageRequest
-				{
-					ProductID = request.ProductId,
-					ImageData = Google.Protobuf.ByteString.CopyFrom(imageData)
-				};
+                // Save the image
+                await File.WriteAllBytesAsync(filePath, imageData);
+                Console.WriteLine($"[INFO] Image saved at {filePath}");
 
-				// Pass the ServerCallContext to AnalyzeImage
-				var analysisResult = await _dbServiceServer.AnalyzeImage(analysisRequest, context);
+                // Respond to Pi with success message
+                response.Status = "Success";
+                response.DefectType = "None"; // Replace with real defect analysis if implemented
+                response.Message = "Image received and saved successfully.";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[ERROR] {ex.Message}");
+            response.Status = "Failure";
+            response.DefectType = "None";
+            response.Message = $"Error saving image: {ex.Message}";
+        }
 
-				// Populate the ImageReply based on analysis results
-				response.Status = analysisResult.ErrorCode == 0 ? "Success" : "Failure";
-				response.DefectType = analysisResult.DefectType;
-				response.Message = analysisResult.Message;
-
-				Console.WriteLine($"[INFO] Image analysis completed. Result: {response.DefectType}");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"[ERROR] {ex.Message}");
-				response.Status = "Failure";
-				response.DefectType = "None";
-				response.Message = $"Error processing image: {ex.Message}";
-			}
-
-			return response;
-		}
-	}
+        return response;
+    }
+  }
 }

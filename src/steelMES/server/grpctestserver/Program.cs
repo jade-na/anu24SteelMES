@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
 using Grpc.Core;
+using GrpcPiControl;
 using MongoDB.Driver.Core.Configuration;
+using MongoDB.Driver.Core.Connections;
 using Newtonsoft.Json;
 using SteelMES;
 using static grpctestserver.Program;
@@ -18,106 +20,138 @@ namespace grpctestserver
 		private static extern bool AllocConsole();
 
 		[STAThread]
-		static void Main()
-{
-			// 콘솔 창 활성화
-			AllocConsole();
-			Console.WriteLine("콘솔 창이 활성화되었습니다.");
-            //json  파일 설정 읽기
+        static void Main()
+        {
+            // 콘솔 창 활성화
+            AllocConsole();
+            Console.WriteLine("콘솔 창이 활성화되었습니다.");
 
             var config = LoadConfig();
 
             // gRPC 서버 실행
             var serverThread = new Thread(() => StartgRPCServer(config.GrpcSettings)) { IsBackground = true };
+            var piServerThread = new Thread(() => StartPiConnection(config.PiConnections)) { IsBackground = true };
+
             serverThread.Start();
+            piServerThread.Start();
 
             // Windows Forms 애플리케이션 실행
             ApplicationConfiguration.Initialize();
-			Application.Run(new Form1());
-		}
+            Application.Run(new Form1());
+        }
+
+        private static Server server; // 클래스 레벨 변수로 선언
 
         private static void StartgRPCServer(GrpcSettings grpcSettings)
         {
             try
             {
-                string host = grpcSettings.Host;  // JSON에서 읽은 호스트
-                int port = grpcSettings.Port;    // JSON에서 읽은 포트
-
-                Console.WriteLine($"Attempting to bind to {host}:{port}...");
-
-                var server = new Grpc.Core.Server
+                server = new Server
                 {
                     Services = { DB_Service.BindService(new DBServiceServer()) },
-                    Ports = { new ServerPort(host, port, ServerCredentials.Insecure) }
+                    Ports = { new ServerPort(grpcSettings.Host, grpcSettings.Port, ServerCredentials.Insecure) }
                 };
 
-                try
-                {
-                    server.Start();
-                    Console.WriteLine($"gRPC 서버가 {grpcSettings.Host}:{grpcSettings.Port}에서 실행 중입니다.");
-                }
-                catch (Exception serverEx)
-                {
-                    Console.WriteLine($"gRPC 서버 시작 오류: {serverEx.Message}");
-                    Console.WriteLine($"StackTrace: {serverEx.StackTrace}");
-                    return;
-                }
+                server.Start();
+                Console.WriteLine($"Client gRPC 서버가 {grpcSettings.Host}:{grpcSettings.Port}에서 실행 중입니다.");
 
-                // 서버 종료 대기
-                Console.WriteLine("종료하려면 콘솔에서 Ctrl+C를 누르세요...");
-                Thread.Sleep(Timeout.Infinite);
+                // 애플리케이션 종료 이벤트 처리
+                AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+                {
+                    Console.WriteLine("서버 종료 중...");
+                    server.ShutdownAsync().Wait();
+                    Console.WriteLine("서버가 정상적으로 종료되었습니다.");
+                };
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"gRPC 서버 실행 중 오류 발생: {ex.Message}");
-                Console.WriteLine($"StackTrace: {ex.StackTrace}");
             }
         }
-        public static Config LoadConfig()
-        {
-			string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
-			//string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // 절대 경로로 정확히 설정
-            try
-            {
-                string json = File.ReadAllText(configFilePath);
-                return JsonConvert.DeserializeObject<Config>(json);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"설정 파일을 읽는 중 오류 발생: {ex.Message}");
-                return null;
-            }
-        }
-        // gRPC 서버 설정을 JSON에서 읽는 함수
-        public static GrpcSettings LoadGrpcServerSettings(string filePath)
+        private static void StartPiConnection(PiConnections PiConnections)
         {
             try
             {
-                var jsonString = File.ReadAllText(filePath);
-                var settings = JsonConvert.DeserializeObject<JsonElement>(jsonString);
-                var grpcServerSettings = settings.GetProperty("GrpcServer");
 
-                return new GrpcSettings
+                server = new Server
                 {
-                    Host = grpcServerSettings.GetProperty("Host").GetString(),
-                    Port = grpcServerSettings.GetProperty("Port").GetInt32()
+                    Services = { PiControlService.BindService(new PiControlServiceImpl()) },
+                    Ports = { new ServerPort(PiConnections.Host, PiConnections.Port, ServerCredentials.Insecure) }
+                };
+
+                server.Start();
+                Console.WriteLine($"Pi gRPC 서버가 {PiConnections.Host}:{PiConnections.Port}에서 실행 중입니다.");
+
+                AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+                {
+                    Console.WriteLine("Pi Control 서버 종료 중...");
+                    server.ShutdownAsync().Wait();
+                    Console.WriteLine("Pi Control 서버가 정상적으로 종료되었습니다.");
                 };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"설정 파일을 읽는 중 오류 발생: {ex.Message}");
-                return null;
+                Console.WriteLine($"Pi Control 서버 실행 중 오류 발생: {ex.Message}");
+                throw;
             }
         }
+
+        public static Config LoadConfig()
+        {
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            try
+            {
+                if (!File.Exists(configFilePath))
+                {
+                    throw new FileNotFoundException($"설정 파일을 찾을 수 없습니다: {configFilePath}");
+                }
+
+                string json = File.ReadAllText(configFilePath);
+                var config = JsonConvert.DeserializeObject<Config>(json);
+                Console.WriteLine($"로드된 JSON 내용: {json}"); // 디버깅용
+
+                if (config.GrpcSettings == null)
+                {
+                    throw new InvalidOperationException("GrpcSettings가 설정되지 않았습니다.");
+                }
+                // null 체크 추가
+                if (config.PiConnections == null)
+                {
+                    throw new InvalidOperationException("PiConnection Host 설정이 없습니다.");
+                }
+
+                return config;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"설정 파일 로드 실패: {ex.Message}");
+                Console.WriteLine($"현재 디렉토리: {Directory.GetCurrentDirectory()}");
+                throw;
+            }
+        }
+
         public class Config
         {
+            [JsonProperty("OracleConnection")]
+            public OracleConnectionConfig OracleConnection { get; set; }
+
+            [JsonProperty("GrpcSettings")]
             public GrpcSettings GrpcSettings { get; set; }
+
+            [JsonProperty("PiConnection")]
+            public PiConnections PiConnections { get; set; }
         }
-       
+
+
         public class GrpcSettings
         {
             public  string Host { get; set; }
             public  int Port { get; set; }
+        }
+        public class PiConnections
+        {
+            public string Host { get; set; }
+            public int Port { get; set; }
         }
     }
 }
