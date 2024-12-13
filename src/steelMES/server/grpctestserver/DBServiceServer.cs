@@ -1146,7 +1146,7 @@ FROM SCOTT.USERS"; // Password 제외
 
 		private InferenceSession LoadOnnxModel()
 		{
-			string modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "241211best.onnx");
+			string modelPath = Path.Combine(Directory.GetCurrentDirectory(),"241211best.onnx");
 			if (!File.Exists(modelPath))
 				throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
 
@@ -1208,7 +1208,7 @@ FROM SCOTT.USERS"; // Password 제외
 			};
 		}
 
-		private async Task SaveDefectToDB(string productId, string defectType)
+		private async Task SaveDefectToDB(int productId, string defectType)
 		{
 			using var connection = new OracleConnection(_connectionString);
 			await connection.OpenAsync();
@@ -1238,61 +1238,208 @@ FROM SCOTT.USERS"; // Password 제외
         }
 	}
 
+    //public class PiControlServiceImpl : PiControlService.PiControlServiceBase
+    //{
+    //    private readonly DBServiceServer _dbServiceServer;
+    //    private readonly InferenceSession _session;
+
+    //    public override async Task<ImageReply> SendImage(GrpcPiControl.ImageRequest request, ServerCallContext context)
+    //    {
+    //        var response = new ImageReply();
+
+    //        try
+    //        {
+    //            Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+
+    //            // Validate and save the image data
+    //            byte[] imageData = request.ImageData.ToByteArray();
+    //            if (imageData == null || imageData.Length == 0)
+    //            {
+    //                throw new Exception("No image data received.");
+    //            }
+
+    //            // Define the output directory based on ProductID
+    //            string outputDir = Path.Combine("C:\\captured_images", $"product_{request.ProductId}");
+    //            if (!Directory.Exists(outputDir))
+    //            {
+    //                Directory.CreateDirectory(outputDir); // Create directory if it doesn't exist
+    //                Console.WriteLine($"[INFO] Directory created: {outputDir}");
+    //            }
+
+    //            // Define the image file path
+    //            //string filePath = Path.Combine(outputDir, request.ImageName);
+    //            //await File.WriteAllBytesAsync(filePath, imageData); // Save the image
+    //            //Console.WriteLine($"[INFO] Image saved at {filePath}");
+
+    //            // Sanitize and generate unique file name
+    //            string sanitizedFileName = Path.GetFileName(request.ImageName);
+    //            string uniqueFileName = $"{Path.GetFileNameWithoutExtension(sanitizedFileName)}_{Guid.NewGuid()}{Path.GetExtension(sanitizedFileName)}";
+    //            string filePath = Path.Combine(outputDir, uniqueFileName);
+
+    //            // Save the image
+    //            await File.WriteAllBytesAsync(filePath, imageData);
+    //            Console.WriteLine($"[INFO] Image saved at {filePath}");
+
+    //            // Respond to Pi with success message
+    //            response.Status = "Success";
+    //            response.DefectType = "None"; // Replace with real defect analysis if implemented
+    //            response.Message = "Image received and saved successfully.";
+
+    //            // Call AnalyzeImage to process the image
+    //            var analyzeRequest = new SteelMES.ImageRequest
+    //            {
+    //                ProductID = request.ProductId,
+    //                ImageData = Google.Protobuf.ByteString.CopyFrom(imageData)
+    //            };
+
+    //            var analysisResult = await _dbServiceServer.AnalyzeImage(analyzeRequest, context);
+
+    //            // Respond to Pi with success message
+    //            response.Status = "Success";
+    //            response.DefectType = analysisResult.DefectType; // Include defect type in response
+    //            response.Message = analysisResult.Message;
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"[ERROR] {ex.Message}");
+    //            response.Status = "Failure";
+    //            response.DefectType = "None";
+    //            response.Message = $"Error saving image: {ex.Message}";
+    //        }
+
+    //        return response;
+    //    }
+    //}
     public class PiControlServiceImpl : PiControlService.PiControlServiceBase
     {
-		private readonly DBServiceServer _dbServiceServer;
-		
-		public override async Task<ImageReply> SendImage(GrpcPiControl.ImageRequest request, ServerCallContext context)
+        private readonly InferenceSession _session;
+
+        public PiControlServiceImpl()
         {
-        var response = new ImageReply();
-        
-        try
+            try
+            {
+                string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "241211best.onnx");
+                if (!File.Exists(modelPath))
+                {
+                    throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
+                }
+                _session = new InferenceSession(modelPath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] ONNX 모델 로드 실패: {ex.Message}");
+                throw;
+            }
+        }
+
+        public override async Task<ImageReply> SendImage(GrpcPiControl.ImageRequest request, ServerCallContext context)
         {
-            Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+            var response = new ImageReply();
 
-            // Validate and save the image data
-            byte[] imageData = request.ImageData.ToByteArray();
-            if (imageData == null || imageData.Length == 0)
+            try
             {
-                throw new Exception("No image data received.");
-            }
+                Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+                byte[] imageData = request.ImageData.ToByteArray();
+                if (imageData == null || imageData.Length == 0)
+                {
+                    throw new Exception("No image data received.");
+                }
 
-            // Define the output directory based on ProductID
-            string outputDir = Path.Combine("C:\\captured_images", $"product_{request.ProductId}");
-            if (!Directory.Exists(outputDir))
-            {
-                Directory.CreateDirectory(outputDir); // Create directory if it doesn't exist
-                Console.WriteLine($"[INFO] Directory created: {outputDir}");
-            }
-
-                // Define the image file path
-                //string filePath = Path.Combine(outputDir, request.ImageName);
-                //await File.WriteAllBytesAsync(filePath, imageData); // Save the image
-                //Console.WriteLine($"[INFO] Image saved at {filePath}");
-
-                // Sanitize and generate unique file name
+                // 이미지 저장
+                string outputDir = Path.Combine("C:\\captured_images", $"product_{request.ProductId}");
+                Directory.CreateDirectory(outputDir);
                 string sanitizedFileName = Path.GetFileName(request.ImageName);
                 string uniqueFileName = $"{Path.GetFileNameWithoutExtension(sanitizedFileName)}_{Guid.NewGuid()}{Path.GetExtension(sanitizedFileName)}";
                 string filePath = Path.Combine(outputDir, uniqueFileName);
-
-                // Save the image
                 await File.WriteAllBytesAsync(filePath, imageData);
                 Console.WriteLine($"[INFO] Image saved at {filePath}");
 
-                // Respond to Pi with success message
+                // 이미지 분석
+                using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
+                if (mat.Empty())
+                {
+                    throw new Exception("Failed to decode image data.");
+                }
+
+                var resizedMat = new Mat();
+                Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
+
+                // 텐서 변환
+                var tensor = new DenseTensor<float>(new[] { 1, 3, 640, 640 });
+                for (int y = 0; y < resizedMat.Height; y++)
+                {
+                    for (int x = 0; x < resizedMat.Width; x++)
+                    {
+                        var pixel = resizedMat.At<Vec3b>(y, x);
+                        tensor[0, 0, y, x] = pixel[2] / 255.0f; // R
+                        tensor[0, 1, y, x] = pixel[1] / 255.0f; // G
+                        tensor[0, 2, y, x] = pixel[0] / 255.0f; // B
+                    }
+                }
+
+                // 추론 실행
+                var inputs = new List<NamedOnnxValue> { NamedOnnxValue.CreateFromTensor("images", tensor) };
+                using var results = _session.Run(inputs);
+                var outputTensor = results.First().AsTensor<float>();
+                string defectType = AnalyzeOutput(outputTensor);
+
+                // 응답 설정
                 response.Status = "Success";
-                response.DefectType = "None"; // Replace with real defect analysis if implemented
-                response.Message = "Image received and saved successfully.";
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[ERROR] {ex.Message}");
-            response.Status = "Failure";
-            response.DefectType = "None";
-            response.Message = $"Error saving image: {ex.Message}";
+                response.DefectType = defectType;
+                response.Message = "분석 완료";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] {ex.Message}");
+                response.Status = "Failure";
+                response.DefectType = "None";
+                response.Message = $"Error: {ex.Message}";
+            }
+
+            return response;
         }
 
-        return response;
+        private string AnalyzeOutput(Tensor<float> outputTensor)
+        {
+            if (outputTensor.Length == 0)
+                return "none";
+
+            var dimensions = outputTensor.Dimensions;
+            if (dimensions.Length != 3)
+                throw new Exception("Unexpected output dimensions.");
+
+            int anchors = dimensions[1];
+            int numFeatures = dimensions[2];
+            float maxConfidence = float.MinValue;
+            int maxClassIndex = -1;
+
+            for (int i = 0; i < anchors; i++)
+            {
+                int numClasses = numFeatures - 5;
+                float objectness = outputTensor[0, i, 4];
+
+                for (int c = 0; c < numClasses; c++)
+                {
+                    float confidence = outputTensor[0, i, 5 + c] * objectness;
+                    if (confidence > maxConfidence)
+                    {
+                        maxConfidence = confidence;
+                        maxClassIndex = c;
+                    }
+                }
+            }
+
+            return maxClassIndex switch
+            {
+                0 => "crazing",
+                1 => "inclusion",
+                2 => "patches",
+                3 => "pitted_surface",
+                4 => "rolled-in_scale",
+                5 => "scratches",
+                _ => "none",
+            };
+        }
     }
-  }
+
 }

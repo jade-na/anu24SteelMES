@@ -185,10 +185,10 @@ namespace Project_SteelMES
                 return;
             }
 
-            // 선택된 FacID 확인
+            // 선택된 SupplierID 확인
             if (seletedID == null)
             {
-                MessageBox.Show("삭제할 공장을 선택하세요.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("삭제할 공급업체를 선택하세요.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
