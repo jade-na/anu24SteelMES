@@ -1432,11 +1432,13 @@ FROM SCOTT.USERS"; // Password 제외
 			// 신뢰도가 50% 미만이면 "정상" 처리
 			if (maxConfidence < 0.5f)
 			{
-				return "normal";
-			}
+                Console.WriteLine($"[분석 결과] 불량 유형: normal, 신뢰도: {maxConfidence:F2}");
+                return "normal";
+
+            }
 
 
-			string defectType = maxClassIndex switch
+            string defectType = maxClassIndex switch
 			{
 				0 => "crazing",
 				1 => "inclusion",

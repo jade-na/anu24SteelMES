@@ -81,7 +81,7 @@ namespace SteelMES
                 
                 foreach (var session in CurLogInUsers)
                 {
-                    Console.WriteLine("세션 체크중...");
+                    //Console.WriteLine("세션 체크중...");
                     var spendTime = DateTime.Now - session.LastDiagnostic;
                     if (spendTime.TotalSeconds > 5*60)
                     {
