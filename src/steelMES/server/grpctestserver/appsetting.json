@@ -1,17 +1,17 @@
 {
-    "OracleConnection": {
-        "UserId": "scott",
-        "Password": "tiger",
-        "Host": "192.168.0.9",
-        "Port": 1521,
-        "Sid": "XE"
-    },
-    "GrpcSettings": {
-        "Host": "127.0.0.1",
-        "Port": 50051
-    },
-    "PiConnection": {
-        "Host": "192.168.0.118",
-        "Port": 50052
-    }
+  "OracleConnection": {
+    "UserId": "scott",
+    "Password": "tiger",
+    "Host": "127.0.0.1",
+    "Port": 1521,
+    "Sid": "XE"
+  },
+  "GrpcSettings": {
+    "Host": "192.168.0.9",
+    "Port": 50051
+  },
+  "PiConnection": { 
+    "Host": "192.168.0.9",
+    "Port": 50052
+  }
 }
