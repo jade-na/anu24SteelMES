@@ -396,15 +396,22 @@ namespace Project_SteelMES
             Menu_ProcessBtn.BackColor = Color.Transparent;
             Menu_ProcessBtn.ForeColor = Color.SkyBlue;
 
-            MaterialOrder materialOrder = new MaterialOrder();
+            if (userLevel <=  1)
+            {
+                MaterialOrder materialOrder = new MaterialOrder();
 
-            materialOrder.TopLevel = false;
-            materialOrder.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
-            materialOrder.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
+                materialOrder.TopLevel = false;
+                materialOrder.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
+                materialOrder.Dock = DockStyle.Fill; // Panel에 맞게 크기 조정
 
-            panel5.Controls.Clear(); // 기존 컨트롤 제거
-            panel5.Controls.Add(materialOrder);
-            materialOrder.Show();
+                panel5.Controls.Clear(); // 기존 컨트롤 제거
+                panel5.Controls.Add(materialOrder);
+                materialOrder.Show();
+            }
+            else
+            {
+                MessageBox.Show("manager 권한 이상만 접속이 가능합니다.");
+            }
         }
     }
 }

@@ -133,7 +133,7 @@ namespace Project_SteelMES
             // 
             // Menu_MatOrderBtn
             // 
-            this.Menu_MatOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
+            //this.Menu_MatOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
             this.Menu_MatOrderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Menu_MatOrderBtn.FlatAppearance.BorderSize = 0;
             this.Menu_MatOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -228,7 +228,7 @@ namespace Project_SteelMES
             this.Menu_WorkBtn.Name = "Menu_WorkBtn";
             this.Menu_WorkBtn.Size = new System.Drawing.Size(406, 115);
             this.Menu_WorkBtn.TabIndex = 5;
-            this.Menu_WorkBtn.Text = "작 업 지 시";
+            this.Menu_WorkBtn.Text = "제 품 주 문";
             this.Menu_WorkBtn.UseVisualStyleBackColor = true;
             this.Menu_WorkBtn.Click += new System.EventHandler(this.button4_Click);
             // 

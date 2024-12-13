@@ -303,7 +303,7 @@
             this.dungeonLabel3.Name = "dungeonLabel3";
             this.dungeonLabel3.Size = new System.Drawing.Size(220, 36);
             this.dungeonLabel3.TabIndex = 12;
-            this.dungeonLabel3.Text = "작업 지시";
+            this.dungeonLabel3.Text = "제품 주문";
             // 
             // Work
             // 
