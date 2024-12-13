@@ -9,40 +9,40 @@ using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace grpctestserver
 {
-	public class DBServiceServer : DB_Service.DB_ServiceBase
+    public class DBServiceServer : DB_Service.DB_ServiceBase
     {
         //private readonly string _connectionString = 
         // "User Id=scott;Password=tiger;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST= 127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))";
 
         private readonly string _connectionString;
         private readonly UserSessionManager m_UserSessionManager;
-		private static torch.jit.ScriptModule? model;
+        private static torch.jit.ScriptModule? model;
         private System.Timers.Timer m_Timer;
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //Console.WriteLine("Timer");
             m_UserSessionManager.ForceLogoutTimeOutUser();
-		}
+        }
 
-		public DBServiceServer()
+        public DBServiceServer()
         {
             m_UserSessionManager = new UserSessionManager();
 
-			string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
-			//string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // JSON 파일 경로 설정
-			var config = ConfigLoader.LoadConfig(configFilePath);
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            //string configFilePath = @"C:\Temp\anu24SteelMES\src\steelMES\server\grpctestserver\appsetting.json"; // JSON 파일 경로 설정
+            var config = ConfigLoader.LoadConfig(configFilePath);
 
             if (config != null)
             {
                 // 연결 문자열을 JSON 설정을 사용해 동적으로 생성
                 _connectionString = ConfigLoader.BuildConnectionString(config.OracleConnection);
 
-				m_Timer = new System.Timers.Timer(1000); // 1초에 한번씩 Timer_Elapsed 함수 들어옴
+                m_Timer = new System.Timers.Timer(1000); // 1초에 한번씩 Timer_Elapsed 함수 들어옴
                 m_Timer.Elapsed += Timer_Elapsed; // 
                 m_Timer.AutoReset = true; // 자동 리셋
                 m_Timer.Enabled = true; // 타이머 시작
-			}
+            }
             else
             {
                 throw new Exception("설정 파일을 읽을 수 없습니다.");
@@ -190,46 +190,46 @@ namespace grpctestserver
         /// <summary>
         /// 공장 ID를 기준으로 생산 라인 데이터를 가져오는 메서드
         /// </summary>
-     //   public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
-     //   {
-     //       var result = new ProductionLineReply();
+        //   public override async Task<ProductionLineReply> GetProductionLineData(ProductionLineRequest request, ServerCallContext context)
+        //   {
+        //       var result = new ProductionLineReply();
 
-     //       try
-     //       {
-     //           await using var connection = new OracleConnection(_connectionString);
-     //           await connection.OpenAsync();
+        //       try
+        //       {
+        //           await using var connection = new OracleConnection(_connectionString);
+        //           await connection.OpenAsync();
 
-     //           const string query = @"
-					//SELECT LINEID, FACID, LINENAME, OPERATINGDATE
-					//FROM PRODUCTIONLINE
-					//WHERE FACID = :facid";
+        //           const string query = @"
+        //SELECT LINEID, FACID, LINENAME, OPERATINGDATE
+        //FROM PRODUCTIONLINE
+        //WHERE FACID = :facid";
 
-     //           await using var command = new OracleCommand(query, connection);
-     //           command.Parameters.Add(new OracleParameter("facid", request.FacID));
+        //           await using var command = new OracleCommand(query, connection);
+        //           command.Parameters.Add(new OracleParameter("facid", request.FacID));
 
-     //           await using var reader = await command.ExecuteReaderAsync();
-     //           while (await reader.ReadAsync())
-     //           {
-                    
-     //               result.Lines.Add(new ProductionLineInfo
-     //               {
-     //                   LineID = reader.GetInt32(0),
-     //                   FacID = reader.GetInt32(1),
-     //                   LineName = reader.GetString(2),
-     //                   OperateDate = reader.GetDateTime(3).ToString("yyyy-MM-dd")
-     //               });
-     //           }
+        //           await using var reader = await command.ExecuteReaderAsync();
+        //           while (await reader.ReadAsync())
+        //           {
 
-     //           result.ErrorCode = result.Lines.Count > 0 ? 0 : -1;
-     //       }
-     //       catch (Exception ex)
-     //       {
-     //           Console.WriteLine($"Error: {ex.Message}");
-     //           result.ErrorCode = -1;
-     //       }
+        //               result.Lines.Add(new ProductionLineInfo
+        //               {
+        //                   LineID = reader.GetInt32(0),
+        //                   FacID = reader.GetInt32(1),
+        //                   LineName = reader.GetString(2),
+        //                   OperateDate = reader.GetDateTime(3).ToString("yyyy-MM-dd")
+        //               });
+        //           }
 
-     //       return result;
-     //   }
+        //           result.ErrorCode = result.Lines.Count > 0 ? 0 : -1;
+        //       }
+        //       catch (Exception ex)
+        //       {
+        //           Console.WriteLine($"Error: {ex.Message}");
+        //           result.ErrorCode = -1;
+        //       }
+
+        //       return result;
+        //   }
         /// <summary>
         /// MATERIAL 테이블에서 데이터를 가져오는 메서드
         /// </summary>
@@ -253,7 +253,7 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
-                   
+
                     Console.WriteLine($"원자재ID: {reader.GetInt32(0)}"); // 로그 추가
                     Console.WriteLine($"원자재 종류: {reader.GetString(1)}"); // 로그 추가
                     Console.WriteLine($"공급업체: {reader.GetString(2)}"); // 로그 추가
@@ -393,7 +393,7 @@ namespace grpctestserver
 
                 while (await reader.ReadAsync())
                 {
-                   
+
                     Console.WriteLine($"공급업체 ID: {reader.GetInt32(0)}"); // 로그 추가
                     Console.WriteLine($"공급업체 : {reader.GetString(1)}"); // 로그 추가
                     Console.WriteLine();
@@ -712,157 +712,157 @@ namespace grpctestserver
             return result;
         }
 
-		// 로그인 메서드
-		public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
-		{
-			var result = new LoginReply();
-			bool forceExit = false;  // 중복 로그인 여부를 저장할 변수 선언
+        // 로그인 메서드
+        public override async Task<LoginReply> GetLogin(LoginRequest request, ServerCallContext context)
+        {
+            var result = new LoginReply();
+            bool forceExit = false;  // 중복 로그인 여부를 저장할 변수 선언
             string clientInfo = context.Peer;
 
-			try
-			{
-				// 세션 관리: 이미 로그인된 사용자가 있으면 로그인 거부하고 기존 세션을 로그아웃 후 새로 로그인 처리
-				if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit, clientInfo))
-				{
-					// 중복 로그인 세션이 있을 경우, forceExit는 true
-					result.ForceExit = forceExit;
-					result.Message = "중복 로그인 세션이 감지되었습니다."; // 중복 로그인 감지
-					result.ErrorCode = -1;
-					return result;
-				}
+            try
+            {
+                // 세션 관리: 이미 로그인된 사용자가 있으면 로그인 거부하고 기존 세션을 로그아웃 후 새로 로그인 처리
+                if (!m_UserSessionManager.AddUserSession(request.Username, out forceExit, clientInfo))
+                {
+                    // 중복 로그인 세션이 있을 경우, forceExit는 true
+                    result.ForceExit = forceExit;
+                    result.Message = "중복 로그인 세션이 감지되었습니다."; // 중복 로그인 감지
+                    result.ErrorCode = -1;
+                    return result;
+                }
 
-				// 데이터베이스 연결 및 인증 처리
-				await using var connection = new OracleConnection(_connectionString);
-				await connection.OpenAsync();
+                // 데이터베이스 연결 및 인증 처리
+                await using var connection = new OracleConnection(_connectionString);
+                await connection.OpenAsync();
 
-				const string query = @"
+                const string query = @"
             SELECT USERNAME, USER_LEVEL
             FROM SCOTT.USERS
             WHERE USERNAME = :username AND PASSWORD = :password";
 
-				await using var command = new OracleCommand(query, connection);
-				command.Parameters.Add(new OracleParameter("username", request.Username));
-				command.Parameters.Add(new OracleParameter("password", request.Password));
+                await using var command = new OracleCommand(query, connection);
+                command.Parameters.Add(new OracleParameter("username", request.Username));
+                command.Parameters.Add(new OracleParameter("password", request.Password));
 
-				await using var reader = await command.ExecuteReaderAsync();
+                await using var reader = await command.ExecuteReaderAsync();
 
-				if (await reader.ReadAsync())
-				{
-					result.ErrorCode = 0;
-					result.Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
-					result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
-					result.Message = "로그인 성공!";
-					result.ForceExit = forceExit; // 세션 종료 여부 전달
+                if (await reader.ReadAsync())
+                {
+                    result.ErrorCode = 0;
+                    result.Username = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
+                    result.UserLevel = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                    result.Message = "로그인 성공!";
+                    result.ForceExit = forceExit; // 세션 종료 여부 전달
                     Console.WriteLine($"[로그인 성공] 사용자: {request.Username}, 레벨: {result.UserLevel}, 세션 상태: {forceExit}");
                 }
-				else
-				{
-					result.ErrorCode = -1;
-					result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
-					result.ForceExit = forceExit; // 세션 종료 여부 전달
+                else
+                {
+                    result.ErrorCode = -1;
+                    result.Message = "아이디 또는 비밀번호가 잘못되었습니다.";
+                    result.ForceExit = forceExit; // 세션 종료 여부 전달
                     Console.WriteLine($"[로그인 실패] 사용자: {request.Username}, 이유: 잘못된 아이디 또는 비밀번호.");
                 }
-			}
-			catch (Exception ex)
-			{
-				result.ErrorCode = -1;
-				result.Message = $"서버 오류: {ex.Message}";
-				Console.WriteLine($"Exception: {ex.Message}");
-			}
+            }
+            catch (Exception ex)
+            {
+                result.ErrorCode = -1;
+                result.Message = $"서버 오류: {ex.Message}";
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		// 로그아웃 처리
-		public override async Task<LogoutReply> GetLogout(LogoutRequest request, ServerCallContext context)
-		{
-			var result = new LogoutReply();
+        // 로그아웃 처리
+        public override async Task<LogoutReply> GetLogout(LogoutRequest request, ServerCallContext context)
+        {
+            var result = new LogoutReply();
 
-			try
-			{
-				// 사용자가 로그인되어 있는지 확인
-				bool isLoggedIn = m_UserSessionManager.IsUserLoggedIn(request.UserId);
+            try
+            {
+                // 사용자가 로그인되어 있는지 확인
+                bool isLoggedIn = m_UserSessionManager.IsUserLoggedIn(request.UserId);
 
-				if (isLoggedIn)
-				{
-					// 로그인된 세션이 있다면 로그아웃 처리
-					bool logoutSuccess = m_UserSessionManager.ForceLogout(request.UserId);
+                if (isLoggedIn)
+                {
+                    // 로그인된 세션이 있다면 로그아웃 처리
+                    bool logoutSuccess = m_UserSessionManager.ForceLogout(request.UserId);
 
-					if (logoutSuccess)
-					{
-						result.Success = true;
-						result.Message = "로그아웃 성공!";
+                    if (logoutSuccess)
+                    {
+                        result.Success = true;
+                        result.Message = "로그아웃 성공!";
                         Console.WriteLine($"[로그아웃 성공] 사용자 ID: {request.UserId}");
-					}
-					else
-					{
-						result.Success = false;
-						result.Message = "로그아웃 실패. 세션을 찾을 수 없습니다.";
-					}
-				}
-				else
-				{
-					// 로그인되지 않은 사용자가 로그아웃 요청 시
-					result.Success = false;
-					result.Message = "로그인되지 않은 사용자입니다.";
-				}
-			}
-			catch (Exception ex)
-			{
-				result.Success = false;
-				result.Message = $"서버 오류: {ex.Message}";
-				Console.WriteLine($"Exception: {ex.Message}");
-			}
+                    }
+                    else
+                    {
+                        result.Success = false;
+                        result.Message = "로그아웃 실패. 세션을 찾을 수 없습니다.";
+                    }
+                }
+                else
+                {
+                    // 로그인되지 않은 사용자가 로그아웃 요청 시
+                    result.Success = false;
+                    result.Message = "로그인되지 않은 사용자입니다.";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"서버 오류: {ex.Message}";
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		// 강제 로그아웃 처리
-		public override async Task<ForceLogoutReply> ForceLogout(ForceLogoutRequest request, ServerCallContext context)
-		{
-			var result = new ForceLogoutReply();
-			bool isUserLoggedOut = false;
+        // 강제 로그아웃 처리
+        public override async Task<ForceLogoutReply> ForceLogout(ForceLogoutRequest request, ServerCallContext context)
+        {
+            var result = new ForceLogoutReply();
+            bool isUserLoggedOut = false;
             string clientInfo = context.Peer;
-			try
-			{
-				// 강제 로그아웃 처리 
-				bool logoutSuccess = m_UserSessionManager.ForceLogoutAndReturnState(request.UserId, out isUserLoggedOut);
+            try
+            {
+                // 강제 로그아웃 처리 
+                bool logoutSuccess = m_UserSessionManager.ForceLogoutAndReturnState(request.UserId, out isUserLoggedOut);
 
-				if (logoutSuccess)
-				{
-					result.Success = true;
-					result.Message = "기존 세션이 종료되었습니다.";
-					result.PromptUser = true;  // 클라이언트에게 로그아웃 메시지를 띄우도록 알림
+                if (logoutSuccess)
+                {
+                    result.Success = true;
+                    result.Message = "기존 세션이 종료되었습니다.";
+                    result.PromptUser = true;  // 클라이언트에게 로그아웃 메시지를 띄우도록 알림
 
-					bool sessionAdded = m_UserSessionManager.AddUserSession(request.UserId, out bool forceExit, clientInfo);
-					if (!sessionAdded)
-					{
-						result.Success = false;
-						result.Message = "새로운 세션을 추가하는 데 실패했습니다.";
-						result.PromptUser = true;
-					}
-				}
-				else
-				{
-					result.Success = false;
-					result.Message = "해당 사용자가 로그인되지 않았습니다.";
-					result.PromptUser = false;  // 클라이언트에게 메시지를 띄우지 않음
-				}
-			}
-			catch (Exception ex)
-			{
-				result.Success = false;
-				result.Message = $"서버 오류: {ex.Message}";
-				Console.WriteLine($"Exception: {ex.Message}");
-			}
+                    bool sessionAdded = m_UserSessionManager.AddUserSession(request.UserId, out bool forceExit, clientInfo);
+                    if (!sessionAdded)
+                    {
+                        result.Success = false;
+                        result.Message = "새로운 세션을 추가하는 데 실패했습니다.";
+                        result.PromptUser = true;
+                    }
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Message = "해당 사용자가 로그인되지 않았습니다.";
+                    result.PromptUser = false;  // 클라이언트에게 메시지를 띄우지 않음
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = $"서버 오류: {ex.Message}";
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
 
-			return result;
-		}
+            return result;
+        }
 
 
 
-		// 회원 추가 메서드
-		public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
+        // 회원 추가 메서드
+        public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
         {
             var result = new AddUserReply();
             try
@@ -1099,121 +1099,121 @@ FROM SCOTT.USERS"; // Password 제외
             return response;
         }
 
-		
-		// 이미지 검출
-		public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
-		{
-			var result = new ImageAnalysisReply();
 
-			try
-			{
-				Console.WriteLine($"[INFO] Received AnalyzeImage request for ProductID={request.ProductID}");
+        // 이미지 검출
+        public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
+        {
+            var result = new ImageAnalysisReply();
 
-				byte[] imageData = request.ImageData.ToByteArray();
-				if (imageData == null || imageData.Length == 0)
-					throw new Exception("No image data received.");
+            try
+            {
+                Console.WriteLine($"[INFO] Received AnalyzeImage request for ProductID={request.ProductID}");
 
-				using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
-				if (mat.Empty())
-					throw new Exception("Failed to decode image data.");
+                byte[] imageData = request.ImageData.ToByteArray();
+                if (imageData == null || imageData.Length == 0)
+                    throw new Exception("No image data received.");
 
-				var resizedMat = new Mat();
-				Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
+                using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
+                if (mat.Empty())
+                    throw new Exception("Failed to decode image data.");
 
-				var session = LoadOnnxModel();
-				var tensor = ConvertToTensor(resizedMat);
-				var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) };
+                var resizedMat = new Mat();
+                Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
 
-				using var results = session.Run(inputTensor);
-				var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>();
-				string detectedClass = AnalyzeOutput(outputTensor);
+                var session = LoadOnnxModel();
+                var tensor = ConvertToTensor(resizedMat);
+                var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) };
 
-				await SaveDefectToDB(request.ProductID, detectedClass);
+                using var results = session.Run(inputTensor);
+                var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>();
+                string detectedClass = AnalyzeOutput(outputTensor);
 
-				result.ErrorCode = 0;
-				result.DefectType = detectedClass;
-				result.Message = "Defect detected and saved successfully.";
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"[ERROR] {ex.Message}");
-				result.ErrorCode = -1;
-				result.Message = ex.Message;
-			}
+                await SaveDefectToDB(request.ProductID, detectedClass);
 
-			return result;
-		}
+                result.ErrorCode = 0;
+                result.DefectType = detectedClass;
+                result.Message = "Defect detected and saved successfully.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] {ex.Message}");
+                result.ErrorCode = -1;
+                result.Message = ex.Message;
+            }
 
-		private InferenceSession LoadOnnxModel()
-		{
-			string modelPath = Path.Combine(Directory.GetCurrentDirectory(),"241211best.onnx");
-			if (!File.Exists(modelPath))
-				throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
+            return result;
+        }
 
-			return new InferenceSession(modelPath);
-		}
+        private InferenceSession LoadOnnxModel()
+        {
+            string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "241211best.onnx");
+            if (!File.Exists(modelPath))
+                throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
 
-		private DenseTensor<float> ConvertToTensor(Mat mat)
-		{
-			var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
-			for (int i = 0; i < mat.Rows; i++)
-				for (int j = 0; j < mat.Cols; j++)
-				{
-					var pixel = mat.At<Vec3b>(i, j);
-					tensor[0, 0, i, j] = pixel.Item2 / 255.0f;
-					tensor[0, 1, i, j] = pixel.Item1 / 255.0f;
-					tensor[0, 2, i, j] = pixel.Item0 / 255.0f;
-				}
-			return tensor;
-		}
+            return new InferenceSession(modelPath);
+        }
 
-		private string AnalyzeOutput(Tensor<float> outputTensor)
-		{
-			if (outputTensor.Length == 0)
-				return "none";
+        private DenseTensor<float> ConvertToTensor(Mat mat)
+        {
+            var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
+            for (int i = 0; i < mat.Rows; i++)
+                for (int j = 0; j < mat.Cols; j++)
+                {
+                    var pixel = mat.At<Vec3b>(i, j);
+                    tensor[0, 0, i, j] = pixel.Item2 / 255.0f;
+                    tensor[0, 1, i, j] = pixel.Item1 / 255.0f;
+                    tensor[0, 2, i, j] = pixel.Item0 / 255.0f;
+                }
+            return tensor;
+        }
 
-			var dimensions = outputTensor.Dimensions;
-			if (dimensions.Length != 3)
-				throw new Exception("Unexpected output dimensions.");
+        private string AnalyzeOutput(Tensor<float> outputTensor)
+        {
+            if (outputTensor.Length == 0)
+                return "none";
 
-			int anchors = dimensions[1];
-			int numFeatures = dimensions[2];
-			float maxConfidence = float.MinValue;
-			int maxClassIndex = -1;
+            var dimensions = outputTensor.Dimensions;
+            if (dimensions.Length != 3)
+                throw new Exception("Unexpected output dimensions.");
 
-			for (int i = 0; i < anchors; i++)
-			{
-				int numClasses = numFeatures - 5;
-				float objectness = outputTensor[0, i, 4];
-				for (int c = 0; c < numClasses; c++)
-				{
-					float confidence = outputTensor[0, i, 5 + c] * objectness;
-					if (confidence > maxConfidence)
-					{
-						maxConfidence = confidence;
-						maxClassIndex = c;
-					}
-				}
-			}
+            int anchors = dimensions[1];
+            int numFeatures = dimensions[2];
+            float maxConfidence = float.MinValue;
+            int maxClassIndex = -1;
 
-			return maxClassIndex switch
-			{
-				0 => "crazing",
-				1 => "inclusion",
-				2 => "patches",
-				3 => "pitted_surface",
-				4 => "rolled-in_scale",
-				5 => "scratches",
-				_ => "none",
-			};
-		}
+            for (int i = 0; i < anchors; i++)
+            {
+                int numClasses = numFeatures - 5;
+                float objectness = outputTensor[0, i, 4];
+                for (int c = 0; c < numClasses; c++)
+                {
+                    float confidence = outputTensor[0, i, 5 + c] * objectness;
+                    if (confidence > maxConfidence)
+                    {
+                        maxConfidence = confidence;
+                        maxClassIndex = c;
+                    }
+                }
+            }
 
-		private async Task SaveDefectToDB(int productId, string defectType)
-		{
-			using var connection = new OracleConnection(_connectionString);
-			await connection.OpenAsync();
+            return maxClassIndex switch
+            {
+                0 => "crazing",
+                1 => "inclusion",
+                2 => "patches",
+                3 => "pitted_surface",
+                4 => "rolled-in_scale",
+                5 => "scratches",
+                _ => "none",
+            };
+        }
 
-			var query = @"
+        private async Task SaveDefectToDB(int productId, string defectType)
+        {
+            using var connection = new OracleConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var query = @"
             MERGE INTO DEFECT d
             USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
             ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE)
@@ -1221,22 +1221,22 @@ FROM SCOTT.USERS"; // Password 제외
             INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
             VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
 
-			using var command = new OracleCommand(query, connection);
-			command.Parameters.Add(new OracleParameter(":productId", productId));
-			command.Parameters.Add(new OracleParameter(":defectType", defectType));
-			command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
+            using var command = new OracleCommand(query, connection);
+            command.Parameters.Add(new OracleParameter(":productId", productId));
+            command.Parameters.Add(new OracleParameter(":defectType", defectType));
+            command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
 
-			await command.ExecuteNonQueryAsync();
-		}
+            await command.ExecuteNonQueryAsync();
+        }
 
-		public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
+        public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
         {
-			var result = new Empty();
+            var result = new Empty();
             string clientInfo = context.Peer;
 
             return result;
         }
-	}
+    }
 
     //public class PiControlServiceImpl : PiControlService.PiControlServiceBase
     //{
@@ -1318,7 +1318,7 @@ FROM SCOTT.USERS"; // Password 제외
         {
             try
             {
-                string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "241211best.onnx");
+                string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "models", "241211best.onnx");
                 if (!File.Exists(modelPath))
                 {
                     throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
@@ -1429,7 +1429,7 @@ FROM SCOTT.USERS"; // Password 제외
                 }
             }
 
-            return maxClassIndex switch
+            string defectType = maxClassIndex switch
             {
                 0 => "crazing",
                 1 => "inclusion",
@@ -1439,7 +1439,10 @@ FROM SCOTT.USERS"; // Password 제외
                 5 => "scratches",
                 _ => "none",
             };
-        }
-    }
 
+            Console.WriteLine($"[분석 결과] 불량 유형: {defectType}, 신뢰도: {maxConfidence:F2}");
+            return defectType;
+        }
+
+    }
 }
