@@ -6,6 +6,8 @@ using TorchSharp;
 using OpenCvSharp;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using MongoDB.Driver.Core.Configuration;
+using Microsoft.VisualBasic;
 
 namespace grpctestserver
 {
@@ -860,7 +862,6 @@ namespace grpctestserver
         }
 
 
-
         // 회원 추가 메서드
         public override async Task<AddUserReply> AddUser(AddUserRequest request, ServerCallContext context)
         {
@@ -1101,133 +1102,190 @@ FROM SCOTT.USERS"; // Password 제외
 
 
         // 이미지 검출
-        public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
-        {
-            var result = new ImageAnalysisReply();
+        //public override async Task<ImageAnalysisReply> AnalyzeImage(SteelMES.ImageRequest request, ServerCallContext context)
+        //{
+        //    var result = new ImageAnalysisReply();
 
-            try
-            {
-                Console.WriteLine($"[INFO] Received AnalyzeImage request for ProductID={request.ProductID}");
+        //    try
+        //    {
+        //        Console.WriteLine($"[INFO] Received AnalyzeImage request for ProductID={request.ProductID}");
 
-                byte[] imageData = request.ImageData.ToByteArray();
-                if (imageData == null || imageData.Length == 0)
-                    throw new Exception("No image data received.");
+        //        byte[] imageData = request.ImageData.ToByteArray();
+        //        if (imageData == null || imageData.Length == 0)
+        //            throw new Exception("No image data received.");
 
-                using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
-                if (mat.Empty())
-                    throw new Exception("Failed to decode image data.");
+        //        using var mat = Cv2.ImDecode(imageData, ImreadModes.Color);
+        //        if (mat.Empty())
+        //            throw new Exception("Failed to decode image data.");
 
-                var resizedMat = new Mat();
-                Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
+        //        var resizedMat = new Mat();
+        //        Cv2.Resize(mat, resizedMat, new OpenCvSharp.Size(640, 640));
 
-                var session = LoadOnnxModel();
-                var tensor = ConvertToTensor(resizedMat);
-                var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) };
+        //        var session = LoadOnnxModel();
+        //        var tensor = ConvertToTensor(resizedMat);
+        //        var inputTensor = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor("images", tensor) };
 
-                using var results = session.Run(inputTensor);
-                var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>();
-                string detectedClass = AnalyzeOutput(outputTensor);
+        //        using var results = session.Run(inputTensor);
+        //        var outputTensor = results.First(x => x.Name == "output0").AsTensor<float>();
+        //        string detectedClass = AnalyzeOutput(outputTensor);
 
-                await SaveDefectToDB(request.ProductID, detectedClass);
+        //        await SaveDefectToDB(request.ProductID, detectedClass);
 
-                result.ErrorCode = 0;
-                result.DefectType = detectedClass;
-                result.Message = "Defect detected and saved successfully.";
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[ERROR] {ex.Message}");
-                result.ErrorCode = -1;
-                result.Message = ex.Message;
-            }
+        //        result.ErrorCode = 0;
+        //        result.DefectType = detectedClass;
+        //        result.Message = "Defect detected and saved successfully.";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"[ERROR] {ex.Message}");
+        //        result.ErrorCode = -1;
+        //        result.Message = ex.Message;
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        private InferenceSession LoadOnnxModel()
-        {
-            string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "241211best.onnx");
-            if (!File.Exists(modelPath))
-                throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
+        //private InferenceSession LoadOnnxModel()
+        //{
+        //    string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "241211best.onnx");
+        //    if (!File.Exists(modelPath))
+        //        throw new FileNotFoundException($"ONNX 모델이 없습니다: {modelPath}");
 
-            return new InferenceSession(modelPath);
-        }
+        //    return new InferenceSession(modelPath);
+        //}
 
-        private DenseTensor<float> ConvertToTensor(Mat mat)
-        {
-            var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
-            for (int i = 0; i < mat.Rows; i++)
-                for (int j = 0; j < mat.Cols; j++)
-                {
-                    var pixel = mat.At<Vec3b>(i, j);
-                    tensor[0, 0, i, j] = pixel.Item2 / 255.0f;
-                    tensor[0, 1, i, j] = pixel.Item1 / 255.0f;
-                    tensor[0, 2, i, j] = pixel.Item0 / 255.0f;
-                }
-            return tensor;
-        }
+        //private DenseTensor<float> ConvertToTensor(Mat mat)
+        //{
+        //    var tensor = new DenseTensor<float>(new[] { 1, 3, mat.Rows, mat.Cols });
+        //    for (int i = 0; i < mat.Rows; i++)
+        //        for (int j = 0; j < mat.Cols; j++)
+        //        {
+        //            var pixel = mat.At<Vec3b>(i, j);
+        //            tensor[0, 0, i, j] = pixel.Item2 / 255.0f;
+        //            tensor[0, 1, i, j] = pixel.Item1 / 255.0f;
+        //            tensor[0, 2, i, j] = pixel.Item0 / 255.0f;
+        //        }
+        //    return tensor;
+        //} //onnx모델
 
-        private string AnalyzeOutput(Tensor<float> outputTensor)
-        {
-            if (outputTensor.Length == 0)
-                return "none";
+        //private string AnalyzeOutput(Tensor<float> outputTensor)
+        //{
+        //    if (outputTensor.Length == 0)
+        //        return "none";
 
-            var dimensions = outputTensor.Dimensions;
-            if (dimensions.Length != 3)
-                throw new Exception("Unexpected output dimensions.");
+        //    var dimensions = outputTensor.Dimensions;
+        //    if (dimensions.Length != 3)
+        //        throw new Exception("Unexpected output dimensions.");
 
-            int anchors = dimensions[1];
-            int numFeatures = dimensions[2];
-            float maxConfidence = float.MinValue;
-            int maxClassIndex = -1;
+        //    int anchors = dimensions[1];
+        //    int numFeatures = dimensions[2];
+        //    float maxConfidence = float.MinValue;
+        //    int maxClassIndex = -1;
 
-            for (int i = 0; i < anchors; i++)
-            {
-                int numClasses = numFeatures - 5;
-                float objectness = outputTensor[0, i, 4];
-                for (int c = 0; c < numClasses; c++)
-                {
-                    float confidence = outputTensor[0, i, 5 + c] * objectness;
-                    if (confidence > maxConfidence)
-                    {
-                        maxConfidence = confidence;
-                        maxClassIndex = c;
-                    }
-                }
-            }
+        //    for (int i = 0; i < anchors; i++)
+        //    {
+        //        int numClasses = numFeatures - 5;
+        //        float objectness = outputTensor[0, i, 4];
+        //        for (int c = 0; c < numClasses; c++)
+        //        {
+        //            float confidence = outputTensor[0, i, 5 + c] * objectness;
+        //            if (confidence > maxConfidence)
+        //            {
+        //                maxConfidence = confidence;
+        //                maxClassIndex = c;
+        //            }
+        //        }
+        //    }
 
-            return maxClassIndex switch
-            {
-                0 => "crazing",
-                1 => "inclusion",
-                2 => "patches",
-                3 => "pitted_surface",
-                4 => "rolled-in_scale",
-                5 => "scratches",
-                _ => "none",
-            };
-        }
+        //    return maxClassIndex switch
+        //    {
+        //        0 => "crazing",
+        //        1 => "inclusion",
+        //        2 => "patches",
+        //        3 => "pitted_surface",
+        //        4 => "rolled-in_scale",
+        //        5 => "scratches",
+        //        _ => "none",
+        //    };
+        //}
 
-        private async Task SaveDefectToDB(int productId, string defectType)
-        {
-            using var connection = new OracleConnection(_connectionString);
-            await connection.OpenAsync();
+        //private async Task SaveDefectToDB(int productId, string defectType)
+        //{
+        //    using var connection = new OracleConnection(_connectionString);
+        //    await connection.OpenAsync();
 
-            var query = @"
-            MERGE INTO DEFECT d
-            USING (SELECT :productId AS PRODUCTID, :defectType AS DEFECTTYPE, :detectionDate AS DETECTIONDATE FROM DUAL) src
-            ON (d.PRODUCTID = src.PRODUCTID AND d.DEFECTTYPE = src.DEFECTTYPE)
-            WHEN NOT MATCHED THEN
-            INSERT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
-            VALUES (src.PRODUCTID, src.DEFECTTYPE, src.DETECTIONDATE)";
+        //    try
+        //    {
+        //        using var transaction = connection.BeginTransaction();
+        //        try
+        //        {
+        //            // 품질 등급 결정
+        //            string qualityGrade = null;
 
-            using var command = new OracleCommand(query, connection);
-            command.Parameters.Add(new OracleParameter(":productId", productId));
-            command.Parameters.Add(new OracleParameter(":defectType", defectType));
-            command.Parameters.Add(new OracleParameter(":detectionDate", DateTime.Now));
+        //            if (defectType.ToLower() == "none")
+        //            {
+        //                qualityGrade = "A";
+        //            }
+        //            else
+        //            {
+        //                qualityGrade = "F";
+        //            }
 
-            await command.ExecuteNonQueryAsync();
-        }
+        //            // 불량일 경우 DEFECT 테이블에 저장
+        //            if (qualityGrade == "F")
+        //            {
+        //                var defectQuery = @"
+        //             INSERT INTO DEFECT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
+        //             VALUES ( :productId, :defectType, SYSDATE)";
+
+        //                using var defectCommand = new OracleCommand(defectQuery, connection);
+        //                defectCommand.Transaction = transaction;
+        //                defectCommand.Parameters.Add(new OracleParameter(":productId", productId));
+        //                defectCommand.Parameters.Add(new OracleParameter(":defectType", defectType));
+
+        //                var insertResult = await defectCommand.ExecuteNonQueryAsync();
+        //                Console.WriteLine($"[INFO] Defect record inserted: {insertResult} rows");
+        //            }
+
+        //            // QUALITYGRADE 업데이트
+        //            if (qualityGrade != null)
+        //            {
+        //                //var updateQuery = @"
+        //                //                UPDATE SCOTT.PRODUCT 
+        //                //                SET QUALITYGRADE = :qualityGrade
+        //                //                WHERE PRODUCTID = :productId";
+
+        //                //using var updateCommand = new OracleCommand(updateQuery, connection);
+        //                //updateCommand.Transaction = transaction;
+        //                //updateCommand.Parameters.Add(new OracleParameter(":qualityGrade", qualityGrade));
+        //                //updateCommand.Parameters.Add(new OracleParameter(":productId", productId));
+
+        //                //var rowsAffected = await updateCommand.ExecuteNonQueryAsync();
+        //                //Console.WriteLine($"[INFO] Product {productId} quality grade updated to {qualityGrade}, Rows affected: {rowsAffected}");
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine($"[INFO] No quality grade update needed for ProductID: {productId}");
+        //            }
+
+        //            // 트랜잭션 커밋
+        //            transaction.Commit();
+        //            Console.WriteLine($"[INFO] Transaction committed successfully for ProductID: {productId}");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            transaction.Rollback();
+        //            Console.WriteLine($"[ERROR] Transaction rolled back: {ex.Message}");
+        //            throw;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"[ERROR] Database operation failed: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
 
         public override async Task<Empty> DiagnosticReqeust(Empty request, ServerCallContext context)
         {
@@ -1313,9 +1371,14 @@ FROM SCOTT.USERS"; // Password 제외
     public class PiControlServiceImpl : PiControlService.PiControlServiceBase
     {
         private readonly InferenceSession _session;
+        private readonly string _connectionString;
 
         public PiControlServiceImpl()
         {
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json");
+            var config = ConfigLoader.LoadConfig(configFilePath);
+            _connectionString = ConfigLoader.BuildConnectionString(config.OracleConnection);
+
             try
             {
                 string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "models", "241211best.onnx");
@@ -1338,7 +1401,7 @@ FROM SCOTT.USERS"; // Password 제외
 
             try
             {
-                Console.WriteLine($"[INFO] Received SendImage request for ProductID={request.ProductId}");
+                Console.WriteLine($"[INFO] 수신한  ProductID={request.ProductId}");
                 byte[] imageData = request.ImageData.ToByteArray();
                 if (imageData == null || imageData.Length == 0)
                 {
@@ -1382,6 +1445,8 @@ FROM SCOTT.USERS"; // Password 제외
                 using var results = _session.Run(inputs);
                 var outputTensor = results.First().AsTensor<float>();
                 string defectType = AnalyzeOutput(outputTensor);
+
+                await SaveDefectToDB(request.ProductId, defectType);
 
                 // 응답 설정
                 response.Status = "Success";
@@ -1432,8 +1497,8 @@ FROM SCOTT.USERS"; // Password 제외
 			// 신뢰도가 50% 미만이면 "정상" 처리
 			if (maxConfidence < 0.5f)
 			{
-                Console.WriteLine($"[분석 결과] 불량 유형: normal, 신뢰도: {maxConfidence:F2}");
-                return "normal";
+                Console.WriteLine($"[분석 결과] 불량 유형: 정상, 신뢰도: {maxConfidence:F2}");
+                return "none";
 
             }
 
@@ -1452,6 +1517,100 @@ FROM SCOTT.USERS"; // Password 제외
             Console.WriteLine($"[분석 결과] 불량 유형: {defectType}, 신뢰도: {maxConfidence:F2}");
             return defectType;
         }
+        private async Task SaveDefectToDB(int productId, string defectType)
+        {
+            using var _connection = new OracleConnection(_connectionString);
+            await _connection.OpenAsync();
 
+            try
+            {
+                using var transaction = _connection.BeginTransaction();
+                try
+                {
+                    // 품질 등급 결정
+                    string qualityGrade = null;
+
+                    if (defectType.ToLower() == "none")
+                    {
+                        qualityGrade = "A";
+                        var updateQuery = @"
+                                    UPDATE product
+                                    SET QUALITYGRADE = :qualityGrade
+                                    WHERE PRODUCTID = :productId";
+
+                        using var updateCommand = new OracleCommand(updateQuery, _connection);
+                        updateCommand.Parameters.Add(new OracleParameter(":qualityGrade", qualityGrade));
+                        updateCommand.Parameters.Add(new OracleParameter(":productId", productId)); // ProductID 값이 필요합니다.
+                        var updateResult = await updateCommand.ExecuteNonQueryAsync();
+                        Console.WriteLine($"[INFO] QUALITYGRADE updated to A for ProductID: {productId}, Rows affected: {updateResult}");
+                    }
+                    else
+                    {
+                        qualityGrade = "F";
+                        var FQuery =@"UPDATE product
+                                    SET QUALITYGRADE = :qualityGrade
+                                    WHERE PRODUCTID = :productId";
+                        using var FqueryCommand = new OracleCommand(FQuery, _connection);
+                        FqueryCommand.Parameters.Add(new OracleParameter(":qualityGrade", qualityGrade));
+                        FqueryCommand.Parameters.Add(new OracleParameter(":productId", productId)); // ProductID 값이 필요합니다.
+                        var FqueryResult = await FqueryCommand.ExecuteNonQueryAsync();
+                        Console.WriteLine($"[INFO] QUALITYGRADE updated to F for ProductID: {productId}, Rows affected: {FqueryResult}");
+                    }
+
+
+                    // 불량일 경우 DEFECT 테이블에 저장
+                    if (qualityGrade == "F")
+                    {
+                        var defectQuery = @"
+                            INSERT INTO DEFECT (PRODUCTID, DEFECTTYPE, DETECTIONDATE)
+                            VALUES ( :productId, :defectType, SYSDATE)";
+
+                        using var defectCommand = new OracleCommand(defectQuery, _connection);
+                        defectCommand.Transaction = transaction;
+                        defectCommand.Parameters.Add(new OracleParameter(":productId", productId));
+                        defectCommand.Parameters.Add(new OracleParameter(":defectType", defectType));
+
+                        var insertResult = await defectCommand.ExecuteNonQueryAsync();
+                        Console.WriteLine($"[INFO] Defect record inserted: {insertResult} rows");
+                    }
+
+                    // QUALITYGRADE 업데이트
+                    if (qualityGrade != null)
+                    {
+                        //var updateQuery = @"
+                        //                UPDATE SCOTT.PRODUCT 
+                        //                SET QUALITYGRADE = :qualityGrade
+                        //                WHERE PRODUCTID = :productId";
+
+                        //using var updateCommand = new OracleCommand(updateQuery, connection);
+                        //updateCommand.Transaction = transaction;
+                        //updateCommand.Parameters.Add(new OracleParameter(":qualityGrade", qualityGrade));
+                        //updateCommand.Parameters.Add(new OracleParameter(":productId", productId));
+
+                        //var rowsAffected = await updateCommand.ExecuteNonQueryAsync();
+                        //Console.WriteLine($"[INFO] Product {productId} quality grade updated to {qualityGrade}, Rows affected: {rowsAffected}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"[INFO] No quality grade update needed for ProductID: {productId}");
+                    }
+
+                    // 트랜잭션 커밋
+                    transaction.Commit();
+                    Console.WriteLine($"[INFO] Transaction committed successfully for ProductID: {productId}");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine($"[ERROR] Transaction rolled back: {ex.Message}");
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Database operation failed: {ex.Message}");
+                throw;
+            }
+        }
     }
 }
