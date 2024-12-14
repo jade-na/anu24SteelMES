@@ -34,7 +34,22 @@ namespace Project_SteelMES
 			label4.Text = ProductID;
 			label5.Text = MaterialID;
 			label6.Text = DetectionDate;
-		}
+
+            if (label2.Text == "Crazing")
+            {
+                pictureBox1.Image = Properties.Resources.crazing;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // 이미지 크기를 PictureBox에 맞게 조정
+            }
+			else if(label2.Text == "Inclusions")
+			{
+                pictureBox1.Image = Properties.Resources.inclusions;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pictureBox1.Image = null; // 조건이 맞지 않으면 이미지를 제거
+            }
+        }
 
 		private void button1_Click(object sender, EventArgs e)
 		{

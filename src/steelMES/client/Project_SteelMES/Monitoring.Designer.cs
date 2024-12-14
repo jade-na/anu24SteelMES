@@ -84,6 +84,7 @@ namespace Project_SteelMES
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox3)).BeginInit();
@@ -133,7 +134,6 @@ namespace Project_SteelMES
             // 
             // Menu_MatOrderBtn
             // 
-            //this.Menu_MatOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(15)))), ((int)(((byte)(37)))));
             this.Menu_MatOrderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Menu_MatOrderBtn.FlatAppearance.BorderSize = 0;
             this.Menu_MatOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -228,7 +228,7 @@ namespace Project_SteelMES
             this.Menu_WorkBtn.Name = "Menu_WorkBtn";
             this.Menu_WorkBtn.Size = new System.Drawing.Size(406, 115);
             this.Menu_WorkBtn.TabIndex = 5;
-            this.Menu_WorkBtn.Text = "제 품 주 문";
+            this.Menu_WorkBtn.Text = "제 품 생 산";
             this.Menu_WorkBtn.UseVisualStyleBackColor = true;
             this.Menu_WorkBtn.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -546,6 +546,11 @@ namespace Project_SteelMES
             this.panel8.Size = new System.Drawing.Size(233, 73);
             this.panel8.TabIndex = 11;
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 10000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Monitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -614,5 +619,6 @@ namespace Project_SteelMES
         private Button LogoutBtn;
         private Panel panel6;
         private PictureBox pictureBox3;
+        private Timer timer2;
     }
 }

@@ -40,6 +40,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.CloseBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dungeonLabel1
@@ -58,68 +60,68 @@
             // 
             this.dungeonLabel2.AutoSize = true;
             this.dungeonLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.dungeonLabel2.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel2.Location = new System.Drawing.Point(37, 97);
+            this.dungeonLabel2.Location = new System.Drawing.Point(38, 104);
             this.dungeonLabel2.Name = "dungeonLabel2";
-            this.dungeonLabel2.Size = new System.Drawing.Size(163, 37);
+            this.dungeonLabel2.Size = new System.Drawing.Size(129, 32);
             this.dungeonLabel2.TabIndex = 6;
-            this.dungeonLabel2.Text = "DetectType :";
+            this.dungeonLabel2.Text = "검출 타입 :";
             // 
             // dungeonLabel3
             // 
             this.dungeonLabel3.AutoSize = true;
             this.dungeonLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.dungeonLabel3.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel3.Location = new System.Drawing.Point(37, 150);
+            this.dungeonLabel3.Location = new System.Drawing.Point(38, 157);
             this.dungeonLabel3.Name = "dungeonLabel3";
-            this.dungeonLabel3.Size = new System.Drawing.Size(133, 37);
+            this.dungeonLabel3.Size = new System.Drawing.Size(104, 32);
             this.dungeonLabel3.TabIndex = 7;
-            this.dungeonLabel3.Text = "DetectID :";
+            this.dungeonLabel3.Text = "검출 ID :";
             // 
             // dungeonLabel4
             // 
             this.dungeonLabel4.AutoSize = true;
             this.dungeonLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel4.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.dungeonLabel4.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel4.Location = new System.Drawing.Point(37, 203);
+            this.dungeonLabel4.Location = new System.Drawing.Point(37, 209);
             this.dungeonLabel4.Name = "dungeonLabel4";
-            this.dungeonLabel4.Size = new System.Drawing.Size(148, 37);
+            this.dungeonLabel4.Size = new System.Drawing.Size(104, 32);
             this.dungeonLabel4.TabIndex = 8;
-            this.dungeonLabel4.Text = "ProductID :";
+            this.dungeonLabel4.Text = "제품 ID :";
             // 
             // dungeonLabel5
             // 
             this.dungeonLabel5.AutoSize = true;
             this.dungeonLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel5.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.dungeonLabel5.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel5.Location = new System.Drawing.Point(35, 258);
+            this.dungeonLabel5.Location = new System.Drawing.Point(35, 264);
             this.dungeonLabel5.Name = "dungeonLabel5";
-            this.dungeonLabel5.Size = new System.Drawing.Size(154, 37);
+            this.dungeonLabel5.Size = new System.Drawing.Size(128, 32);
             this.dungeonLabel5.TabIndex = 9;
-            this.dungeonLabel5.Text = "MaterialID :";
+            this.dungeonLabel5.Text = "원자재 ID :";
             // 
             // dungeonLabel6
             // 
             this.dungeonLabel6.AutoSize = true;
             this.dungeonLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonLabel6.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.dungeonLabel6.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.dungeonLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.dungeonLabel6.Location = new System.Drawing.Point(37, 310);
+            this.dungeonLabel6.Location = new System.Drawing.Point(35, 316);
             this.dungeonLabel6.Name = "dungeonLabel6";
-            this.dungeonLabel6.Size = new System.Drawing.Size(201, 37);
+            this.dungeonLabel6.Size = new System.Drawing.Size(129, 32);
             this.dungeonLabel6.TabIndex = 10;
-            this.dungeonLabel6.Text = "DetectionDate :";
+            this.dungeonLabel6.Text = "검출 날짜 :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(10)))), ((int)(((byte)(100)))));
-            this.label2.Location = new System.Drawing.Point(206, 104);
+            this.label2.Location = new System.Drawing.Point(173, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 32);
             this.label2.TabIndex = 11;
@@ -130,7 +132,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(10)))), ((int)(((byte)(100)))));
-            this.label3.Location = new System.Drawing.Point(176, 157);
+            this.label3.Location = new System.Drawing.Point(148, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 32);
             this.label3.TabIndex = 12;
@@ -141,7 +143,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(10)))), ((int)(((byte)(100)))));
-            this.label4.Location = new System.Drawing.Point(195, 209);
+            this.label4.Location = new System.Drawing.Point(147, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 32);
             this.label4.TabIndex = 13;
@@ -152,7 +154,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(10)))), ((int)(((byte)(100)))));
-            this.label5.Location = new System.Drawing.Point(195, 264);
+            this.label5.Location = new System.Drawing.Point(169, 264);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 32);
             this.label5.TabIndex = 14;
@@ -163,7 +165,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(10)))), ((int)(((byte)(100)))));
-            this.label6.Location = new System.Drawing.Point(244, 316);
+            this.label6.Location = new System.Drawing.Point(170, 316);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 32);
             this.label6.TabIndex = 15;
@@ -184,11 +186,21 @@
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.button5_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(284, 89);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(199, 207);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // DefectRecord2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 400);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -203,6 +215,7 @@
             this.Controls.Add(this.dungeonLabel1);
             this.Name = "DefectRecord2";
             this.Load += new System.EventHandler(this.Material_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +234,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Button CloseBtn;
-	}
+        private System.Windows.Forms.PictureBox pictureBox1;
+    }
 }

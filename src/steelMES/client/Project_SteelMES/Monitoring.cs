@@ -70,7 +70,7 @@ namespace Project_SteelMES
             LoginInfo1.Text = $"{userName} 님";
             LoginInfo2.Text = $"권한등급 : {userLevel}";
 
-
+            timer2.Enabled = true ;
         }
 
         private void CreateOptionButtons()
@@ -316,6 +316,12 @@ namespace Project_SteelMES
                 return;
             }
 
+            var result = MessageBox.Show("로그아웃 성공 시 프로그램이 종료됩니다.\n로그아웃 하시겠습니까?","확인",MessageBoxButtons.OKCancel);
+            if(result != DialogResult.OK)
+            {
+                return;
+            }
+
             // gRPC 채널 생성
             var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
             var client = new DB_Service.DB_ServiceClient(channel);
@@ -331,6 +337,7 @@ namespace Project_SteelMES
                 if (logoutResponse.Success)
                 {
                     MessageBox.Show("로그아웃 성공!");
+                    timer2.Stop();
                     this.Close();
                 }
                 else
@@ -411,6 +418,28 @@ namespace Project_SteelMES
             else
             {
                 MessageBox.Show("manager 권한 이상만 접속이 가능합니다.");
+            }
+        }
+
+        private async void timer2_Tick(object sender, EventArgs e)
+        {
+            // gRPC 채널 생성
+            var channel = new Channel($"{config.GrpcSettings.Host}:{config.GrpcSettings.Port}", ChannelCredentials.Insecure);
+            var client = new DB_Service.DB_ServiceClient(channel);
+
+            try
+            {
+                
+                var EmptyResponse = await client.DiagnosticReqeustAsync(new Empty());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("gRPC 오류 발생: " + ex.Message);
+            }
+            finally
+            {
+                await channel.ShutdownAsync();
             }
         }
     }

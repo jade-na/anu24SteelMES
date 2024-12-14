@@ -34,7 +34,7 @@ namespace Project_SteelMES
 				dataGridView1.Columns.Add("DefectID", "검출 ID");
 				dataGridView1.Columns.Add("ProductID", "제품 ID");
 				dataGridView1.Columns.Add("DefectType", "검출 타입");
-				dataGridView1.Columns.Add("DefectionDate", "검출 날짜");
+				dataGridView1.Columns.Add("DetectionDate", "검출 날짜");
 			}
 
 			
@@ -64,7 +64,7 @@ namespace Project_SteelMES
 
 				Console.WriteLine($"Sending request: FromTime={fromTime}, ToTime={toTime}");
 
-				var response = await client.reqProdHistoryAsync(request);
+				var response =  client.reqProdHistory(request);
 
 				if (response.ErrorCode == 0)
 				{
@@ -75,7 +75,7 @@ namespace Project_SteelMES
 						dataGridView1.Rows.Add(info.DefectID, info.ProductID, info.DefectType, info.DetectionDate);
 					}
 				}
-				else
+                else
 				{
 					MessageBox.Show($"서버에서 데이터를 가져오지 못했습니다. ErrorCode: {response.ErrorCode}");
 					Console.WriteLine($"ErrorCode: {response.ErrorCode}");
