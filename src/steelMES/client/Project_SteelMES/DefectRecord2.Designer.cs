@@ -163,6 +163,7 @@
 			// 
 			// pictureBox1
 			// 
+			this.pictureBox1.InitialImage = global::Project_SteelMES.Properties.Resources.scratch;
 			this.pictureBox1.Location = new System.Drawing.Point(284, 89);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(199, 207);

@@ -25,40 +25,40 @@ namespace Project_SteelMES
 			label4.Text = ProductID;
 			label6.Text = DetectionDate;
 
-			//if (label2.Text == "crazing")
-			//{
-			//	pictureBox1.Image = Properties.Resources.crazing;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // 이미지 크기를 PictureBox에 맞게 조정
-			//}
-			//else if (label2.Text == "Inclusions")
-			//{
-			//	pictureBox1.Image = Properties.Resources.inclusions;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			//}
-			//else if (label2.Text == "patches")
-			//{
-			//	pictureBox1.Image = Properties.Resources.patches;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			//}
-			//else if (label2.Text == "pitted_surface")
-			//{
-			//	pictureBox1.Image = Properties.Resources.pitted_surface;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			//}
-			//else if (label2.Text == "rolled-in_scale")
-			//{
-			//	pictureBox1.Image = Properties.Resources.rolledin_scale;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			//}
-			//else if (label2.Text == "scratch")
-			//{
-			//	pictureBox1.Image = Properties.Resources.scratch;
-			//	pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			//}
-			//else
-			//{
-			//	pictureBox1.Image = null; // 조건이 맞지 않으면 이미지를 제거
-			//}
+			if (label2.Text == "crazing")
+			{
+				pictureBox1.Image = Properties.Resources.crazing;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // 이미지 크기를 PictureBox에 맞게 조정
+			}
+			else if (label2.Text == "Inclusions")
+			{
+				pictureBox1.Image = Properties.Resources.inclusion;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			}
+			else if (label2.Text == "patches")
+			{
+				pictureBox1.Image = Properties.Resources.patches;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			}
+			else if (label2.Text == "pitted_surface")
+			{
+				pictureBox1.Image = Properties.Resources.pitted_surface;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			}
+			else if (label2.Text == "rolled_in_scale")
+			{
+				pictureBox1.Image = Properties.Resources.rolled_in_scale;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			}
+			else if (label2.Text == "scratch")
+			{
+				pictureBox1.Image = Properties.Resources.scratch;
+				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			}
+			else
+			{
+				pictureBox1.Image = null; // 조건이 맞지 않으면 이미지를 제거
+			}
 		}
 
 		private void button1_Click(object sender, EventArgs e)
