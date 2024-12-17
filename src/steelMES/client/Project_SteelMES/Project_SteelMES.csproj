@@ -477,6 +477,24 @@
   <ItemGroup>
     <None Include="Resources\account.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crazing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inclusion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\patches.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pitted_surface.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rolled-in_scale.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scratch.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
