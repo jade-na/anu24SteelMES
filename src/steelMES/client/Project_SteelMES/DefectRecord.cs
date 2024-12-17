@@ -127,7 +127,7 @@ namespace Project_SteelMES
 				var defectID = dataGridView1.Rows[e.RowIndex].Cells["DefectID"].Value.ToString();
 				var productID = dataGridView1.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
 				var defectType = dataGridView1.Rows[e.RowIndex].Cells["DefectType"].Value.ToString();
-				var detectionDate = dataGridView1.Rows[e.RowIndex].Cells["DefectionDate"].Value.ToString();
+				var detectionDate = dataGridView1.Rows[e.RowIndex].Cells["DetectionDate"].Value.ToString();
 
 				// Material 폼 열기
 				DefectRecord2 materialForm = new DefectRecord2

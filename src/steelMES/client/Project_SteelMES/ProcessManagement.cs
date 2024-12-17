@@ -144,7 +144,7 @@ namespace Project_SteelMES
 		}
 
 		// Pi에 작업 요청
-		private async Task StartDefectInspection()
+		private async Task StartDefectInspection()  
 		{
 			var channel = new Channel($"{config.PiConnection.Host}:{config.PiConnection.Port}", ChannelCredentials.Insecure);
 			var client = new PiControlService.PiControlServiceClient(channel);
@@ -153,7 +153,7 @@ namespace Project_SteelMES
 			{
 				var response = await client.StartInspectionAsync(new PiRequest
 				{
-					ProductId = selectedProductId.ToString(),
+					ProductId = selectedProductId,
 					Quantity = quantity
 				});
 

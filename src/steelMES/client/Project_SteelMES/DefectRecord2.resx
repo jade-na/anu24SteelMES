@@ -117,4 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="crazing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\crazing.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="inclusion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\inclusion.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="patches" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\patches.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pitted_surface" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pitted_surface.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rolledin_scale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\rolled-in_scale.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="scratch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\scratch.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
