@@ -113,6 +113,16 @@ namespace Project_SteelMES.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap crazing {
+            get {
+                object obj = ResourceManager.GetObject("crazing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap createId {
             get {
                 object obj = ResourceManager.GetObject("createId", resourceCulture);
@@ -273,6 +283,16 @@ namespace Project_SteelMES.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap inclusion {
+            get {
+                object obj = ResourceManager.GetObject("inclusion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
@@ -403,6 +423,26 @@ namespace Project_SteelMES.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap patches {
+            get {
+                object obj = ResourceManager.GetObject("patches", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap pitted_surface {
+            get {
+                object obj = ResourceManager.GetObject("pitted_surface", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap process4 {
             get {
                 object obj = ResourceManager.GetObject("process4", resourceCulture);
@@ -446,6 +486,26 @@ namespace Project_SteelMES.Properties {
         internal static System.Drawing.Bitmap regist {
             get {
                 object obj = ResourceManager.GetObject("regist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap rolled_in_scale {
+            get {
+                object obj = ResourceManager.GetObject("rolled_in_scale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap scratch {
+            get {
+                object obj = ResourceManager.GetObject("scratch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
