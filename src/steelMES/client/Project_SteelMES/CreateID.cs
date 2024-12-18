@@ -15,6 +15,7 @@ using Grpc.Core;
 using SteelMES;
 using grpctestserver;
 using System.IO;
+using Grpc.Net.Client.Configuration;
 
 namespace Project_SteelMES
 {
@@ -27,7 +28,7 @@ namespace Project_SteelMES
             InitializeComponent();
 
             string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsetting.json"); // JSON 파일 경로 설정
-            var config = ConfigLoader.LoadConfig(configFilePath);
+            config = ConfigLoader.LoadConfig(configFilePath);
 
             if (config == null)
             {
@@ -67,6 +68,8 @@ namespace Project_SteelMES
                 {
                     MessageBox.Show(response.Message);
                     this.Close(); // 회원가입 창 닫기
+                    Login loginForm = new Login();
+                    loginForm.Show();
                 }
                 else
                 {
@@ -83,22 +86,6 @@ namespace Project_SteelMES
             }
 
         }
-
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancleBtn_Click(object sender, EventArgs e)
         {
             Login loginForm = new Login();
@@ -110,20 +97,5 @@ namespace Project_SteelMES
         {
             
         }
-
-        private void UserName_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void Password_Enter(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

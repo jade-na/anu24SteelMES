@@ -163,13 +163,13 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.InitialImage = global::Project_SteelMES.Properties.Resources.scratch;
-			this.pictureBox1.Location = new System.Drawing.Point(284, 89);
+			this.pictureBox1.InitialImage = null;
+			this.pictureBox1.Location = new System.Drawing.Point(345, 89);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(199, 207);
+			this.pictureBox1.Size = new System.Drawing.Size(138, 152);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 16;
 			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Visible = false;
 			// 
 			// DefectRecord2
 			// 

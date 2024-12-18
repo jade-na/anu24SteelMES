@@ -30,7 +30,7 @@ namespace Project_SteelMES
 				pictureBox1.Image = Properties.Resources.crazing;
 				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // 이미지 크기를 PictureBox에 맞게 조정
 			}
-			else if (label2.Text == "Inclusions")
+			else if (label2.Text == "inclusion")
 			{
 				pictureBox1.Image = Properties.Resources.inclusion;
 				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -45,12 +45,12 @@ namespace Project_SteelMES
 				pictureBox1.Image = Properties.Resources.pitted_surface;
 				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 			}
-			else if (label2.Text == "rolled_in_scale")
+			else if (label2.Text == "rolled-in-scale")
 			{
 				pictureBox1.Image = Properties.Resources.rolled_in_scale;
 				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 			}
-			else if (label2.Text == "scratch")
+			else if (label2.Text == "scratches")
 			{
 				pictureBox1.Image = Properties.Resources.scratch;
 				pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
